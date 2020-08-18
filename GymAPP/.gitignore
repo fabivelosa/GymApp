@@ -1,3 +1,4 @@
+
 # These are some examples of commonly ignored file patterns.
 # You should customize this list as applicable to your project.
 # Learn more about .gitignore:
@@ -6,6 +7,7 @@
 # Node artifact files
 node_modules/
 dist/
+/build/
 
 # Compiled Java class files
 *.class
@@ -27,6 +29,7 @@ dist/
 .classpath
 .project
 .settings/
+.metadata
 
 # Intellij
 .idea/
@@ -54,3 +57,4 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+~              
