@@ -7,15 +7,23 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
-	<title>WaterSide Gym</title>
+	<title>Login Screen</title>
 	<h:outputStylesheet name="stylesheet.css" library="css" />
 </h:head>
 
 <h:body>
-
 	<h:form>
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+
+		<div id="login">
+		<h:outputText value="Username" />
+		<h:inputText id="username" value="#{login.userName}"/>
+		<h:message for="username"></h:message>
+			<td>Password : </td>
+			 <h:inputSecret value="#{login.password}" />
+    		<h:commandButton value="Submit" action="#{login.loginYesNo}" />
+		</div>
+
 	</h:form>
 </h:body>
 </html>
+
