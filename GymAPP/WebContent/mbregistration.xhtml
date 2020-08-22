@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>WaterSide Gym</title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h2>Member Registration System</h2>
+		<table>
+			<tr>
+				<td>First Name:</td>
+				<td><h:inputText label="First Name" id="firstName"
+						value="#{member.firstName}" required="true" /> <h:message
+						for="firstname" style="color: red" /></td>
+			</tr>
+			<tr>
+				<td>Last Name:</td>
+				<td><h:inputText label="Last Name" id="lastName"
+						value="#{member.lastName}" required="true" /> <h:message
+						for="firstname" style="color: red" /></td>
+			</tr>
+			<tr>
+				<td>Gender:</td>
+				<td><h:selectOneRadio label="Gender" id="gender"
+						value="#{member.gender}" required="true">
+						<f:selectItem itemLabel="Male" itemValue="male" />
+						<f:selectItem itemLabel="Female" itemValue="female" />
+						<f:selectItem itemLabel="NotInformed" itemValue="none" />
+					</h:selectOneRadio> <h:message for="gender" style="color: red" /></td>
+			</tr>
+
+			<tr>
+				<td>Date of Birth:</td>
+				<td><h:inputText label="Date of Birth" id="dob"
+						value="#{member.dob}" required="true">
+						<f:convertDateTime pattern="MM-dd-yy" />
+					</h:inputText> (mm-dd-yy) <h:message for="dob" style="color: red" /></td>
+			</tr>
+
+			<tr>
+				<td>Address:</td>
+				<td><h:inputText label="Address" id="address"
+						value="#{member.address}" required="true" /> <h:message
+						for="address" style="color: red" /></td>
+			</tr>
+
+			<tr>
+				<td>City:</td>
+				<td><h:inputText label="City" id="city"
+						value="#{member.city}" required="true" /> <h:message
+						for="city" style="color: red" /></td>
+			</tr>
+
+			<tr>
+				<td>Email Address:</td>
+				<td><h:inputText label="Email Address" id="email"
+						value="#{member.emailAddress}" required="true"
+						validator="#{member.validateEmail}" /> <h:message for="email"
+						style="color: red" /></td>
+			</tr>
+
+			<tr>
+				<td>Mobile Number:</td>
+				<td><h:inputText label="Mobile Number" id="mobileno"
+						value="#{member.mobileNumber}" required="true">
+					</h:inputText> <h:message for="mobileno" style="color: red" /></td>
+			</tr>
+
+
+			<tr>
+				<td>Goal:</td>
+				<td><h:selectOneMenu label="Goal" value="#{member.goal}">
+						<f:selectItem itemLabel="Improved posture" itemValue="posture" />
+						<f:selectItem itemLabel="Reduced body fat" itemValue="bodyfat" />
+						<f:selectItem itemLabel="HIIT" itemValue="hiit" />
+					</h:selectOneMenu></td>
+			</tr>
+
+		</table>
+		<p>
+			<h:commandButton value="Submit" action="confirm" />
+		</p>
+	</h:form>
+</h:body>
+</html>

@@ -1,26 +1,26 @@
 package com.ait.gym;
 
-import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedBean; 
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 
 @ManagedBean
 @SessionScoped
-public class login implements Serializable {
+public class Login implements Serializable {
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; 
 	private String password;
 	private String userName;
 	
-	public login(String password, String userName) {
+	public Login(String password, String userName) {
 		super();
 		this.password = password;
 		this.userName = userName;
 	}
-	public login() {}
+	public Login() {}
 	public String getPassword() {
 		return password;
 	}
