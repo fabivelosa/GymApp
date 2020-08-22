@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -70,8 +70,7 @@
 						value="#{member.mobileNumber}" required="true">
 					</h:inputText> <h:message for="mobileno" style="color: red" /></td>
 			</tr>
-
-
+			
 			<tr>
 				<td>Goal:</td>
 				<td><h:selectOneMenu label="Goal" value="#{member.goal}">
@@ -80,6 +79,22 @@
 						<f:selectItem itemLabel="HIIT" itemValue="hiit" />
 					</h:selectOneMenu></td>
 			</tr>
+
+			<tr>
+				<td>User Name</td>
+				<td><h:inputText label="Login" id="login"
+						value="#{member.login.userName}" required="true">
+					</h:inputText> <h:message for="userName" style="color: red" /></td>
+			</tr>
+			
+			<tr>
+				<td>User Password</td>
+				<td><h:inputText label="Password" id="password"
+						value="#{member.login.password}" required="true">
+					</h:inputText> <h:message for="password" style="color: red" /></td>
+			</tr>
+
+			
 
 		</table>
 		<p>

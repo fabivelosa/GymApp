@@ -127,6 +127,10 @@ public class Member {
 	}
 	
 	public Login getLogin() {
+		
+		if(login==null) {
+			login = new Login();
+		}			
 		return login;
 	}
 
