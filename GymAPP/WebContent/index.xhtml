@@ -1,23 +1,25 @@
 <!DOCTYPE html>
-<html lang="en-GB">
-  <head>
-    <meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+  <h:head>
+    <meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <link rel="shortcut icon" type="image/svg" href=""/>
 
     <title>Waterside Gym</title>
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <h:outputStylesheet library="css" name="index.css"/>
 
     <!-- External Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-  </head>
+    
+  </h:head>
   <body>
     <div class="nav">
       <div class="inner">
         <div class="logo-container">
-          <img src="images/watersidegym2.svg" />
+          <img src="resources/images/watersidegym2.svg" />
         </div>
         <div class="account-options">
           <a id="signin">Sign In</a>
@@ -27,7 +29,7 @@
     </div>
     <div class="main">
       <div class="splash-image">
-        <img src="images/splash.jpg" />
+        <img src="resources/images/splash.jpg" />
       </div>
       <div class="splash-text">
         <div>
@@ -82,7 +84,7 @@
             <h3>One-time session with a trainer</h3>
           </div>
         </div>
-        <img src="images/member.jpg" />
+        <img src="resources/images/member.jpg" />
       </div>
       <div class="footer">
         <span id="arc"></span>
@@ -102,8 +104,8 @@
             </p>
           </div>
           <div>
-            <img src="images/worldpay.png" class="img-fluid pull-xs-left" alt="...">
-            <img src="images/paypal.png" class="img-fluid pull-xs-left" alt="...">
+            <img src="resources/images/worldpay.png" class="img-fluid pull-xs-left" alt="..."/>
+            <img src="resources/images/paypal.png" class="img-fluid pull-xs-left" alt="..."/>
           </div>
         </div>
       </div>
