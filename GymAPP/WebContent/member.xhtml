@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Waterside Gym</title>
+	<h:outputStylesheet name="member.css" library="css" />
+</h:head>
+
+<h:body>
+
+<h1 >Waterside Gym</h1>
+
+
+<h:form>
+<h:panelGrid styleClass="panelGridCenter" >
+<h2> A tailored approach to fitness</h2>
+<h3>We’ve got the perfect program for you regardless of your 
+current experience or fitness goals. It doesn’t matter what shape or size you are 
+because at Waterside gym we’ve raised the bar for functional training with unique programs that
+ all deliver an amazing workout. Whether you’re looking for a intense workout out of this world,
+a mobility assessment or you’re just interested in getting a great sweat
+ in for 45 minutes…we’ve got you. </h3>
+</h:panelGrid>
+
+<h:panelGrid id = "panel1" columns = "2"  >
+
+  		 <h:graphicImage  style="height:350px;width:750px"   name="images/member1.jpg" />
+  		 
+  		<h:panelGrid cellpadding="10" cellspacing="10" >
+  		
+               <h:outputLabel style="display: block; width:100%; text-align:center; text-transform:uppercase; font-weight:bold" value = "Become a member" />
+             
+               <p>Join Waterside gym family and find life-long friends to work out with. Book a three, six or twelve months membership and get a tailored individual programme. Our memberships starts from 29.99 per month!</p>
+               <h:commandButton styleClass="centreElement" value = "Book" action= " book_membership" style="align:right;" />
+          </h:panelGrid>  
+</h:panelGrid>
+
+
+<h:panelGrid id = "panel2" columns = "2"  >
+
+  		<h:graphicImage style="height:350px;width:750px"  name="images/meetTeam.jpg" />
+  		<h:panelGrid cellpadding="10" cellspacing="10" >
+  		
+               <h:outputLabel style="display: block; width:100%; text-align:center;text-transform:uppercase; font-weight:bold" value = "Meet our team" />
+               
+               <p>We pride ourselves on not only providing world class fitness
+                training, but also in creating a supportive and motivating environment. A family.
+                 The moment you arrive at your first class you will find a community of like-minded people
+                  of all ages and body types, committed to working hard and achieving lasting fitness results.
+                   We love our people and we love what we do – and that shows on the gym floor.
+					Get to know the trainers and let them help you to achieve your goals! </p>
+	<h:commandButton styleClass="centreElement" value = "About us" action=" AboutUs" />
+          </h:panelGrid>  
+</h:panelGrid>
+
+<h:panelGrid id = "panel3" columns = "2"  >
+
+  		<h:graphicImage style="height:350px;width:750px"  name="images/member3.jpg" />
+  		
+  		<h:panelGrid cellpadding="10" cellspacing="10" >
+  		
+               <h:outputLabel style="display: block; width:100%; text-align:center;text-transform:uppercase;font-weight:bold" value = "Watch Videos" />
+               
+               <p> Considering a home gym? When you have a clear understanding of
+                the fundamentals of our workouts, you will be able to minimise the risk
+                 of injury and see better results, faster. Watch our fun and supportive video 
+                 tutorials and start your fitness journey here with us. </p>
+               <h:commandButton styleClass="centreElement" value = "Watch" action= " watch_videos" />
+          </h:panelGrid>  
+</h:panelGrid>
+
+<h:panelGrid id = "panel4" columns = "2"  >
+
+  		<h:graphicImage style="height:350px;width:750px" name="images/BookaDayPass.jpg" />
+  		<h:panelGrid cellpadding="10" cellspacing="10" >
+               <h:outputLabel style="display: block; width:100%; text-align:center;text-transform:uppercase; font-weight:bold" value = "Book a Once off Enrolment" />
+              <p>Don’t use the lack of time as an excuse to skip your workout! 
+               If you don’t like membership commitment book a once off enrolment. 
+               Choose from variety of classes including Circuits, Pilates, Yoga, 
+               Thai Chi  Mindfulness. Get in, sweat and get out in just 45 minutes.</p>
+               <h:commandButton styleClass="centreElement" value = "View Schedule" action= " Schedule" />
+          </h:panelGrid>  
+</h:panelGrid>
+
+<h:panelGrid id = "panel5" columns = "2"  >
+
+  		<h:graphicImage style="height:350px;width:750px"   name="images/PersonalTraining.jpg" />
+  		<h:panelGrid cellpadding="10" cellspacing="10" >
+  		
+               <h:outputLabel style="display: block; width:100%; text-align:center; text-transform:uppercase; font-weight:bold"  value = "Personal Training" />
+               <p>Access a one-on-one session or organised personal training for you. 
+               This is an awesome way for beginners to learn the requirements of training,
+                or for experienced gym-goers to take their fitness to the next level. </p>
+               <h:commandButton styleClass="centreElement" value = "Book a class" action= " book_aPersonalTrainingClass" />
+          </h:panelGrid>  
+</h:panelGrid>
+
+<h:panelGrid id = "panel6" columns = "2"  >
+
+  		<h:graphicImage style="height:350px;width:750px"   name="images/member4.jpg" />
+  		<h:panelGrid cellpadding="10" cellspacing="10" >
+               <h:outputLabel style="display: block; width:100%; text-align:center; text-transform:uppercase; font-weight:bold" value = " View class Sedule" />
+               <p>We have the perfect program for you no matter your current experience. 
+               All the classes are limited capacity and the demand is high! Don’t miss out and plan 
+               your schedule. Book the classes, pack your bag and come join us for a workout!  </p>
+               <h:commandButton styleClass="centreElement" value = "View Schedule" action= "Schedule" />
+          </h:panelGrid>  
+</h:panelGrid>
+
+
+	</h:form>
+</h:body>
+
+</html>

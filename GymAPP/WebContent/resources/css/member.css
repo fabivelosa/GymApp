@@ -1,0 +1,73 @@
+body { 
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 15px;
+    background-color: none;
+    color: black;
+    
+}
+.panelGrid {
+    height: 550px;
+  }
+
+
+.header {
+    align: center;
+    color:red;
+ }
+
+
+h1, h2 {
+	font-family:'Oswald', Arial, Helvetic;
+	text-transform:uppercase;
+	padding: 10px;
+	text-align: center;
+}
+h3{
+	font-family:'Oswald', Arial, Helvetic;
+	font-size:15px;
+	padding: 10px;
+	display: inline-block;
+	text-align: center;
+}
+.panelGridCenter td,.panelGridCenter tr {
+    text-align: center;
+    text:inline-block;
+    font-size:10px;
+    background-color:none;
+    padding:20px;
+    height:20%;
+}
+
+.centreElement{
+	margin-left: 45%;
+	margin-right: 55%;
+}
+
+.panelGrid-full-width {
+    width: 100%;
+    display: inline-block;
+    height: inherit;
+  }
+
+.section-two-columns {
+	background:yellow;
+    width: 50%;
+    float: left;
+    height: inherit;
+    background: red;
+  }
+
+#section-three-columns {
+    width: 33.33%;
+    float: left;
+    height: inherit;
+  }
+
+#section-four-columns {
+    width: 25%;
+    float: left;
+    height: inherit;
+  }
+.center {
+    text-align: center;
+  }
