@@ -52,7 +52,7 @@ public class Login implements Serializable {
 			Login login = member.getLogin();
 			if(login.getUserName() != null && login.getPassword() != null){
 				if (login.getPassword().equals(this.password) && login.getUserName().equals(this.userName)) {
-					message = "successfulLogin";
+					message = "member";
 				}
 			}
 		}

@@ -15,12 +15,12 @@
 	<h:form>
 
 		<div id="login">
-		<h:outputText value="Username" />
-		<h:inputText id="username" value="#{login.userName}"/>
-		<h:message for="username"></h:message>
-			<td>Password : </td>
-			 <h:inputSecret value="#{login.password}" />
-    		<h:commandButton value="Submit" action="#{login.loginYesNo}" />
+			<h:outputText value="Username :" />
+			<h:inputText id="username" value="#{login.userName}" />
+			<h:message for="username"></h:message>
+			<td>Password :</td>
+			<h:inputSecret value="#{login.password}" />
+			<h:commandButton value="Submit" action="#{login.loginYesNo}" />
 		</div>
 
 	</h:form>
