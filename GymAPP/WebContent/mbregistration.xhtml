@@ -83,14 +83,14 @@
 			<tr>
 				<td>User Name</td>
 				<td><h:inputText label="Login" id="login"
-						value="#{member.login.userName}" required="true">
+						value="#{member.userName}" required="true">
 					</h:inputText> <h:message for="userName" style="color: red" /></td>
 			</tr>
 			
 			<tr>
 				<td>User Password</td>
 				<td><h:inputSecret label="Password" id="password"
-						value="#{member.login.password}" required="true">
+						value="#{member.password}" required="true">
 					</h:inputSecret> <h:message for="password" style="color: red" /></td>
 			</tr>
 
@@ -98,7 +98,7 @@
 
 		</table>
 		<p>
-			<h:commandButton value="Submit" action="confirm" />
+			<h:commandButton value="Submit" action="#{member.storeMemberInfo}" />
 		</p>
 	</h:form>
 </h:body>

@@ -1,8 +1,9 @@
 package com.ait.gym;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import java.io.Serializable;
 
 @ManagedBean
 @SessionScoped
@@ -48,25 +49,22 @@ public class Login implements Serializable {
 		
 		Member member = getMemberbyUserName(userName);		
 		String message = "index.xhtml?faces-redirect=true";
-		if(member != null && member.getLogin() != null) {
-			Login login = member.getLogin();
-			if(login.getUserName() != null && login.getPassword() != null){
-				if (login.getPassword().equals(this.password) && login.getUserName().equals(this.userName)) {
-					message = "member";
-				}
-			}
+		if(member != null) {				
+				if (member.getPassword().equals(this.password) && member.getUserName().equals(this.userName)) {
+					message = "member"; 
+				} 
 		}
 		
 		return message;
 	}
 
-	private Member getMemberbyUserName(String username) {
-
-		return Helper.getBean("member", Member.class);
-
+	private Member getMemberbyUserName(String username) {		
+		MembersList memberList = Helper.getBean("membersList", MembersList.class);
+		return memberList.getMemberByUserName(userName);				
+	
 	}
 	
-	public String logout() {
+	public String logout() { 
 		Helper.expungeSession();
 		return "index.xhtml?faces-redirect=true";
 	}

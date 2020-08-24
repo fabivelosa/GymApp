@@ -5,17 +5,20 @@ import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-@ManagedBean
+@ManagedBean(name="membersList",eager=true)
 @SessionScoped
 public class MembersList {
 
-	private ArrayList<Member> members = new ArrayList<Member>();
+	private ArrayList<Member> members;
 
 	public MembersList() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	public ArrayList<Member> getMembers() {
+	public ArrayList<Member> getMembers() {		
+		if(members == null) {
+			members =new ArrayList<Member>();
+		}
 		return members;
 	}
 
@@ -33,5 +36,19 @@ public class MembersList {
 
 	public void removeMember(String memberID) {
 		members.remove(new Member(memberID));
+	}
+	
+	public Member getMemberByUserName(String userName) {
+		
+		Member memberFound = null; 
+		System.out.println("member count -->"+this.getMembersCount());
+		
+		for(Member member:this.getMembers() ) {
+			if(member.getUserName().equals(userName)) {
+				memberFound = member;
+				System.out.println("member found -->"+member.getFirstName());
+			}
+		}
+		return memberFound;		
 	}
 }
