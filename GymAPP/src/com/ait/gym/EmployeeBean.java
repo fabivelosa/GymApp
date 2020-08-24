@@ -1,11 +1,12 @@
-package com.ait.jsf;
+package com.ait.gym;
 
 import java.util.Date;
+
 import javax.faces.application.FacesMessage;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
 @ManagedBean
@@ -23,7 +24,29 @@ public class EmployeeBean {
 	private String aboutYourself;
 	private boolean employeeType;
 
-	// Member Methods
+
+
+	public EmployeeBean() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public EmployeeBean(String empName, String gender, Date dob, String address, String emailAddress,
+			String mobileNumber, String password, String aboutYourself, boolean employeeType) {
+		super();
+		this.empName = empName;
+		this.gender = gender;
+		this.dob = dob;
+		this.address = address;
+		this.emailAddress = emailAddress;
+		this.mobileNumber = mobileNumber;
+		this.password = password;
+		this.aboutYourself = aboutYourself;
+		this.employeeType = employeeType;
+	}
+	
+	
+
 	public String getEmpName() {
 		return empName;
 	}
@@ -76,7 +99,7 @@ public class EmployeeBean {
 		return password;
 	}
 
-	public void setPasswords(String password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
@@ -112,7 +135,7 @@ public class EmployeeBean {
 		String outcome = null;
 		if (stored) {
 			message = new FacesMessage("Employee Information is stored Successfully.");
-			outcome = "success";
+			outcome = "successpt";
 		} else {
 			message = new FacesMessage("Employee Information is NOT stored Successfully.");
 			outcome = "employee";
@@ -121,4 +144,3 @@ public class EmployeeBean {
 		return outcome;
 	}
 }
-
