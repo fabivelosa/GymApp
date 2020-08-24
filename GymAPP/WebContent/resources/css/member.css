@@ -1,0 +1,77 @@
+
+
+html, body {
+  font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+  font-style: normal;
+  min-height: 100%;
+  margin: 0;
+  background-color: #f7f7f7 !important;
+  font-size: 15px;
+}
+
+.panelGrid {
+    height: 550px;
+  }
+
+h1{
+	 text-align: center;
+  padding-bottom: 20px;
+  padding-top:50;
+  font-size: 5em;
+  color: black;
+	
+}
+h2 {
+	 text-align: center;
+  font-size: 2em;
+  color: black;
+}
+h3{
+	font-family:'Oswald', Arial, Helvetic;
+	font-size:15px;
+	display: inline-block;
+	text-align: center;
+}
+.panelGridCenter td,.panelGridCenter tr {
+    text-align: center;
+    text:inline-block;
+    font-size:10px;
+    background-color:none;
+    padding:10px;
+    height:20%;
+   
+}
+
+.centreElement{
+	margin-left: 45%;
+	margin-right: 55%;
+}
+
+.panelGrid-full-width {
+    width: 100%;
+    display: inline-block;
+    height: inherit;
+  }
+
+.section-two-columns {
+	background:yellow;
+    width: 50%;
+    float: left;
+    height: inherit;
+    background: red;
+  }
+
+#section-three-columns {
+    width: 33.33%;
+    float: left;
+    height: inherit;
+  }
+
+#section-four-columns {
+    width: 25%;
+    float: left;
+    height: inherit;
+  }
+.center {
+    text-align: center;
+  }

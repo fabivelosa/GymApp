@@ -1,0 +1,400 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  background-color: #f7f7f7 !important;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+    z-index: 10000;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #397CFF;
+}
+
+* {
+  margin: 0 auto;
+  padding: 0;
+  color: #151515;
+  font-family: "Lato", sans-serif;
+}
+
+@font-face {
+    font-family: helvb;
+    src: url('../font/nhg75.ttf');
+}
+
+@font-face {
+    font-family: helvl;
+    src: url('../font/nhg55.ttf');
+}
+
+div.inner {
+  width: 70%;
+  height: 100%;
+}
+
+/* NAV - Menu CSS */
+
+div.nav {
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+}
+
+div.logo-container {
+  width: auto;
+  float: left;
+  height: 60px;
+}
+
+div.logo-container img {
+  height: 40px;
+  padding: 12.5px 0 7.5px 0;
+}
+
+div.account-options {
+  width: auto;
+  float: right;
+  height: 60px;
+  padding: 7.5px;
+}
+
+div.account-options a {
+  line-height: 45px;
+  padding: 0 30px;
+  height: 45px;
+  display: block;
+  float: left;
+  border-radius: 6px;
+  transition: 0.15s ease;
+  color: black;
+}
+
+div.account-options a.register {
+  background-color: #397CFF;
+  color: white;
+}
+
+div.account-options a:hover {
+  color: #397CFF;
+  cursor: pointer;
+}
+
+div.account-options a.register:hover {
+  background-color: #2765df;
+  color: white;
+}
+
+/* SPLASH SCREEN */
+
+div.main {
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow-x: hidden;
+}
+
+div.splash-image {
+  width: 100%;
+  height: calc(100vh - 10px);
+  background-color: #278cdf;
+  overflow: hidden;
+}
+
+div.splash-image > img {
+  width: 100%;
+  opacity: 0.8;
+  filter: grayscale(1);
+  mix-blend-mode: soft-light;
+}
+
+div.splash-text {
+  width: 100%;
+  height: 900px;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  text-align: center;
+}
+
+div.splash-text h1 {
+  font-size: 7em;
+  letter-spacing: -5px;
+  text-shadow: 0px 0px 25px #162b57;
+  padding: 10px 0;
+  color: white;
+}
+
+div.splash-text p {
+  font-size: 26px;
+  line-height: 30px;
+  text-shadow: 0px 0px 15px #162b57;
+  color: white;
+  padding: 20px 0 40px 0;
+}
+
+div.splash-text a {
+  line-height: 45px;
+  padding: 10px 40px;
+  height: 45px;
+  border-radius: 6px;
+  transition: 0.15s ease;
+  font-weight: 400;
+  font-size: 26px;
+  letter-spacing: 1px;
+  border-bottom: 6px solid black;
+  background-color: #151515;
+  color: white;
+  position: absolute;
+  bottom: 200px;
+}
+
+div.splash-text span {
+  letter-spacing: -3px;
+  font-size: 22px;
+  color: white;
+}
+
+div.splash-text a:hover {
+  background-color: #397CFF;
+  color: white;
+  cursor: pointer;
+  border-bottom: 4px solid #1b58cf;
+}
+
+div.splash-info {
+  width: 100%;
+  height: 750px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  position: relative;
+}
+
+div.splash-info > div {
+  height: calc(100% - 150px);
+}
+
+div.splash-info h1 {
+  text-align: center;
+  padding-bottom: 30px;
+  font-size: 2em;
+  color: #397CFF;
+}
+
+div.splash-info > div > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(50% - 50px);
+  height: 70%;
+  float: left;
+}
+
+div.splash-info div.info-stats {
+  flex-direction: column;
+  display: block;
+  align-items: flex-start;
+}
+
+div.splash-info div.info-stats h1 {
+  text-align: left;
+}
+
+div.splash-info div.info-stats h3 {
+  text-align: left;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+div.splash-info div.info-about {
+  float: right;
+  align-items: flex-start;
+  text-align: justify;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+#arc {
+  position: absolute;
+  z-index: 50;
+  top: -80px;
+  left: -10%;
+  width: 120%;
+  height: 160px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+div.footer #arc {
+  top: -45px;
+  background-color: #eee;
+  height: 120px;
+}
+
+#divit {
+  position: absolute;
+  left: calc(50% - 50px);
+  z-index: 50;
+  bottom:-30px;
+  width: 0;
+  height: 0;
+  transform: rotate(180deg);
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 60px solid white;
+}
+
+div.splash-member {
+  width: 100%;
+  height: 550px;
+  background-color: #397CFF;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 30px;
+  flex-direction: column;
+  position: relative;
+  overflow-y: hidden;
+}
+
+div.splash-member img {
+  width: 100%;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  filter: grayscale(1);
+  mix-blend-mode: soft-light;
+}
+
+div.splash-member > div.inner {
+  height: 50%;
+  left: 15%;
+}
+
+div.splash-member > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  position: absolute;
+  z-index: 20;
+}
+
+div.splash-member > div > div {
+  width: calc(50% - 100px);
+  border-radius: 20px;
+  padding: 40px 0;
+  transition: 0.15s ease;
+  background-color: #151515;
+  border-bottom: 8px solid #050505;
+}
+
+div.splash-member > div > div:hover {
+  border-bottom: 6px solid #1b58cf;
+  background-color: #397CFF;
+  cursor: pointer;
+  margin-bottom: -4px;
+}
+
+div.splash-member span {
+  color: white;
+  font-size: 22px;
+  font-weight: 300;
+}
+
+div.splash-member h1 {
+  text-align: center;
+  font-size: 1.75em;
+  color: white;
+  padding: 0 15px 15px 15px;
+}
+
+div.splash-member > h1 {
+  position: absolute;
+  top: 125px;
+  width: 100%;
+  margin-top: -50px;
+}
+
+div.splash-member h3 {
+  color: white;
+  font-weight: 300;
+  text-align: center;
+  font-size: 26px;
+}
+
+/* FOOTER */
+
+div.footer {
+  position: relative;
+  bottom: 0;
+  font-size: 20px;
+  width: 100%;
+  background-color: #eee;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.footer > div > div {
+  float: left;
+  width: calc(100%/3 - 30px);
+  height: 200px;
+  margin: 75px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.footer > div > div:nth-child(even) {
+  flex-direction: column;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+
+div.footer > div > div:nth-child(even) h3 {
+  color: #397CFF;
+}
+
+div.footer ul li {
+  list-style-type: none;
+  padding: 4px 0;
+  transition: 0.15s ease;
+}
+
+div.footer ul li:hover {
+  color: #397CFF;
+  cursor: pointer;
+}
+
+
+div.footer img {
+  width: 40%;
+  padding: 15px;
+}
+
+
+@media (max-width: 990px)  {
+  div.splash-image > img {
+    width: auto;
+    height: 100%;
+  }
+
+  div.inner {
+    width: 85%;
+  }
+}

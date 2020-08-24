@@ -4,3 +4,28 @@ body {
     background-color: lightblue;
     color: darkblue;
 }
+
+
+body{
+  margin-top: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-size: 100%;
+  background-image:url(#{request.contextPath}/resources/images/bg_img.jpg);
+   background-repeat: repeat-n;
+  background-size: cover;
+  
+}
+#login{
+	
+ color: #ffffff;
+  text-align: center; 
+  width: 280px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+
+
