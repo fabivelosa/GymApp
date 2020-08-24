@@ -7,12 +7,8 @@
 	<title>WaterSide Gym</title>
 </h:head>
 <h:body>
-	<h4>Member Information System</h4>
+	<h4>Member Registration</h4>
 	<table>
-		<tr>
-			<td>MemberID:</td>
-			<td><h:outputText value="#{member.memberID}" /></td>
-		</tr>
 		<tr>
 			<td>First Name:</td>
 			<td><h:outputText value="#{member.firstName}" /></td>
@@ -57,7 +53,11 @@
 			<td>Password:</td>
 			<td><h:outputText value="#{member.login.password}" /></td>
 		</tr>
-
 	</table>
+	<h:form>
+	<p>
+		<h:commandButton value="Go to Login Page!" action="login" />
+	</p>
+	</h:form>
 </h:body>
 </html>

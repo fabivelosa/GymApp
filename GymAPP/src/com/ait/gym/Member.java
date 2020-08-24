@@ -22,7 +22,7 @@ public class Member {
 	private String address;
 	private String city;
 	private String goal;
-	private Login login; 
+	private Login login;
 
 	public Member() {
 		super();
@@ -30,7 +30,8 @@ public class Member {
 	}
 
 	public Member(String memberID, String firstName, String lastName, Date dob, String mobileNumber,
-			String emailAddress, String address, String city, String gender, String goal,String login,String password) {
+			String emailAddress, String address, String city, String gender, String goal, String login,
+			String password) {
 		super();
 		this.memberID = memberID;
 		this.firstName = firstName;
@@ -42,8 +43,13 @@ public class Member {
 		this.city = city;
 		this.gender = gender;
 		this.goal = goal;
-		Login userLogin = new Login(login,password);
-		this.setLogin(userLogin);		
+		Login userLogin = new Login(login, password);
+		this.setLogin(userLogin);
+	}
+
+	public Member(String memberID) {
+		super();
+		this.memberID = memberID;
 	}
 
 	public String getFirstName() {
@@ -125,12 +131,12 @@ public class Member {
 	public void setGoal(String goal) {
 		this.goal = goal;
 	}
-	
+
 	public Login getLogin() {
-		
-		if(login==null) {
+
+		if (login == null) {
 			login = new Login();
-		}			
+		}
 		return login;
 	}
 
@@ -162,5 +168,11 @@ public class Member {
 		FacesContext.getCurrentInstance().addMessage(null, message);
 		return outcome;
 	}
-}
 
+	public String addMemberHandler(Member member) {
+		MembersList members = Helper.getBean("memberList", MembersList.class);
+		members.addMemberList(member);
+		return null;
+	}
+
+}
