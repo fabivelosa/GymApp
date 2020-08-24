@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+  <title>Details confirmation</title>
+</h:head>
+<h:body>
+<h4>Details confirmation</h4>
+  <h:form>
+    <h4>Personal Trainer Registration Confirmation</h4>
+    <table>
+      <tr>
+        <td>Employee Name:</td>
+        <td>
+          <h:outputText value="#{employeeBean.empName}" />
+        </td>
+      </tr>
+      <tr>
+        <td>Gender:</td>
+        <td>
+          <h:outputText value="#{employeeBean.gender}"/>
+        </td>
+      </tr>
+      <tr>
+        <td>Date of Birth:</td>
+        <td>
+          <h:outputText value="#{employeeBean.dob}" />
+        </td>
+      </tr>
+      <tr>
+        <td>Address:</td>
+        <td>
+          <h:outputText value="#{employeeBean.address}" />
+        </td>
+      </tr>
+      <tr>
+        <td>Email Address:</td>
+        <td>
+          <h:outputText value="#{employeeBean.emailAddress}" />
+        </td>
+      </tr>
+      <tr>
+        <td>Mobile Number:</td>
+        <td>
+          <h:outputText value="#{employeeBean.mobileNumber}" />
+        </td>
+      </tr>
+       <tr>
+        <td>Password:</td>
+        <td>
+          <h:outputText value="#{employeeBean.password}" />
+        </td>
+      </tr>
+       <tr>
+        <td>About Yourself:</td>
+        <td>
+          <h:outputText value="#{employeeBean.aboutYourself}" />
+        </td>
+      </tr>
+      <tr>
+        <td>Permanent?</td>
+        <td>
+        <h:outputText value="#{employeeBean.employeeType}" />
+        </td>
+      </tr>
+    </table>
+    <p><h:commandButton value="Cancel" action="employee" />
+    <h:commandButton value="Confirm" action="#{employeeBean.storeEmployeeInfo}" /></p>
+  </h:form>
+ </h:body>
+</html>
