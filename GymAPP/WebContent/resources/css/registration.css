@@ -1,0 +1,29 @@
+
+
+html, body {
+  font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+  font-style: normal;
+  min-height: 100%;
+  margin: 0;
+  background-color: #f7f7f7 !important;
+  font-size: 15px;
+}
+
+table  {
+    height: 550px;
+    padding:20px;
+    margin-left:260px; 
+    border:solid;
+    
+  }
+
+
+h3{
+	font-family:'Oswald', Arial, Helvetic;
+	font-size:20px;
+	
+	text-align: center;
+	font-weight:bold;
+	color:blue;
+}
+

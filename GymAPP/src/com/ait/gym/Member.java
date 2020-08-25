@@ -21,6 +21,7 @@ public class Member {
 	private String mobileNumber;
 	private String emailAddress;
 	private String address;
+	private String eircode;
 	private String city;
 	private String goal;
 	private String userName;
@@ -32,7 +33,7 @@ public class Member {
 	}
 
 	public Member(String memberID, String firstName, String lastName, Date dob, String mobileNumber,
-			String emailAddress, String address, String city, String gender, String goal, String login,
+			String emailAddress, String address, String city,String eircode, String gender, String goal, String login,
 			String password) {
 		super();
 		this.memberID = memberID;
@@ -45,6 +46,7 @@ public class Member {
 		this.city = city;
 		this.gender = gender;
 		this.goal = goal;
+		this.setEircode(eircode);
 		this.setUserName(login);
 		this.setPassword(password);
 		
@@ -176,6 +178,14 @@ public class Member {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getEircode() {
+		return eircode;
+	}
+
+	public void setEircode(String eircode) {
+		this.eircode = eircode;
 	}
 
 }

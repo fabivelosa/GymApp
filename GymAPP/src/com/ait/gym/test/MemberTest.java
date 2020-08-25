@@ -19,7 +19,7 @@ class MemberTest {
 	void setUp() throws Exception {
 		Date date = new Date();
 		member = new Member("M001", "Fabiane", "Velosa", date, "083-123456", "fabi@gmail", "17, address", "Athlone",
-				"Female", "Improve metabolism", "fabi", "123");
+				"N37Y419","Female", "Improve metabolism", "fabi", "123");
 	}
 
 	@Test
