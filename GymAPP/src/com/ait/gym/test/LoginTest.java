@@ -17,14 +17,27 @@ class LoginTest {
 	@BeforeEach
 	public void setUp() {
 		System.out.println("In setup");
-		login = new Login();
+		login = new Login("555","Shane");
 		
 	}
 	
+	@Test
+	public void testUserPassword() {
+		assertEquals("555",login.getPassword());
+	}
 
 	@Test
 	public void testUserName() {
 		assertEquals("Shane", login.getUserName());
+	}
+	
+	@Test
+	public void testUserPasswordIncorrect() {
+		assertNotEquals("billyBob", login.getPassword());
+	}
+	@Test 
+	public void testUserNameIncorrect() {
+		assertNotEquals("5555", login.getUserName());
 	}
 	@Test
 	void test() {
