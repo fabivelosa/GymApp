@@ -1,105 +1,101 @@
-	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<title>WaterSide Gym</title>
+	<h:outputStylesheet library="css" name="registration.css" />
 </h:head>
 
 <h:body>
+
 	<h:form>
-		<h2>Member Registration System</h2>
-		<table>
-			<tr>
-				<td>First Name:</td>
-				<td><h:inputText label="First Name" id="firstName"
-						value="#{member.firstName}" required="true" /> <h:message
-						for="firstname" style="color: red" /></td>
-			</tr>
-			<tr>
-				<td>Last Name:</td>
-				<td><h:inputText label="Last Name" id="lastName"
-						value="#{member.lastName}" required="true" /> <h:message
-						for="firstname" style="color: red" /></td>
-			</tr>
-			<tr>
-				<td>Gender:</td>
-				<td><h:selectOneRadio label="Gender" id="gender"
-						value="#{member.gender}" required="true">
-						<f:selectItem itemLabel="Male" itemValue="male" />
-						<f:selectItem itemLabel="Female" itemValue="female" />
-						<f:selectItem itemLabel="NotInformed" itemValue="none" />
-					</h:selectOneRadio> <h:message for="gender" style="color: red" /></td>
-			</tr>
+		<h3>Member Registration System</h3>
+		<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
 
-			<tr>
-				<td>Date of Birth:</td>
-				<td><h:inputText label="Date of Birth" id="dob"
-						value="#{member.dob}" required="true">
-						<f:convertDateTime pattern="MM-dd-yy" />
-					</h:inputText> (mm-dd-yy) <h:message for="dob" style="color: red" /></td>
-			</tr>
+		<h:panelGrid columns="6" cellpadding="5">
+			<p:outputLabel for="firstName" value="First Name:"
+				style="font-weight:bold" />
+			<p:inputText label="First Name" id="firstName"
+				value="#{member.firstName}" required="true" />
+			<p:message for="firstName" />
 
-			<tr>
-				<td>Address:</td>
-				<td><h:inputText label="Address" id="address"
-						value="#{member.address}" required="true" /> <h:message
-						for="address" style="color: red" /></td>
-			</tr>
 
-			<tr>
-				<td>City:</td>
-				<td><h:inputText label="City" id="city"
-						value="#{member.city}" required="true" /> <h:message
-						for="city" style="color: red" /></td>
-			</tr>
+			<p:outputLabel for="lastName" value="Last Name:" />
+			<p:inputText label="Last Name" id="lastName"
+				value="#{member.lastName}" required="true" />
+			<p:message for="lastName" />
 
-			<tr>
-				<td>Email Address:</td>
-				<td><h:inputText label="Email Address" id="email"
-						value="#{member.emailAddress}" required="true"
-						validator="#{member.validateEmail}" /> <h:message for="email"
-						style="color: red" /></td>
-			</tr>
+			<p:outputLabel for="gender" value="Gender:" />
+			<p:selectOneMenu id="gender">				
+				<f:selectItem itemLabel="Male" itemValue="male" />
+				<f:selectItem itemLabel="Female" itemValue="female" />
+			</p:selectOneMenu>
+			<p:message for="gender" />
 
-			<tr>
-				<td>Mobile Number:</td>
-				<td><h:inputText label="Mobile Number" id="mobileno"
-						value="#{member.mobileNumber}" required="true">
-					</h:inputText> <h:message for="mobileno" style="color: red" /></td>
-			</tr>
-			
-			<tr>
-				<td>Goal:</td>
-				<td><h:selectOneMenu label="Goal" value="#{member.goal}">
-						<f:selectItem itemLabel="Improved posture" itemValue="posture" />
-						<f:selectItem itemLabel="Reduced body fat" itemValue="bodyfat" />
-						<f:selectItem itemLabel="HIIT" itemValue="hiit" />
-					</h:selectOneMenu></td>
-			</tr>
+			<p:outputLabel for="dob" value="Date of Birth:" />
+			<p:calendar id="dob" value="#{member.dob}" required="true" style="heigth:50px"/>
+			<p:message for="dob" />
 
-			<tr>
-				<td>User Name</td>
-				<td><h:inputText label="Login" id="login"
-						value="#{member.login.userName}" required="true">
-					</h:inputText> <h:message for="userName" style="color: red" /></td>
-			</tr>
-			
-			<tr>
-				<td>User Password</td>
-				<td><h:inputText label="Password" id="password"
-						value="#{member.login.password}" required="true">
-					</h:inputText> <h:message for="password" style="color: red" /></td>
-			</tr>
 
-			
+			<p:outputLabel for="address" value="Address:" />
+			<p:inputTextarea id="address" value="#{member.address}"
+				required="true" />
+			<p:message for="address" />
 
-		</table>
-		<p>
-			<h:commandButton value="Submit" action="confirm" />
-		</p>
+			<p:outputLabel for="city" value="City:" />
+			<p:inputText id="city" value="#{member.city}" required="true" />
+			<p:message for="city" />
+
+			<p:outputLabel for="eircode" value="EIR Code:" />
+			<p:inputText id="eircode" value="#{member.eircode}" required="true" />
+			<p:message for="eircode" />
+
+			<p:outputLabel for="email " value="Email:" />
+			<p:inputText id="email" value="#{member.emailAddress}"
+				required="true" validator="#{member.validateEmail}" />
+			<p:message for="email" />
+
+			<p:outputLabel for="mobileno " value="Mobile Number:" />
+			<p:inputText id="mobileno" value="#{member.mobileNumber}"
+				required="true" />
+			<p:message for="mobileno" />
+
+			<p:outputLabel for="goal" value="Goal:" cellpadding="4" />
+			<p:selectOneMenu id="goal">
+				<f:selectItem itemLabel="Select One" itemValue="#{member.goal}"
+					noSelectionOption="true" />
+				<f:selectItem itemLabel="Improved posture" itemValue="posture" />
+				<f:selectItem itemLabel="Reduced body fat" itemValue="bodyfat" />
+				<f:selectItem itemLabel="HIIT" itemValue="hiit" />
+			</p:selectOneMenu>
+			<p:message for="goal" />
+
+			<p:outputLabel for="login " value="User Name:" />
+			<p:inputText id="login" value="#{member.userName}" required="true" />
+			<p:message for="login" />
+
+
+			<p:outputLabel for="password " value="User Password:" />
+			<p:password id="password" value="#{member.password}" required="true" />
+			<p:message for="password" />
+
+			<p:commandButton value="Submit" update="msgs"
+				action="#{member.storeMemberInfo}" icon="pi pi-check" />
+
+
+
+
+		</h:panelGrid>
 	</h:form>
+
+
+
+
+
 </h:body>
 </html>

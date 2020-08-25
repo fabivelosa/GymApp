@@ -4,13 +4,14 @@ import java.util.Date;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class Member {
 	private String memberID;
 	private String firstName;
@@ -20,9 +21,11 @@ public class Member {
 	private String mobileNumber;
 	private String emailAddress;
 	private String address;
+	private String eircode;
 	private String city;
 	private String goal;
-	private Login login; 
+	private String userName;
+	private String password;
 
 	public Member() {
 		super();
@@ -30,7 +33,8 @@ public class Member {
 	}
 
 	public Member(String memberID, String firstName, String lastName, Date dob, String mobileNumber,
-			String emailAddress, String address, String city, String gender, String goal,String login,String password) {
+			String emailAddress, String address, String city,String eircode, String gender, String goal, String login,
+			String password) {
 		super();
 		this.memberID = memberID;
 		this.firstName = firstName;
@@ -42,8 +46,16 @@ public class Member {
 		this.city = city;
 		this.gender = gender;
 		this.goal = goal;
-		Login userLogin = new Login(login,password);
-		this.setLogin(userLogin);		
+		this.setEircode(eircode);
+		this.setUserName(login);
+		this.setPassword(password);
+		
+		
+	}
+
+	public Member(String memberID) {
+		super();
+		this.memberID = memberID;
 	}
 
 	public String getFirstName() {
@@ -126,17 +138,6 @@ public class Member {
 		this.goal = goal;
 	}
 	
-	public Login getLogin() {
-		
-		if(login==null) {
-			login = new Login();
-		}			
-		return login;
-	}
-
-	public void setLogin(Login login) {
-		this.login = login;
-	}
 
 	// Validate Email
 	public void validateEmail(FacesContext context, UIComponent toValidate, Object value) throws ValidatorException {
@@ -148,19 +149,45 @@ public class Member {
 	}
 
 	// Action Methods
-	public String storeMemberInfo() {
-		boolean stored = true;
-		FacesMessage message = null;
-		String outcome = null;
-		if (stored) {
-			message = new FacesMessage("Gym Member created Successfully.");
-			outcome = "success";
-		} else {
-			message = new FacesMessage("Gym Member Information is NOT stored Successfully.");
-			outcome = "member";
-		}
+	public String storeMemberInfo() {	
+				
+		addMemberHandler(this);
+		FacesMessage message =  new FacesMessage("Gym Member created Successfully.");;
+		String outcome = "success";		
 		FacesContext.getCurrentInstance().addMessage(null, message);
 		return outcome;
 	}
+
+	public void addMemberHandler(Member member) {	
+		MembersList members = Helper.getBean("membersList", MembersList.class);		
+		members.getMembers().add(member);
+		System.out.println("members count -->"+members.getMembersCount());
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEircode() {
+		return eircode;
+	}
+
+	public void setEircode(String eircode) {
+		this.eircode = eircode;
+	}
+
 }
+
 
