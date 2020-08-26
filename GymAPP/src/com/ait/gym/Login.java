@@ -15,7 +15,6 @@ public class Login implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String password;
 	private String userName;
-	private Member members;
 
 	public Login(String password, String userName) {
 		super();
@@ -46,30 +45,26 @@ public class Login implements Serializable {
 	}
 
 	public String loginYesNo() {
-		
-		Member member = getMemberbyUserName(userName);		
+
+		Member member = getMemberbyUserName(userName);
 		String message = "index.xhtml?faces-redirect=true";
-		if(member != null) {				
-				if (member.getPassword().equals(this.password) && member.getUserName().equals(this.userName)) {
-					message = "member"; 
-				} 
+		if (member != null) {
+			if (member.getPassword().equals(this.password) && member.getUserName().equals(this.userName)) {
+				message = "member";
+			}
 		}
-		
+
 		return message;
 	}
 
-	private Member getMemberbyUserName(String username) {		
+	private Member getMemberbyUserName(String username) {
 		MembersList memberList = Helper.getBean("membersList", MembersList.class);
-		return memberList.getMemberByUserName(userName);				
-	
+		return memberList.getMemberByUserName(userName);
 	}
-	
-	public String logout() { 
+
+	public String logout() {
 		Helper.expungeSession();
 		return "index.xhtml?faces-redirect=true";
 	}
 
 }
-
-
-	

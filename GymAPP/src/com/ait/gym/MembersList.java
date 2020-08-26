@@ -9,16 +9,13 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class MembersList {
 
-	private ArrayList<Member> members;
+	private ArrayList<Member> members =new ArrayList<Member>();
 
 	public MembersList() {
 		
 	}
 
 	public ArrayList<Member> getMembers() {		
-		if(members == null) {
-			members =new ArrayList<Member>();
-		}
 		return members;
 	}
 
@@ -26,7 +23,7 @@ public class MembersList {
 		this.members = members;
 	}
 
-	public int getMembersCount() {
+	public int getMembersCount() { 
 		return members.size();
 	}
 

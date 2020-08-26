@@ -2,17 +2,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:h="http://xmlns.jcp.org/jsf/html">
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>WaterSide Gym</title>
+	<h:outputStylesheet library="css" name="registration.css" />
 </h:head>
 <h:body>
-	<h4>Member Registration Successfully !</h4>
-	
-	<h:form>
-	<p>
-		<h:commandButton value="Go to Login Page!" action="login" />
+	<h:messages globalOnly="true" />
+
+ <h:form>
+	<p>  
+		<p:commandButton value="Done! Go to Login Page ..." 
+			style="margin-right:20px;" action="login.xhmtl?faces-redirect=true">			
+		</p:commandButton>
+
 	</p>
-	</h:form>
+</h:form>
+
 </h:body>
 </html>
