@@ -11,9 +11,6 @@ class LoginTest {
 	
 	private Login login;
 	
-	private String userName = "";
-	private String password = "";
-	
 	@BeforeEach
 	public void setUp() {
 		System.out.println("In setup");
@@ -39,9 +36,4 @@ class LoginTest {
 	public void testUserNameIncorrect() {
 		assertNotEquals("5555", login.getUserName());
 	}
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
-
 }

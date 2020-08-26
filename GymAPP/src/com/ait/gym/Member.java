@@ -8,6 +8,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
+import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @RequestScoped
@@ -25,14 +26,14 @@ public class Member {
 	private String goal;
 	private String userName;
 	private String password;
-	static int count = 100;
+	static int count = 1000;
 
 	public Member() {
 		super();
 	}
 
-	public Member(String firstName, String lastName, Date dob, String mobileNumber,
-			String emailAddress, String address, String city, String eircode, String gender, String goal, String login,
+	public Member(String memberID, String firstName, String lastName, Date dob, String mobileNumber,
+			String emailAddress, String address, String city, String gender, String goal, String eircode, String login,
 			String password) {
 		super();
 		this.firstName = firstName;
@@ -44,11 +45,11 @@ public class Member {
 		this.city = city;
 		this.gender = gender;
 		this.goal = goal;
-		this.setEircode(eircode);
+		this.eircode = eircode;
 		this.setUserName(login);
 		this.setPassword(password);
 		count++;
-		setMemberID("M" + count);
+		this.setMemberID("M" + count);
 	}
 
 	public Member(String memberID) {
