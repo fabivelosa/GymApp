@@ -8,7 +8,6 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
-import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @RequestScoped
@@ -32,7 +31,7 @@ public class Member {
 		super();
 	}
 
-	public Member(String memberID, String firstName, String lastName, Date dob, String mobileNumber,
+	public Member (String firstName, String lastName, Date dob, String mobileNumber,
 			String emailAddress, String address, String city, String gender, String goal, String eircode, String login,
 			String password) {
 		super();
