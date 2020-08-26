@@ -17,9 +17,9 @@ class MemberTest {
 	void setUp() throws Exception {
 		Date date = new Date();
 
-		member = new Member("0", "Fabiane", "Velosa", date, "083-123456", "fabi@gmail", "17, address", "Athlone",
+		member = new Member("Fabiane", "Velosa", date, "083-123456", "fabi@gmail", "17, address", "Athlone",
 				"Female", "Improve metabolism", "N37896", "fabi", "123");
-	}
+	} 
 
 	@Test
 	void testMemberContructor() {
