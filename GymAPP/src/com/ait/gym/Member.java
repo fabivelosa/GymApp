@@ -5,7 +5,6 @@ import java.util.Date;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
@@ -26,17 +25,16 @@ public class Member {
 	private String goal;
 	private String userName;
 	private String password;
+	static int count = 100;
 
 	public Member() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Member(String memberID, String firstName, String lastName, Date dob, String mobileNumber,
-			String emailAddress, String address, String city,String eircode, String gender, String goal, String login,
+	public Member(String firstName, String lastName, Date dob, String mobileNumber,
+			String emailAddress, String address, String city, String eircode, String gender, String goal, String login,
 			String password) {
 		super();
-		this.memberID = memberID;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dob = dob;
@@ -49,8 +47,8 @@ public class Member {
 		this.setEircode(eircode);
 		this.setUserName(login);
 		this.setPassword(password);
-		
-		
+		count++;
+		setMemberID("M" + count);
 	}
 
 	public Member(String memberID) {
@@ -138,32 +136,6 @@ public class Member {
 		this.goal = goal;
 	}
 	
-
-	// Validate Email
-	public void validateEmail(FacesContext context, UIComponent toValidate, Object value) throws ValidatorException {
-		String emailStr = (String) value;
-		if (-1 == emailStr.indexOf("@")) {
-			FacesMessage message = new FacesMessage("Email Address is Valid");
-			throw new ValidatorException(message);
-		}
-	}
-
-	// Action Methods
-	public String storeMemberInfo() {	
-				
-		addMemberHandler(this);
-		FacesMessage message =  new FacesMessage("Gym Member created Successfully.");;
-		String outcome = "success";		
-		FacesContext.getCurrentInstance().addMessage(null, message);
-		return outcome;
-	}
-
-	public void addMemberHandler(Member member) {	
-		MembersList members = Helper.getBean("membersList", MembersList.class);		
-		members.getMembers().add(member);
-		System.out.println("members count -->"+members.getMembersCount());
-	}
-
 	public String getUserName() {
 		return userName;
 	}
@@ -188,6 +160,40 @@ public class Member {
 		this.eircode = eircode;
 	}
 
+	// Validate Email
+	public void validateEmail(FacesContext context, UIComponent toValidate, Object value) throws ValidatorException {
+		String emailStr = (String) value;
+		if (-1 == emailStr.indexOf("@")) {
+			FacesMessage message = new FacesMessage("Email Address is Invalid");
+			throw new ValidatorException(message);
+		}
+	}
+	
+	// Validate User Already Exists
+	public void validateUserName(FacesContext context, UIComponent toValidate, Object value) throws ValidatorException {
+		String username = (String) value;
+		MembersList members = Helper.getBean("membersList", MembersList.class);
+		Member member = members.getMemberByUserName(username);
+		if (member != null && member.getUserName().equals(username)) {
+			FacesMessage message = new FacesMessage("Username already exists!");
+			throw new ValidatorException(message);
+		}
+	}
+
+	// Action Methods
+	public String storeMemberInfo() {
+		addMemberHandler(this);
+		FacesMessage message = new FacesMessage("Account created Successfully.");
+		String outcome = "success";
+		FacesContext.getCurrentInstance().addMessage(null, message);
+		return outcome;
+	}
+
+	public void addMemberHandler(Member member) {
+		MembersList members = Helper.getBean("membersList", MembersList.class);
+		members.getMembers().add(member);
+		System.out.println("members count -->" + members.getMembersCount());
+	}
+
+
 }
-
-

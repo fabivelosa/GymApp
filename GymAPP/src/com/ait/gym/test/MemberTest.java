@@ -8,22 +8,21 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.ait.gym.Member;
-import com.ait.gym.MembersList;
 
 class MemberTest {
 
 	private Member member;
-	private MembersList members;
 
 	@BeforeEach
 	void setUp() throws Exception {
 		Date date = new Date();
-		member = new Member("M001", "Fabiane", "Velosa", date, "083-123456", "fabi@gmail", "17, address", "Athlone",
+		member = new Member("Fabiane", "Velosa", date, "083-123456", "fabi@gmail", "17, address", "Athlone",
 				"N37Y419","Female", "Improve metabolism", "fabi", "123");
 	}
 
 	@Test
 	void testMemberContructor() {
+		assertEquals("M101",member.getMemberID());
 		assertEquals("Fabiane", member.getFirstName(), "First Name");
 		assertEquals("Velosa", member.getLastName(), "Last Name");
 		assertEquals("083-123456", member.getMobileNumber(), "Last Name");
@@ -33,11 +32,4 @@ class MemberTest {
 		assertEquals("Female", member.getGender(), "Gender");
 		assertEquals("Improve metabolism", member.getGoal(), "Goal");
 	}
-	
-	@Test
-	void testMemberArrayList() {
-		
-	//	assertEquals(1, members.getMembersCount(), "Qt of members");
-	}
-
 }

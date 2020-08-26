@@ -9,14 +9,16 @@
 	<h:outputStylesheet library="css" name="registration.css" />
 </h:head>
 <h:body>
-	<h3>Member Registration Successfully !</h3>
-	
-	<h:form>
-		
-		<p>
-			<h:commandButton align="center" id="login" value="Go to Login Page!" action="login" icon="pi pi-check" />
-		</p>
-	
-	</h:form>
+	<h:messages globalOnly="true" />
+
+ <h:form>
+	<p>  
+		<p:commandButton value="Done! Go to Login Page ..." 
+			style="margin-right:20px;" action="login.xhmtl?faces-redirect=true">			
+		</p:commandButton>
+
+	</p>
+</h:form>
+
 </h:body>
 </html>

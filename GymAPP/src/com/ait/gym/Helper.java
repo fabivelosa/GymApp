@@ -18,7 +18,7 @@ public class Helper {
 		return application.evaluateExpressionGet(context, "#{" + beanName + "}", type);
 	}
 
-	public static void expungeSession() { 
+	public static void expungeSession() {
 
 		// Get the FacesContext object.
 		FacesContext context = FacesContext.getCurrentInstance();
