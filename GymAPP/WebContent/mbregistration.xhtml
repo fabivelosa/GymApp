@@ -5,12 +5,29 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<title>WaterSide Gym</title>
-	<h:outputStylesheet library="css" name="registration.css" />
-</h:head>
+  <h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/svg" href=""/>
+
+    <title>Waterside Gym</title>
+
+    <!-- CSS -->
+    <h:outputStylesheet library="css" name="global.css"/>
+  	<h:outputStylesheet library="css" name="registration.css"/>
+  </h:head>
 
 <h:body>
+  <!-- NAV -->
+    <div class="nav">
+      <div class="inner">
+        <div class="logo-container">
+          <img src="resources/images/watersidegym2.svg" />
+        </div>
+      </div>
+    </div>
+    <!-- /NAV -->
 	<h:form>
 		<div class="regym-image">
 			<img src="resources/images/regym.jpeg" />
@@ -96,5 +113,30 @@
 			</h:panelGrid>
 		</div>
 	</h:form>
-</h:body>
+      <!-- FOOTER -->
+      <div class="footer">
+        <span id="arc"></span>
+        <div id="jointoday" class="inner">
+          <div class="legal">
+            <ul>
+              <li>Legal</li>
+              <li>Membership Agreement</li>
+              <li>Accessibility</li>
+              <li>Privacy</li>
+            </ul>
+          </div>
+          <div class="contact">
+            <h3>Contact Us</h3>
+            <p>
+              info@watersidegym.ie
+            </p>
+          </div>
+          <div>
+            <img src="resources/images/worldpay.png" class="img-fluid pull-xs-left" alt="..."/>
+            <img src="resources/images/paypal.png" class="img-fluid pull-xs-left" alt="..."/>
+          </div>
+        </div>
+      </div>
+      <!-- /FOOTER -->
+  </h:body>
 </html>
