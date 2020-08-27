@@ -1,0 +1,206 @@
+/* ------------- */
+/* 	
+	ALL GLOBAL CSS ATTRIBUTES
+	USED ON ALL PAGES:
+	- 1. DEFAULT BODY CONSTRAINTS
+	- 2. DEFAULT ALIGNMENTS
+	- 3. MAIN & INNER DIV CONTRAINTS
+	- 4. SCROLLBAR
+	- 5. NAVIGATION BAR
+	- 6. FOOTER
+*/
+/* ------------- */
+
+/* ------------- */
+/* 
+   	1. DEFAULT BODY CONSTRAINTS
+   	2. DEFAULT ALIGNMENTS 
+*/
+/* ------------- */
+
+html, body {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  background-color: #f7f7f7 !important;
+}
+
+* {
+  margin: 0 auto;
+  padding: 0;
+  color: #151515;
+  font-family: "Lato", sans-serif;
+}
+
+/* ------------- */
+/* 3. MAIN & INNER DIV CONTRAINTS */
+/* ------------- */
+
+div.main {
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow-x: hidden;
+}
+
+div.inner {
+  width: 70%;
+  height: 100%;
+}
+
+
+/* ------------- */
+/* 4. SCROLLBAR */
+/* ------------- */
+
+::-webkit-scrollbar {
+    width: 15px;
+    z-index: 10000;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #397CFF;
+}
+
+/* ------------- */
+/* NAVIGATION MENU */
+/* ------------- */
+div.nav {
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+}
+
+div.logo-container {
+  width: auto;
+  float: left;
+  height: 60px;
+}
+
+div.logo-container img {
+  height: 40px;
+  padding: 12.5px 0 7.5px 0;
+}
+
+div.account-options {
+  width: auto;
+  float: right;
+  height: 60px;
+  padding: 7.5px;
+}
+
+div.account-options a {
+  line-height: 45px;
+  padding: 0 30px;
+  height: 45px;
+  display: block;
+  float: left;
+  border-radius: 6px;
+  transition: 0.15s ease;
+  color: black;
+  text-decoration: none;
+}
+
+div.account-options a.register {
+  background-color: #397CFF;
+  color: white;
+}
+
+div.account-options a:hover {
+  color: #397CFF;
+  cursor: pointer;
+}
+
+div.account-options a.register:hover {
+  background-color: #2765df;
+  color: white;
+}
+
+/* ------------- */
+/* 6. FOOTER */
+/* ------------- */
+
+div.footer {
+  position: relative;
+  bottom: 0;
+  font-size: 20px;
+  width: 100%;
+  background-color: #eee;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.footer > div > div {
+  float: left;
+  width: calc(100%/3 - 30px);
+  height: 200px;
+  margin: 75px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.footer > div > div:nth-child(even) {
+  flex-direction: column;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+
+div.footer > div > div:nth-child(even) h3 {
+  color: #397CFF;
+}
+
+div.footer ul li {
+  list-style-type: none;
+  padding: 4px 0;
+  transition: 0.15s ease;
+}
+
+div.footer ul li:hover {
+  color: #397CFF;
+  cursor: pointer;
+}
+
+div.footer img {
+  width: 40%;
+  padding: 15px;
+}
+
+
+@media (max-width: 990px)  {
+  div.splash-image > img {
+    width: auto;
+    height: 100%;
+  }
+
+  div.inner {
+    width: 85%;
+  }
+}
+
+/* ------------- */
+/* PAGE SHAPES */
+/* ------------- */
+
+#arc {
+  position: absolute;
+  z-index: 50;
+  top: -80px;
+  left: -10%;
+  width: 120%;
+  height: 160px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+div.footer #arc {
+  top: -45px;
+  background-color: #eee;
+  height: 120px;
+}
