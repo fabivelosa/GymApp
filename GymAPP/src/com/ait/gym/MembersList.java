@@ -1,5 +1,6 @@
 package com.ait.gym;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
@@ -7,11 +8,15 @@ import javax.faces.bean.SessionScoped;
 
 @ManagedBean(name="membersList",eager=true)
 @SessionScoped
-public class MembersList {
+public class MembersList implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<Member> members =new ArrayList<Member>();
 
-	public MembersList() {
+	public MembersList() { 
 		
 	}
 

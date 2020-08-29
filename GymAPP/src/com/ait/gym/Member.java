@@ -1,5 +1,6 @@
 package com.ait.gym;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.faces.application.FacesMessage;
@@ -11,7 +12,11 @@ import javax.faces.validator.ValidatorException;
 
 @ManagedBean
 @RequestScoped
-public class Member {
+public class Member implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String memberID;
 	private String firstName;
 	private String lastName;
@@ -29,11 +34,12 @@ public class Member {
 
 	public Member() {
 		super();
+		count++;
+		this.setMemberID("M" + count);
 	}
 
-	public Member (String firstName, String lastName, Date dob, String mobileNumber,
-			String emailAddress, String address, String city, String gender, String goal, String eircode, String login,
-			String password) {
+	public Member(String firstName, String lastName, Date dob, String mobileNumber, String emailAddress, String address,
+			String city, String gender, String goal, String eircode, String login, String password) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -53,7 +59,8 @@ public class Member {
 
 	public Member(String memberID) {
 		super();
-		this.memberID = memberID;
+		count++;
+		this.setMemberID("M" + count);
 	}
 
 	public String getFirstName() {
@@ -124,7 +131,7 @@ public class Member {
 		return memberID;
 	}
 
-	public void setMemberID(String memberID) {
+	private void setMemberID(String memberID) {
 		this.memberID = memberID;
 	}
 
@@ -135,7 +142,7 @@ public class Member {
 	public void setGoal(String goal) {
 		this.goal = goal;
 	}
-	
+
 	public String getUserName() {
 		return userName;
 	}
@@ -168,7 +175,7 @@ public class Member {
 			throw new ValidatorException(message);
 		}
 	}
-	
+
 	// Validate User Already Exists
 	public void validateUserName(FacesContext context, UIComponent toValidate, Object value) throws ValidatorException {
 		String username = (String) value;
@@ -184,7 +191,7 @@ public class Member {
 	public String storeMemberInfo() {
 		addMemberHandler(this);
 		FacesMessage message = new FacesMessage("Account created Successfully.");
-		String outcome = "success";
+		String outcome = "login";
 		FacesContext.getCurrentInstance().addMessage(null, message);
 		return outcome;
 	}
@@ -194,6 +201,5 @@ public class Member {
 		members.getMembers().add(member);
 		System.out.println("members count -->" + members.getMembersCount());
 	}
-
 
 }

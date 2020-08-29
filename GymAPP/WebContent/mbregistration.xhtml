@@ -5,29 +5,29 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-  <h:head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <!-- FAVICON -->
-    <link rel="shortcut icon" type="image/svg" href=""/>
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<!-- FAVICON -->
+	<link rel="icon" type="image/x-icon" href="resources/images/favicon.ico" />
+	<title>Waterside Gym</title>
 
-    <title>Waterside Gym</title>
-
-    <!-- CSS -->
-    <h:outputStylesheet library="css" name="global.css"/>
-  	<h:outputStylesheet library="css" name="registration.css"/>
-  </h:head>
+	<!-- CSS -->
+	<h:outputStylesheet library="css" name="global.css" />
+	<h:outputStylesheet library="css" name="registration.css" />
+</h:head>
 
 <h:body>
-  <!-- NAV -->
-    <div class="nav">
-      <div class="inner">
-        <div class="logo-container">
-          <img src="resources/images/watersidegym2.svg" />
-        </div>
-      </div>
-    </div>
-    <!-- /NAV -->
+	<!-- NAV -->
+	<div class="nav">
+		<div class="inner">
+			<div class="logo-container">
+				<img src="resources/images/watersidegym2.svg" />
+			</div>
+		</div>
+	</div>
+	<!-- /NAV -->
 	<h:form>
 		<div class="regym-image">
 			<img src="resources/images/regym.jpeg" />
@@ -35,11 +35,11 @@
 		<div class="regym-text">
 			<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
 			<h:panelGrid columns="6" cellpadding="5">
-				<f:facet name="header" >
-					<h:outputText value="Member Registration System" styleClass="panelGridHeader" />
+				<f:facet name="header">
+					<h:outputText value="Member Registration System"
+						styleClass="panelGridHeader" />
 				</f:facet>
-				<p:outputLabel for="firstName" value="First Name:"
-					 />
+				<p:outputLabel for="firstName" value="First Name:" />
 				<p:inputText label="First Name" id="firstName"
 					value="#{member.firstName}" required="true" />
 				<p:message for="firstName" />
@@ -97,46 +97,48 @@
 				<p:message for="goal" />
 
 				<p:outputLabel for="login " value="User Name:" />
-				<p:inputText id="login" value="#{member.userName}" required="true" validator="#{member.validateUserName}" />
+				<p:inputText id="login" value="#{member.userName}" required="true"
+					validator="#{member.validateUserName}" />
 				<p:message for="login" />
 
 				<p:outputLabel for="password " value="User Password:" />
-				<p:password id="password" value="#{member.password}" required="true" feedback="true" inline="true" />
+				<p:password id="password" value="#{member.password}" required="true"
+					feedback="true" inline="true" />
 				<p:message for="password" />
 
 				<f:facet name="footer">
 					<h:panelGroup style="display:block; text-align:center">
 						<p:commandButton value="Submit" update="msgs"
-					action="#{member.storeMemberInfo}" />
+							action="#{member.storeMemberInfo}" />
 					</h:panelGroup>
-				</f:facet>			
+				</f:facet>
 			</h:panelGrid>
 		</div>
 	</h:form>
-      <!-- FOOTER -->
-      <div class="footer">
-        <span id="arc"></span>
-        <div id="jointoday" class="inner">
-          <div class="legal">
-            <ul>
-              <li>Legal</li>
-              <li>Membership Agreement</li>
-              <li>Accessibility</li>
-              <li>Privacy</li>
-            </ul>
-          </div>
-          <div class="contact">
-            <h3>Contact Us</h3>
-            <p>
-              info@watersidegym.ie
-            </p>
-          </div>
-          <div>
-            <img src="resources/images/worldpay.png" class="img-fluid pull-xs-left" alt="..."/>
-            <img src="resources/images/paypal.png" class="img-fluid pull-xs-left" alt="..."/>
-          </div>
-        </div>
-      </div>
-      <!-- /FOOTER -->
-  </h:body>
+	<!-- FOOTER -->
+	<div class="footer">
+		<span id="arc"></span>
+		<div id="jointoday" class="inner">
+			<div class="legal">
+				<ul>
+					<li>Legal</li>
+					<li>Membership Agreement</li>
+					<li>Accessibility</li>
+					<li>Privacy</li>
+				</ul>
+			</div>
+			<div class="contact">
+				<h3>Contact Us</h3>
+				<p>info@watersidegym.ie</p>
+			</div>
+			<div>
+				<img src="resources/images/worldpay.png"
+					class="img-fluid pull-xs-left" alt="..." /> <img
+					src="resources/images/paypal.png" class="img-fluid pull-xs-left"
+					alt="..." />
+			</div>
+		</div>
+	</div>
+	<!-- /FOOTER -->
+</h:body>
 </html>

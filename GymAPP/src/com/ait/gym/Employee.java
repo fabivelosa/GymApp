@@ -11,9 +11,10 @@ import javax.faces.validator.ValidatorException;
 
 @ManagedBean
 @SessionScoped
-public class EmployeeBean {
+public class Employee {
 
 	// Member Variables
+	private String employeeID;
 	private String empName;
 	private String gender;
 	private Date dob;
@@ -23,16 +24,23 @@ public class EmployeeBean {
 	private String password;
 	private String aboutYourself;
 	private boolean employeeType;
+	static int count = 1000;
 
-
-
-	public EmployeeBean() {
+	public Employee() {
 		super();
-		// TODO Auto-generated constructor stub
+		count++;
+		this.setEmployeeID("P" + count);
 	}
 
-	public EmployeeBean(String empName, String gender, Date dob, String address, String emailAddress,
-			String mobileNumber, String password, String aboutYourself, boolean employeeType) {
+	public Employee(String employeeID) {
+		super();
+		count++;
+		this.setEmployeeID("P" + count);
+
+	}
+
+	public Employee(String empName, String gender, Date dob, String address, String emailAddress, String mobileNumber,
+			String password, String aboutYourself, boolean employeeType) {
 		super();
 		this.empName = empName;
 		this.gender = gender;
@@ -43,9 +51,9 @@ public class EmployeeBean {
 		this.password = password;
 		this.aboutYourself = aboutYourself;
 		this.employeeType = employeeType;
+		count++;
+		this.setEmployeeID("P" + count);
 	}
-	
-	
 
 	public String getEmpName() {
 		return empName;
@@ -117,6 +125,14 @@ public class EmployeeBean {
 
 	public void setEmployeeType(boolean employeeType) {
 		this.employeeType = employeeType;
+	}
+
+	public String getEmployeeID() {
+		return employeeID;
+	}
+
+	private void setEmployeeID(String employeeID) {
+		this.employeeID = employeeID;
 	}
 
 	// Validate Email
