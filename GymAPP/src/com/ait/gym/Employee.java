@@ -24,6 +24,7 @@ public class Employee {
 	private String password;
 	private String aboutYourself;
 	private boolean employeeType;
+
 	static int count = 1000;
 
 	public Employee() {
@@ -146,16 +147,16 @@ public class Employee {
 
 	// Action Methods
 	public String storeEmployeeInfo() {
-		boolean stored = true;
+
 		FacesMessage message = null;
 		String outcome = null;
-		if (stored) {
-			message = new FacesMessage("Employee Information is stored Successfully.");
-			outcome = "successpt";
-		} else {
-			message = new FacesMessage("Employee Information is NOT stored Successfully.");
-			outcome = "employee";
-		}
+
+		EmployeeList employees = Helper.getBean("employeeList", EmployeeList.class);
+		employees.getEmployees().add(this);
+
+		message = new FacesMessage("Employee Information is stored Successfully.");
+		outcome = "successpt";
+
 		FacesContext.getCurrentInstance().addMessage(null, message);
 		return outcome;
 	}

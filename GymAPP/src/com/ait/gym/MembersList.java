@@ -14,7 +14,7 @@ public class MembersList implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ArrayList<Member> members =new ArrayList<Member>();
+	private ArrayList<Member> members =new ArrayList<Member>();  
 
 	public MembersList() { 
 		

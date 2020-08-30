@@ -30,7 +30,7 @@ public class Member implements Serializable {
 	private String goal;
 	private String userName;
 	private String password;
-	static int count = 1000;
+	static int count = 1000; 
 
 	public Member() {
 		super();
@@ -44,7 +44,7 @@ public class Member implements Serializable {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dob = dob;
-		this.mobileNumber = mobileNumber;
+		this.mobileNumber = mobileNumber; 
 		this.emailAddress = emailAddress;
 		this.address = address;
 		this.city = city;
@@ -59,8 +59,7 @@ public class Member implements Serializable {
 
 	public Member(String memberID) {
 		super();
-		count++;
-		this.setMemberID("M" + count);
+		this.setMemberID(memberID);
 	}
 
 	public String getFirstName() {

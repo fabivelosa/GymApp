@@ -1,52 +1,59 @@
 package com.ait.gym;
 
 import java.io.Serializable;
+import java.time.DayOfWeek;
+import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
 @ManagedBean
 @RequestScoped
-
 public class GymClass implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String name;
-	private String dayOfWeek;
+	private int id;
+	private ClassesTypes name;
+	private DayOfWeek dayOfWeek; 
 	private String time;
 	private int duration;
-	private int spaces;
-	Employee instructor;
+	private int spaces; 
+	@ManagedProperty(value = "#{employee}")
+	Employee instructor;  
+	 
+	ArrayList<Member> enrolled;
 
 	public GymClass() {
 		super();
 	}
 
-	public GymClass(String name, String dayOfWeek, String time, int duration, int spaces, Employee instructor) {
+	public GymClass(int id,ClassesTypes name, DayOfWeek dayOfWeek, String time, int duration, int spaces, Employee instructor) {
 		super();
+		this.id= id;
 		this.name = name;
 		this.dayOfWeek = dayOfWeek;
 		this.time = time;
 		this.duration = duration;
 		this.spaces = spaces;
-		this.instructor = instructor;
+		this.instructor = instructor; 
 	}
 
-	public String getName() {
+	public ClassesTypes getName() { 
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(ClassesTypes name) {
 		this.name = name;
 	}
 
-	public String getDayOfWeek() {
+	public DayOfWeek getDayOfWeek() {
 		return dayOfWeek;
 	}
 
-	public void setDayOfWeek(String dayOfWeek) {
+	public void setDayOfWeek(DayOfWeek dayOfWeek) {
 		this.dayOfWeek = dayOfWeek;
 	}
 
@@ -81,4 +88,15 @@ public class GymClass implements Serializable {
 	public void setInstructor(Employee instructor) {
 		this.instructor = instructor;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
+	
 }
