@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 @ManagedBean
 @SessionScoped
@@ -63,8 +65,10 @@ public class Login implements Serializable {
 	}
 
 	public String logout() {
-		Helper.expungeSession();
-		return "index.xhtml?faces-redirect=true";
+		//Helper.expungeSession();
+		((HttpSession) FacesContext.getCurrentInstance().getExternalContext()
+		         .getSession(true)).invalidate();
+		     return "index";
 	}
 
 }
