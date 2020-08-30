@@ -17,13 +17,26 @@ class MemberTest {
 	void setUp() throws Exception {
 		Date date = new Date();
 
-		member = new Member("Fabiane", "Velosa", date, "083-123456", "fabi@gmail", "17, address", "Athlone",
-				"Female", "Improve metabolism", "N37896", "fabi", "123");
-	} 
+		member = new Member("Fabiane", "Velosa", date, "083-123456", "fabi@gmail", "17, address", "Athlone", "Female",
+				"Improve metabolism", "N37896", "fabi", "123");
+	}
+	
+	@Test
+	void testMemberDefaultContructor() {
+		 member = new Member();
+		assertEquals("M1002", member.getMemberID());
+	}
+	
+	@Test
+	void testMemberIDContructor() {
+		 member = new Member("M1002");
+		assertEquals("M1002", member.getMemberID());
+	}
+
 
 	@Test
 	void testMemberContructor() {
-		assertEquals("M1003", member.getMemberID());
+		assertEquals("M1005", member.getMemberID());
 		assertEquals("Fabiane", member.getFirstName(), "First Name");
 		assertEquals("Velosa", member.getLastName(), "Last Name");
 		assertEquals("083-123456", member.getMobileNumber(), "Mobile");
@@ -40,6 +53,14 @@ class MemberTest {
 		member.setLastName("Cavalcanti");
 		assertEquals("Fabi", member.getFirstName(), "First Name");
 		assertEquals("Cavalcanti", member.getLastName(), "Last Name");
+	}
+
+	@Test
+	void testSetLogin() {
+		member.setUserName("Fabi");
+		member.setPassword("123456");
+		assertEquals("Fabi", member.getUserName(), "UserName");
+		assertEquals("123456", member.getPassword(), "Password");
 	}
 
 	@Test
@@ -66,8 +87,20 @@ class MemberTest {
 	}
 
 	@Test
+	void testSetMobile() {
+		member.setMobileNumber("085123456");
+		assertEquals("085123456", member.getMobileNumber());
+	}
+
+	@Test
+	void testSetGender() {
+		member.setGender("female");
+		assertEquals("female", member.getGender());
+	}
+
+	@Test
 	void testSetGoal() {
 		member.setGoal("Hiit");
-		assertEquals("Hiit",member.getGoal());
+		assertEquals("Hiit", member.getGoal());
 	}
 }
