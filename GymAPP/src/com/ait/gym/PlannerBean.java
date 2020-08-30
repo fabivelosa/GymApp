@@ -1,9 +1,5 @@
 package com.ait.gym;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -102,9 +98,9 @@ public class PlannerBean implements Serializable{
     	mondaySessionValue.put("Day one running", "20 Mins of Running with break halfway through");
     	mondaySessionValue.put("Day one squats", "10 sets of squats by 3 times");
     	mondaySessionValue.put("Day one jumping jacks", "15 jumping jacks by 2 times");
-    	mondaySessionValue.put("Day one muscle trining Back", "15 4kg Kettlebell Swings ");
-    	mondaySessionValue.put("Day one muscle trining Arms", "25 push up times 2");
-    	mondaySessionValue.put("Day one muscle trining Legs", "10 Lunges");
+    	mondaySessionValue.put("Day one muscle training Back", "15 4kg Kettlebell Swings ");
+    	mondaySessionValue.put("Day one muscle training Arms", "25 push up times 2");
+    	mondaySessionValue.put("Day one muscle training Legs", "10 Lunges");
     	mondaySessionValue.put("Day one rest", "rest day take it easy");
     }
     
@@ -124,9 +120,9 @@ public class PlannerBean implements Serializable{
     	tuesdaySessionValue.put("Day two running", "20 Mins of Running with break halfway through");
     	tuesdaySessionValue.put("Day two squats", "10 sets of squats by 3 times");
     	tuesdaySessionValue.put("Day two jumping jacks", "15 jumping jacks by 2 times");
-    	tuesdaySessionValue.put("Day two muscle trining Back", "15 4kg Kettlebell Swings ");
-    	tuesdaySessionValue.put("Day two muscle trining Arms", "25 push up times 2");
-    	tuesdaySessionValue.put("Day two muscle trining Legs", "10 Lunges");
+    	tuesdaySessionValue.put("Day two muscle training Back", "15 4kg Kettlebell Swings ");
+    	tuesdaySessionValue.put("Day two muscle training Arms", "25 push up times 2");
+    	tuesdaySessionValue.put("Day two muscle training Legs", "10 Lunges");
     	tuesdaySessionValue.put("Day two rest", "rest day take it easy");
     }
     
@@ -146,9 +142,9 @@ public class PlannerBean implements Serializable{
     	wednesdaySessionValue.put("Day three running", "20 Mins of Running with break halfway through");
     	wednesdaySessionValue.put("Day three squats", "10 sets of squats by 3 times");
     	wednesdaySessionValue.put("Day three jumping jacks", "15 jumping jacks by 2 times");
-    	wednesdaySessionValue.put("Day three muscle trining Back", "15 4kg Kettlebell Swings ");
-    	wednesdaySessionValue.put("Day three muscle trining Arms", "25 push up times 2");
-    	wednesdaySessionValue.put("Day three muscle trining Legs", "10 Lunges");
+    	wednesdaySessionValue.put("Day three muscle training Back", "15 4kg Kettlebell Swings ");
+    	wednesdaySessionValue.put("Day three muscle training Arms", "25 push up times 2");
+    	wednesdaySessionValue.put("Day three muscle training Legs", "10 Lunges");
     	wednesdaySessionValue.put("Day three rest", "rest day take it easy");
     }
     
@@ -168,9 +164,9 @@ public class PlannerBean implements Serializable{
     	thursdaySessionValue.put("Day four running", "20 Mins of Running with break halfway through");
     	thursdaySessionValue.put("Day four squats", "10 sets of squats by 3 times");
     	thursdaySessionValue.put("Day four jumping jacks", "15 jumping jacks by 2 times");
-    	thursdaySessionValue.put("Day four muscle trining Back", "15 4kg Kettlebell Swings ");
-    	thursdaySessionValue.put("Day four muscle trining Arms", "25 push up times 2");
-    	thursdaySessionValue.put("Day four muscle trining Legs", "10 Lunges");
+    	thursdaySessionValue.put("Day four muscle training Back", "15 4kg Kettlebell Swings ");
+    	thursdaySessionValue.put("Day four muscle training Arms", "25 push up times 2");
+    	thursdaySessionValue.put("Day four muscle training Legs", "10 Lunges");
     	thursdaySessionValue.put("Day four rest", "rest day take it easy");
     }
     
@@ -190,9 +186,9 @@ public class PlannerBean implements Serializable{
     	fridaySessionValue.put("Day five running", "20 Mins of Running with break halfway through");
     	fridaySessionValue.put("Day five squats", "10 sets of squats by 3 times");
     	fridaySessionValue.put("Day five jumping jacks", "15 jumping jacks by 2 times");
-    	fridaySessionValue.put("Day five muscle trining Back", "15 4kg Kettlebell Swings ");
-    	fridaySessionValue.put("Day five muscle trining Arms", "25 push up times 2");
-    	fridaySessionValue.put("Day five muscle trining Legs", "10 Lunges");
+    	fridaySessionValue.put("Day five muscle training Back", "15 4kg Kettlebell Swings ");
+    	fridaySessionValue.put("Day five muscle training Arms", "25 push up times 2");
+    	fridaySessionValue.put("Day five muscle training Legs", "10 Lunges");
     	fridaySessionValue.put("Day five rest", "rest day take it easy");
     }
     
