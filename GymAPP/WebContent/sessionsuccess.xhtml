@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+  <h:head>
+    <meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/svg" href=""/>
+
+    <title>Waterside Gym</title>
+    
+    <!-- CSS -->
+    <h:outputStylesheet library="css" name="global.css"/>
+    <h:outputStylesheet library="css" name="session.css"/>
+  </h:head>
+  <h:body>
+    <!-- NAV -->
+    <div class="nav">
+      <div class="inner">
+        <div class="logo-container">
+          <img src="resources/images/watersidegym2.svg" />
+        </div>
+      </div>
+    </div>
+    <!-- /NAV -->
+    
+    <!-- MAIN -->
+    <div class="main">
+      <!-- PAGE_SPECIFIC_STRUCTURE -->
+      <div class="session inner">
+      	<div>
+      		<h:form>
+      			<h1>Session Sign-up</h1>
+      			<table class="onesession">
+      				<tr>
+      					<td>First Name</td><td><h:outputText value="#{oneSession.firstName}"/></td>
+      				</tr>
+      				<tr>
+      					<td>Last Name</td><td><h:outputText value="#{oneSession.lastName}"/></td>
+      				</tr>
+      				<tr>
+      					<td>Email</td><td><h:outputText value="#{oneSession.emailAddress}"/></td>
+      				</tr>
+      				<tr>
+      					<td>Age</td><td><h:outputText value="#{oneSession.age}"/></td>
+      				</tr>
+      				<tr>
+      					<td>Time</td><td><h:outputText value="#{oneSession.dateTime}"/></td>
+      				</tr>
+      				<tr>
+      					<td>Day</td><td><h:outputText value="#{oneSession.dateDay}"/></td>
+      				</tr>
+      				<tr></tr>
+      				<tr><td class="uniquecode">Unique Code</td><td></td></tr>
+      				<tr>
+      					<td colspan="2"><h:outputText styleClass="uniquecode" value="#{oneSession.uniqueCode}" rendered="#{oneSession.hasRegistered}"/></td>
+      				</tr>
+      				<tr>
+      					<td colspan="2"><a href="/GymAPP">Return</a></td>
+      				</tr>
+      			</table>
+      			
+      		</h:form>
+      	</div>
+      </div>
+      <!-- FOOTER -->
+      <div class="footer">
+        <span id="arc"></span>
+        <div id="jointoday" class="inner">
+          <div class="legal">
+            <ul>
+              <li>Legal</li>
+              <li>Membership Agreement</li>
+              <li>Accessibility</li>
+              <li>Privacy</li>
+            </ul>
+          </div>
+          <div class="contact">
+            <h3>Contact Us</h3>
+            <p>
+              info@watersidegym.ie
+            </p>
+          </div>
+          <div>
+            <img src="resources/images/worldpay.png" class="img-fluid pull-xs-left" alt="..."/>
+            <img src="resources/images/paypal.png" class="img-fluid pull-xs-left" alt="..."/>
+          </div>
+        </div>
+      </div>
+      <!-- /FOOTER -->
+    </div>
+    <!-- /MAIN -->
+  </h:body>
+</html>
