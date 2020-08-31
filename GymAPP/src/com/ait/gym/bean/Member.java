@@ -1,4 +1,4 @@
-package com.ait.gym;
+package com.ait.gym.bean;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -9,6 +9,8 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
+
+import com.ait.gym.utils.Helper;
 
 @ManagedBean
 @RequestScoped
@@ -171,7 +173,7 @@ public class Member implements Serializable {
 		String emailStr = (String) value;
 		if (-1 == emailStr.indexOf("@")) {
 			FacesMessage message = new FacesMessage("Email Address is Invalid");
-			throw new ValidatorException(message);
+			throw new ValidatorException(message); 
 		}
 	}
 

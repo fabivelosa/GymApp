@@ -1,4 +1,4 @@
-package com.ait.gym;
+package com.ait.gym.utils;
 
 public enum ClassesTypes {
 	

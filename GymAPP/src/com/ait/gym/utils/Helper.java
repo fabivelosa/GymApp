@@ -1,4 +1,4 @@
-package com.ait.gym;
+package com.ait.gym.utils;
 
 import javax.faces.application.Application;
 import javax.faces.context.FacesContext;

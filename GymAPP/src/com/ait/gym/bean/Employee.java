@@ -1,6 +1,7 @@
-package com.ait.gym;
+package com.ait.gym.bean;
 
 import java.util.Date;
+import java.util.Random;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -9,7 +10,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
-@ManagedBean
+import com.ait.gym.utils.Helper;
+
+@ManagedBean(name="employee")
 @SessionScoped
 public class Employee {
 
@@ -24,25 +27,25 @@ public class Employee {
 	private String password;
 	private String aboutYourself;
 	private boolean employeeType;
-
-	static int count = 1000;
-
-	public Employee() {
-		super();
-		count++;
-		this.setEmployeeID("P" + count);
+ 
+	static int range = 1000;
+	
+	public Employee () {
+		
 	}
-
-	public Employee(String employeeID) {
-		super();
-		count++;
-		this.setEmployeeID("P" + count);
-
+	
+	
+	public Employee (String name) {
+		Random random = new Random();    
+		this.setEmployeeID("P" + random.nextInt(range));		
+		this.setEmpName(name);
 	}
-
+	
+	
 	public Employee(String empName, String gender, Date dob, String address, String emailAddress, String mobileNumber,
 			String password, String aboutYourself, boolean employeeType) {
 		super();
+		
 		this.empName = empName;
 		this.gender = gender;
 		this.dob = dob;
@@ -50,12 +53,14 @@ public class Employee {
 		this.emailAddress = emailAddress;
 		this.mobileNumber = mobileNumber;
 		this.password = password;
-		this.aboutYourself = aboutYourself;
+		this.aboutYourself = aboutYourself; 
 		this.employeeType = employeeType;
-		count++;
-		this.setEmployeeID("P" + count);
+		
+		Random random = new Random();    
+		this.setEmployeeID("P" + random.nextInt(range));
 	}
-
+	
+	
 	public String getEmpName() {
 		return empName;
 	}
@@ -132,7 +137,7 @@ public class Employee {
 		return employeeID;
 	}
 
-	private void setEmployeeID(String employeeID) {
+	public void setEmployeeID(String employeeID) {
 		this.employeeID = employeeID;
 	}
 

@@ -52,7 +52,7 @@
 
 	<servlet>
 		<servlet-name>servletPost</servlet-name>
-		<servlet-class>com.ait.gym.PaypalResponse</servlet-class>
+		<servlet-class>com.ait.gym.utils.PaypalResponse</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 

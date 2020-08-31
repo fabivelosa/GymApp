@@ -7,7 +7,7 @@ import java.util.Date;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.ait.gym.Member;
+import com.ait.gym.bean.Member;
 
 class MemberTest {
 

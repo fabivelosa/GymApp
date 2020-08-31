@@ -1,12 +1,14 @@
-package com.ait.gym;
+package com.ait.gym.bean;
 
 import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+
+import com.ait.gym.utils.ClassesTypes;
 
 @ManagedBean
 @RequestScoped
@@ -21,13 +23,29 @@ public class GymClass implements Serializable {
 	private String time;
 	private int duration;
 	private int spaces; 
-	@ManagedProperty(value = "#{employee}")
-	Employee instructor;  
-	 
-	ArrayList<Member> enrolled;
 
+	private Employee instructor;  
+	 
+	ArrayList<Member> enrolled; 
+ 
 	public GymClass() {
+		super(); 
+	}
+	
+	@PostConstruct
+	public void init() {
+		instructor= new Employee ("");			
+	}
+	
+	
+	public GymClass(int id,ClassesTypes name, DayOfWeek dayOfWeek, String time, int duration, int spaces) {
 		super();
+		this.id= id;
+		this.name = name;
+		this.dayOfWeek = dayOfWeek;
+		this.time = time;
+		this.duration = duration;
+		this.spaces = spaces;	
 	}
 
 	public GymClass(int id,ClassesTypes name, DayOfWeek dayOfWeek, String time, int duration, int spaces, Employee instructor) {
