@@ -27,6 +27,8 @@ public class Employee {
 	private String password;
 	private String aboutYourself;
 	private boolean employeeType;
+	
+
  
 	static int range = 1000;
 	

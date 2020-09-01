@@ -7,6 +7,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.primefaces.PrimeFaces;
 import org.primefaces.event.CellEditEvent;
@@ -81,19 +83,33 @@ public class TimelineView {
 	public ArrayList<GymClass> getClassesbyTrainer() {
 		trainerClass = new ArrayList<GymClass>();
 		GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
-
-		for (GymClass classes : gymClasses.getGymClass()) {
-			if (classes.getInstructor() != null) {
-				if (classes.getInstructor().getEmpName() != null && classes.getInstructor().getEmpName().equals("John")) {
-					trainerClass.add(classes);
+		
+		FacesContext context2 = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
+		
+		
+		String loggedUser = (String) session.getAttribute("isUserLogged");
+		String userType = (String) session.getAttribute("userType");
+	
+		
+		if(loggedUser!= null && loggedUser.equals("true") && userType != null && userType.equals("E")) {
+		
+				Employee emp = (Employee)session.getAttribute("loggedUser");
+		
+		
+				for (GymClass classes : gymClasses.getGymClass()) {
+					if (classes.getInstructor() != null) {
+						if (classes.getInstructor().getEmpName() != null && classes.getInstructor().getEmpName().equals(emp.getEmpName())) {
+							trainerClass.add(classes);
+						}
+					}
 				}
-			}
-		}
-
-		for (GymClass classes : gymClasses.getGymClass()) {
-			if (classes != null && classes.getInstructor()  == null) {
-				trainerClass.add(classes);
-			}
+		
+				for (GymClass classes : gymClasses.getGymClass()) {
+					if (classes != null && classes.getInstructor()  == null) {
+						trainerClass.add(classes);
+					}
+				}
 		}
 
 		return trainerClass;

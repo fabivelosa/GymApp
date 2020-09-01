@@ -2,6 +2,7 @@ package com.ait.gym.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Random;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -32,12 +33,22 @@ public class Member implements Serializable {
 	private String goal;
 	private String userName;
 	private String password;
-	static int count = 1000; 
+	static int range = 1000; 
 
 	public Member() {
 		super();
-		count++;
-		this.setMemberID("M" + count);
+		Random random = new Random();    
+		this.setMemberID("M" + random.nextInt(range));
+	}
+	
+	public Member(String firstName,String login,String password) {
+		super();
+		this.firstName = firstName;
+		this.setUserName(login);
+		this.setPassword(password);
+		Random random = new Random();    
+		this.setMemberID("M" + random.nextInt(range));
+		
 	}
 
 	public Member(String firstName, String lastName, Date dob, String mobileNumber, String emailAddress, String address,
@@ -54,9 +65,9 @@ public class Member implements Serializable {
 		this.goal = goal;
 		this.eircode = eircode;
 		this.setUserName(login);
-		this.setPassword(password);
-		count++;
-		this.setMemberID("M" + count);
+		this.setPassword(password);	
+		Random random = new Random();    
+		this.setMemberID("M" + random.nextInt(range));
 	}
 
 	public Member(String memberID) {

@@ -14,7 +14,7 @@ import com.ait.gym.bean.GymClassList;
 public class SelectItemToEntityConverter implements Converter {
 
 	public String getAsString(FacesContext context, UIComponent component, Object modelValue) {
-		if (modelValue == null) {
+		if (modelValue == null || modelValue == "" ) {
 			return "";
 		}
 

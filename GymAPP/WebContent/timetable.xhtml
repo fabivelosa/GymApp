@@ -137,6 +137,7 @@
 										<f:facet name="input">
 											<h:selectOneMenu value="#{gymclass.instructor}"
 												style="width:100%" converter="SelectItemToEntityConverter">
+												<f:selectItem itemLabel="Unassign..." itemValue=""/>
 												<f:selectItems value="#{timelineView.employees}" var="emp"
 													itemLabel="#{emp.empName}" itemValue="#{emp}" />
 											</h:selectOneMenu>

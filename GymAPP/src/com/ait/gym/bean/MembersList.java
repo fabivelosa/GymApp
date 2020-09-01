@@ -3,6 +3,7 @@ package com.ait.gym.bean;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -19,6 +20,20 @@ public class MembersList implements Serializable {
 	public MembersList() { 
 		
 	}
+	
+
+	@PostConstruct
+	public void init() {
+		
+		Member member1 = new Member("Fabi","fabi@gmail.com","123");
+		Member member2 = new Member("Wellington","well@gmail.com","123");
+		
+		getMembers().add(member1);
+		getMembers().add(member2);
+		
+	}
+	
+	
 
 	public ArrayList<Member> getMembers() {		
 		return members;

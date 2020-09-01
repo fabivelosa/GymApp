@@ -29,12 +29,13 @@ public class GymClassList implements Serializable {
 	@PostConstruct
 	public void init() {
 
-		Employee emp = new Employee("John");
-		Employee emp2 = new Employee("Paul");		
-
+	
+		
 		EmployeeList employeeList = Helper.getBean("employeeList", EmployeeList.class);
-		employeeList.getEmployees().add(emp);
-		employeeList.getEmployees().add(emp2);
+		
+		Employee emp = employeeList.getEmployeeByUserEmail("john@gmail.com");
+		Employee emp2 = employeeList.getEmployeeByUserEmail("paul@gmail.com");
+		
 
 		gymClasses = new ArrayList<GymClass>();
 		GymClass pilates = new GymClass(getRandomId(), ClassesTypes.PILATES, DayOfWeek.MONDAY, "09:00", 60, 20, emp2);
