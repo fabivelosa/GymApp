@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<!-- FAVICON -->
+	<link rel="shortcut icon" type="image/svg" href="" />
+
+	<title>Waterside Gym</title>
+
+	<!-- CSS -->
+	<h:outputStylesheet name="timetable.css" library="css" />
+	<h:outputStylesheet name="global.css" library="css" />
+	<!-- External Fonts -->
+</h:head>
+<h:body>
+	<!-- NAV -->
+	<div class="nav">
+		<div class="inner">
+			<div class="logo-container">
+				<img src="resources/images/watersidegym2.svg" />
+			</div>
+			<div class="account-options">
+				<a href="trainershomepage.xhtml" id="signin">Trainers HomePage</a> <a
+					href="index.xhtml" class="register">Logout</a>
+			</div>
+		</div>
+	</div>
+	<!-- /NAV -->
+	<!-- MAIN -->
+		<div class="form">
+			<h:form id="form">
+				<p:growl id="msgs" showDetail="true" />
+				  <p:outputPanel id="testContainer">
+														
+							<p:dataTable id="gymclasses" var="gymclass" rowKey="gymclass.id"
+								value="#{timelineView.classesbyTrainer}" editable="true"
+								styleClass="table">
+								<f:facet name="header"> Trainers TimeTable  </f:facet>
+			
+								<p:ajax event="rowEdit" listener="#{timelineView.onRowEdit}"
+									update=":form:gymclasses" />
+								<p:ajax event="rowEditCancel"
+									listener="#{timelineView.onRowCancel}"   update=":form:gymclasses" />
+							
+															
+			
+								<p:column headerText="Class Name"> 
+									<p:cellEditor>
+										<f:facet name="output">
+											<h:outputText value="#{gymclass.name.value}" />
+										</f:facet>
+										<f:facet name="input">
+											<h:selectOneMenu value="#{gymclass.name}" style="width:100%">
+												<f:selectItems value="#{timelineView.classTypes}" var="classes"
+													itemLabel="#{classes.value}" itemValue="#{classCode}" />
+											</h:selectOneMenu>
+										</f:facet>
+									</p:cellEditor>
+								</p:column>
+			
+								<p:column headerText="Day of the Week">
+									<p:cellEditor>
+										<f:facet name="output">
+											<h:outputText value="#{gymclass.dayOfWeek}" />
+										</f:facet>
+			
+										<f:facet name="input">
+											<h:selectOneMenu value="#{gymclass.dayOfWeek}"
+												style="width:100%">
+												<f:selectItems value="#{timelineView.daysOfWeek}" var="day"
+													itemLabel="#{value}" itemValue="#{value}" />
+											</h:selectOneMenu>
+										</f:facet>
+									</p:cellEditor>
+								</p:column>
+			
+								<p:column headerText="Time">
+									<p:cellEditor>
+										<f:facet name="output">
+											<h:outputText value="#{gymclass.time}" />
+										</f:facet>
+										<f:facet name="input">
+											<h:selectOneMenu value="#{gymclass.time}" style="width:100%">
+												<f:selectItem itemValue="9:00" itemLabel="09:00" />
+												<f:selectItem itemValue="10:00" itemLabel="10:00" />
+												<f:selectItem itemValue="11:00" itemLabel="11:00" />
+												<f:selectItem itemValue="12:00" itemLabel="12:00" />
+												<f:selectItem itemValue="13:00" itemLabel="13:00" />
+												<f:selectItem itemValue="14:00" itemLabel="14:00" />
+												<f:selectItem itemValue="15:00" itemLabel="15:00" />
+												<f:selectItem itemValue="16:00" itemLabel="16:00" />
+												<f:selectItem itemValue="17:00" itemLabel="17:00" />
+												<f:selectItem itemValue="18:00" itemLabel="18:00" />
+												<f:selectItem itemValue="19:00" itemLabel="19:00" />
+												<f:selectItem itemValue="20:00" itemLabel="20:00" />
+											</h:selectOneMenu>
+										</f:facet>
+									</p:cellEditor>
+								</p:column>
+								<p:column headerText="Duration(Min)">
+									<p:cellEditor>
+										<f:facet name="output">
+											<h:outputText value="#{gymclass.duration}" />
+										</f:facet>
+										<f:facet name="input">
+											<h:selectOneMenu value="#{gymclass.duration}" style="width:100%">
+												<f:selectItem itemValue="60" itemLabel="60 min" />
+												<f:selectItem itemValue="90" itemLabel="90 min" />
+												<f:selectItem itemValue="120" itemLabel="120 min" />
+											</h:selectOneMenu>
+										</f:facet>
+									</p:cellEditor>
+								</p:column>
+								<p:column headerText="Spaces">
+									<p:cellEditor>
+										<f:facet name="output">
+											<h:outputText value="#{gymclass.spaces}" />
+										</f:facet>
+										<f:facet name="input">
+											<p:inputText id="instructor" value="#{gymclass.spaces}"
+												style="width:70%" />
+										</f:facet>
+									</p:cellEditor>
+								</p:column>
+								<p:column headerText="Trainner">
+									<p:cellEditor>
+										<f:facet name="output">
+											<h:outputText value="#{gymclass.instructor.empName}" />
+										</f:facet>
+										<f:facet name="input">
+											<h:selectOneMenu value="#{gymclass.instructor}"
+												style="width:100%" converter="SelectItemToEntityConverter">
+												<f:selectItems value="#{timelineView.employees}" var="emp"
+													itemLabel="#{emp.empName}" itemValue="#{emp}" />
+											</h:selectOneMenu>
+										</f:facet>
+									</p:cellEditor>
+								</p:column>
+								<p:column style="width:35px">
+									<p:rowEditor />
+								</p:column>
+							</p:dataTable>
+				</p:outputPanel>
+				
+				<p:contextMenu for="gymclasses" widgetVar="cMenu">
+					<p:menuitem value="Edit Cell" icon="pi pi-search"
+						onclick="PF('cellCars').showCellEditor();return false;" />
+					<p:menuitem value="Hide Menu" icon="pi pi-times"
+						onclick="PF('cMenu').hide()" />
+				</p:contextMenu>
+				<f:ajax render=":form:testContainer">
+  						 <p:commandButton id="submitButton" value="Submit"
+    						  icon="ui-icon-check" action="#{timelineView.getClassesbyTrainer}"/>
+				</f:ajax>
+						
+				
+				
+			</h:form>
+		</div>
+		<!-- FOOTER -->
+		<div class="footer">
+			<span id="arc"></span>
+			<div id="jointoday" class="inner">
+				<div class="legal">
+					<ul>
+						<li>Legal</li>
+						<li>Membership Agreement</li>
+						<li>Accessibility</li>
+						<li>Privacy</li>
+					</ul>
+				</div>
+				<div class="contact">
+					<h3>Contact Us</h3>
+					<p>info@watersidegym.ie</p>
+				</div>
+				<div>
+					<img src="resources/images/worldpay.png"
+						class="img-fluid pull-xs-left" alt="..." /> <img
+						src="resources/images/paypal.png" class="img-fluid pull-xs-left"
+						alt="..." />
+				</div>
+			</div>
+		</div>
+		<!-- /FOOTER -->
+</h:body>
+</html>

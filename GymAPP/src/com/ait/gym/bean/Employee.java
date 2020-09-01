@@ -1,6 +1,7 @@
-package com.ait.gym;
+package com.ait.gym.bean;
 
 import java.util.Date;
+import java.util.Random;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -9,11 +10,14 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
-@ManagedBean
+import com.ait.gym.utils.Helper;
+
+@ManagedBean(name="employee")
 @SessionScoped
-public class EmployeeBean {
+public class Employee {
 
 	// Member Variables
+	private String employeeID;
 	private String empName;
 	private String gender;
 	private Date dob;
@@ -23,17 +27,25 @@ public class EmployeeBean {
 	private String password;
 	private String aboutYourself;
 	private boolean employeeType;
-
-
-
-	public EmployeeBean() {
-		super();
-		// TODO Auto-generated constructor stub
+ 
+	static int range = 1000;
+	
+	public Employee () {
+		
 	}
-
-	public EmployeeBean(String empName, String gender, Date dob, String address, String emailAddress,
-			String mobileNumber, String password, String aboutYourself, boolean employeeType) {
+	
+	
+	public Employee (String name) {
+		Random random = new Random();    
+		this.setEmployeeID("P" + random.nextInt(range));		
+		this.setEmpName(name);
+	}
+	
+	
+	public Employee(String empName, String gender, Date dob, String address, String emailAddress, String mobileNumber,
+			String password, String aboutYourself, boolean employeeType) {
 		super();
+		
 		this.empName = empName;
 		this.gender = gender;
 		this.dob = dob;
@@ -41,12 +53,14 @@ public class EmployeeBean {
 		this.emailAddress = emailAddress;
 		this.mobileNumber = mobileNumber;
 		this.password = password;
-		this.aboutYourself = aboutYourself;
+		this.aboutYourself = aboutYourself; 
 		this.employeeType = employeeType;
+		
+		Random random = new Random();    
+		this.setEmployeeID("P" + random.nextInt(range));
 	}
 	
 	
-
 	public String getEmpName() {
 		return empName;
 	}
@@ -119,6 +133,14 @@ public class EmployeeBean {
 		this.employeeType = employeeType;
 	}
 
+	public String getEmployeeID() {
+		return employeeID;
+	}
+
+	public void setEmployeeID(String employeeID) {
+		this.employeeID = employeeID;
+	}
+
 	// Validate Email
 	public void validateEmail(FacesContext context, UIComponent toValidate, Object value) throws ValidatorException {
 		String emailStr = (String) value;
@@ -130,16 +152,16 @@ public class EmployeeBean {
 
 	// Action Methods
 	public String storeEmployeeInfo() {
-		boolean stored = true;
+
 		FacesMessage message = null;
 		String outcome = null;
-		if (stored) {
-			message = new FacesMessage("Employee Information is stored Successfully.");
-			outcome = "successpt";
-		} else {
-			message = new FacesMessage("Employee Information is NOT stored Successfully.");
-			outcome = "employee";
-		}
+
+		EmployeeList employees = Helper.getBean("employeeList", EmployeeList.class);
+		employees.getEmployees().add(this);
+
+		message = new FacesMessage("Employee Information is stored Successfully.");
+		outcome = "successpt";
+
 		FacesContext.getCurrentInstance().addMessage(null, message);
 		return outcome;
 	}

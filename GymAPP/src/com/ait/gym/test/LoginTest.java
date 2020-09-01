@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.ait.gym.Login;
+import com.ait.gym.bean.Login;
 
 class LoginTest {
 	

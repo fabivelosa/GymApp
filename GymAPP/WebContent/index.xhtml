@@ -6,41 +6,49 @@
     <meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <!-- FAVICON -->
     <link rel="shortcut icon" type="image/svg" href=""/>
 
     <title>Waterside Gym</title>
+    
     <!-- CSS -->
+    <h:outputStylesheet library="css" name="global.css"/>
     <h:outputStylesheet library="css" name="index.css"/>
 
     <!-- External Fonts -->
     
   </h:head>
   <body>
+    <!-- NAV -->
     <div class="nav">
       <div class="inner">
         <div class="logo-container">
           <img src="resources/images/watersidegym2.svg" />
         </div>
         <div class="account-options">
-          <a href = "login.xhtml" id="signin">Sign In </a>
-          <a href ="mbregistration.xhtml" class="register">Register</a>
+          <a href="login.xhtml" id="signin">Sign In </a>
+          <a href="#jointoday" class="register">Register</a>
         </div>
       </div>
     </div>
+    <!-- /NAV -->
+    
+    <!-- MAIN -->
     <div class="main">
+      <!-- PAGE_SPECIFIC_STRUCTURE -->
       <div class="splash-image">
         <img src="resources/images/splash.jpg" />
+        <div class="splash-text">
+	       <div>
+	         <h1>Register Today</h1>
+	         <span>--------------------</span>
+	         <p>
+	           Join the wave of new online gym-goers!<br />Memberships start from €XX.XX per month!
+	         </p>
+	       </div>
+      	</div>
       </div>
-      <div class="splash-text">
-        <div>
-          <h1>Register Today</h1>
-          <span>--------------------</span>
-          <p>
-            Join the wave of new online gym-goers!<br />Memberships start from €XX.XX per month!
-          </p>
-        </div>
-        <a class="register">REGISTER</a>
-      </div>
+
       <div class="splash-info">
         <span id="arc"></span>
         <div class="inner">
@@ -72,23 +80,31 @@
         <span id="divit"></span>
       </div>
       <div class="splash-member">
-        <h1>Join Today</h1>
+        <h1>Sign Up...</h1>
         <div class="inner">
           <div>
-            <h1>Sign-Up Today</h1>
-            <h3>For one of our fixed monthly memberships</h3>
+          	<a href="mbregistration.xhtml"></a>
+            <h1>As a Member</h1>
+            <h3>Under one of our fixed monthly memberships</h3>
           </div>
-          <span>OR</span>
           <div>
-            <h1>Purchase A Session</h1>
-            <h3>One-time session with a trainer</h3>
+          	<a href="employee.xhtml"></a>
+            <h1>As a Trainer</h1>
+            <h3>To coach our members under the Waterside Gym name</h3>
+          </div>
+          <div>
+          	<a href="onesession.xhtml"></a>
+            <h1>For a Session</h1>
+            <h3>A one-time session with a trainer at any given time</h3>
           </div>
         </div>
         <img src="resources/images/member.jpg" />
       </div>
+      
+      <!-- FOOTER -->
       <div class="footer">
         <span id="arc"></span>
-        <div class="inner">
+        <div id="jointoday" class="inner">
           <div class="legal">
             <ul>
               <li>Legal</li>
@@ -109,6 +125,9 @@
           </div>
         </div>
       </div>
+      <!-- /FOOTER -->
     </div>
+    <!-- /MAIN -->
   </body>
 </html>
+

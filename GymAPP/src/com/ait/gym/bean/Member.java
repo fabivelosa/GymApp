@@ -1,5 +1,6 @@
-package com.ait.gym;
+package com.ait.gym.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.faces.application.FacesMessage;
@@ -9,9 +10,15 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
+import com.ait.gym.utils.Helper;
+
 @ManagedBean
 @RequestScoped
-public class Member {
+public class Member implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String memberID;
 	private String firstName;
 	private String lastName;
@@ -25,20 +32,21 @@ public class Member {
 	private String goal;
 	private String userName;
 	private String password;
-	static int count = 1000;
+	static int count = 1000; 
 
 	public Member() {
 		super();
+		count++;
+		this.setMemberID("M" + count);
 	}
 
-	public Member (String firstName, String lastName, Date dob, String mobileNumber,
-			String emailAddress, String address, String city, String gender, String goal, String eircode, String login,
-			String password) {
+	public Member(String firstName, String lastName, Date dob, String mobileNumber, String emailAddress, String address,
+			String city, String gender, String goal, String eircode, String login, String password) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dob = dob;
-		this.mobileNumber = mobileNumber;
+		this.mobileNumber = mobileNumber; 
 		this.emailAddress = emailAddress;
 		this.address = address;
 		this.city = city;
@@ -53,7 +61,7 @@ public class Member {
 
 	public Member(String memberID) {
 		super();
-		this.memberID = memberID;
+		this.setMemberID(memberID);
 	}
 
 	public String getFirstName() {
@@ -124,7 +132,7 @@ public class Member {
 		return memberID;
 	}
 
-	public void setMemberID(String memberID) {
+	private void setMemberID(String memberID) {
 		this.memberID = memberID;
 	}
 
@@ -135,7 +143,7 @@ public class Member {
 	public void setGoal(String goal) {
 		this.goal = goal;
 	}
-	
+
 	public String getUserName() {
 		return userName;
 	}
@@ -165,10 +173,10 @@ public class Member {
 		String emailStr = (String) value;
 		if (-1 == emailStr.indexOf("@")) {
 			FacesMessage message = new FacesMessage("Email Address is Invalid");
-			throw new ValidatorException(message);
+			throw new ValidatorException(message); 
 		}
 	}
-	
+
 	// Validate User Already Exists
 	public void validateUserName(FacesContext context, UIComponent toValidate, Object value) throws ValidatorException {
 		String username = (String) value;
@@ -184,7 +192,7 @@ public class Member {
 	public String storeMemberInfo() {
 		addMemberHandler(this);
 		FacesMessage message = new FacesMessage("Account created Successfully.");
-		String outcome = "success";
+		String outcome = "login";
 		FacesContext.getCurrentInstance().addMessage(null, message);
 		return outcome;
 	}
@@ -194,6 +202,5 @@ public class Member {
 		members.getMembers().add(member);
 		System.out.println("members count -->" + members.getMembersCount());
 	}
-
 
 }
