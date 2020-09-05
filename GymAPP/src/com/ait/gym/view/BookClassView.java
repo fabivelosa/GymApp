@@ -22,17 +22,18 @@ public class BookClassView implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	ArrayList<GymClass> gymClassesAvailable;
+	ArrayList<GymClass> gymClassesBooked;
 
-	public void enrollClasses(String  classes) {
+	public void enrollClasses(String classes) {
 
 		ArrayList<GymClass> availableClasses = getGymClassesAvailable();
 		Member member = getUserLogged();
 
 		for (GymClass enrolled : availableClasses) {
 			if (enrolled.getId() == Integer.parseInt(classes)) {
-				
-				if(enrolled.getEnrolled() == null) {					  
-				     enrolled.setEnrolled(new ArrayList<Member>());
+
+				if (enrolled.getEnrolled() == null) {
+					enrolled.setEnrolled(new ArrayList<Member>());
 				}
 				enrolled.getEnrolled().add(member);
 				enrolled.setSpaces(enrolled.getSpaces() - 1); // space booked
@@ -68,11 +69,36 @@ public class BookClassView implements Serializable {
 				gymClassesAvailable.add(classes);
 			}
 		}
-
 		return gymClassesAvailable;
+	}
+
+	public ArrayList<GymClass> getGymClassesBooked() {
+
+		System.out.println("gymClassesBooked");
+		gymClassesBooked = new ArrayList<GymClass>();
+		GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
+		
+		Member member = getUserLogged();
+		// classes that member logged booked
+		for (GymClass classes : gymClasses.getGymClass()) {
+			if (classes.getEnrolled() == null) {
+				classes.setEnrolled(new ArrayList<Member>());
+			}
+			for (Member memberEnroll : classes.getEnrolled()) {
+				if (memberEnroll.equals(member)) {
+					gymClassesBooked.add(classes);
+				}
+			}
+		}
+		return gymClassesBooked;
 	}
 
 	public void setGymClassesAvailable(ArrayList<GymClass> gymClassesAvailable) {
 		this.gymClassesAvailable = gymClassesAvailable;
 	}
+
+	public void setGymClassesBooked(ArrayList<GymClass> gymClassesBooked) {
+		this.gymClassesBooked = gymClassesBooked;
+	}
+
 }

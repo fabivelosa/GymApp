@@ -121,5 +121,5 @@ public class GymClass implements Serializable {
 	public void setEnrolled(ArrayList<Member> enrolled) {
 		this.enrolled = enrolled;
 	}
-
+	
 }

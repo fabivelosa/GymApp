@@ -37,10 +37,10 @@
 	<div class="form">
 		<h:form id="form">
 			<p:growl id="msgs" showDetail="true" />
-			
-			<p:outputPanel id="testContainer">
+
+			<p:outputPanel id="containerforBook">
 				<h:dataTable value="#{bookClassView.gymClassesAvailable}"
-					var="classlist" styleClass="table" headerClass="tableHeader">
+					var="classlist" styleClass="table">
 
 					<h:column>
 						<f:facet name="header">Name</f:facet>
@@ -81,7 +81,7 @@
 					<h:column>
 						<f:facet name="header">Book</f:facet>
 						<h:commandButton value="Book Class"
-							action="#{bookClassView.enrollClasses(classlist.id)}">   
+							action="#{bookClassView.enrollClasses(classlist.id)}">
 						</h:commandButton>
 					</h:column>
 				</h:dataTable>
@@ -90,7 +90,56 @@
 
 			<!-- 	<h:commandButton value="Save" action="#{gymclasslist.enrollclass}" /> -->
 
+			<p:outputPanel id="containerBooked">
+				<h:dataTable value="#{bookClassView.gymClassesBooked}"
+					var="classbook" styleClass="table">
+
+					<h:column>
+						<f:facet name="header">Name</f:facet>
+						<h:inputText value="#{classbook.name}" size="20" />
+						<h:outputText value="#{classbook.name}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Day of Week</f:facet>
+						<h:inputText value="#{classbook.dayOfWeek}" size="10" />
+						<h:outputText value="#{classbook.dayOfWeek}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Time</f:facet>
+						<h:inputText value="#{classbook.time}" size="10" />
+						<h:outputText value="#{classbook.time}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Duration</f:facet>
+						<h:inputText value="#{classbook.duration}" size="10" />
+						<h:outputText value="#{classbook.duration}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Trainer</f:facet>
+						<h:inputText value="#{classbook.instructor.empName}" size="10" />
+						<h:outputText value="#{classbook.instructor.empName}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Spaces</f:facet>
+						<h:inputText value="#{classbook.spaces}" size="10" />
+						<h:outputText value="#{classbook.spaces}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Remove</f:facet>
+						<h:commandButton value="Remove"
+							action="#{bookClassView.cancelEnroll(classbook.id)}">
+						</h:commandButton>
+					</h:column>
+				</h:dataTable>
+			</p:outputPanel>
 			<br />
+
 		</h:form>
 	</div>
 	<!-- FOOTER -->
