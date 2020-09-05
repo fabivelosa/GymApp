@@ -61,28 +61,25 @@ public class Login implements Serializable {
 			if (loginEmployee(userName)) {
 				message = "trainershomepage";
 			}
-
 		}
 
 		return message;
 	}
 
 	private boolean loginMember(String username) {
-		Member member = getMemberbyUserName(userName);
+		Member member = getMemberbyUserName(username);
 		FacesContext context2 = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
 
 		if (member != null) {
-			if (member.getPassword().equals(this.password) && member.getUserName().equals(this.userName)) {
+			if (member.getPassword().equals(this.password) && member.getUserName().equals(username)) {
 				session.setAttribute("loggedUser", member);
 				session.setAttribute("isUserLogged", "true");
 				session.setAttribute("userType", "M");
-				return true;
+				return true; 
 			}
 		}
-
 		return false;
-
 	}
 
 	private boolean loginEmployee(String userName) {
@@ -98,9 +95,7 @@ public class Login implements Serializable {
 				return true;
 			}
 		}
-
 		return false;
-
 	}
 
 	private Member getMemberbyUserName(String username) {
