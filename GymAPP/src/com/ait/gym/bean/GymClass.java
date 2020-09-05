@@ -23,18 +23,17 @@ public class GymClass implements Serializable {
 	private String time;
 	private int duration;
 	private int spaces; 
-
 	private Employee instructor;  
-	 
-	ArrayList<Member> enrolled; 
+	ArrayList<Member> enrolled ;
  
 	public GymClass() {
 		super(); 
-	}
+	} 
 	
 	@PostConstruct
 	public void init() {
-		instructor= new Employee ("");			
+		instructor= new Employee ("");		
+		enrolled = new ArrayList<Member>(); 
 	}
 	
 	
@@ -115,6 +114,12 @@ public class GymClass implements Serializable {
 		this.id = id;
 	}
 	
-	
-	
+	public ArrayList<Member> getEnrolled() { 
+		return enrolled;
+	}
+
+	public void setEnrolled(ArrayList<Member> enrolled) {
+		this.enrolled = enrolled;
+	}
+
 }

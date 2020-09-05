@@ -35,7 +35,7 @@ public class MembersList implements Serializable {
 	
 	
 
-	public ArrayList<Member> getMembers() {		
+	public ArrayList<Member> getMembers() {		 
 		return members;
 	}
 

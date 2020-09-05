@@ -12,16 +12,18 @@ import javax.faces.bean.SessionScoped;
 import com.ait.gym.utils.ClassesTypes;
 import com.ait.gym.utils.Helper;
 
-@ManagedBean(name="gymClassList",eager=true)
-@SessionScoped
+@ManagedBean(name = "gymClassList", eager = true)
+@SessionScoped 
 public class GymClassList implements Serializable {
 
 	/**
 	 *  
 	 */
-	private static final long serialVersionUID = 1L; 
+	private static final long serialVersionUID = 1L;
 	private ArrayList<GymClass> gymClasses;
- 
+
+	
+
 	public GymClassList() {
 		super();
 	}
@@ -29,17 +31,14 @@ public class GymClassList implements Serializable {
 	@PostConstruct
 	public void init() {
 
-	
-		
+		// Add personal trainers
 		EmployeeList employeeList = Helper.getBean("employeeList", EmployeeList.class);
-		
 		Employee emp = employeeList.getEmployeeByUserEmail("john@gmail.com");
 		Employee emp2 = employeeList.getEmployeeByUserEmail("paul@gmail.com");
-		
 
 		gymClasses = new ArrayList<GymClass>();
 		GymClass pilates = new GymClass(getRandomId(), ClassesTypes.PILATES, DayOfWeek.MONDAY, "09:00", 60, 20, emp2);
-		gymClasses.add(pilates); 
+		gymClasses.add(pilates);
 
 		GymClass mindfulness = new GymClass(getRandomId(), ClassesTypes.MINDFULLNESS, DayOfWeek.TUESDAY, "10:00", 60,
 				20, emp);
@@ -69,8 +68,5 @@ public class GymClassList implements Serializable {
 		this.gymClasses = gymClasses;
 	}
 
-	
-
-	
 
 }
