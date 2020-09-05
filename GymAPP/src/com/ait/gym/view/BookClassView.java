@@ -63,9 +63,10 @@ public class BookClassView implements Serializable {
 		gymClassesAvailable = new ArrayList<GymClass>();
 		GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
 
-		// classes that have instructor assigned and available spaces
+		// classes that have instructor assigned/available spaces/not already enrolled
 		for (GymClass classes : gymClasses.getGymClass()) {
-			if (classes.getInstructor() != null && classes.getSpaces() > 0) {
+			if (classes.getInstructor() != null && classes.getSpaces() > 0
+					&& !getGymClassesBooked().contains(classes)) {
 				gymClassesAvailable.add(classes);
 			}
 		}
@@ -77,7 +78,7 @@ public class BookClassView implements Serializable {
 		System.out.println("gymClassesBooked");
 		gymClassesBooked = new ArrayList<GymClass>();
 		GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
-		
+
 		Member member = getUserLogged();
 		// classes that member logged booked
 		for (GymClass classes : gymClasses.getGymClass()) {
