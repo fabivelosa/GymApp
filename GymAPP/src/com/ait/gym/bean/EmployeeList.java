@@ -32,7 +32,7 @@ public class EmployeeList implements Serializable {
 
 		
 		Employee emp2 = new Employee("Paul");
-		emp2.setEmailAddress("paul@gmail.com");
+		emp2.setEmailAddress("paul@gmail.com"); 
 		emp2.setPassword("1234");
 
 		getEmployees().add(emp);

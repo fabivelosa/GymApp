@@ -43,17 +43,17 @@ public class BookClassView implements Serializable {
 
 	public void cancelEnroll(String classes) {
 
-		ArrayList<GymClass> availableClasses = getGymClassesAvailable();
+		ArrayList<GymClass> bookedClasses = getGymClassesBooked();
 		Member member = getUserLogged();
 
-		for (GymClass enrolled : availableClasses) {
+		for (GymClass enrolled : bookedClasses) {
 			if (enrolled.getId() == Integer.parseInt(classes)) {
 
 				if (enrolled.getEnrolled() == null) {
 					enrolled.setEnrolled(new ArrayList<Member>());
 				}
-				enrolled.getEnrolled().add(member);
-				enrolled.setSpaces(enrolled.getSpaces() - 1); // space booked
+				enrolled.getEnrolled().remove(member);
+				enrolled.setSpaces(enrolled.getSpaces()+1); // space released
 			}
 		}
 	}

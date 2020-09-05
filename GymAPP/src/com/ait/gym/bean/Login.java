@@ -75,7 +75,7 @@ public class Login implements Serializable {
 			if (member.getPassword().equals(this.password) && member.getUserName().equals(username)) {
 				session.setAttribute("loggedUser", member);
 				session.setAttribute("isUserLogged", "true");
-				session.setAttribute("userType", "M");
+				session.setAttribute("userType", "M"); 
 				return true; 
 			}
 		}
