@@ -4,6 +4,7 @@ import javax.faces.application.Application;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import com.ait.gym.bean.Employee;
 import com.ait.gym.bean.Member;
 
 public class Helper {
@@ -48,5 +49,21 @@ public class Helper {
 
 		}
 		return member;
+	}
+	
+	public static Employee getTrainerLogged() {
+		System.out.println("getTrainerLogged");
+		Employee trainer = new Employee();
+
+		FacesContext context2 = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
+		String loggedUser = (String) session.getAttribute("isUserLogged");
+		String userType = (String) session.getAttribute("userType");
+
+		if (loggedUser != null && loggedUser.equals("true") && userType != null && userType.equals("E")) {
+			trainer = (Employee) session.getAttribute("loggedUser");
+
+		}
+		return trainer;
 	}
 }
