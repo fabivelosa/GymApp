@@ -7,8 +7,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import com.ait.gym.utils.Helper;
-
 @ManagedBean(name = "employeeList", eager = true)
 @SessionScoped
 public class EmployeeList implements Serializable {

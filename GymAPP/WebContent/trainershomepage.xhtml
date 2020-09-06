@@ -6,18 +6,34 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<!-- FAVICON -->
+	<link rel="icon" type="image/x-icon" href="resources/images/favicon.ico" />
 	<title>Trainers Homepage</title>
-	<h:outputStylesheet name="member.css" library="css" />
-	<h:outputStylesheet name="global.css" library="css" />
+
+	<!-- CSS -->
+	<h:outputStylesheet library="css" name="global.css" />
+		<h:outputStylesheet name="member.css" library="css" />
 </h:head>
 
+
+
 <h:body>
-
+<!-- NAV -->
+	<div class="nav">
+		<div class="inner">
+			<div class="logo-container">
+				<img src="resources/images/watersidegym2.svg" />
+			</div>
+			<div class="account-options">
+				<a href="index.xhtml" class="register">Logout</a>
+			</div>
+		</div>
+	</div>
 	<h:form>
-		<h1>Waterside Gym</h1>
-
-
-
+		 
 		<h:panelGrid id="panel1" columns="2">
 
 			<h:graphicImage style="height:300px; width:620px;"
@@ -81,6 +97,31 @@
 		</h:panelGrid>
 
 	</h:form>
+	
+	<!-- FOOTER -->
+	<div class="footer">
+		<span id="arc"></span>
+		<div id="jointoday" class="inner">
+			<div class="legal">
+				<ul>
+					<li>Legal</li>
+					<li>Membership Agreement</li>
+					<li>Accessibility</li>
+					<li>Privacy</li>
+				</ul>
+			</div>
+			<div class="contact">
+				<h3>Contact Us</h3>
+				<p>info@watersidegym.ie</p>
+			</div>
+			<div>
+				<img src="resources/images/worldpay.png"
+					class="img-fluid pull-xs-left" alt="..." /> <img
+					src="resources/images/paypal.png" class="img-fluid pull-xs-left"
+					alt="..." />
+			</div>
+		</div>
+	</div>
 </h:body>
 
 </html>

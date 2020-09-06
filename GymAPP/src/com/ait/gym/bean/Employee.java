@@ -33,7 +33,8 @@ public class Employee {
 	static int range = 1000;
 	
 	public Employee () {
-		
+		Random random = new Random();    
+		this.setEmployeeID("P" + random.nextInt(range));		
 	}
 	
 	
@@ -48,7 +49,7 @@ public class Employee {
 			String password, String aboutYourself, boolean employeeType) {
 		super();
 		
-		this.empName = empName;
+		this.empName=empName;
 		this.gender = gender;
 		this.dob = dob;
 		this.address = address;
@@ -155,16 +156,15 @@ public class Employee {
 	// Action Methods
 	public String storeEmployeeInfo() {
 
-		FacesMessage message = null;
+		
 		String outcome = null;
 
 		EmployeeList employees = Helper.getBean("employeeList", EmployeeList.class);
 		employees.getEmployees().add(this);
 
-		message = new FacesMessage("Employee Information is stored Successfully.");
-		outcome = "successpt";
-
+		FacesMessage message   = new FacesMessage("Employee Information is stored Successfully.");
 		FacesContext.getCurrentInstance().addMessage(null, message);
+		outcome = "login";		
 		return outcome;
 	}
 }
