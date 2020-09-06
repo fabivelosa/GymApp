@@ -39,102 +39,103 @@
 			<p:growl id="msgs" showDetail="true" />
 
 			<p:outputPanel id="containerforBook">
-				<h:dataTable value="#{bookClassView.gymClassesAvailable}"
+				<p:dataTable value="#{bookClassView.gymClassesAvailable}"
 					var="classlist" styleClass="table">
 
-					<h:column>
+					<p:column>
 						<f:facet name="header">Name</f:facet>
 
-						<h:outputText value="#{classlist.name}" />
-					</h:column>
+						<h:outputText value="#{classlist.name.value}" />
+					</p:column>
 
-					<h:column>
+					<p:column>
 						<f:facet name="header">Day of Week</f:facet>
 
-						<h:outputText value="#{classlist.dayOfWeek}" />
-					</h:column>
+						<h:outputText value="#{classlist.dayOfWeek}" /> 
+					</p:column>
 
-					<h:column>
+					<p:column>
 						<f:facet name="header">Time</f:facet>
 
 						<h:outputText value="#{classlist.time}" />
-					</h:column>
+					</p:column>
 
-					<h:column>
+					<p:column>
 						<f:facet name="header">Duration</f:facet>
 
 						<h:outputText value="#{classlist.duration}" />
-					</h:column>
+					</p:column>
 
-					<h:column>
+					<p:column>
 						<f:facet name="header">Trainer</f:facet>
 
 						<h:outputText value="#{classlist.instructor.empName}" />
-					</h:column>
+					</p:column>
 
-					<h:column>
+					<p:column>
 						<f:facet name="header">Spaces</f:facet>
 
 						<h:outputText value="#{classlist.spaces}" />
-					</h:column>
+					</p:column>
 
-					<h:column>
+					<p:column>
 						<f:facet name="header">Book</f:facet>
-						<h:commandButton value="Book Class"
-							action="#{bookClassView.enrollClasses(classlist.id)}">
-						</h:commandButton>
-					</h:column>
-				</h:dataTable>
+						<p:commandButton value="Book Class"	rendered="true" action="#{bookClassView.enrollClasses(classlist.id)}">
+						<f:ajax execute="form" render="containerforBook "/>
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
 			</p:outputPanel>
 			<br />
 
 			<!-- 	<h:commandButton value="Save" action="#{gymclasslist.enrollclass}" /> -->
 
 			<p:outputPanel id="containerBooked">
-				<h:dataTable value="#{bookClassView.gymClassesBooked}"
+				<p:dataTable value="#{bookClassView.gymClassesBooked}"
 					var="classbook" styleClass="table">
 
-					<h:column>
+					<p:column>
 						<f:facet name="header">Name</f:facet>
-						<h:outputText value="#{classbook.name}" />
-					</h:column>
+						<h:outputText value="#{classbook.name.value}" />
+					</p:column>
 
-					<h:column>
+					<p:column>
 						<f:facet name="header">Day of Week</f:facet>
 						<h:outputText value="#{classbook.dayOfWeek}" />
-					</h:column>
+					</p:column>
 
-					<h:column>
+					<p:column>
 						<f:facet name="header">Time</f:facet>
 
 						<h:outputText value="#{classbook.time}" />
-					</h:column>
+					</p:column>
 
-					<h:column>
+					<p:column>
 						<f:facet name="header">Duration</f:facet>
 
 						<h:outputText value="#{classbook.duration}" />
-					</h:column>
+					</p:column>
 
-					<h:column>
+					<p:column>
 						<f:facet name="header">Trainer</f:facet>
 
 						<h:outputText value="#{classbook.instructor.empName}" />
-					</h:column>
+					</p:column>
 
-					<h:column>
+					<p:column>
 						<f:facet name="header">Spaces</f:facet>
 
 						<h:outputText value="#{classbook.spaces}" />
-					</h:column>
+					</p:column>
 
-					<h:column>
+					<p:column>
 						<f:facet name="header">Unbook</f:facet>
-						<h:commandButton value="Unbook Class"
+						<p:commandButton value="Unbook Class" rendered="true"
 							action="#{bookClassView.cancelEnroll(classbook.id)}">
-						</h:commandButton>
-					</h:column>
-				</h:dataTable>
+							 <f:ajax  render="FDialog:grdEnd"/>
+						</p:commandButton>
+					</p:column>
+				</p:dataTable> 
 			</p:outputPanel>
 			<br />
 
