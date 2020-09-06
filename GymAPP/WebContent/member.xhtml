@@ -19,8 +19,13 @@
 				<img src="resources/images/watersidegym2.svg" />
 			</div>
 			<div class="account-options">
-				<a href="index.xhtml" class="register">Logout</a>
+				 <a href="index.xhtml" class="register">Logout</a>
 			</div>
+
+			<div class="account-options">
+							</div>
+
+
 		</div>
 	</div>
 	<!-- /NAV -->
@@ -32,6 +37,11 @@
 
 			<h:panelGrid cellpadding="10" cellspacing="10">
 
+				<h:outputText
+					value="Welcome #{sessionScope.loggedUser.firstName} =) " />
+				<h:outputText
+					value=" You have #{sessionScope.loggedUser.oneToOneCredit} One-to-One Sessions Available." />
+				
 				<h:outputLabel
 					style="display: block; width:100%; text-align:center;  font-size:50px "
 					value="Purchase a membership" />
@@ -146,7 +156,7 @@
 		</h:panelGrid>
 
 	</h:form>
-	
+
 	<!-- FOOTER -->
 	<div class="footer">
 		<span id="arc"></span>

@@ -11,6 +11,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
+import com.ait.gym.bean.lists.MembersList;
 import com.ait.gym.utils.Helper;
 
 @ManagedBean
@@ -33,12 +34,15 @@ public class Member implements Serializable {
 	private String goal;
 	private String userName;
 	private String password;
+	private int oneToOneCredit;
+	
 	static int range = 1000; 
 
 	public Member() {
 		super();
 		Random random = new Random();    
 		this.setMemberID("M" + random.nextInt(range));
+		this.oneToOneCredit = 0;
 	}
 	
 	public Member(String firstName,String login,String password) {
@@ -48,6 +52,7 @@ public class Member implements Serializable {
 		this.setPassword(password);
 		Random random = new Random();    
 		this.setMemberID("M" + random.nextInt(range));
+		this.oneToOneCredit = 0;
 		
 	}
 
@@ -68,6 +73,7 @@ public class Member implements Serializable {
 		this.setPassword(password);	
 		Random random = new Random();    
 		this.setMemberID("M" + random.nextInt(range));
+		this.oneToOneCredit = 0;
 	}
 
 	public Member(String memberID) {
@@ -212,6 +218,14 @@ public class Member implements Serializable {
 		MembersList members = Helper.getBean("membersList", MembersList.class);
 		members.getMembers().add(member);
 		System.out.println("members count -->" + members.getMembersCount());
+	}
+
+	public int getOneToOneCredit() {
+		return oneToOneCredit;
+	}
+
+	public void setOneToOneCredit(int oneToOneCredit) {
+		this.oneToOneCredit = oneToOneCredit;
 	}
 
 }

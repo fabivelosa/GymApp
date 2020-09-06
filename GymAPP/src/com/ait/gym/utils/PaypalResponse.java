@@ -1,17 +1,15 @@
 package com.ait.gym.utils;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.HttpURLConnection;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.ait.gym.bean.Member;
 
 public class PaypalResponse extends HttpServlet {
 
@@ -20,26 +18,38 @@ public class PaypalResponse extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		double amount=Double.parseDouble(request.getParameter("amt"));
-		String membership = null;
-		if(amount == 149.00) {
-			membership = "Three months membership paid";
-		}
-		else if(amount == 299.00) {
-			membership = "Six months membership paid";
-		}
-		else if(amount == 599.00) {
-			membership = "Twelve months membership paid";
-		}
 		
+		Member member = null;
+		HttpSession session = (HttpSession) request.getSession();
+		String loggedUser = (String) session.getAttribute("isUserLogged");
+		String userType = (String) session.getAttribute("userType");
+
+		if (loggedUser != null && loggedUser.equals("true") && userType != null && userType.equals("M")) {
+			member = (Member) session.getAttribute("loggedUser");
+
+		}
+					
+		double amount = Double.parseDouble(request.getParameter("amt"));
+		String membership = null;
+		if (amount == 149.00) {
+			membership = CreditTypes.TREE_MONTHS.getValue() + " paid";
+			member.setOneToOneCredit(member.getOneToOneCredit()+CreditTypes.TREE_MONTHS.getCreditQtd());
+		} else if (amount == 299.00) {
+			membership = CreditTypes.SIX_MONTHS.getValue() + " paid";
+			member.setOneToOneCredit(member.getOneToOneCredit()+CreditTypes.SIX_MONTHS.getCreditQtd());
+		} else if (amount == 599.00) {
+			membership = CreditTypes.TWELVE_MONTHS.getValue() + " paid";
+			member.setOneToOneCredit(member.getOneToOneCredit()+CreditTypes.TWELVE_MONTHS.getCreditQtd());
+		}
+
 		String destination = "payPalSuccess.xhtml";
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(destination);
-		request.setAttribute("amount", Double.toString(amount));	
-		request.setAttribute("txId", request.getParameter("tx"));	
-		request.setAttribute("txStatus", request.getParameter("st"));	
-		request.setAttribute("currency", request.getParameter("cc"));	
-		request.setAttribute("package", membership);	
+		request.setAttribute("amount", Double.toString(amount));
+		request.setAttribute("txId", request.getParameter("tx"));
+		request.setAttribute("txStatus", request.getParameter("st"));
+		request.setAttribute("currency", request.getParameter("cc"));
+		request.setAttribute("package", membership);
 		requestDispatcher.forward(request, response);
-		
+
 	}
 }

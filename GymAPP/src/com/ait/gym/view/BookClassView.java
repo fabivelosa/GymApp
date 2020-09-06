@@ -5,12 +5,10 @@ import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 
 import com.ait.gym.bean.GymClass;
-import com.ait.gym.bean.GymClassList;
 import com.ait.gym.bean.Member;
+import com.ait.gym.bean.lists.GymClassList;
 import com.ait.gym.utils.Helper;
 
 @ManagedBean
@@ -53,25 +51,13 @@ public class BookClassView implements Serializable {
 					enrolled.setEnrolled(new ArrayList<Member>());
 				}
 				enrolled.getEnrolled().remove(member);
-				enrolled.setSpaces(enrolled.getSpaces()+1); // space released
+				enrolled.setSpaces(enrolled.getSpaces() + 1); // space released
 			}
 		}
 	}
-	
+
 	public Member getUserLogged() {
-		System.out.println("getUserLogged");
-		Member member = new Member();
-
-		FacesContext context2 = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
-		String loggedUser = (String) session.getAttribute("isUserLogged");
-		String userType = (String) session.getAttribute("userType");
-
-		if (loggedUser != null && loggedUser.equals("true") && userType != null && userType.equals("M")) {
-			member = (Member) session.getAttribute("loggedUser");
-
-		}
-		return member;
+		return Helper.getUserLogged();
 	}
 
 	public ArrayList<GymClass> getGymClassesAvailable() {
