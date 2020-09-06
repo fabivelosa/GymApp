@@ -1,6 +1,7 @@
 package com.ait.gym.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -54,6 +55,11 @@ public class Login implements Serializable {
 	public String loginYesNo() {
 		String message = "index.xhtml?faces-redirect=true";
 
+//			ArrayList<Member> member = null;
+//			if (isMemberHere(userName, member)) {
+//				message = "member";
+//			}
+//	
 		if (this.getType().equalsIgnoreCase("M")) {
 			if (loginMember(userName)) {
 				message = "member";
@@ -68,6 +74,21 @@ public class Login implements Serializable {
 		return message;
 	}
 
+	public boolean isMemberHere(String username, ArrayList<Member> member) {
+
+		for (int i = 0; i < member.size(); i++) {
+			System.out.println();
+			Member existingMember = member.get(i);
+			if (existingMember.getUserName().equalsIgnoreCase(username)) {
+				return true;
+			}
+
+		}
+
+		return false;
+
+	}
+
 	private boolean loginMember(String username) {
 		Member member = getMemberbyUserName(username);
 		FacesContext context2 = FacesContext.getCurrentInstance();
@@ -77,8 +98,8 @@ public class Login implements Serializable {
 			if (member.getPassword().equals(this.password) && member.getUserName().equals(username)) {
 				session.setAttribute("loggedUser", member);
 				session.setAttribute("isUserLogged", "true");
-				session.setAttribute("userType", "M"); 
-				return true; 
+				session.setAttribute("userType", "M");
+				return true;
 			}
 		}
 		return false;
@@ -112,15 +133,16 @@ public class Login implements Serializable {
 
 	public String logout() {
 		// Helper.expungeSession();
-		//((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true)).invalidate();
+		// ((HttpSession)
+		// FacesContext.getCurrentInstance().getExternalContext().getSession(true)).invalidate();
 		FacesContext context2 = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
-		
-		System.out.println("Logout"+session.getAttribute(getUserName()));
+
+		System.out.println("Logout" + session.getAttribute(getUserName()));
 		session.setAttribute("loggedUser", null);
 		session.setAttribute("isUserLogged", "false");
 		session.setAttribute("userType", null);
-		
+
 		return "index";
 	}
 

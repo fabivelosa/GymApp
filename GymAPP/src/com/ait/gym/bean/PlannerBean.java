@@ -14,11 +14,11 @@ public class PlannerBean implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private String MemberName;
-	public String[] mondaySession;
-	public String[] tuesdaySession;
-	public String[] wednesdaySession;
-	public String[] thursdaySession;
-	public String[] fridaySession;
+	private String[] mondaySession;
+	private String[] tuesdaySession;
+	private String[] wednesdaySession;
+	private String[] thursdaySession;
+	private String[] fridaySession;
 	 
 	// Monday
 	public String[] getMondaySession() {
