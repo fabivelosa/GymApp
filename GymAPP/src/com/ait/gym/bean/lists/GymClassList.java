@@ -67,6 +67,21 @@ public class GymClassList implements Serializable {
 	public void setGymClass(ArrayList<GymClass> gymClasses) {
 		this.gymClasses = gymClasses;
 	}
+	
+	
+	public static GymClass getGymClassbyId(int id) {
+		
+		GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
 
+		for (GymClass classes : gymClasses.getGymClass()) {
+			
+			if(classes.getId() == id) {
+				return classes;
+			}		
+		}
+		
+		return null;
+		
+	}
 
 }

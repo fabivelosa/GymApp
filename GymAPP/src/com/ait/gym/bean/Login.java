@@ -7,6 +7,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import com.ait.gym.bean.lists.EmployeeList;
+import com.ait.gym.bean.lists.MembersList;
 import com.ait.gym.utils.Helper;
 
 @ManagedBean
@@ -114,6 +116,7 @@ public class Login implements Serializable {
 		FacesContext context2 = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
 		
+		System.out.println("Logout"+session.getAttribute(getUserName()));
 		session.setAttribute("loggedUser", null);
 		session.setAttribute("isUserLogged", "false");
 		session.setAttribute("userType", null);

@@ -5,15 +5,16 @@ import java.util.Random;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
+import com.ait.gym.bean.lists.EmployeeList;
 import com.ait.gym.utils.Helper;
 
 @ManagedBean(name="employee")
-@SessionScoped
+@RequestScoped
 public class Employee {
 
 	// Member Variables

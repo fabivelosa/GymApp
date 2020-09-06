@@ -81,7 +81,6 @@
 					<p:column>
 						<f:facet name="header">Book</f:facet>
 						<p:commandButton value="Book Class"	rendered="true" action="#{bookClassView.enrollClasses(classlist.id)}">
-						<f:ajax execute="form" render="containerforBook "/>
 						</p:commandButton>
 					</p:column>
 				</p:dataTable>
@@ -131,8 +130,7 @@
 					<p:column>
 						<f:facet name="header">Unbook</f:facet>
 						<p:commandButton value="Unbook Class" rendered="true"
-							action="#{bookClassView.cancelEnroll(classbook.id)}">
-							 <f:ajax  render="FDialog:grdEnd"/>
+							action="#{bookClassView.cancelEnroll(classbook.id)}">							
 						</p:commandButton>
 					</p:column>
 				</p:dataTable> 

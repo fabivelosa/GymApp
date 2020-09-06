@@ -1,9 +1,12 @@
 package com.ait.gym.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -35,8 +38,17 @@ public class Member implements Serializable {
 	private String userName;
 	private String password;
 	private int oneToOneCredit;
+	private List<GymClass> bookedClasses;
+	private List<GymClass> oneToOneClasses;
+	
 	
 	static int range = 1000; 
+	
+	@PostConstruct
+	public void init() {
+		oneToOneClasses= new ArrayList<GymClass>();
+	
+	}
 
 	public Member() {
 		super();
@@ -226,6 +238,22 @@ public class Member implements Serializable {
 
 	public void setOneToOneCredit(int oneToOneCredit) {
 		this.oneToOneCredit = oneToOneCredit;
+	}
+
+	public List<GymClass> getOneToOneClasses() {
+		return oneToOneClasses;
+	}
+
+	public void setOneToOneClasses(List<GymClass> oneToOneClasses) {
+		this.oneToOneClasses = oneToOneClasses;
+	}
+
+	public List<GymClass> getBookedClasses() {
+		return bookedClasses;
+	}
+
+	public void setBookedClasses(List<GymClass> bookedClasses) {
+		this.bookedClasses = bookedClasses;
 	}
 
 }

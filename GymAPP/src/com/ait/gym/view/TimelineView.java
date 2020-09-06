@@ -15,9 +15,9 @@ import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
 
 import com.ait.gym.bean.Employee;
-import com.ait.gym.bean.EmployeeList;
 import com.ait.gym.bean.GymClass;
-import com.ait.gym.bean.GymClassList;
+import com.ait.gym.bean.lists.EmployeeList;
+import com.ait.gym.bean.lists.GymClassList;
 import com.ait.gym.utils.ClassesTypes;
 import com.ait.gym.utils.Helper;
 
@@ -79,24 +79,15 @@ public class TimelineView {
 		if (!onCellEditChange)
 			update("testContainer");
 	}
+	
+	 
 
 	public ArrayList<GymClass> getClassesbyTrainer() {
 		trainerClass = new ArrayList<GymClass>();
 		GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
 		
-		FacesContext context2 = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
-		
-		
-		String loggedUser = (String) session.getAttribute("isUserLogged");
-		String userType = (String) session.getAttribute("userType");
-	
-		
-		if(loggedUser!= null && loggedUser.equals("true") && userType != null && userType.equals("E")) {
-		
-				Employee emp = (Employee)session.getAttribute("loggedUser");
-		
-		
+				Employee emp = Helper.getTrainerLogged();
+				
 				for (GymClass classes : gymClasses.getGymClass()) {
 					if (classes.getInstructor() != null) {
 						if (classes.getInstructor().getEmpName() != null && classes.getInstructor().getEmpName().equals(emp.getEmpName())) {
@@ -110,7 +101,6 @@ public class TimelineView {
 						trainerClass.add(classes);
 					}
 				}
-		}
 
 		return trainerClass;
 	}
@@ -120,3 +110,4 @@ public class TimelineView {
 	}
 
 }
+   
