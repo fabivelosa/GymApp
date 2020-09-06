@@ -1,4 +1,4 @@
-package com.ait.gym.bean;
+package com.ait.gym.bean.lists;
 
 import java.io.Serializable;
 import java.time.DayOfWeek;
@@ -9,6 +9,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import com.ait.gym.bean.Employee;
+import com.ait.gym.bean.GymClass;
 import com.ait.gym.utils.ClassesTypes;
 import com.ait.gym.utils.Helper;
 

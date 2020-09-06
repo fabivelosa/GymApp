@@ -1,4 +1,4 @@
-package com.ait.gym.bean;
+package com.ait.gym.bean.lists;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
+import com.ait.gym.bean.Member;
 
 @ManagedBean(name="membersList",eager=true)
 @SessionScoped
