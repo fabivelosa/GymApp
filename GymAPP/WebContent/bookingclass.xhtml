@@ -4,6 +4,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
+	
+        
 <h:head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -35,107 +37,108 @@
 	<!-- /NAV -->
 	<!-- MAIN -->
 	<div class="form">
-		<h:form id="form">
-			<p:growl id="msgs" showDetail="true" />
-
-			<p:outputPanel id="containerforBook">
-				<p:dataTable value="#{bookClassView.gymClassesAvailable}"
-					var="classlist" styleClass="table">
-
-					<p:column>
-						<f:facet name="header">Name</f:facet>
-
-						<h:outputText value="#{classlist.name.value}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">Day of Week</f:facet>
-
-						<h:outputText value="#{classlist.dayOfWeek}" /> 
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">Time</f:facet>
-
-						<h:outputText value="#{classlist.time}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">Duration</f:facet>
-
-						<h:outputText value="#{classlist.duration}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">Trainer</f:facet>
-
-						<h:outputText value="#{classlist.instructor.empName}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">Spaces</f:facet>
-
-						<h:outputText value="#{classlist.spaces}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">Book</f:facet>
-						<p:commandButton value="Book Class"	rendered="true" action="#{bookClassView.enrollClasses(classlist.id)}">
-						</p:commandButton>
-					</p:column>
-				</p:dataTable>
-			</p:outputPanel>
-			<br />
-
-			<!-- 	<h:commandButton value="Save" action="#{gymclasslist.enrollclass}" /> -->
-
-			<p:outputPanel id="containerBooked">
-				<p:dataTable value="#{bookClassView.gymClassesBooked}"
-					var="classbook" styleClass="table">
-
-					<p:column>
-						<f:facet name="header">Name</f:facet>
-						<h:outputText value="#{classbook.name.value}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">Day of Week</f:facet>
-						<h:outputText value="#{classbook.dayOfWeek}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">Time</f:facet>
-
-						<h:outputText value="#{classbook.time}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">Duration</f:facet>
-
-						<h:outputText value="#{classbook.duration}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">Trainer</f:facet>
-
-						<h:outputText value="#{classbook.instructor.empName}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">Spaces</f:facet>
-
-						<h:outputText value="#{classbook.spaces}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">Unbook</f:facet>
-						<p:commandButton value="Unbook Class" rendered="true"
-							action="#{bookClassView.cancelEnroll(classbook.id)}">							
-						</p:commandButton>
-					</p:column>
-				</p:dataTable> 
-			</p:outputPanel>
-			<br />
+		<h:form id="formBook">
+				
+					<p:growl id="msgs" showDetail="true" />
+		
+					<p:outputPanel id="containerforBook">
+						<p:dataTable id="bookclasstable" value="#{bookClassView.gymClassesAvailable}"  
+							var="classlist" styleClass="table">
+		 					
+									<p:column>
+										<f:facet name="header">Name</f:facet>
+				
+										<h:outputText value="#{classlist.name.value}" />
+									</p:column>
+				
+									<p:column>
+										<f:facet name="header">Day of Week</f:facet>
+				
+										<h:outputText value="#{classlist.dayOfWeek}" /> 
+									</p:column>
+				
+									<p:column>
+										<f:facet name="header">Time</f:facet>
+				
+										<h:outputText value="#{classlist.time}" />
+									</p:column>
+				
+									<p:column>
+										<f:facet name="header">Duration</f:facet>
+				
+										<h:outputText value="#{classlist.duration}" />
+									</p:column>
+				
+									<p:column>
+										<f:facet name="header">Trainer</f:facet>
+				
+										<h:outputText value="#{classlist.instructor.empName}" />
+									</p:column>
+				
+									<p:column>
+										<f:facet name="header">Spaces</f:facet>
+				
+										<h:outputText value="#{classlist.spaces}" />  
+									</p:column>
+				
+									<p:column>
+										<f:facet name="header">Book</f:facet>
+										  <p:commandButton value="Book Class" ajax="false"	 action="#{bookClassView.enrollClasses(classlist.id)}"/> 
+										 										
+									</p:column>
+								
+						</p:dataTable>
+					</p:outputPanel>
+					<br />
+			</h:form>
+			<h:form id="formCancel">
+				
+					<p:outputPanel id="containerCancel">
+						<p:dataTable id="cancelclasstable" value="#{bookClassView.gymClassesBooked}"
+							var="classbook" styleClass="table">
+		
+							<p:column>
+								<f:facet name="header">Name</f:facet>
+								<h:outputText value="#{classbook.name.value}" />
+							</p:column>
+		
+							<p:column>
+								<f:facet name="header">Day of Week</f:facet>
+								<h:outputText value="#{classbook.dayOfWeek}" />
+							</p:column>
+		
+							<p:column>
+								<f:facet name="header">Time</f:facet>
+		
+								<h:outputText value="#{classbook.time}" />
+							</p:column>
+		
+							<p:column>
+								<f:facet name="header">Duration</f:facet>
+		
+								<h:outputText value="#{classbook.duration}" />
+							</p:column>
+		
+							<p:column>
+								<f:facet name="header">Trainer</f:facet>
+		
+								<h:outputText value="#{classbook.instructor.empName}" />
+							</p:column>
+		
+							<p:column>
+								<f:facet name="header">Spaces</f:facet>
+		
+								<h:outputText value="#{classbook.spaces}" />
+							</p:column>
+		
+							<p:column>
+								<f:facet name="header">Unbook</f:facet>
+								<p:commandButton value="Unbook Class"  ajax="false"  action="#{bookClassView.cancelEnroll(classbook.id)}"/>		 	
+												
+							</p:column>
+						</p:dataTable> 
+					</p:outputPanel>
+					<br />
 
 		</h:form>
 	</div>

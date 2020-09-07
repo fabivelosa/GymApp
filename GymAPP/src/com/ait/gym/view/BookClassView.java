@@ -8,7 +8,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import com.ait.gym.bean.Employee;
 import com.ait.gym.bean.GymClass;
 import com.ait.gym.bean.Member;
 import com.ait.gym.bean.lists.GymClassList;
