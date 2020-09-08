@@ -39,27 +39,14 @@ public class Helper {
 		}
 	}
 	
-	public static void sendRedirect(String page) {
+	public static void setSessionAttribute(String name, Object obj) {
 
 		// Get the FacesContext object.
 		FacesContext context = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
 		
-		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
-		HttpServletResponse respose = (HttpServletResponse) context.getExternalContext().getResponse();
-		
-	    String URL = req.getContextPath()+"/"+ page;
-		 
-		 
-		// Get the HttpSession object for the current context.
-		
-		
-		try {
-			respose.sendRedirect(URL);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+	    session.setAttribute(name, obj);	
+	
 		
 	}
 	

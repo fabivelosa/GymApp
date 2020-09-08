@@ -23,11 +23,18 @@ public class PaypalResponse extends HttpServlet {
 		HttpSession session = (HttpSession) request.getSession();
 		String loggedUser = (String) session.getAttribute("isUserLogged");
 		String userType = (String) session.getAttribute("userType");
+		Member userNew = (Member) session.getAttribute("isUserNew");
 
 		if (loggedUser != null && loggedUser.equals("true") && userType != null && userType.equals("M")) {
 			member = (Member) session.getAttribute("loggedUser");
 
+		}else if (userNew != null ) {
+			member = userNew;
 		}
+		
+		System.out.println("paypall response");
+		
+		
 					
 		double amount = Double.parseDouble(request.getParameter("amt"));
 		String membership = null;

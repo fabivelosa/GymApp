@@ -3,9 +3,12 @@ package com.ait.gym.bean;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.servlet.http.HttpSession;
 
 import com.ait.gym.bean.lists.EmployeeList;
@@ -31,6 +34,21 @@ public class Login implements Serializable {
 	}
 
 	public Login() {
+	}
+	
+	@PostConstruct
+	public void init() {
+		
+		FacesContext context2 = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
+
+		System.out.println("Logout" + session.getAttribute(getUserName()));
+		session.removeAttribute("loggedUser");
+		session.setAttribute("isUserLogged", "false");
+		session.removeAttribute("userType");
+		System.out.println("logging out");
+		
+		
 	}
 
 	public String getPassword() {
@@ -137,12 +155,11 @@ public class Login implements Serializable {
 		// FacesContext.getCurrentInstance().getExternalContext().getSession(true)).invalidate();
 		FacesContext context2 = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
-
-		System.out.println("Logout" + session.getAttribute(getUserName()));
-		session.setAttribute("loggedUser", null);
-		session.setAttribute("isUserLogged", "false");
-		session.setAttribute("userType", null);
-
+		
+		session.removeAttribute("loggedUser");
+		session.removeAttribute("isUserLogged");
+		session.removeAttribute("userType");
+		System.out.println("logging out");
 		return "index?faces-redirect=true";
 	}
 

@@ -67,7 +67,14 @@ public class AuthenticationFilter implements Filter {
 	    allowedUrl.add("/GymAPP/payPalSuccess.xhtml");
 	    allowedUrl.add("/GymAPP/sessionsuccess.xhtml");
 	    allowedUrl.add("/GymAPP/buyMembership.xhtml");
-	    allowedUrl.add("/GymAPP/");	    
+	    allowedUrl.add("/GymAPP/");	 
+	    allowedUrl.add("/GymAPP/welcome");	 
+	    allowedUrl.add("GymAPP/PaypalSuccess");	 
+	    
+	    
+	    
+	  	    	
+	    	
 	    
 		System.out.println("request filtering init");		
 	}
