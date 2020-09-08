@@ -143,7 +143,7 @@ public class Login implements Serializable {
 		session.setAttribute("isUserLogged", "false");
 		session.setAttribute("userType", null);
 
-		return "index";
+		return "index?faces-redirect=true";
 	}
 
 	public String getType() {
