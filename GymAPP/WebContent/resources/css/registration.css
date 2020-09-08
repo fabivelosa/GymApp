@@ -4,10 +4,11 @@ html, body {
   min-height: 100%;
   margin: 0;
   background-color: #f7f7f7 !important;
+  overflow-x: hidden;
 }
 
 * {
-  
+
   color: darkblue;
   font-family: "Lato", sans-serif;
 }
@@ -15,9 +16,10 @@ html, body {
 
 table  {
     height: 500px;
-    padding: 20px 0 40px 0;
-    margin-top:-120px;
-    margin-left:-150px;
+    padding: 30px 70px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow:  0px 8px 0px #397cff66;
   }
 
 div.regym-image {
@@ -34,24 +36,119 @@ div.regym-image > img {
   mix-blend-mode: soft-light;
 }
 
+form {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 div.regym-text {
-  width: 100%;
+  width: auto;
   height: 900px;
   position: absolute;
   top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   z-index: 20;
-  
 }
 
-.panelGridHeader {       
-     font-size: 2em;
-     color:white;
-      align-items: center;
+.panelGridHeader {
+   font-size: 2em;
+   color: #397CFF;
+   align-items: center;
+   padding: 15px 0;
+   display: block;
 }
 
+div.regym-text table tr td:nth-of-type(2) {
+  padding-right: 15px;
+}
 
+div.regym-text table tr td:nth-of-type(4) {
+  padding-left: 15px;
+}
 
+.ui-button {
+  margin-top: 20px;
+  padding: 10px !important;
+  background: none;
+  background-color: #397CFF;
+  color: white !important;
+  border: none;
+  outline: none;
+  box-shadow: 0px 7px 0px #1856cf;
+  text-shadow: none;
+  margin-right: 0px !important;
+  border-radius: 6px;
+  width: 100%;
+  transition: 0.15s ease;
+}
 
+.ui-button:hover {
+  background-color:#2765df;
+}
+
+.ui-button:last-child {
+  background-color: white;
+  color: #111111 !important;
+  box-shadow: none;
+  margin-top: 10px;
+}
+
+.ui-button span {
+  color: white !important;
+  font-size: 18px;
+}
+
+.ui-button:last-child span{
+  color: #111 !important;
+  font-size: 16px;
+}
+
+.ui-button:last-child:hover span{
+  color: #397CFF !important;
+}
+
+.ui-inputfield {
+  box-shadow: none;
+  background: #eee;
+  border: none;
+  padding: 8px;
+  width: 100%;
+}
+
+.ui-password-panel  {
+  position: absolute;
+  border: none;
+  background: white;
+  text-shadow: none;
+  padding: 12px 0px !important;
+}
+
+.ui-inputtextarea-resizable {
+  width: 100%;
+}
+
+.ui-selectonemenu {
+  width: 100% !important;
+  border: none;
+  padding-right: 8px !important;
+}
+
+.ui-selectonemenu label.ui-selectonemenu-label {
+  padding: 8px 0 8px 8px !important;
+}
+
+tfoot > tr > td > span {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+}
+
+td {
+  padding-bottom: 10px;
+}
