@@ -20,6 +20,7 @@ public class PlannerBean implements Serializable{
 	private String[] thursdaySession;
 	private String[] fridaySession;
 	 
+	
 	// Monday
 	public String[] getMondaySession() {
 		return mondaySession;
@@ -87,6 +88,12 @@ public class PlannerBean implements Serializable{
     }
 	
 	
+	@Override
+	public String toString() {
+		return "";
+	}
+
+
 	private static Map<String, Object> mondaySessionValue;{
     	mondaySessionValue = new LinkedHashMap<String, Object>();
          
