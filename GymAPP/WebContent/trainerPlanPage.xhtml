@@ -39,35 +39,34 @@
 	<div class="main">
 		<!-- PAGE_SPECIFIC_STRUCTURE -->
 		<div class="heading">
-			<h1>Personalised Planner Page one week</h1>
-			<h3>Input plan details</h3>
-			<h:form>
-				<h:inputText value="#{plannerBean.memberName}"></h:inputText>
-				<h:commandButton value="Create Plan" action="planoutput"></h:commandButton>
-				<br />
-
-				<h:selectManyListbox value="#{plannerBean.mondaySession}">
-					<f:selectItems value="#{plannerBean.mondaySessionValue}" />
-				</h:selectManyListbox>
-
-				<h:selectManyListbox value="#{plannerBean.tuesdaySession}">
-					<f:selectItems value="#{plannerBean.tuesdaySessionValue}" />
-				</h:selectManyListbox>
-
-				<h:selectManyListbox value="#{plannerBean.wednesdaySession}">
-					<f:selectItems value="#{plannerBean.wednesdaySessionValue}" />
-				</h:selectManyListbox>
-
-				<h:selectManyListbox value="#{plannerBean.thursdaySession}">
-					<f:selectItems value="#{plannerBean.thursdaySessionValue}" />
-				</h:selectManyListbox>
-
-				<h:selectManyListbox value="#{plannerBean.fridaySession}">
-					<f:selectItems value="#{plannerBean.fridaySessionValue}" />
-				</h:selectManyListbox>
-
-			</h:form>
-			<br /> <br />
+			<div class="planpage">
+				<h1>Personalised Planner Page one week</h1>
+				<h3>Input plan details</h3>
+				<h:form>
+					<div>
+						<span>Name your plan: </span>
+						<h:inputText value="#{plannerBean.memberName}"></h:inputText>
+					</div>
+					<h:selectManyListbox value="#{plannerBean.mondaySession}">
+						<f:selectItems value="#{plannerBean.mondaySessionValue}" />
+					</h:selectManyListbox>
+					<h:selectManyListbox value="#{plannerBean.tuesdaySession}">
+						<f:selectItems value="#{plannerBean.tuesdaySessionValue}" />
+					</h:selectManyListbox>
+					<h:selectManyListbox value="#{plannerBean.wednesdaySession}">
+						<f:selectItems value="#{plannerBean.wednesdaySessionValue}" />
+					</h:selectManyListbox>
+					<h:selectManyListbox value="#{plannerBean.thursdaySession}">
+						<f:selectItems value="#{plannerBean.thursdaySessionValue}" />
+					</h:selectManyListbox>
+					<h:selectManyListbox value="#{plannerBean.fridaySession}">
+						<f:selectItems value="#{plannerBean.fridaySessionValue}" />
+					</h:selectManyListbox>
+					<div>
+						<h:commandButton value="Create Plan" action="planoutput"></h:commandButton>
+					</div>
+				</h:form>
+			</div>
 		</div>
 		<!-- FOOTER -->
 		<div class="footer">
