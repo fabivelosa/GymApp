@@ -25,15 +25,16 @@
 <h:body>
 <!-- NAV -->
 		<div class="nav">
-		<div class="inner">
-			<div class="logo-container">
-				<img src="resources/images/watersidegym2.svg" />
+		<h:form>
+			<div class="inner">
+				<div class="logo-container">
+					<img src="resources/images/watersidegym2.svg" />
+				</div>
+				<div class="account-options">
+					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
+				</div>
 			</div>
-			<div class="account-options">
-				<a href="members.xhtml" id="signin">Members HomePage</a> <a
-					href="login.xhtml" class="register">Login</a>
-			</div>
-		</div>
+		</h:form>
 	</div>
 	<!-- /NAV -->
 <!-- MAIN -->

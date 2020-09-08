@@ -31,11 +31,6 @@ public class PaypalResponse extends HttpServlet {
 		}else if (userNew != null ) {
 			member = userNew;
 		}
-		
-		System.out.println("paypall response");
-		
-		
-					
 		double amount = Double.parseDouble(request.getParameter("amt"));
 		String membership = null;
 		if (amount == 149.00) {
@@ -47,7 +42,11 @@ public class PaypalResponse extends HttpServlet {
 		} else if (amount == 599.00) {
 			membership = CreditTypes.TWELVE_MONTHS.getValue() + " paid";
 			member.setOneToOneCredit(member.getOneToOneCredit()+CreditTypes.TWELVE_MONTHS.getCreditQtd());
+		}else if (amount == 19.00) {
+			membership = CreditTypes.ONCE_OFF.getValue() + " done";
+			member.setOneToOneCredit(member.getOneToOneCredit() + CreditTypes.ONCE_OFF.getCreditQtd());
 		}
+		
 
 		String destination = "payPalSuccess.xhtml";
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(destination);
