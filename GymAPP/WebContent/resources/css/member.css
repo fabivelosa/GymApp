@@ -79,7 +79,7 @@ h3 {
 /* NEWLY ADD STYLES */
 
 table {
-  padding: 30px 15%;
+  padding: 50px 15%;
 }
 
 table:nth-of-type(even) {
@@ -122,7 +122,7 @@ table:nth-of-type(even) input.centreElement:hover {
 }
 
 form > table:last-of-type {
-	padding-bottom: 75px;
+	padding-bottom: 90px;
 }
 
 table table {
@@ -142,19 +142,25 @@ table table tr:last-of-type td input {
   margin: 0;
 }
 
+table img {
+  border-radius: 12px;
+  box-shadow: 0px 8px 0px #00000022;
+}
+
 div.welcome-back {
   position: relative;
-  padding: 15px 0;
+  padding: 50px 0;
   width: 100vw;
-  background-color: #397cff;
+  background-color: #222;
   margin: 0;
   margin-top: 25px;
+  border-bottom: 10px solid #397cff;
 }
 
 div.welcome-back span {
   margin-left: 15%;
   color: white;
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 700;
 }
 
