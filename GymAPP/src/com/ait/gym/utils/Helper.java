@@ -1,7 +1,11 @@
 package com.ait.gym.utils;
 
+import java.io.IOException;
+
 import javax.faces.application.Application;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ait.gym.bean.Employee;
@@ -33,6 +37,30 @@ public class Helper {
 		if (session != null) {
 			session.invalidate();
 		}
+	}
+	
+	public static void sendRedirect(String page) {
+
+		// Get the FacesContext object.
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		HttpServletRequest req = (HttpServletRequest) context.getExternalContext().getRequest();
+		HttpServletResponse respose = (HttpServletResponse) context.getExternalContext().getResponse();
+		
+	    String URL = req.getContextPath()+"/"+ page;
+		 
+		 
+		// Get the HttpSession object for the current context.
+		
+		
+		try {
+			respose.sendRedirect(URL);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
 	}
 	
 	public static Member getUserLogged() {
