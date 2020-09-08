@@ -14,19 +14,17 @@
 <h:body>
 	<!-- NAV -->
 	<div class="nav">
+	<h:form>
 		<div class="inner">
 			<div class="logo-container">
 				<img src="resources/images/watersidegym2.svg" />
 			</div>
 			<div class="account-options">
-				 <a href="index.xhtml" class="register">Logout</a>
+				 <h:commandLink  action="#{login.logout}"  class="register">Logout</h:commandLink>			
 			</div>
+		 </div>
+	</h:form>
 
-			<div class="account-options">
-							</div>
-
-
-		</div>
 	</div>
 	<!-- /NAV -->
 	<br> </br>
@@ -36,7 +34,6 @@
 				name="images/BookaDayPass.jpg" />
 
 			<h:panelGrid cellpadding="10" cellspacing="10">
-
 				<h:outputText
 					value="Welcome #{sessionScope.loggedUser.firstName} =) " />
 				<h:outputText

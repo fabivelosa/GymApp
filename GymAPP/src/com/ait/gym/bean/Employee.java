@@ -165,7 +165,7 @@ public class Employee {
 
 		FacesMessage message   = new FacesMessage("Employee Information is stored Successfully.");
 		FacesContext.getCurrentInstance().addMessage(null, message);
-		outcome = "login";		
+		outcome = "login?faces-redirect=true";		
 		return outcome;
 	}
 }

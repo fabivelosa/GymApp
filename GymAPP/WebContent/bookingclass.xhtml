@@ -24,15 +24,17 @@
 <h:body>
 	<!-- NAV -->
 	<div class="nav">
-		<div class="inner">
-			<div class="logo-container">
-				<img src="resources/images/watersidegym2.svg" />
+		<h:form>
+			<div class="inner">
+				<div class="logo-container">
+					<img src="resources/images/watersidegym2.svg" />
+				</div>
+				<div class="account-options">
+					<a href="member.xhtml" id="signin">Members HomePage</a>
+					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
+				</div>
 			</div>
-			<div class="account-options">
-				<a href="member.xhtml" id="signin">Members HomePage</a> <a
-					href="index.xhtml" class="register">Logout</a>
-			</div>
-		</div>
+		</h:form>
 	</div>
 	<!-- /NAV -->
 	<!-- MAIN -->
@@ -44,7 +46,7 @@
 					<p:outputPanel id="containerforBook">
 						<p:dataTable id="bookclasstable" value="#{bookClassView.gymClassesAvailable}"  
 							var="classlist" styleClass="table">
-		 					
+		 					<f:facet name="header"> Classes for Booking  </f:facet>
 									<p:column>
 										<f:facet name="header">Name</f:facet>
 				
@@ -82,8 +84,8 @@
 									</p:column>
 				
 									<p:column>
-										<f:facet name="header">Book</f:facet>
-										  <p:commandButton value="Book Class" ajax="false"	 action="#{bookClassView.enrollClasses(classlist.id)}"/> 
+										<f:facet name="header">Action</f:facet>
+										  <p:commandButton value="Book" ajax="false"	 action="#{bookClassView.enrollClasses(classlist.id)}"/> 
 										 										
 									</p:column>
 								
@@ -96,7 +98,7 @@
 					<p:outputPanel id="containerCancel">
 						<p:dataTable id="cancelclasstable" value="#{bookClassView.gymClassesBooked}"
 							var="classbook" styleClass="table">
-		
+							<f:facet name="header"> My booked Classes   </f:facet>
 							<p:column>
 								<f:facet name="header">Name</f:facet>
 								<h:outputText value="#{classbook.name.value}" />
@@ -132,8 +134,8 @@
 							</p:column>
 		
 							<p:column>
-								<f:facet name="header">Unbook</f:facet>
-								<p:commandButton value="Unbook Class"  ajax="false"  action="#{bookClassView.cancelEnroll(classbook.id)}"/>		 	
+								<f:facet name="header">Action</f:facet>
+								<p:commandButton value="Unbook"  ajax="false"  action="#{bookClassView.cancelEnroll(classbook.id)}"/>		 	
 												
 							</p:column>
 						</p:dataTable> 

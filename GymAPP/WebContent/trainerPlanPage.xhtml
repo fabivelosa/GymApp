@@ -21,15 +21,17 @@
 <h:body>
 	<!-- NAV -->
 	<div class="nav">
-		<div class="inner">
-			<div class="logo-container">
-				<img src="resources/images/watersidegym2.svg" />
+		<h:form>
+			<div class="inner">
+				<div class="logo-container">
+					<img src="resources/images/watersidegym2.svg" />
+				</div>
+				<div class="account-options">
+					<a href="trainershomepage.xhtml" id="signin">Trainers HomePage</a>
+					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
+				</div>
 			</div>
-			<div class="account-options">
-				<a href="login.xhtml" id="signin">Sign In </a> <a href="#jointoday"
-					class="register">Register</a>
-			</div>
-		</div>
+		</h:form>
 	</div>
 	<!-- /NAV -->
 
@@ -44,29 +46,28 @@
 				<h:commandButton value="Create Plan" action="planoutput"></h:commandButton>
 				<br />
 
-					<h:selectManyListbox value="#{plannerBean.mondaySession}">
-						<f:selectItems value="#{plannerBean.mondaySessionValue}" />
-					</h:selectManyListbox>
-	
-					<h:selectManyListbox value="#{plannerBean.tuesdaySession}">
-						<f:selectItems value="#{plannerBean.tuesdaySessionValue}" />
-					</h:selectManyListbox>
-	
-					<h:selectManyListbox value="#{plannerBean.wednesdaySession}">
-						<f:selectItems value="#{plannerBean.wednesdaySessionValue}" />
-					</h:selectManyListbox>
-	
-					<h:selectManyListbox value="#{plannerBean.thursdaySession}">
-						<f:selectItems value="#{plannerBean.thursdaySessionValue}" />
-					</h:selectManyListbox>
-	
-					<h:selectManyListbox value="#{plannerBean.fridaySession}">
-						<f:selectItems value="#{plannerBean.fridaySessionValue}" />
-					</h:selectManyListbox>
+				<h:selectManyListbox value="#{plannerBean.mondaySession}">
+					<f:selectItems value="#{plannerBean.mondaySessionValue}" />
+				</h:selectManyListbox>
+
+				<h:selectManyListbox value="#{plannerBean.tuesdaySession}">
+					<f:selectItems value="#{plannerBean.tuesdaySessionValue}" />
+				</h:selectManyListbox>
+
+				<h:selectManyListbox value="#{plannerBean.wednesdaySession}">
+					<f:selectItems value="#{plannerBean.wednesdaySessionValue}" />
+				</h:selectManyListbox>
+
+				<h:selectManyListbox value="#{plannerBean.thursdaySession}">
+					<f:selectItems value="#{plannerBean.thursdaySessionValue}" />
+				</h:selectManyListbox>
+
+				<h:selectManyListbox value="#{plannerBean.fridaySession}">
+					<f:selectItems value="#{plannerBean.fridaySessionValue}" />
+				</h:selectManyListbox>
 
 			</h:form>
-			<br />
-			<br />
+			<br /> <br />
 		</div>
 		<!-- FOOTER -->
 		<div class="footer">

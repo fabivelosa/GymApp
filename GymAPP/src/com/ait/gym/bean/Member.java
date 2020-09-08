@@ -218,12 +218,15 @@ public class Member implements Serializable {
 	}
 
 	// Action Methods
-	public String storeMemberInfo() {
+	public String  storeMemberInfo() {
 		addMemberHandler(this);
 		FacesMessage message = new FacesMessage("Account created Successfully.");
-		String outcome = "login";
+		String outcome = "login.xhtml?faces-redirect=true";
 		FacesContext.getCurrentInstance().addMessage(null, message);
+		
+		//Helper.sendRedirect(outcome);
 		return outcome;
+		
 	}
 
 	public void addMemberHandler(Member member) {
