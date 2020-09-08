@@ -14,16 +14,16 @@
 <h:body>
 	<!-- NAV -->
 	<div class="nav">
-	<h:form>
-		<div class="inner">
-			<div class="logo-container">
-				<img src="resources/images/watersidegym2.svg" />
+		<h:form>
+			<div class="inner">
+				<div class="logo-container">
+					<img src="resources/images/watersidegym2.svg" />
+				</div>
+				<div class="account-options">
+					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
+				</div>
 			</div>
-			<div class="account-options">
-				 <h:commandLink  action="#{login.logout}"  class="register">Logout</h:commandLink>			
-			</div>
-		 </div>
-	</h:form>
+		</h:form>
 
 	</div>
 	<!-- /NAV -->
@@ -35,20 +35,20 @@
 
 			<h:panelGrid cellpadding="10" cellspacing="10">
 				<h:outputText
-					value="Welcome #{sessionScope.loggedUser.firstName} =) " />
-				<h:outputText
-					value=" You have #{sessionScope.loggedUser.oneToOneCredit} One-to-One Sessions Available." />
-				
+					value="&#128516; Welcome #{sessionScope.loggedUser.firstName}! " />
+
 				<h:outputLabel
 					style="display: block; width:100%; text-align:center;  font-size:50px "
-					value="Purchase a membership" />
+					value="Personal Training" />
+				<h:outputText
+					value=" You have #{sessionScope.loggedUser.oneToOneCredit} One-to-One Sessions Available!" />
 
-				<p>Join Waterside gym family and find life-long friends to work
-					out with. Book a three, six or twelve months membership and get a
-					tailored individual programme. Our memberships starts from 39.99
-					per month!</p>
-				<h:commandButton styleClass="centreElement" value="Purchase"
-					action="buyMembership" style="align:right;" />
+				<p>Access a one-on-one session or organised personal training
+					for you. This is an awesome way for beginners to learn the
+					requirements of training, or for experienced gym-goers to take
+					their fitness to the next level.</p>
+				<h:commandButton styleClass="centreElement" value="Book now"
+					action="bookingtrainersession" style="align:right;" />
 			</h:panelGrid>
 		</h:panelGrid>
 
@@ -71,7 +71,7 @@
 					on the gym floor. Get to know the trainers and let them help you to
 					achieve your goals!</p>
 				<h:commandButton styleClass="centreElement" value="About us"
-					action=" AboutUs" />
+					action="AboutUs" />
 			</h:panelGrid>
 			<h:graphicImage style="height:300px;width:620px"
 				name="images/meetTeam.jpg" />
@@ -124,32 +124,14 @@
 
 				<h:outputLabel
 					style="display: block; width:100%; text-align:center;  font-size:50px"
-					value="Personal Training" />
-				<p>Access a one-on-one session or organised personal training
-					for you. This is an awesome way for beginners to learn the
-					requirements of training, or for experienced gym-goers to take
-					their fitness to the next level.</p>
-				<h:commandButton styleClass="centreElement" value="Book a class"
-					action=" book_aPersonalTrainingClass" />
-			</h:panelGrid>
-		</h:panelGrid>
-
-		<h:panelGrid id="panel6" columns="2">
-
-
-			<h:panelGrid cellpadding="20" cellspacing="20">
-				<h:outputLabel
-					style="display: block; width:100%; text-align:center;  font-size:50px"
-					value=" View class Schedule" />
+					value="View Class Schedule" />
 				<p>We have the perfect program for you no matter your current
 					experience. All the classes are limited capacity and the demand is
 					high! Don’t miss out and plan your schedule. Book the classes, pack
 					your bag and come join us for a workout!</p>
-				<h:commandButton styleClass="centreElement" value="View Schedule"
+				<h:commandButton styleClass="centreElement" value="Book a class"
 					action="bookingclass" />
 			</h:panelGrid>
-			<h:graphicImage style="height:300px;width:620px"
-				name="images/member4.jpg" />
 		</h:panelGrid>
 
 	</h:form>
