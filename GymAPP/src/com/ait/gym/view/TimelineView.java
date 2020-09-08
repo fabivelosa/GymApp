@@ -1,6 +1,7 @@
 package com.ait.gym.view;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.view.ViewScoped;
@@ -19,7 +20,6 @@ public class TimelineView {
 	ArrayList<GymClass> trainerClass;
 	ArrayList<GymClass> classesUnassigned;
 
-
 	public void setClassesUnassigned(ArrayList<GymClass> classesUnassigned) {
 		this.classesUnassigned = classesUnassigned;
 	}
@@ -33,12 +33,9 @@ public class TimelineView {
 		return employeeList.getEmployees();
 	}
 
-
 	public void setTrainerClass(ArrayList<GymClass> trainerClass) {
 		this.trainerClass = trainerClass;
 	}
-
-	
 
 	public ArrayList<GymClass> getTrainerClass() {
 		trainerClass = new ArrayList<GymClass>();
@@ -57,8 +54,7 @@ public class TimelineView {
 		return trainerClass;
 	}
 
-	
-	public ArrayList<GymClass> getclassesUnassigned () {
+	public ArrayList<GymClass> getclassesUnassigned() {
 		classesUnassigned = new ArrayList<GymClass>();
 		GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
 
@@ -71,5 +67,32 @@ public class TimelineView {
 		return classesUnassigned;
 	}
 
+	public Employee getTrainerLogged() {
+		return (Employee) Helper.getTrainerLogged();
+	}
+
+	public void assignClass(String classesId) {
+
+		Employee emp = getTrainerLogged();
+		GymClass gymClass = GymClassList.getGymClassbyId(Integer.parseInt(classesId));
+
+		if (emp.getBookedClasses() == null) {
+			List<GymClass> list = new ArrayList<GymClass>();
+			emp.setBookedClasses(list);
+		}
+		emp.getBookedClasses().add(gymClass);
+		gymClass.setInstructor(emp);
+
+	}
+
+	public void cancelAssignClass(String classesId) {
+		Employee emp = getTrainerLogged();
+		GymClass gymClass = GymClassList.getGymClassbyId(Integer.parseInt(classesId));
+		if(emp.getBookedClasses() != null) {
+			emp.getBookedClasses().remove(gymClass);
+		}
+		gymClass.setInstructor(null);
+
+	}
 
 }

@@ -43,7 +43,7 @@
 
 			<p:outputPanel id="containerforBook">
 				<p:dataTable id="availableclasstable"
-					value="#{timelineView.trainerClass}" var="classlist"
+					value="#{timelineView.classesUnassigned}" var="classlist"
 					styleClass="table">
 					<f:facet name="header"> Classes Available </f:facet>
 					<p:column>
@@ -97,12 +97,12 @@
 
 			<p:outputPanel id="containerCancel">
 				<p:dataTable id="cancelclasstable"
-					value="#{timelineView.classesUnassigned}" var="classbook"
+					value="#{timelineView.trainerClass}" var="classbook"
 					styleClass="table">
 					<f:facet name="header"> My Classes   </f:facet>
-					<p:column>
+					<p:column  styleClass="text-center" >
 						<f:facet name="header">Name</f:facet>
-						<h:outputText value="#{classbook.name.value}" />
+						<h:outputText  value="#{classbook.name.value}" />
 					</p:column>
 
 					<p:column>
@@ -137,7 +137,7 @@
 					<p:column>
 						<f:facet name="header">Action</f:facet>
 						<p:commandButton value="UnAssigned" ajax="false"
-							action="#{timelineView.cancelEnroll(classbook.id)}" />
+							action="#{timelineView.cancelAssignClass(classbook.id)}" /> 
 
 					</p:column>
 				</p:dataTable>

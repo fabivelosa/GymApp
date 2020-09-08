@@ -1,8 +1,11 @@
 package com.ait.gym.bean;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -28,7 +31,8 @@ public class Employee {
 	private String password;
 	private String aboutYourself;
 	private boolean employeeType;
-	
+	private List<GymClass> bookedClasses;
+		
 
  
 	static int range = 1000;
@@ -39,6 +43,11 @@ public class Employee {
 	}
 	
 	
+	@PostConstruct
+	public void init() {
+		bookedClasses = new ArrayList<GymClass>();
+	
+	}
 	public Employee (String name) {
 		Random random = new Random();    
 		this.setEmployeeID("P" + random.nextInt(range));		
@@ -168,4 +177,15 @@ public class Employee {
 		outcome = "login?faces-redirect=true";		
 		return outcome;
 	}
+
+
+	public List<GymClass> getBookedClasses() {
+		return bookedClasses;
+	}
+
+
+	public void setBookedClasses(List<GymClass> bookedClasses) {
+		this.bookedClasses = bookedClasses;
+	}
+
 }

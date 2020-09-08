@@ -31,18 +31,23 @@
 	<h:form>
 		<h:panelGrid id="panel1" columns="2">
 			<h:graphicImage style="height:300px; width:620px;"
-				name="images/BookaDayPass.jpg" />
+				 name="images/PersonalTraining.jpg"  />
 
 			<h:panelGrid cellpadding="10" cellspacing="10">
 				<h:outputText
 					value="&#128516; Welcome #{sessionScope.loggedUser.firstName}! " />
+					
+				<h:outputText
+					value="Type : #{sessionScope.loggedUser.membershipType.value} " />
+				<h:outputText
+					value=" You have #{sessionScope.loggedUser.oneToOneCredit} One-to-One Sessions Available!" />
+					
 
 				<h:outputLabel
 					style="display: block; width:100%; text-align:center;  font-size:50px "
 					value="Personal Training" />
-				<h:outputText
-					value=" You have #{sessionScope.loggedUser.oneToOneCredit} One-to-One Sessions Available!" />
-
+					
+			
 				<p>Access a one-on-one session or organised personal training
 					for you. This is an awesome way for beginners to learn the
 					requirements of training, or for experienced gym-goers to take
@@ -51,9 +56,45 @@
 					action="bookingtrainersession" style="align:right;" />
 			</h:panelGrid>
 		</h:panelGrid>
-
-
+		
 		<h:panelGrid id="panel2" columns="2">
+
+		
+			<h:panelGrid cellpadding="20" cellspacing="20">
+
+				<h:outputLabel
+					style="display: block; width:100%; text-align:center;  font-size:50px"
+					value="View Class Schedule" />
+				<p>We have the perfect program for you no matter your current
+					experience. All the classes are limited capacity and the demand is
+					high! Don’t miss out and plan your schedule. Book the classes, pack
+					your bag and come join us for a workout!</p>
+				<h:commandButton styleClass="centreElement" value="Book a class"
+					action="bookingclass" />
+			</h:panelGrid>
+				<h:graphicImage style="height:300px;width:620px"
+				 name="images/BookaDayPass.jpg" />
+		</h:panelGrid>
+
+	<h:panelGrid id="panel3" columns="2">
+			<h:graphicImage style="height:300px;width:620px"
+				name="images/member1.jpg" />
+
+			<h:panelGrid cellpadding="20" cellspacing="20">
+				<h:outputLabel
+					style="display: block; width:100%; text-align:center; font-size:50px"
+					value="Book a Once off Enrolment" />
+				<p>Don’t use the lack of time as an excuse to skip your workout!
+					If you don’t like membership commitment book a once off enrolment.
+					Choose from variety of classes including Circuits, Pilates, Yoga,
+					Thai Chi Mindfulness. Get in, sweat and get out in just 45 minutes.</p>
+				<h:commandButton styleClass="centreElement" value="Book"
+					action=" Schedule" />
+			</h:panelGrid>
+			
+		</h:panelGrid>
+
+		<h:panelGrid id="panel4" columns="2">
 
 
 			<h:panelGrid cellpadding="20" cellspacing="20">
@@ -77,7 +118,7 @@
 				name="images/meetTeam.jpg" />
 		</h:panelGrid>
 
-		<h:panelGrid id="panel3" columns="2">
+		<h:panelGrid id="panel5" columns="2">
 
 			<h:graphicImage style="height:300px;width:620px"
 				name="images/member3.jpg" />
@@ -98,41 +139,9 @@
 			</h:panelGrid>
 		</h:panelGrid>
 
-		<h:panelGrid id="panel4" columns="2">
+	
 
-
-			<h:panelGrid cellpadding="20" cellspacing="20">
-				<h:outputLabel
-					style="display: block; width:100%; text-align:center; font-size:50px"
-					value="Book a Once off Enrolment" />
-				<p>Don’t use the lack of time as an excuse to skip your workout!
-					If you don’t like membership commitment book a once off enrolment.
-					Choose from variety of classes including Circuits, Pilates, Yoga,
-					Thai Chi Mindfulness. Get in, sweat and get out in just 45 minutes.</p>
-				<h:commandButton styleClass="centreElement" value="Book"
-					action=" Schedule" />
-			</h:panelGrid>
-			<h:graphicImage style="height:300px;width:620px"
-				name="images/member1.jpg" />
-		</h:panelGrid>
-
-		<h:panelGrid id="panel5" columns="2">
-
-			<h:graphicImage style="height:300px;width:620px"
-				name="images/PersonalTraining.jpg" />
-			<h:panelGrid cellpadding="20" cellspacing="20">
-
-				<h:outputLabel
-					style="display: block; width:100%; text-align:center;  font-size:50px"
-					value="View Class Schedule" />
-				<p>We have the perfect program for you no matter your current
-					experience. All the classes are limited capacity and the demand is
-					high! Don’t miss out and plan your schedule. Book the classes, pack
-					your bag and come join us for a workout!</p>
-				<h:commandButton styleClass="centreElement" value="Book a class"
-					action="bookingclass" />
-			</h:panelGrid>
-		</h:panelGrid>
+		
 
 	</h:form>
 

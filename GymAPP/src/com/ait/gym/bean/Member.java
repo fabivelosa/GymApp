@@ -15,6 +15,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
 import com.ait.gym.bean.lists.MembersList;
+import com.ait.gym.utils.CreditTypes;
 import com.ait.gym.utils.Helper;
 
 @ManagedBean
@@ -38,6 +39,7 @@ public class Member implements Serializable {
 	private String userName;
 	private String password;
 	private int oneToOneCredit;
+	private CreditTypes membershipType;
 	private List<GymClass> bookedClasses;
 	private List<GymClass> oneToOneClasses;
 	
@@ -46,7 +48,8 @@ public class Member implements Serializable {
 	
 	@PostConstruct
 	public void init() {
-		oneToOneClasses= new ArrayList<GymClass>();
+		oneToOneClasses= new ArrayList<GymClass>(); 
+		bookedClasses = new ArrayList<GymClass>();
 	
 	}
 
@@ -54,7 +57,8 @@ public class Member implements Serializable {
 		super();
 		Random random = new Random();    
 		this.setMemberID("M" + random.nextInt(range));
-		this.oneToOneCredit = 0;
+		this.oneToOneCredit = 1;
+		this.membershipType = CreditTypes.TREE_MONTHS;
 	}
 	
 	public Member(String firstName,String login,String password) {
@@ -64,12 +68,13 @@ public class Member implements Serializable {
 		this.setPassword(password);
 		Random random = new Random();    
 		this.setMemberID("M" + random.nextInt(range));
-		this.oneToOneCredit = 0;
+		this.oneToOneCredit = 2;
+		this.membershipType = CreditTypes.TREE_MONTHS;
 		
 	}
 
 	public Member(String firstName, String lastName, Date dob, String mobileNumber, String emailAddress, String address,
-			String city, String gender, String goal, String eircode, String login, String password) {
+			String city, String gender, String goal, String eircode, String login, String password,CreditTypes membershipType) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -86,6 +91,7 @@ public class Member implements Serializable {
 		Random random = new Random();    
 		this.setMemberID("M" + random.nextInt(range));
 		this.oneToOneCredit = 0;
+		this.membershipType =membershipType; 
 	}
 
 	public Member(String memberID) {
@@ -257,6 +263,14 @@ public class Member implements Serializable {
 
 	public void setBookedClasses(List<GymClass> bookedClasses) {
 		this.bookedClasses = bookedClasses;
+	}
+
+	public CreditTypes getMembershipType() {
+		return membershipType;
+	}
+
+	public void setMembershipType(CreditTypes membershipType) {
+		this.membershipType = membershipType;
 	}
 
 }

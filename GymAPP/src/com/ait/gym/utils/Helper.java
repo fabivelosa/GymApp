@@ -51,7 +51,7 @@ public class Helper {
 	}
 	
 	public static Member getUserLogged() {
-		System.out.println("getUserLogged");
+		
 		Member member = new Member();
 
 		FacesContext context2 = FacesContext.getCurrentInstance();
@@ -66,8 +66,8 @@ public class Helper {
 		return member;
 	}
 	
-	public static Employee getTrainerLogged() {
-		System.out.println("getTrainerLogged");
+	public static Employee getTrainerLogged() { 
+		
 		Employee trainer = new Employee();
 
 		FacesContext context2 = FacesContext.getCurrentInstance();

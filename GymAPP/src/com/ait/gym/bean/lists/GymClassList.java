@@ -15,7 +15,7 @@ import com.ait.gym.utils.ClassesTypes;
 import com.ait.gym.utils.Helper;
 
 @ManagedBean(name = "gymClassList", eager = true)
-@SessionScoped 
+@SessionScoped
 public class GymClassList implements Serializable {
 
 	/**
@@ -49,9 +49,17 @@ public class GymClassList implements Serializable {
 		gymClasses.add(yoga);
 		GymClass taichi = new GymClass(getRandomId(), ClassesTypes.TAI_CHI, DayOfWeek.FRIDAY, "11:00", 60, 20, emp);
 		gymClasses.add(taichi);
-		GymClass personal = new GymClass(getRandomId(), ClassesTypes.ONE_ONE_SESSION, DayOfWeek.MONDAY, "11:00", 60, 20,
+		GymClass personal = new GymClass(getRandomId(), ClassesTypes.ONE_ONE_SESSION, DayOfWeek.MONDAY, "11:00", 60, 1,
 				emp);
 		gymClasses.add(personal);
+
+		GymClass personal1 = new GymClass(getRandomId(), ClassesTypes.ONE_ONE_SESSION, DayOfWeek.TUESDAY, "12:00", 60,
+				1, emp);
+		gymClasses.add(personal1);
+
+		GymClass personal2 = new GymClass(getRandomId(), ClassesTypes.ONE_ONE_SESSION, DayOfWeek.WEDNESDAY, "13:00", 60,
+				1, emp);
+		gymClasses.add(personal2);
 
 	}
 
@@ -67,21 +75,20 @@ public class GymClassList implements Serializable {
 	public void setGymClass(ArrayList<GymClass> gymClasses) {
 		this.gymClasses = gymClasses;
 	}
-	
-	
+
 	public static GymClass getGymClassbyId(int id) {
-		
+
 		GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
 
 		for (GymClass classes : gymClasses.getGymClass()) {
-			
-			if(classes.getId() == id) {
+
+			if (classes.getId() == id) {
 				return classes;
-			}		
+			}
 		}
-		
+
 		return null;
-		
+
 	}
 
 }
