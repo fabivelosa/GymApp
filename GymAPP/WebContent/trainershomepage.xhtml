@@ -1,129 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
-
-<h:head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport"
-		content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-	<!-- FAVICON -->
-	<link rel="icon" type="image/x-icon"
-		href="resources/images/favicon.ico" />
-	<title>Trainers Homepage</title>
-
-	<!-- CSS -->
-	<h:outputStylesheet library="css" name="global.css" />
-	<h:outputStylesheet name="member.css" library="css" />
-</h:head>
-
-
-
-<h:body>
-	<!-- NAV -->
-	<h:form>
-		<div class="nav">
-
-			<div class="inner">
-				<div class="logo-container">
-					<img src="resources/images/watersidegym2.svg" />
+	<h:head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<!-- FAVICON -->
+		<link rel="icon" type="image/x-icon"
+			href="resources/images/favicon.ico" />
+		<title>Trainers Homepage</title>
+		<!-- CSS -->
+		<h:outputStylesheet library="css" name="global.css" />
+		<h:outputStylesheet name="member.css" library="css" />
+	</h:head>
+	<h:body>
+		<!-- NAV -->
+		<h:form>
+			<div class="nav">
+				<div class="inner">
+					<div class="logo-container">
+						<img src="resources/images/watersidegym2.svg" />
+					</div>
+					<div class="account-options">
+						<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
+					</div>
 				</div>
-				<div class="account-options">
-					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
+			</div>
+		</h:form>
+		<div class="main">
+			<br /><br />
+			<h:form>
+				<h:panelGrid id="panel1" columns="2">
+					<h:graphicImage style="height:300px; width:620px;"
+						name="images/PersonalTraining.jpg" />
+					<h:panelGrid cellpadding="10" cellspacing="10">
+						<h:outputLabel
+							style="display: block; width:100%; text-align:center;  font-size:50px "
+							value="View Timetable" />
+						<p>Your next chance to inspire is just a click away ! To find
+							out when your next personal training session is with one of
+							WaterSide Gym members, simply click the below button!</p>
+						<h:commandButton styleClass="centreElement" value="View"
+							action="timetable.xhtml" style="align:right;" />
+					</h:panelGrid>
+				</h:panelGrid>
+				<h:panelGrid id="panel2" columns="2">
+					<h:panelGrid cellpadding="20" cellspacing="20">
+						<h:outputLabel
+							style="display: block; width:100%; text-align:center; font-size:50px"
+							value="Create Plans" />
+						<p>The members of WaterSide Gym are promised the best and as a
+							personal trainer of this esteemed gym we will give them the best!
+							The link below is a chance to change someone's life by creating the
+							best plan you can to help them achieve their goals. The journey of
+							a thousand steps starts with one.</p>
+						<h:commandButton styleClass="centreElement" value="Create Plan" action="trainerPlanPage"></h:commandButton>
+					</h:panelGrid>
+					<h:graphicImage style="height:300px;width:620px"
+						name="images/meetTeam.jpg" />
+				</h:panelGrid>
+				<h:panelGrid id="panel3" columns="2">
+					<h:graphicImage style="height:300px;width:620px"
+						name="images/member3.jpg" />
+					<h:panelGrid cellpadding="20" cellspacing="20">
+						<h:outputLabel
+							style="display: block; width:100%; text-align:center; font-size:50px"
+							value="Upload Videos" />
+						<p>At Waterside Gym we want the best for our members. We want
+							our members to get full value for their money! Because of this we
+							have released our newest feature, personal trainers video upload.
+							They can now access their personal trainer round the clock by our
+							own personalized work-out videos. Our members will always have the
+							chance to be able to work-out by watching the videos you upload!</p>
+						<h:commandButton styleClass="centreElement" value="Upload"
+							action="upload" />
+					</h:panelGrid>
+				</h:panelGrid>
+			</h:form>
+			<!-- FOOTER -->
+			<div class="footer">
+				<span id="arc"></span>
+				<div id="jointoday" class="inner">
+					<div class="legal">
+						<ul>
+							<li>Legal</li>
+							<li>Membership Agreement</li>
+							<li>Accessibility</li>
+							<li>Privacy</li>
+						</ul>
+					</div>
+					<div class="contact">
+						<h3>Contact Us</h3>
+						<p>info@watersidegym.ie</p>
+					</div>
+					<div>
+						<img src="resources/images/worldpay.png"
+							class="img-fluid pull-xs-left" alt="..." /> <img
+							src="resources/images/paypal.png" class="img-fluid pull-xs-left"
+							alt="..." />
+					</div>
 				</div>
 			</div>
 		</div>
-
-		<h:panelGrid id="panel1" columns="2">
-
-			<h:graphicImage style="height:300px; width:620px;"
-				name="images/PersonalTraining.jpg" />
-
-			<h:panelGrid cellpadding="10" cellspacing="10">
-
-				<h:outputLabel
-					style="display: block; width:100%; text-align:center;  font-size:50px "
-					value="View Timetable" />
-
-				<p>Your next chance to inspire is just a click away ! To find
-					out when your next personal training session is with one of
-					WaterSide Gym members, simply click the below button!</p>
-				<h:commandButton styleClass="centreElement" value="View"
-					action="timetable.xhtml" style="align:right;" />
-			</h:panelGrid>
-		</h:panelGrid>
-
-
-		<h:panelGrid id="panel2" columns="2">
-
-
-			<h:panelGrid cellpadding="20" cellspacing="20">
-
-				<h:outputLabel
-					style="display: block; width:100%; text-align:center; font-size:50px"
-					value="Create Plans" />
-
-				<p>The members of WaterSide Gym are promised the best and as a
-					personal trainer of this esteemed gym we will give them the best!
-					The link below is a chance to change someone's life by creating the
-					best plan you can to help them achieve their goals. The journey of
-					a thousand steps starts with one.</p>
-				<h:commandButton value="Create Plan" action="trainerPlanPage"></h:commandButton>
-			</h:panelGrid>
-			<h:graphicImage style="height:300px;width:620px"
-				name="images/meetTeam.jpg" />
-		</h:panelGrid>
-
-		<h:panelGrid id="panel3" columns="2">
-
-			<h:graphicImage style="height:300px;width:620px"
-				name="images/member3.jpg" />
-
-			<h:panelGrid cellpadding="20" cellspacing="20">
-
-				<h:outputLabel
-					style="display: block; width:100%; text-align:center; font-size:50px"
-					value="Upload Videos" />
-
-				<p>At Waterside Gym we want the best for our members. We want
-					our members to get full value for their money! Because of this we
-					have released our newest feature, personal trainers video upload.
-					They can now access their personal trainer round the clock by our
-					own personalized work-out videos. Our members will always have the
-					chance to be able to work-out by watching the videos you upload!</p>
-				<h:commandButton styleClass="centreElement" value="Upload"
-					action="upload" />
-			</h:panelGrid>
-		</h:panelGrid>
-
-	</h:form>
-
-	<!-- FOOTER -->
-	<div class="footer">
-		<span id="arc"></span>
-		<div id="jointoday" class="inner">
-			<div class="legal">
-				<ul>
-					<li>Legal</li>
-					<li>Membership Agreement</li>
-					<li>Accessibility</li>
-					<li>Privacy</li>
-				</ul>
-			</div>
-			<div class="contact">
-				<h3>Contact Us</h3>
-				<p>info@watersidegym.ie</p>
-			</div>
-			<div>
-				<img src="resources/images/worldpay.png"
-					class="img-fluid pull-xs-left" alt="..." /> <img
-					src="resources/images/paypal.png" class="img-fluid pull-xs-left"
-					alt="..." />
-			</div>
-		</div>
-	</div>
-</h:body>
-
+	</h:body>
 </html>
