@@ -19,6 +19,7 @@
 					<img src="resources/images/watersidegym2.svg" />
 				</div>
 				<div class="account-options">
+					<a href="member.xhtml" id="signin">Members HomePage</a>
 					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
 				</div>
 			</div>
@@ -53,9 +54,8 @@
 								value="http://localhost:8080/GymAPP/welcome" /> <input
 								type="hidden" name="rm" value="2" /> <input type="hidden"
 								name="item_name" value="amount" /> <input type="hidden"
-								name="currency_code" value="EUR" /> <input type="radio"
-								id="onceOff" name="amount" value="19" /> <label for="OnceOff">
-								Once-off Enrollment</label> <br />
+								name="currency_code" value="EUR" /> <input type="hidden"
+								id="onceOff" name="amount" value="19" /> 
 							<br />
 
 							<!-- Display the payment button. -->
