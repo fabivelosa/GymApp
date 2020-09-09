@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-//@WebFilter("/*")
-public class AuthenticationFilter implements Filter {
+@WebFilter("/*")
+public class AuthenticationFilter implements Filter { 
 
 	List<String> allowedUrl;
 	 
