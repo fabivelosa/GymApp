@@ -21,7 +21,7 @@ public class PaypalRespMb {
 	}
 
 	public void setAmount(String amount) {
-		this.amount = amount;
+		this.amount = amount; 
 	}
 
 	public String getTxId() {

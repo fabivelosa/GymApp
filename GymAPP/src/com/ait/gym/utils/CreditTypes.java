@@ -4,11 +4,11 @@ public enum CreditTypes {
 
 	TREE_MONTHS(1, "Three months membership "), 
 	SIX_MONTHS(2, "Six months membership"),
-	ONCE_OFF(3, "Once off payment"),
+	ONCE_OFF(1, "Once off payment"),
 	TWELVE_MONTHS(4, "Twelve months membership");
 
 	private final int creditQtd;
-	private final String value;
+	private final String value; 
 
 	private CreditTypes(int creditQtd, String value) {
 		this.creditQtd = creditQtd;

@@ -20,35 +20,42 @@ public class PaypalResponse extends HttpServlet {
 			throws ServletException, IOException {
 		
 		Member member = null;
+		String destination = null;
 		HttpSession session = (HttpSession) request.getSession();
 		String loggedUser = (String) session.getAttribute("isUserLogged");
 		String userType = (String) session.getAttribute("userType");
 		Member userNew = (Member) session.getAttribute("isUserNew");
 
 		if (loggedUser != null && loggedUser.equals("true") && userType != null && userType.equals("M")) {
-			member = (Member) session.getAttribute("loggedUser");
+			member = (Member) session.getAttribute("loggedUser"); 
+			destination = "payPalSuccess.xhtml";
 
 		}else if (userNew != null ) {
 			member = userNew;
+			destination = "payPalSuccessmb.xhtml";
+			session.removeAttribute("isUserNew");
 		}
 		double amount = Double.parseDouble(request.getParameter("amt"));
 		String membership = null;
 		if (amount == 149.00) {
 			membership = CreditTypes.TREE_MONTHS.getValue() + " paid";
 			member.setOneToOneCredit(member.getOneToOneCredit()+CreditTypes.TREE_MONTHS.getCreditQtd());
+			member.setMembershipType(CreditTypes.TREE_MONTHS);
 		} else if (amount == 299.00) {
 			membership = CreditTypes.SIX_MONTHS.getValue() + " paid";
 			member.setOneToOneCredit(member.getOneToOneCredit()+CreditTypes.SIX_MONTHS.getCreditQtd());
+			member.setMembershipType(CreditTypes.SIX_MONTHS);
 		} else if (amount == 599.00) {
 			membership = CreditTypes.TWELVE_MONTHS.getValue() + " paid";
 			member.setOneToOneCredit(member.getOneToOneCredit()+CreditTypes.TWELVE_MONTHS.getCreditQtd());
+			member.setMembershipType(CreditTypes.TWELVE_MONTHS);
 		}else if (amount == 19.00) {
 			membership = CreditTypes.ONCE_OFF.getValue() + " done";
 			member.setOneToOneCredit(member.getOneToOneCredit() + CreditTypes.ONCE_OFF.getCreditQtd());
 		}
 		
 
-		String destination = "payPalSuccess.xhtml";
+		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(destination);
 		request.setAttribute("amount", Double.toString(amount));
 		request.setAttribute("txId", request.getParameter("tx"));

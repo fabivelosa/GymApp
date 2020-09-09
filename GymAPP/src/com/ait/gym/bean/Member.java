@@ -49,7 +49,7 @@ public class Member implements Serializable {
 	@PostConstruct
 	public void init() {
 		oneToOneClasses= new ArrayList<GymClass>(); 
-		bookedClasses = new ArrayList<GymClass>();
+		bookedClasses = new ArrayList<GymClass>(); 
 	
 	}
 
@@ -57,7 +57,7 @@ public class Member implements Serializable {
 		super();
 		Random random = new Random();    
 		this.setMemberID("M" + random.nextInt(range));
-		this.oneToOneCredit = 1;
+		this.oneToOneCredit = 0;
 		this.membershipType = CreditTypes.TREE_MONTHS;
 	}
 	
@@ -68,7 +68,7 @@ public class Member implements Serializable {
 		this.setPassword(password);
 		Random random = new Random();    
 		this.setMemberID("M" + random.nextInt(range));
-		this.oneToOneCredit = 2;
+		this.oneToOneCredit = 0;
 		this.membershipType = CreditTypes.TREE_MONTHS;
 		
 	}
@@ -229,7 +229,7 @@ public class Member implements Serializable {
 		Helper.setSessionAttribute("isUserNew", this);
 		FacesMessage message = new FacesMessage("Account created Successfully.");
 		String outcome = "buyMembership";
-		FacesContext.getCurrentInstance().addMessage(null, message);
+		FacesContext.getCurrentInstance().addMessage(null, message); 
 		
 		return outcome;
 		

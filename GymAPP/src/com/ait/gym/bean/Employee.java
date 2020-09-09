@@ -99,7 +99,7 @@ public class Employee {
 	}
 
 	public String getAddress() {
-		return address;
+		return address; 
 	}
 
 	public void setAddress(String address) {
@@ -162,7 +162,7 @@ public class Employee {
 			throw new ValidatorException(message);
 		}
 	}
-
+ 
 	// Action Methods
 	public String storeEmployeeInfo() {
 

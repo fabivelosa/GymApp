@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.servlet.http.HttpSession;
 
 import com.ait.gym.bean.lists.EmployeeList;
@@ -16,7 +14,7 @@ import com.ait.gym.bean.lists.MembersList;
 import com.ait.gym.utils.Helper;
 
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class Login implements Serializable {
 
 	/**
@@ -30,7 +28,7 @@ public class Login implements Serializable {
 	public Login(String password, String userName) {
 		super();
 		this.password = password;
-		this.userName = userName;
+		this.userName = userName; 
 	}
 
 	public Login() {
@@ -42,11 +40,11 @@ public class Login implements Serializable {
 		FacesContext context2 = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
 
-		System.out.println("Logout" + session.getAttribute(getUserName()));
-		session.removeAttribute("loggedUser");
-		session.setAttribute("isUserLogged", "false");
-		session.removeAttribute("userType");
-		System.out.println("logging out");
+//		System.out.println("Logout" + session.getAttribute(getUserName()));
+//		session.removeAttribute("loggedUser");
+//		session.setAttribute("isUserLogged", "false");
+//		session.removeAttribute("userType");
+//		System.out.println("logging out");
 		
 		
 	}
@@ -73,11 +71,7 @@ public class Login implements Serializable {
 	public String loginYesNo() {
 		String message = "index.xhtml?faces-redirect=true";
 
-//			ArrayList<Member> member = null;
-//			if (isMemberHere(userName, member)) {
-//				message = "member";
-//			}
-//	
+
 		if (this.getType().equalsIgnoreCase("M")) {
 			if (loginMember(userName)) {
 				message = "member";
@@ -161,6 +155,10 @@ public class Login implements Serializable {
 		session.removeAttribute("userType");
 		System.out.println("logging out");
 		return "index?faces-redirect=true";
+	}
+	
+	public String memberPage() {
+		return "member?faces-redirect=true";
 	}
 
 	public String getType() {
