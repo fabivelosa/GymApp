@@ -1,10 +1,13 @@
-package com.ait.gym.bean;
+package com.ait.gym.bean.lists;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
+import com.ait.gym.bean.Member;
 
 @ManagedBean(name="membersList",eager=true)
 @SessionScoped
@@ -19,8 +22,22 @@ public class MembersList implements Serializable {
 	public MembersList() { 
 		
 	}
+	
 
-	public ArrayList<Member> getMembers() {		
+	@PostConstruct
+	public void init() {
+		
+		Member member1 = new Member("Ann","ann@email.com","123");
+		Member member2 = new Member("Tom","tom@email.com","123"); 
+		
+		getMembers().add(member1);
+		getMembers().add(member2);
+		
+	}
+	
+	
+
+	public ArrayList<Member> getMembers() {		 
 		return members;
 	}
 

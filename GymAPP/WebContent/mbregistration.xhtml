@@ -10,7 +10,8 @@
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 	<!-- FAVICON -->
-	<link rel="icon" type="image/x-icon" href="resources/images/favicon.ico" />
+	<link rel="icon" type="image/x-icon"
+		href="resources/images/favicon.ico" />
 	<title>Waterside Gym</title>
 
 	<!-- CSS -->
@@ -28,117 +29,123 @@
 		</div>
 	</div>
 	<!-- /NAV -->
-	<h:form>
-		<div class="regym-image">
-			<img src="resources/images/regym.jpeg" />
-		</div>
-		<div class="regym-text">
-			<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
-			<h:panelGrid columns="6" cellpadding="5">
-				<f:facet name="header">
-					<h:outputText value="Member Registration System"
-						styleClass="panelGridHeader" />
-				</f:facet>
-				<p:outputLabel for="firstName" value="First Name:" />
-				<p:inputText label="First Name" id="firstName"
-					value="#{member.firstName}" required="true" />
-				<p:message for="firstName" />
 
-				<p:outputLabel for="lastName" value="Last Name:" />
-				<p:inputText label="Last Name" id="lastName"
-					value="#{member.lastName}" required="true" />
-				<p:message for="lastName" />
-
-				<p:outputLabel for="gender" value="Gender:" />
-				<p:selectOneMenu id="gender">
-					<f:selectItem itemLabel="Select One" itemValue="#{member.gender}"
-						noSelectionOption="true" />
-					<f:selectItem itemLabel="Male" itemValue="male" />
-					<f:selectItem itemLabel="Female" itemValue="female" />
-				</p:selectOneMenu>
-				<p:message for="gender" />
-
-				<p:outputLabel for="dob" value="Date of Birth:" />
-				<p:calendar id="dob" value="#{member.dob}" required="true"
-					style="heigth:50px" />
-				<p:message for="dob" />
-
-				<p:outputLabel for="address" value="Address:" />
-				<p:inputTextarea id="address" value="#{member.address}"
-					required="true" />
-				<p:message for="address" />
-
-				<p:outputLabel for="city" value="City:" />
-				<p:inputText id="city" value="#{member.city}" required="true" />
-				<p:message for="city" />
-
-				<p:outputLabel for="eircode" value="EIR Code:" />
-				<p:inputText id="eircode" value="#{member.eircode}" required="true" />
-				<p:message for="eircode" />
-
-				<p:outputLabel for="email " value="Email:" />
-				<p:inputText id="email" value="#{member.emailAddress}"
-					required="true" validator="#{member.validateEmail}" />
-				<p:message for="email" />
-
-				<p:outputLabel for="mobileno " value="Mobile Number:" />
-				<p:inputText id="mobileno" value="#{member.mobileNumber}"
-					required="true" />
-				<p:message for="mobileno" />
-
-				<p:outputLabel for="goal" value="Goal:" cellpadding="4" />
-				<p:selectOneMenu id="goal">
-					<f:selectItem itemLabel="Select One" itemValue="#{member.goal}"
-						noSelectionOption="true" />
-					<f:selectItem itemLabel="Improved posture" itemValue="posture" />
-					<f:selectItem itemLabel="Reduced body fat" itemValue="bodyfat" />
-					<f:selectItem itemLabel="HIIT" itemValue="hiit" />
-				</p:selectOneMenu>
-				<p:message for="goal" />
-
-				<p:outputLabel for="login " value="User Name:" />
-				<p:inputText id="login" value="#{member.userName}" required="true"
-					validator="#{member.validateUserName}" />
-				<p:message for="login" />
-
-				<p:outputLabel for="password " value="User Password:" />
-				<p:password id="password" value="#{member.password}" required="true"
-					feedback="true" inline="true" />
-				<p:message for="password" />
-
-				<f:facet name="footer">
-					<h:panelGroup style="display:block; text-align:center">
-						<p:commandButton value="Submit" update="msgs"
-							action="#{member.storeMemberInfo}" />
-					</h:panelGroup>
-				</f:facet>
-			</h:panelGrid>
-		</div>
-	</h:form>
-	<!-- FOOTER -->
-	<div class="footer">
-		<span id="arc"></span>
-		<div id="jointoday" class="inner">
-			<div class="legal">
-				<ul>
-					<li>Legal</li>
-					<li>Membership Agreement</li>
-					<li>Accessibility</li>
-					<li>Privacy</li>
-				</ul>
+	<div class="main">
+		<h:form>
+			<div class="regym-image">
+				<img src="resources/images/regym.jpeg" />
 			</div>
-			<div class="contact">
-				<h3>Contact Us</h3>
-				<p>info@watersidegym.ie</p>
+			<div class="regym-text">
+				<p:growl id="msgs" showDetail="true"
+					skipDetailIfEqualsSummary="true" />
+				<h:panelGrid columns="6" cellpadding="5">
+					<f:facet name="header">
+						<h:outputText value="Member Registration System"
+							styleClass="panelGridHeader" />
+					</f:facet>
+					<p:outputLabel for="firstName" value="First Name:" />
+					<p:inputText label="First Name" id="firstName"
+						value="#{member.firstName}" required="true" />
+					<p:message for="firstName" />
+
+					<p:outputLabel for="lastName" value="Last Name:" />
+					<p:inputText label="Last Name" id="lastName"
+						value="#{member.lastName}" required="true" />
+					<p:message for="lastName" />
+
+					<p:outputLabel for="gender" value="Gender:" />
+					<p:selectOneMenu id="gender">
+						<f:selectItem itemLabel="Select One" itemValue="#{member.gender}"
+							noSelectionOption="true" />
+						<f:selectItem itemLabel="Male" itemValue="male" />
+						<f:selectItem itemLabel="Female" itemValue="female" />
+					</p:selectOneMenu>
+					<p:message for="gender" />
+
+					<p:outputLabel for="dob" value="Date of Birth:" />
+					<p:calendar id="dob" value="#{member.dob}" required="true"
+						style="heigth:50px" />
+					<p:message for="dob" />
+
+					<p:outputLabel for="address" value="Address:" />
+					<p:inputTextarea id="address" value="#{member.address}"
+						required="true" />
+					<p:message for="address" />
+
+					<p:outputLabel for="city" value="City:" />
+					<p:inputText id="city" value="#{member.city}" required="true" />
+					<p:message for="city" />
+
+					<p:outputLabel for="eircode" value="EIR Code:" />
+					<p:inputText id="eircode" value="#{member.eircode}" required="true" />
+					<p:message for="eircode" />
+
+					<p:outputLabel for="email " value="Email:" />
+					<p:inputText id="email" value="#{member.emailAddress}"
+						required="true" validator="#{member.validateEmail}" />
+					<p:message for="email" />
+
+					<p:outputLabel for="mobileno " value="Mobile Number:" />
+					<p:inputText id="mobileno" value="#{member.mobileNumber}"
+						required="true" />
+					<p:message for="mobileno" />
+
+					<p:outputLabel for="goal" value="Goal:" cellpadding="4" />
+					<p:selectOneMenu id="goal">
+						<f:selectItem itemLabel="Select One" itemValue="#{member.goal}"
+							noSelectionOption="true" />
+						<f:selectItem itemLabel="Improved posture" itemValue="posture" />
+						<f:selectItem itemLabel="Reduced body fat" itemValue="bodyfat" />
+						<f:selectItem itemLabel="HIIT" itemValue="hiit" />
+					</p:selectOneMenu>
+					<p:message for="goal" />
+
+					<p:outputLabel for="login " value="User Name:" />
+					<p:inputText id="login" value="#{member.userName}" required="true"
+						validator="#{member.validateUserName}" />
+					<p:message for="login" />
+
+					<p:outputLabel for="password " value="User Password:" />
+					<p:password id="password" value="#{member.password}"
+						required="true" feedback="true" inline="true" />
+					<p:message for="password" />
+
+					<f:facet name="footer">
+						<h:panelGroup style="display:block; text-align:center">
+							<p:commandButton value="Proceed to Payment" update="msgs"
+								action="#{member.storeMemberInfo}" />
+							<p:button value="Back to Home" outcome="index" />
+						</h:panelGroup>
+					</f:facet>
+				</h:panelGrid>
 			</div>
-			<div>
-				<img src="resources/images/worldpay.png"
-					class="img-fluid pull-xs-left" alt="..." /> <img
-					src="resources/images/paypal.png" class="img-fluid pull-xs-left"
-					alt="..." />
+		</h:form>
+
+		<!-- FOOTER -->
+		<div class="footer">
+			<span id="arc"></span>
+			<div id="jointoday" class="inner">
+				<div class="legal">
+					<ul>
+						<li>Legal</li>
+						<li>Membership Agreement</li>
+						<li>Accessibility</li>
+						<li>Privacy</li>
+					</ul>
+				</div>
+				<div class="contact">
+					<h3>Contact Us</h3>
+					<p>info@watersidegym.ie</p>
+				</div>
+				<div>
+					<img src="resources/images/worldpay.png"
+						class="img-fluid pull-xs-left" alt="..." /> <img
+						src="resources/images/paypal.png" class="img-fluid pull-xs-left"
+						alt="..." />
+				</div>
 			</div>
 		</div>
+		<!-- /FOOTER -->
 	</div>
-	<!-- /FOOTER -->
 </h:body>
 </html>

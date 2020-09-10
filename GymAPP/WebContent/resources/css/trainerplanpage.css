@@ -1,23 +1,178 @@
+.main {
+	background: linear-gradient(0deg, rgba(16,68,170,1) 0%, rgba(57,124,255,1) 100%);
+}
+
 .heading {
 	width: 100vw;
-	height: 150vh;
-	margin-top: 50px;
-	padding: 15px;
+	height: 100vh;
 	font-family: sans-serif;
 	font-size: 100%;
-	background-image: url(#{request.contextPath}/resources/images/plan.jpg);
-	background-repeat: no-repeat;
-	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
 }
 
 .output {
 	width: 100vw;
-	height: 150vh;
-
-	margin-top: 50px;
-	padding: 15px;
+	height: 100vh;
 	font-family: "Times New Roman", Times, serif;
 	font-style: normal;
 	font-size: 20px;
 	color: blue;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	flex-direction: column;
+}
+
+.output .planpage {
+	background-color: white;
+	border-radius: 12px;
+	box-shadow: 0px 8px 0px #383c4466;
+	padding: 0 0 20px 0;
+}
+
+.output .planpage table{
+	list-style: none;
+}
+
+.output .planpage table th{
+	text-align: left;
+	padding-right: 25px;
+}
+
+.output .planpage h1  {
+	text-align: center;
+	color: #397cff;
+	padding: 25px 0;
+	font-size: 2em;
+	background-color: #111;
+	width: 100%;
+	color: white;
+	border-radius: 12px 12px 0 0;
+	margin-bottom: 15px;
+}
+
+.output .planpage h4  {
+	margin-top: 30px;
+	text-align: center;
+	color: #397cff;
+}
+
+.planpage h1, .planpage h3{
+	text-align: center;
+	color: white;
+}
+
+.img-cont {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	z-index: 0;
+	background-color: #397cff;
+	mix-blend-mode: soft-light;
+}
+
+.img-cont img {
+	width: 100%;
+}
+
+.planpage form {
+	background-color: white;
+	border-radius: 12px;
+	padding-bottom: 30px;
+	margin-top: 25px;
+	box-shadow: 0px 8px 0px #383c4466;
+}
+
+.planpage form > div {
+	margin: 0 auto;
+}
+
+.planpage form > div:first-of-type {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.planpage form > div:first-of-type div {
+	padding-top: 10px;
+}
+
+.planpage form > div:first-of-type input {
+	border: none;
+	background-color: #eee;
+	padding: 8px;
+	border-radius: 6px;
+	margin: 0 20px 0 10px;
+}
+
+.planpage form > div:last-of-type input{
+	border: none;
+	background-color: #397cff;
+	padding: 10px 24px;
+	font-size: 16px;
+	border-radius: 6px;
+	color: white;
+}
+
+.planpage form > div:last-of-type {
+	display: flex;
+	justify-content: center;
+}
+
+.planpage form > div:last-of-type input:hover {
+	background-color: #2765df;
+	cursor: pointer;
+}
+
+table {
+	padding: 20px 50px;
+}
+
+table th {
+	font-size: 18px;
+	padding: 8px 0;
+}
+
+table td {
+	padding: 5px;
+}
+
+select {
+	padding: 15px;
+	border-radius: 12px;
+	border: none;
+	background-color: #eee;
+}
+
+select option {
+	font-size: 16px;
+	padding: 5px;
+	border-radius: 6px;
+}
+
+h2 {
+	text-align: center;
+	font-weight: 700;
+	padding: 20px 0;
+	font-size: 2em;
+	background-color: #111;
+	width: 100%;
+	color: white;
+	border-radius: 12px 12px 0 0;
+	margin-bottom: 15px;
+}
+
+a.return {
+	color: white;
+	margin-top: 15px;
+	padding: 15px 30px;
+	text-decoration: none;
+}
+
+a.return:hover {
+	color: #e7e7e7;
 }

@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.ait.gym.bean.Member;
+import com.ait.gym.utils.CreditTypes;
 
 class MemberTest {
 
@@ -18,7 +19,7 @@ class MemberTest {
 		Date date = new Date();
 
 		member = new Member("Fabiane", "Velosa", date, "083-123456", "fabi@gmail", "17, address", "Athlone", "Female",
-				"Improve metabolism", "N37896", "fabi", "123");
+				"Improve metabolism", "N37896", "fabi", "123",CreditTypes.TREE_MONTHS); 
 	}
 	
 	@Test

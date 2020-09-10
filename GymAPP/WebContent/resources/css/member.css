@@ -1,5 +1,3 @@
-
-
 html, body {
   font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
   font-style: normal;
@@ -10,36 +8,37 @@ html, body {
 }
 
 .panelGrid {
-    height: 550px;
-  }
+  height: 550px;
+}
 
-h1{
-	 text-align: center;
+h1 {
+	text-align: center;
   padding-bottom: 20px;
   padding-top:50;
   font-size: 5em;
   color: black;
-	
 }
+
 h2 {
 	 text-align: center;
   font-size: 2em;
   color: black;
 }
-h3{
+
+h3 {
 	font-family:'Oswald', Arial, Helvetic;
 	font-size:15px;
 	display: inline-block;
 	text-align: center;
 }
+
 .panelGridCenter td,.panelGridCenter tr {
-    text-align: center;
-    text:inline-block;
-    font-size:10px;
-    background-color:none;
-    padding:10px;
-    height:20%;
-   
+  text-align: center;
+  text:inline-block;
+  font-size:10px;
+  background-color:none;
+  padding:10px;
+  height:20%;
 }
 
 .centreElement{
@@ -48,30 +47,132 @@ h3{
 }
 
 .panelGrid-full-width {
-    width: 100%;
-    display: inline-block;
-    height: inherit;
-  }
+  width: 100%;
+  display: inline-block;
+  height: inherit;
+}
 
 .section-two-columns {
-	background:yellow;
-    width: 50%;
-    float: left;
-    height: inherit;
-    background: red;
-  }
+  background:yellow;
+  width: 50%;
+  float: left;
+  height: inherit;
+  background: red;
+}
 
 #section-three-columns {
-    width: 33.33%;
-    float: left;
-    height: inherit;
-  }
+  width: 33.33%;
+  float: left;
+  height: inherit;
+}
 
 #section-four-columns {
-    width: 25%;
-    float: left;
-    height: inherit;
-  }
+  width: 25%;
+  float: left;
+  height: inherit;
+}
+
 .center {
-    text-align: center;
-  }
+  text-align: center;
+}
+
+/* NEWLY ADD STYLES */
+
+table {
+  padding: 50px 15%;
+}
+
+table:nth-of-type(even) {
+	background-color: #397cff;
+}
+
+p {
+  text-align: justify;
+  font-size: 17px;
+  padding: 0 15px;
+}
+
+table table label {
+	font-weight: 700;
+}
+
+table:nth-of-type(even) table label,
+table:nth-of-type(even) table p {
+	color: white;
+}
+
+input.centreElement {
+	border: none;
+  box-shadow: 0px 6px 0px #1b58cf;
+  background-color: #397CFF;
+  padding: 12px 30px;
+  color: white;
+  font-size: 20px;
+  border-radius: 6px;
+  transition: 0.15s ease;
+}
+
+input.centreElement:hover {
+  background-color: #2765df;
+  cursor: pointer;
+}
+
+table:nth-of-type(even) input.centreElement {
+	box-shadow: 0px 6px 0px #ddd;
+  background-color: #f7f7f7;
+	color: #000000;
+}
+
+table:nth-of-type(even) input.centreElement:hover {
+  background-color: #eee;
+}
+
+form > table:last-of-type {
+	padding-bottom: 90px;
+}
+
+table table {
+  padding: 0 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table table tr:last-of-type td {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table table tr:last-of-type td input {
+  margin: 0;
+}
+
+table img {
+  border-radius: 12px;
+  box-shadow: 0px 8px 0px #00000022;
+}
+
+div.welcome-back {
+  position: relative;
+  padding: 50px 0;
+  width: 100vw;
+  background-color: #222;
+  margin: 0;
+  margin-top: 25px;
+  border-bottom: 10px solid #397cff;
+}
+
+div.welcome-back span {
+  margin-left: 15%;
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+div.welcome-back span:last-of-type {
+  margin-left: 0;
+  margin-right: 15%;
+  float: right;
+  font-weight: normal;
+}

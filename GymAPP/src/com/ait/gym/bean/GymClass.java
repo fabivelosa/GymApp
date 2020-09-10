@@ -3,6 +3,7 @@ package com.ait.gym.bean;
 import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -23,18 +24,17 @@ public class GymClass implements Serializable {
 	private String time;
 	private int duration;
 	private int spaces; 
-
 	private Employee instructor;  
-	 
-	ArrayList<Member> enrolled; 
+	List<Member> enrolled ;
  
 	public GymClass() {
 		super(); 
-	}
+	} 
 	
 	@PostConstruct
 	public void init() {
-		instructor= new Employee ("");			
+		instructor= new Employee ("");		
+		enrolled = new ArrayList<Member>(); 
 	}
 	
 	
@@ -56,8 +56,29 @@ public class GymClass implements Serializable {
 		this.time = time;
 		this.duration = duration;
 		this.spaces = spaces;
-		this.instructor = instructor; 
+		this.instructor = instructor;
+	
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		
+		 // self check
+	    if (this == o)
+	        return true;
+	    // null check
+	    if (o == null)
+	        return false;
+	    // type check and cast
+	    if (getClass() != o.getClass())
+	        return false;
+	    
+	    GymClass gymClass = (GymClass) o;	    
+	    return gymClass.getId() == this.getId();
+		
+	}
+	
+	
 
 	public ClassesTypes getName() { 
 		return name;
@@ -115,6 +136,12 @@ public class GymClass implements Serializable {
 		this.id = id;
 	}
 	
-	
+	public List<Member> getEnrolled() { 
+		return enrolled;
+	}
+
+	public void setEnrolled(List<Member> enrolled) {
+		this.enrolled = enrolled;
+	}
 	
 }

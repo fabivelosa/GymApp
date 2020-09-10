@@ -2,84 +2,132 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:h="http://xmlns.jcp.org/jsf/html">
-<h:head>
-	<title>Personal Trainer Registration</title>
-</h:head>
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<!-- FAVICON -->
+		<link rel="icon" type="image/x-icon"
+			href="resources/images/favicon.ico" />
+		<title>Waterside Gym</title>
 
-<h:body>
-	<h:form>
-		<h2>Personal Trainer Registration</h2>
-		<table>
-			<tr>
-				<td>Employee Name:</td>
-				<td><h:inputText label="Employee Name" id="ename"
-						value="#{employee.empName}" required="true" /> <h:message
-						for="ename" style="color: red" /></td>
-			</tr>
-			<tr>
-				<td>Gender:</td>
-				<td><h:selectOneRadio label="Gender" id="gender"
-						value="#{employee.gender}" required="true">
-						<f:selectItem itemLabel="Male" itemValue="male" />
-						<f:selectItem itemLabel="Female" itemValue="female" />
-					</h:selectOneRadio> <h:message for="gender" style="color: red" /></td>
-			</tr>
-			<tr>
-				<td>Date of Birth:</td>
-				<td><h:inputText label="Date of Birth" id="dob"
-						value="#{employee.dob}" required="true">
-						<f:convertDateTime pattern="MM-dd-yy" />
-					</h:inputText> (mm-dd-yyyy) <h:message for="dob" style="color: red" /></td>
-			</tr>
+		<!-- CSS -->
+		<h:outputStylesheet library="css" name="global.css" />
+		<h:outputStylesheet library="css" name="registration.css" />
+	</h:head>
 
-			<tr>
-				<td>Address:</td>
-				<td><h:inputText label="Address" id="address"
-						value="#{employee.address}" required="true" /> <h:message
-						for="address" style="color: red" /></td>
-			</tr>
+	<h:body>
+		<!-- NAV -->
+		<div class="nav">
+			<div class="inner">
+				<div class="logo-container">
+					<img src="resources/images/watersidegym2.svg" />
+				</div>
+			</div>
+		</div>
 
-			<tr>
-				<td>Email Address:</td>
-				<td><h:inputText label="Email Address" id="email"
-						value="#{employee.emailAddress}" required="true"
-						validator="#{employee.validateEmail}" /> <h:message
-						for="email" style="color: red" /></td>
-			</tr>
+		<div class="main">
+			<h:form>
+				<div class="regym-image">
+					<img src="resources/images/personal-trainer-reg.jpg" />
+				</div>
+				<div class="regym-text">
+					<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+					<h:panelGrid columns="6" cellpadding="5">
 
-			<tr>
-				<td>Mobile Number:</td>
-				<td><h:inputText label="Mobile Number" id="mobileno"
-						value="#{employee.mobileNumber}" required="true">
-					</h:inputText> <h:message for="mobileno" style="color: red" /></td>
-			</tr>
+						<f:facet name="header">
+							<h:outputText value="Personal Trainer Registration "
+								styleClass="panelGridHeader" />
+						</f:facet>
 
-			<tr>
-				<td>Password:</td>
-				<td><h:inputText label="Password" id="password"
-						value="#{employee.password}" required="true" /> <h:message
-						for="password" style="color: red" /></td>
-			</tr>
-
-			<tr>
-				<td>About Yourself:</td>
-				<td><h:inputText label="About yourself" id="Aboutyourself"
-						value="#{employee.aboutYourself}" required="true" /> <h:message
-						for="password" style="color: red" /></td>
-			</tr>
+						<p:outputLabel for="ename" value="Employee Name:" />
+						<p:inputText label="Employee Name" id="ename"
+							value="#{employee.empName}" required="true" />
+						<p:message for="ename" />
 
 
-			<tr>
-				<td>Permanent?</td>
-				<td><h:selectBooleanCheckbox
-						value="#{employee.employeeType}" /></td>
-			</tr>
+						<p:outputLabel for="gender" value="Gender:" />
+						<p:selectOneMenu id="gender">
+							<f:selectItem itemLabel="Select One" itemValue="#{employee.gender}"
+								noSelectionOption="true" />
+							<f:selectItem itemLabel="Male" itemValue="male" />
+							<f:selectItem itemLabel="Female" itemValue="female" />
+						</p:selectOneMenu>
+						<p:message for="gender" />
 
-		</table>
-		<p>
-			<h:commandButton value="Submit" action="#{employee.storeEmployeeInfo}" />
-		</p>
-	</h:form>
-</h:body>
+						<p:outputLabel for="dob" value="Date of Birth:" />
+						<p:calendar id="dob" value="#{employee.dob}" required="true"
+							style="heigth:50px" />
+						<p:message for="dob" />
+
+						<p:outputLabel for="address" value="Address:" />
+						<p:inputTextarea id="address" value="#{employee.address}"
+							required="true" />
+						<p:message for="address" />
+
+						 <p:outputLabel for="email " value="Email:" />
+						<p:inputText id="email" value="#{employee.emailAddress}"
+							required="true" validator="#{member.validateEmail}" />
+						<p:message for="email" />
+
+						<p:outputLabel for="mobileno " value="Mobile Number:" />
+						<p:inputText id="mobileno" value="#{employee.mobileNumber}"
+							required="true" />
+						<p:message for="mobileno" />
+
+						<p:outputLabel for="password " value="User Password:" />
+						<p:password id="password" value="#{employee.password}" required="true"
+							feedback="true" inline="true" />
+						<p:message for="password" />
+
+						<p:outputLabel for="Aboutyourself" value="About Yourself:" />
+						<p:inputTextarea id="Aboutyourself" value="#{employee.aboutYourself}"
+							required="true" />
+						<p:message for="Aboutyourself" />
+
+
+						<p:outputLabel for="permanent" value="Permanent ?" />
+						<p:selectBooleanCheckbox id="permanent" value="#{employee.employeeType}" > </p:selectBooleanCheckbox>
+
+
+						<f:facet name="footer">
+							<h:panelGroup style="display:block; text-align:center">
+								<p:commandButton value="Submit" update="msgs"
+									action="#{employee.storeEmployeeInfo}" />
+								<p:button value="Back"
+									outcome="index"  />
+							</h:panelGroup>
+						</f:facet>
+
+					</h:panelGrid>
+				</div>
+			</h:form>
+				<!-- FOOTER -->
+			<div class="footer">
+				<span id="arc"></span>
+				<div id="jointoday" class="inner">
+					<div class="legal">
+						<ul>
+							<li>Legal</li>
+							<li>Membership Agreement</li>
+							<li>Accessibility</li>
+							<li>Privacy</li>
+						</ul>
+					</div>
+					<div class="contact">
+						<h3>Contact Us</h3>
+						<p>info@watersidegym.ie</p>
+					</div>
+					<div>
+						<img src="resources/images/worldpay.png"
+							class="img-fluid pull-xs-left" alt="..." /> <img
+							src="resources/images/paypal.png" class="img-fluid pull-xs-left"
+							alt="..." />
+					</div>
+				</div>
+			</div>
+		</div>
+	</h:body>
 </html>

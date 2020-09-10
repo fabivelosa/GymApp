@@ -1,5 +1,5 @@
 /* ------------- */
-/* 	
+/*
 	ALL GLOBAL CSS ATTRIBUTES
 	USED ON ALL PAGES:
 	- 1. DEFAULT BODY CONSTRAINTS
@@ -12,9 +12,9 @@
 /* ------------- */
 
 /* ------------- */
-/* 
+/*
    	1. DEFAULT BODY CONSTRAINTS
-   	2. DEFAULT ALIGNMENTS 
+   	2. DEFAULT ALIGNMENTS
 */
 /* ------------- */
 
@@ -93,7 +93,7 @@ div.account-options {
   padding: 7.5px;
 }
 
-div.account-options a {
+div.account-options a, div.account-options input {
   line-height: 45px;
   padding: 0 30px;
   height: 45px;
@@ -103,9 +103,10 @@ div.account-options a {
   transition: 0.15s ease;
   color: black;
   text-decoration: none;
+  font-size: 17px;
 }
 
-div.account-options a.register {
+div.account-options a.register, div.account-options input {
   background-color: #397CFF;
   color: white;
 }
@@ -115,9 +116,15 @@ div.account-options a:hover {
   cursor: pointer;
 }
 
-div.account-options a.register:hover {
+div.account-options a.register:hover, div.account-options input:hover {
   background-color: #2765df;
   color: white;
+  cursor: pointer;
+}
+
+div.account-options input {
+  border: none;
+  outline: none;
 }
 
 /* ------------- */

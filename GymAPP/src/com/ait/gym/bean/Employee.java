@@ -1,19 +1,23 @@
 package com.ait.gym.bean;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
+import com.ait.gym.bean.lists.EmployeeList;
 import com.ait.gym.utils.Helper;
 
 @ManagedBean(name="employee")
-@SessionScoped
+@RequestScoped
 public class Employee {
 
 	// Member Variables
@@ -27,14 +31,23 @@ public class Employee {
 	private String password;
 	private String aboutYourself;
 	private boolean employeeType;
+	private List<GymClass> bookedClasses;
+		
+
  
 	static int range = 1000;
 	
 	public Employee () {
-		
+		Random random = new Random();    
+		this.setEmployeeID("P" + random.nextInt(range));		
 	}
 	
 	
+	@PostConstruct
+	public void init() {
+		bookedClasses = new ArrayList<GymClass>();
+	
+	}
 	public Employee (String name) {
 		Random random = new Random();    
 		this.setEmployeeID("P" + random.nextInt(range));		
@@ -46,7 +59,7 @@ public class Employee {
 			String password, String aboutYourself, boolean employeeType) {
 		super();
 		
-		this.empName = empName;
+		this.empName=empName;
 		this.gender = gender;
 		this.dob = dob;
 		this.address = address;
@@ -86,7 +99,7 @@ public class Employee {
 	}
 
 	public String getAddress() {
-		return address;
+		return address; 
 	}
 
 	public void setAddress(String address) {
@@ -149,20 +162,30 @@ public class Employee {
 			throw new ValidatorException(message);
 		}
 	}
-
+ 
 	// Action Methods
 	public String storeEmployeeInfo() {
 
-		FacesMessage message = null;
+		
 		String outcome = null;
 
 		EmployeeList employees = Helper.getBean("employeeList", EmployeeList.class);
 		employees.getEmployees().add(this);
 
-		message = new FacesMessage("Employee Information is stored Successfully.");
-		outcome = "successpt";
-
+		FacesMessage message   = new FacesMessage("Employee Information is stored Successfully.");
 		FacesContext.getCurrentInstance().addMessage(null, message);
+		outcome = "login?faces-redirect=true";		
 		return outcome;
 	}
+
+
+	public List<GymClass> getBookedClasses() {
+		return bookedClasses;
+	}
+
+
+	public void setBookedClasses(List<GymClass> bookedClasses) {
+		this.bookedClasses = bookedClasses;
+	}
+
 }

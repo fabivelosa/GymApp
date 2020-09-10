@@ -1,21 +1,15 @@
 package com.ait.gym.view;
 
-import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.List;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 
-import org.primefaces.PrimeFaces;
-import org.primefaces.event.CellEditEvent;
-import org.primefaces.event.RowEditEvent;
-
 import com.ait.gym.bean.Employee;
-import com.ait.gym.bean.EmployeeList;
 import com.ait.gym.bean.GymClass;
-import com.ait.gym.bean.GymClassList;
+import com.ait.gym.bean.lists.EmployeeList;
+import com.ait.gym.bean.lists.GymClassList;
 import com.ait.gym.utils.ClassesTypes;
 import com.ait.gym.utils.Helper;
 
@@ -24,30 +18,10 @@ import com.ait.gym.utils.Helper;
 public class TimelineView {
 
 	ArrayList<GymClass> trainerClass;
+	ArrayList<GymClass> classesUnassigned;
 
-	public void onRowEdit(RowEditEvent<GymClass> event) {
-		FacesMessage msg = new FacesMessage("Class Edited");
-		FacesContext.getCurrentInstance().addMessage(null, msg);
-
-		getClassesbyTrainer();
-
-	}
-
-	public void onRowCancel(RowEditEvent<GymClass> event) {
-		FacesMessage msg = new FacesMessage("Edit Cancelled");
-		FacesContext.getCurrentInstance().addMessage(null, msg);
-	}
-
-	public void onCellEdit(CellEditEvent event) {
-		Object oldValue = event.getOldValue();
-		Object newValue = event.getNewValue();
-
-		if (newValue != null && !newValue.equals(oldValue)) {
-			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cell Changed",
-					"Old: " + oldValue + ", New:" + newValue);
-			FacesContext.getCurrentInstance().addMessage(null, msg);
-		}
-		getClassesbyTrainer();
+	public void setClassesUnassigned(ArrayList<GymClass> classesUnassigned) {
+		this.classesUnassigned = classesUnassigned;
 	}
 
 	public ClassesTypes[] getClassTypes() {
@@ -59,48 +33,66 @@ public class TimelineView {
 		return employeeList.getEmployees();
 	}
 
-	public DayOfWeek[] getDaysOfWeek() {
-
-		return DayOfWeek.values();
+	public void setTrainerClass(ArrayList<GymClass> trainerClass) {
+		this.trainerClass = trainerClass;
 	}
 
-	public static void update(String id) {
-		PrimeFaces pf = PrimeFaces.current(); // RequestContext.getCurrentInstance() for <PF 6.2
-		if (pf.isAjaxRequest())
-			pf.ajax().update(id);
-	}
-
-	/** Whether onCellEdit changed the value */
-	boolean onCellEditChange;
-
-	public void onCellEditRemote() {
-		if (!onCellEditChange)
-			update("testContainer");
-	}
-
-	public ArrayList<GymClass> getClassesbyTrainer() {
+	public ArrayList<GymClass> getTrainerClass() {
 		trainerClass = new ArrayList<GymClass>();
 		GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
 
+		Employee emp = Helper.getTrainerLogged();
+
 		for (GymClass classes : gymClasses.getGymClass()) {
 			if (classes.getInstructor() != null) {
-				if (classes.getInstructor().getEmpName() != null && classes.getInstructor().getEmpName().equals("John")) {
+				if (classes.getInstructor().getEmpName() != null
+						&& classes.getInstructor().getEmpName().equals(emp.getEmpName())) {
 					trainerClass.add(classes);
 				}
 			}
 		}
+		return trainerClass;
+	}
+
+	public ArrayList<GymClass> getclassesUnassigned() {
+		classesUnassigned = new ArrayList<GymClass>();
+		GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
 
 		for (GymClass classes : gymClasses.getGymClass()) {
-			if (classes != null && classes.getInstructor()  == null) {
-				trainerClass.add(classes);
+			if (classes != null && classes.getInstructor() == null) {
+				classesUnassigned.add(classes);
 			}
 		}
 
-		return trainerClass;
+		return classesUnassigned;
 	}
-	
-	public void submmit() {
-	
+
+	public Employee getTrainerLogged() {
+		return (Employee) Helper.getTrainerLogged();
+	}
+
+	public void assignClass(String classesId) {
+
+		Employee emp = getTrainerLogged();
+		GymClass gymClass = GymClassList.getGymClassbyId(Integer.parseInt(classesId));
+
+		if (emp.getBookedClasses() == null) {
+			List<GymClass> list = new ArrayList<GymClass>();
+			emp.setBookedClasses(list);
+		}
+		emp.getBookedClasses().add(gymClass);
+		gymClass.setInstructor(emp);
+
+	}
+
+	public void cancelAssignClass(String classesId) {
+		Employee emp = getTrainerLogged();
+		GymClass gymClass = GymClassList.getGymClassbyId(Integer.parseInt(classesId));
+		if(emp.getBookedClasses() != null) {
+			emp.getBookedClasses().remove(gymClass);
+		}
+		gymClass.setInstructor(null);
+
 	}
 
 }

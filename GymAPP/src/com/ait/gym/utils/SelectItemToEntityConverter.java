@@ -7,14 +7,14 @@ import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 
 import com.ait.gym.bean.Employee;
-import com.ait.gym.bean.EmployeeList;
-import com.ait.gym.bean.GymClassList;
+import com.ait.gym.bean.lists.EmployeeList;
+import com.ait.gym.bean.lists.GymClassList;
 
 @FacesConverter(value = "SelectItemToEntityConverter", forClass = GymClassList.class)
 public class SelectItemToEntityConverter implements Converter {
 
 	public String getAsString(FacesContext context, UIComponent component, Object modelValue) {
-		if (modelValue == null) {
+		if (modelValue == null || modelValue == "" ) {
 			return "";
 		}
 

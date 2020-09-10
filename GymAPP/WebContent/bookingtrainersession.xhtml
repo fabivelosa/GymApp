@@ -4,14 +4,16 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
+
+
 <h:head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 	<!-- FAVICON -->
-	<link rel="shortcut icon" type="image/svg" href="" />
-
+	<link rel="icon" type="image/x-icon"
+		href="resources/images/favicon.ico" />
 	<title>Waterside Gym</title>
 
 	<!-- CSS -->
@@ -28,7 +30,7 @@
 					<img src="resources/images/watersidegym2.svg" />
 				</div>
 				<div class="account-options">
-					<a href="trainershomepage.xhtml" id="signin">Trainers HomePage</a>
+					<a href="member.xhtml" id="signin">Members HomePage</a>
 					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
 				</div>
 			</div>
@@ -42,10 +44,10 @@
 			<p:growl id="msgs" showDetail="true" />
 
 			<p:outputPanel id="containerforBook">
-				<p:dataTable id="availableclasstable"
-					value="#{timelineView.classesUnassigned}" var="classlist"
+				<p:dataTable id="bookclasstable"
+					value="#{bookClassView.oneToOneClassesAvailable}" var="classlist"
 					styleClass="table">
-					<f:facet name="header"> Classes Available </f:facet>
+
 					<p:column>
 						<f:facet name="header">Name</f:facet>
 
@@ -83,9 +85,9 @@
 					</p:column>
 
 					<p:column>
-						<f:facet name="header">Action</f:facet>
-						<p:commandButton value="Assign to me" ajax="false"
-							action="#{timelineView.assignClass(classlist.id)}" />
+						<f:facet name="header">Book</f:facet>
+						<p:commandButton value="Book Class" ajax="false"
+							action="#{bookClassView.enrollOneToOneSession(classlist.id)}" />
 
 					</p:column>
 
@@ -97,12 +99,12 @@
 
 			<p:outputPanel id="containerCancel">
 				<p:dataTable id="cancelclasstable"
-					value="#{timelineView.trainerClass}" var="classbook"
+					value="#{bookClassView.gymClassesOneToOneBooked}" var="classbook"
 					styleClass="table">
-					<f:facet name="header"> My Classes   </f:facet>
-					<p:column  styleClass="text-center" >
+
+					<p:column>
 						<f:facet name="header">Name</f:facet>
-						<h:outputText  value="#{classbook.name.value}" />
+						<h:outputText value="#{classbook.name.value}" />
 					</p:column>
 
 					<p:column>
@@ -135,9 +137,9 @@
 					</p:column>
 
 					<p:column>
-						<f:facet name="header">Action</f:facet>
-						<p:commandButton value="UnAssigned" ajax="false"
-							action="#{timelineView.cancelAssignClass(classbook.id)}" /> 
+						<f:facet name="header">Unbook</f:facet>
+						<p:commandButton value="Unbook Class" ajax="false"
+							action="#{bookClassView.cancelOneToOneEnroll(classbook.id)}" />
 
 					</p:column>
 				</p:dataTable>
