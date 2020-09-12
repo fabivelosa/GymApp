@@ -1,110 +1,90 @@
-package com.ait.gym.bean;
+package com.ait.gym.bean.login;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import javax.annotation.PostConstruct;
+
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
+
 import javax.servlet.http.HttpSession;
 
+import com.ait.gym.bean.Employee;
+import com.ait.gym.bean.Member;
 import com.ait.gym.bean.lists.EmployeeList;
 import com.ait.gym.bean.lists.MembersList;
 import com.ait.gym.utils.Helper;
 
 @ManagedBean
 @SessionScoped
-public class Login implements Serializable {
+public class Login extends LoginSetup implements Serializable {
 
 	/**
-	 * 
+	 *  
 	 */
 	private static final long serialVersionUID = 1L;
-	private String password;
-	private String userName;
-	private String type;
-
-	public Login(String password, String userName) {
-		super();
-		this.password = password;
-		this.userName = userName;
-	}
-
-	public Login() {
-	}
 	
-	@PostConstruct
-	public void init() {
-		
-		FacesContext context2 = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
-
-		System.out.println("Logout" + session.getAttribute(getUserName()));
-		session.removeAttribute("loggedUser");
-		session.setAttribute("isUserLogged", "false");
-		session.removeAttribute("userType");
-		System.out.println("logging out");
-		
-		
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		System.out.println("Password = " + password);
-		this.password = password;
-	}
-
-	public String getUserName() {
-
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		System.out.println("User = " + userName);
-		this.userName = userName;
-	}
+	
 
 	public String loginYesNo() {
 		String message = "index.xhtml?faces-redirect=true";
-
-//			ArrayList<Member> member = null;
-//			if (isMemberHere(userName, member)) {
-//				message = "member";
-//			}
-//	
+		
 		if (this.getType().equalsIgnoreCase("M")) {
-			if (loginMember(userName)) {
+			if (loginMember(getUserName())) {
 				message = "member";
 			}
 
 		} else {
-			if (loginEmployee(userName)) {
+			if (loginEmployee(getUserName())) {
 				message = "trainershomepage";
 			}
 		}
 
 		return message;
 	}
+	
+	
+/*	public String loginYesNo() {
+		String message = "index.xhtml?faces-redirect=true";
+		
 
-	public boolean isMemberHere(String username, ArrayList<Member> member) {
+		Member member = getMemberbyUserName(getUserName());
+		Employee emp = getEmployeebyEmail(getUserName());
+		String returnedUser = isMemberHere(getUserName(), member, emp);
+			if (returnedUser.equals("member")) {
+				
+				message = "member";
+			} 
+			if (returnedUser.equals("trainershomepage")) {
+				message = "trainershomepage";
+			} 
+		
 
-		for (int i = 0; i < member.size(); i++) {
-			System.out.println();
-			Member existingMember = member.get(i);
-			if (existingMember.getUserName().equalsIgnoreCase(username)) {
-				return true;
+		return message;
+	}
+	
+*/
+	
+	public String isMemberHere(String username, Member member, Employee emp) {
+
+		member = getMemberbyUserName(username);
+		emp = getEmployeebyEmail(username);
+		String here = "";
+		
+			if (member.getUserName().equalsIgnoreCase(username) && member.getPassword().equals(this.getPassword())) {
+				
+				 here = "member";
+			} 
+			
+			if (emp.getEmailAddress().equalsIgnoreCase(username) && emp.getPassword().equals(this.getPassword())) {
+				 here = "trainershomepage";
 			}
 
-		}
+		
 
-		return false;
-
+		return here;
 	}
 
 	private boolean loginMember(String username) {
@@ -113,7 +93,7 @@ public class Login implements Serializable {
 		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
 
 		if (member != null) {
-			if (member.getPassword().equals(this.password) && member.getUserName().equals(username)) {
+			if (member.getPassword().equals(this.getPassword()) && member.getUserName().equals(username)) {
 				session.setAttribute("loggedUser", member);
 				session.setAttribute("isUserLogged", "true");
 				session.setAttribute("userType", "M");
@@ -129,7 +109,7 @@ public class Login implements Serializable {
 		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
 
 		if (emp != null) {
-			if (emp.getPassword().equals(this.password) && emp.getEmailAddress().equals(this.userName)) {
+			if (emp.getPassword().equals(this.getPassword()) && emp.getEmailAddress().equals(this.getUserName())) {
 				session.setAttribute("loggedUser", emp);
 				session.setAttribute("isUserLogged", "true");
 				session.setAttribute("userType", "E");
@@ -141,7 +121,7 @@ public class Login implements Serializable {
 
 	private Member getMemberbyUserName(String username) {
 		MembersList memberList = Helper.getBean("membersList", MembersList.class);
-		return memberList.getMemberByUserName(userName);
+		return memberList.getMemberByUserName(getUserName());
 	}
 
 	private Employee getEmployeebyEmail(String email) {
@@ -161,14 +141,6 @@ public class Login implements Serializable {
 		session.removeAttribute("userType");
 		System.out.println("logging out");
 		return "index?faces-redirect=true";
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 
 }

@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.ait.gym.bean.PlannerBean;
+import com.ait.gym.bean.trainerplanner.PlannerBean;
 
 class PlannerBeanTest {
 
@@ -37,6 +37,15 @@ class PlannerBeanTest {
 		assertArrayEquals(expectedOutput, tuesdaySession);
 	}
 	
+//	@Test
+//	public void testMonday(String[] mondaySession) { 
+//		plannerbean.setMondaySession(mondaySession);
+//		
+//		assertArrayEquals(mondaySession, plannerbean.getMondaySession());
+//	}
+//	
+	
+
 	@Test
 	public void toStringTest() {
 		String expected = "";

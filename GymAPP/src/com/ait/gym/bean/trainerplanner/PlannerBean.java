@@ -1,4 +1,4 @@
-package com.ait.gym.bean;
+package com.ait.gym.bean.trainerplanner;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -10,8 +10,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class PlannerBean implements Serializable{
-	
-	
+
 	private static final long serialVersionUID = 1L;
 	private String MemberName;
 	private String[] mondaySession;
@@ -87,13 +86,19 @@ public class PlannerBean implements Serializable{
         return Arrays.toString(fridaySession) + "Cooldown";
     }
 	
+	public String getMemberName() {
+		return MemberName;
+	}
+
+	public void setMemberName(String memberName) {
+		MemberName = memberName;
+	}
+	
 	
 	@Override
 	public String toString() {
 		return "";
 	}
-
-
 	private static Map<String, Object> mondaySessionValue;{
     	mondaySessionValue = new LinkedHashMap<String, Object>();
          
@@ -204,13 +209,7 @@ public class PlannerBean implements Serializable{
         return fridaySessionValue;
     }
 	
-	public String getMemberName() {
-		return MemberName;
-	}
-
-	public void setMemberName(String memberName) {
-		MemberName = memberName;
-	}
+	
 //	/*
 //	public void printToDesktop() throws IOException {
 //		String userHomeFolder = System.getProperty("user.home");
