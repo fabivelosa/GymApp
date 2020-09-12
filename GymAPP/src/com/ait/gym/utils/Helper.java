@@ -1,15 +1,11 @@
 package com.ait.gym.utils;
 
-import java.io.IOException;
-
 import javax.faces.application.Application;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ait.gym.bean.Employee;
 import com.ait.gym.bean.Member;
+import com.ait.gym.bean.Person;
 
 public class Helper {
 
@@ -25,7 +21,7 @@ public class Helper {
 		return application.evaluateExpressionGet(context, "#{" + beanName + "}", type);
 	}
 
-	public static void expungeSession() {
+	public static void expungeSession() { 
 
 		// Get the FacesContext object.
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -35,7 +31,7 @@ public class Helper {
 
 		// Invalidate (i.e. expunge) session state.
 		if (session != null) {
-			session.invalidate();
+			session.invalidate(); 
 		}
 	}
 	
@@ -50,35 +46,20 @@ public class Helper {
 		
 	}
 	
-	public static Member getUserLogged() {
+	public static Person getUserLogged() { 
 		
-		Member member = new Member();
+		Person person = new Person();
 
 		FacesContext context2 = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
 		String loggedUser = (String) session.getAttribute("isUserLogged");
 		String userType = (String) session.getAttribute("userType");
 
-		if (loggedUser != null && loggedUser.equals("true") && userType != null && userType.equals("M")) {
-			member = (Member) session.getAttribute("loggedUser");
+		if (loggedUser != null && loggedUser.equals("true") && userType != null) {
+			person = (Person) session.getAttribute("loggedUser");
 
 		}
-		return member;
+		return person;
 	}
-	
-	public static Employee getTrainerLogged() { 
-		
-		Employee trainer = new Employee();
 
-		FacesContext context2 = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
-		String loggedUser = (String) session.getAttribute("isUserLogged");
-		String userType = (String) session.getAttribute("userType");
-
-		if (loggedUser != null && loggedUser.equals("true") && userType != null && userType.equals("E")) {
-			trainer = (Employee) session.getAttribute("loggedUser");
-
-		}
-		return trainer;
-	}
 }

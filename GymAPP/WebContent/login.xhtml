@@ -38,12 +38,7 @@
 							<td><h:inputSecret value="#{login.password}" /></td>
 						</tr>
 						<tr>
-							<td colspan="2">
-								<h:selectOneRadio value = "#{login.type}"> 
-				   					<f:selectItem itemValue = "M" itemLabel = "Member" />
-				   					<f:selectItem itemValue = "E" itemLabel = "Employee" />
-								</h:selectOneRadio> 	
-							</td>		
+							
 						</tr>
 						<tr>
 							<td colspan="2"><h:commandButton styleClass="submit" value="Log In" action="#{login.loginYesNo}" /></td>

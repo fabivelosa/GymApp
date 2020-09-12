@@ -23,21 +23,21 @@ class MemberTest {
 	}
 	
 	@Test
-	void testMemberDefaultContructor() {
+	void testMemberDefaultContructor() { 
 		 member = new Member();
-		assertEquals("M1002", member.getMemberID());
+		assertEquals("M1002", member.getId());
 	}
 	
 	@Test
 	void testMemberIDContructor() {
 		 member = new Member("M1002");
-		assertEquals("M1002", member.getMemberID());
+		assertEquals("M1002", member.getId());
 	}
 
 
 	@Test
 	void testMemberContructor() {
-		assertEquals("M1005", member.getMemberID());
+		assertEquals("M1005", member.getId());
 		assertEquals("Fabiane", member.getFirstName(), "First Name");
 		assertEquals("Velosa", member.getLastName(), "Last Name");
 		assertEquals("083-123456", member.getMobileNumber(), "Mobile");

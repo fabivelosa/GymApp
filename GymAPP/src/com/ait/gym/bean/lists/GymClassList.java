@@ -33,31 +33,44 @@ public class GymClassList implements Serializable {
 
 		// Add personal trainers
 		EmployeeList employeeList = Helper.getBean("employeeList", EmployeeList.class);
-		Employee emp = employeeList.getEmployeeByUserEmail("john@gmail.com");
-		Employee emp2 = employeeList.getEmployeeByUserEmail("paul@gmail.com");
+		Employee emp = employeeList.getEmployeeByUserName("john@gmail.com");
+		Employee emp2 = employeeList.getEmployeeByUserName("paul@gmail.com");
 
 		gymClasses = new ArrayList<GymClass>();
 		GymClass pilates = new GymClass(getRandomId(), ClassesTypes.PILATES, DayOfWeek.MONDAY, "09:00", 60, 20, emp2);
 		gymClasses.add(pilates);
-
 		GymClass mindfulness = new GymClass(getRandomId(), ClassesTypes.MINDFULLNESS, DayOfWeek.TUESDAY, "10:00", 60,
 				20, emp);
 		gymClasses.add(mindfulness);
-		GymClass circuits = new GymClass(getRandomId(), ClassesTypes.CIRCUIT, DayOfWeek.WEDNESDAY, "09:00", 60, 20);
+		GymClass circuits = new GymClass(getRandomId(), ClassesTypes.CIRCUIT, DayOfWeek.WEDNESDAY, "09:00", 60, 10);
 		gymClasses.add(circuits);
-		GymClass yoga = new GymClass(getRandomId(), ClassesTypes.YOGA, DayOfWeek.THURSDAY, "10:00", 60, 20);
+		GymClass yoga = new GymClass(getRandomId(), ClassesTypes.YOGA, DayOfWeek.THURSDAY, "10:00", 40, 20);
 		gymClasses.add(yoga);
 		GymClass taichi = new GymClass(getRandomId(), ClassesTypes.TAI_CHI, DayOfWeek.FRIDAY, "11:00", 60, 20, emp);
 		gymClasses.add(taichi);
-		GymClass personal = new GymClass(getRandomId(), ClassesTypes.ONE_ONE_SESSION, DayOfWeek.MONDAY, "11:00", 60, 1,
+
+		gymClasses = new ArrayList<GymClass>();
+		GymClass pilates1 = new GymClass(getRandomId(), ClassesTypes.PILATES, DayOfWeek.WEDNESDAY, "09:00", 60, 20,
+				emp2);
+		gymClasses.add(pilates1);
+		GymClass mindfulness1 = new GymClass(getRandomId(), ClassesTypes.MINDFULLNESS, DayOfWeek.THURSDAY, "10:00", 60,
+				20, emp);
+		gymClasses.add(mindfulness1);
+		GymClass circuits1 = new GymClass(getRandomId(), ClassesTypes.CIRCUIT, DayOfWeek.WEDNESDAY, "09:00", 60, 10);
+		gymClasses.add(circuits1);
+		GymClass yoga1 = new GymClass(getRandomId(), ClassesTypes.YOGA, DayOfWeek.TUESDAY, "10:00", 40, 20);
+		gymClasses.add(yoga1);
+		GymClass taichi1 = new GymClass(getRandomId(), ClassesTypes.TAI_CHI, DayOfWeek.FRIDAY, "09:00", 60, 20, emp);
+		gymClasses.add(taichi1);
+
+		// 1-to-1 session
+		GymClass personal = new GymClass(getRandomId(), ClassesTypes.ONE_ONE_SESSION, DayOfWeek.MONDAY, "11:00", 50, 1,
 				emp);
 		gymClasses.add(personal);
-
-		GymClass personal1 = new GymClass(getRandomId(), ClassesTypes.ONE_ONE_SESSION, DayOfWeek.TUESDAY, "12:00", 60,
+		GymClass personal1 = new GymClass(getRandomId(), ClassesTypes.ONE_ONE_SESSION, DayOfWeek.TUESDAY, "12:00", 50,
 				1, emp);
 		gymClasses.add(personal1);
-
-		GymClass personal2 = new GymClass(getRandomId(), ClassesTypes.ONE_ONE_SESSION, DayOfWeek.WEDNESDAY, "13:00", 60,
+		GymClass personal2 = new GymClass(getRandomId(), ClassesTypes.ONE_ONE_SESSION, DayOfWeek.WEDNESDAY, "13:00", 50,
 				1, emp);
 		gymClasses.add(personal2);
 

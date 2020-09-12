@@ -47,7 +47,7 @@
 				<p:dataTable id="bookclasstable"
 					value="#{bookClassView.oneToOneClassesAvailable}" var="classlist"
 					styleClass="table">
-
+					<f:facet name="header"> Personal Trainer Sessions Available  </f:facet>
 					<p:column>
 						<f:facet name="header">Name</f:facet>
 
@@ -101,7 +101,7 @@
 				<p:dataTable id="cancelclasstable"
 					value="#{bookClassView.gymClassesOneToOneBooked}" var="classbook"
 					styleClass="table">
-
+					<f:facet name="header"> My booked Sessions   </f:facet>
 					<p:column>
 						<f:facet name="header">Name</f:facet>
 						<h:outputText value="#{classbook.name.value}" />

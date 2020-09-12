@@ -19,7 +19,7 @@ public class MembersList implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Member> members =new ArrayList<Member>();  
 
-	public MembersList() { 
+	public MembersList() {   
 		
 	}
 	
@@ -31,10 +31,9 @@ public class MembersList implements Serializable {
 		Member member2 = new Member("Tom","tom@email.com","123"); 
 		
 		getMembers().add(member1);
-		getMembers().add(member2);
+		getMembers().add(member2); 
 		
 	}
-	
 	
 
 	public ArrayList<Member> getMembers() {		 
@@ -63,7 +62,7 @@ public class MembersList implements Serializable {
 		System.out.println("member count -->"+this.getMembersCount());
 		
 		for(Member member:this.getMembers() ) {
-			if(member.getUserName().equals(userName)) {
+			if(member != null && member.getUserName().equals(userName)) {
 				memberFound = member;
 				System.out.println("member found -->"+member.getFirstName());
 			}
