@@ -11,7 +11,7 @@ class PlannerBeanTest {
 
 	private PlannerBean plannerbean;
 	@BeforeEach
-	void setUp() {
+	void setUp() { 
 		
 		System.out.println("Test running");
 		plannerbean = new PlannerBean();
