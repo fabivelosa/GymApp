@@ -19,7 +19,7 @@ public class SelectItemToEntityConverter implements Converter {
 		}
 
 		if (modelValue instanceof Employee) {
-			return ((Employee)modelValue).getEmployeeID();
+			return ((Employee)modelValue).getId(); 
 		} else {
 			throw new ConverterException(new FacesMessage(modelValue + " is not a valid Employee"));
 		}
@@ -35,7 +35,7 @@ public class SelectItemToEntityConverter implements Converter {
 
 			Employee emp = null;
 			for (Employee emp1 : employeeList.getEmployees()) {
-				if (emp1.getEmployeeID().contentEquals(submittedValue)) {
+				if (emp1.getId().contentEquals(submittedValue)) {
 					emp = emp1;
 				}
 			}

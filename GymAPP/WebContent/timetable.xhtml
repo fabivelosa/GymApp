@@ -73,7 +73,7 @@
 					<p:column>
 						<f:facet name="header">Trainer</f:facet>
 
-						<h:outputText value="#{classlist.instructor.empName}" />
+						<h:outputText value="#{classlist.instructor.firstName}" />
 					</p:column>
 
 					<p:column>
@@ -100,9 +100,9 @@
 					value="#{timelineView.trainerClass}" var="classbook"
 					styleClass="table">
 					<f:facet name="header"> My Classes   </f:facet>
-					<p:column  styleClass="text-center" >
+					<p:column styleClass="text-center">
 						<f:facet name="header">Name</f:facet>
-						<h:outputText  value="#{classbook.name.value}" />
+						<h:outputText value="#{classbook.name.value}" />
 					</p:column>
 
 					<p:column>
@@ -125,7 +125,7 @@
 					<p:column>
 						<f:facet name="header">Trainer</f:facet>
 
-						<h:outputText value="#{classbook.instructor.empName}" />
+						<h:outputText value="#{classbook.instructor.firstName}" />
 					</p:column>
 
 					<p:column>
@@ -136,8 +136,8 @@
 
 					<p:column>
 						<f:facet name="header">Action</f:facet>
-						<p:commandButton value="UnAssigned" ajax="false"
-							action="#{timelineView.cancelAssignClass(classbook.id)}" /> 
+						<p:commandButton value="UnAssign" ajax="false"
+							action="#{timelineView.cancelAssignClass(classbook.id)}" />
 
 					</p:column>
 				</p:dataTable>

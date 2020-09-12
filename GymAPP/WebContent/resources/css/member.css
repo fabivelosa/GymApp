@@ -88,6 +88,12 @@ table:nth-of-type(even) {
 
 p {
   text-align: justify;
+  font-size: 17px;
+  padding: 0 15px;
+}
+
+table table label {
+	font-weight: 700;
 }
 
 table:nth-of-type(even) table label,
@@ -99,9 +105,9 @@ input.centreElement {
 	border: none;
   box-shadow: 0px 6px 0px #1b58cf;
   background-color: #397CFF;
-  padding: 15px 30px;
+  padding: 12px 30px;
   color: white;
-  font-size: 18px;
+  font-size: 20px;
   border-radius: 6px;
   transition: 0.15s ease;
 }
