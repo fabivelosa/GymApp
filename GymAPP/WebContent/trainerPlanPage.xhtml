@@ -21,6 +21,11 @@
 <h:body>
 	<!-- NAV -->
 	<div class="nav">
+<<<<<<< HEAD
+		<div class="inner">
+			<div class="logo-container">
+				<img src="resources/images/watersidegym2.svg" />
+=======
 		<h:form>
 			<div class="inner">
 				<div class="logo-container">
@@ -30,8 +35,13 @@
 					<a href="trainershomepage.xhtml" id="signin">Trainers Homepage</a>
 					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
 				</div>
+>>>>>>> f27f7ad0b3c310306c223a950eb2bed84d0a0a9a
 			</div>
-		</h:form>
+			<div class="account-options">
+				<a href="login.xhtml" id="signin">Sign In </a> <a href="#jointoday"
+					class="register">Register</a>
+			</div>
+		</div>
 	</div>
 	<!-- /NAV -->
 
@@ -39,6 +49,46 @@
 	<div class="main">
 		<!-- PAGE_SPECIFIC_STRUCTURE -->
 		<div class="heading">
+<<<<<<< HEAD
+			<h1>Personalised Planner Page one week</h1>
+			<h3>Input plan details</h3>
+			<h:form>
+
+
+				<h:selectOneMenu value="#{plannerBean.member}">
+					<f:selectItem itemLabel="Select One Member..." itemValue="" />
+					<f:selectItems value="#{plannerBean.selectedMembers}" var="member"
+						itemLabel="#{member.firstName}" itemValue="#{member}" />
+				</h:selectOneMenu>
+
+				<br></br>
+				<h:selectManyListbox value="#{plannerBean.mondaySession}">
+					<f:selectItems value="#{plannerBean.mondaySessionValue}" />
+				</h:selectManyListbox>
+
+				<h:selectManyListbox value="#{plannerBean.tuesdaySession}">
+					<f:selectItems value="#{plannerBean.tuesdaySessionValue}" />
+				</h:selectManyListbox>
+
+				<h:selectManyListbox value="#{plannerBean.wednesdaySession}">
+					<f:selectItems value="#{plannerBean.wednesdaySessionValue}" />
+				</h:selectManyListbox>
+
+				<h:selectManyListbox value="#{plannerBean.thursdaySession}">
+					<f:selectItems value="#{plannerBean.thursdaySessionValue}" />
+				</h:selectManyListbox>
+
+				<h:selectManyListbox value="#{plannerBean.fridaySession}">
+					<f:selectItems value="#{plannerBean.fridaySessionValue}" />
+				</h:selectManyListbox>
+				<br></br>
+				
+				 <h:commandButton id="submitButton" value="Create Plan"
+    						  icon="ui-icon-check" action="#{plannerBean.savePlan}"/> 
+
+			</h:form>
+			
+=======
 			<div class="planpage">
 				<h1>Personalised Planner Page one week</h1>
 				<h:form>
@@ -85,6 +135,7 @@
 					</div>
 				</h:form>
 			</div>
+>>>>>>> f27f7ad0b3c310306c223a950eb2bed84d0a0a9a
 		</div>
 		<!-- FOOTER -->
 		<div class="footer">

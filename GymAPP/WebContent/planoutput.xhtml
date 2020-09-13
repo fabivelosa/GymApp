@@ -2,34 +2,73 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
-	<h:head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport"
-			content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-		<!-- FAVICON -->
-		<link rel="shortcut icon" type="image/svg" href="" />
-		<title>Waterside Gym - Plan output</title>
-		<!-- CSS -->
-		<h:outputStylesheet library="css" name="global.css" />
-		<h:outputStylesheet name="trainerplanpage.css" library="css" />
-		<!-- External Fonts -->
-	</h:head>
-	<h:body>
-			<h:form>
-				<!-- NAV -->
-				<div class="nav">
-					<div class="inner">
-						<div class="logo-container">
-							<img src="resources/images/watersidegym2.svg" />
-						</div>
-						<div class="account-options">
-							<h:commandButton value="Log Out" action="#{login.logout}" />
-						</div>
-					</div>
-				</div>
-				<!-- /NAV -->
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<!-- FAVICON -->
+	<link rel="shortcut icon" type="image/svg" href="" />
 
+	<title>Waterside Gym - Plan output</title>
+
+	<!-- CSS -->
+	<h:outputStylesheet library="css" name="global.css" />
+	<h:outputStylesheet name="trainerplanpage.css" library="css" />
+	<!-- External Fonts -->
+
+</h:head>
+<h:body>
+	<h:form>
+		<!-- NAV -->
+		<div class="nav">
+			<div class="inner">
+				<div class="logo-container">
+					<img src="resources/images/watersidegym2.svg" />
+				</div>
+				<div class="account-options">
+					<a href="login.xhtml" id="signin">Sign In </a> <a href="#jointoday"
+						class="register">Register</a>
+					<h:commandButton value="logout" action="#{login.logout}" />
+				</div>
+			</div>
+		</div>
+		<!-- /NAV -->
+
+<<<<<<< HEAD
+		<!-- MAIN -->
+		<div class="main">
+
+			<!-- PAGE_SPECIFIC_STRUCTURE -->
+			<div class="output">
+
+				<h1>Personalised Planner Page</h1>
+				<h4>Plan details for : #{plannerBean.memberName}</h4>
+				<ol>
+					<li>Monday's Session : #{plannerBean.mondaySessionInString}</li>
+					<li>Tuesday's Session : #{plannerBean.tuesdaySessionInString}</li>
+					<li>Wenesday's Session :
+						#{plannerBean.wednesdaySessionInString}</li>
+					<li>Thursday's Session :
+						#{plannerBean.thursdaySessionInString}</li>
+					<li>Friday's Session : #{plannerBean.fridaySessionInString}</li>
+				</ol>
+				
+				
+
+			</div>
+			<!-- FOOTER -->
+			<div class="footer">
+				<span id="arc"></span>
+				<div id="jointoday" class="inner">
+					<div class="legal">
+						<ul>
+							<li>Legal</li>
+							<li>Membership Agreement</li>
+							<li>Accessibility</li>
+							<li>Privacy</li>
+						</ul>
+=======
 				<!-- MAIN -->
 				<div class="main">
 					<!-- PAGE_SPECIFIC_STRUCTURE -->
@@ -46,31 +85,24 @@
 							</table>
 						</div>
 						<a href="trainershomepage.xhtml" class="return">Back to Homepage</a>
+>>>>>>> f27f7ad0b3c310306c223a950eb2bed84d0a0a9a
 					</div>
-					<!-- FOOTER -->
-					<div class="footer">
-						<span id="arc"></span>
-						<div id="jointoday" class="inner">
-							<div class="legal">
-								<ul>
-									<li>Legal</li>
-									<li>Membership Agreement</li>
-									<li>Accessibility</li>
-									<li>Privacy</li>
-								</ul>
-							</div>
-							<div class="contact">
-								<h3>Contact Us</h3>
-								<p>info@watersidegym.ie</p>
-							</div>
-							<div>
-								<img src="resources/images/paypal.png" class="img-fluid pull-xs-left" alt="..." />
-							</div>
-						</div>
+					<div class="contact">
+						<h3>Contact Us</h3>
+						<p>info@watersidegym.ie</p>
 					</div>
-					<!-- /FOOTER -->
+					<div>
+						<img src="resources/images/worldpay.png"
+							class="img-fluid pull-xs-left" alt="..." /> <img
+							src="resources/images/paypal.png" class="img-fluid pull-xs-left"
+							alt="..." />
+					</div>
 				</div>
-			</h:form>
-		<!-- /MAIN -->
-	</h:body>
+			</div>
+
+			<!-- /FOOTER -->
+		</div>
+	</h:form>
+	<!-- /MAIN -->
+</h:body>
 </html>
