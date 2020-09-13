@@ -1,6 +1,7 @@
 package com.ait.gym.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -8,17 +9,31 @@ import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import com.ait.gym.bean.lists.GymClassList;
+import com.ait.gym.utils.ClassesTypes;
+import com.ait.gym.utils.Helper;
+
 @ManagedBean
 @SessionScoped
 public class PlannerBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private String MemberName;
+	private String memberName;
 	private String[] mondaySession;
 	private String[] tuesdaySession;
 	private String[] wednesdaySession;
 	private String[] thursdaySession;
 	private String[] fridaySession;
+	private Member member;
+	private ArrayList<Member> selectedMembers;
+	
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
+	}
 
 	// Monday
 	public String[] getMondaySession() {
@@ -30,7 +45,7 @@ public class PlannerBean implements Serializable {
 	}
 
 	public String getMondaySessionInString() {
-		return Arrays.toString(mondaySession);
+		return Arrays.toString(mondaySession) + "Cooldown";
 	}
 
 	// Tuesday
@@ -196,10 +211,47 @@ public class PlannerBean implements Serializable {
 	}
 
 	public String getMemberName() {
-		return MemberName;
+		return memberName;
 	}
 
 	public void setMemberName(String memberName) {
-		MemberName = memberName;
+		this.memberName = memberName;
 	}
+
+	public ArrayList<Member> getSelectedMembers() {
+
+		System.out.println("getSelectedMembers");
+		selectedMembers = new ArrayList<Member>();
+
+		GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
+
+		Employee trainer = (Employee) Helper.getUserLogged();
+		// members that have 1-to-1 Session Booked for the logged Trainer
+		for (GymClass classes : gymClasses.getGymClass()) {
+			if (classes.getEnrolled() == null) {
+				classes.setEnrolled(new ArrayList<Member>());
+			}
+			for (Member memberEnroll : classes.getEnrolled()) {// One-to-One AND Trainer Logged
+				if (classes.getInstructor().equals(trainer) && classes.getName().equals(ClassesTypes.ONE_ONE_SESSION)) {
+					selectedMembers.add(memberEnroll);
+					System.out.println("adding member");
+				}
+			}
+		}
+
+		return selectedMembers;
+	}
+
+	public void setSelectedMembers(ArrayList<Member> selectedMembers) {
+		this.selectedMembers = selectedMembers;
+	}
+
+	public String savePlan() {
+
+		return "planoutput";
+
+	}
+
+	
+
 }

@@ -1,4 +1,5 @@
 package com.ait.gym.bean.trainerplanner;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -211,16 +212,6 @@ public class PlannerBean implements Serializable {
 	public void setMemberName(String memberName) {
 		MemberName = memberName;
 	}
-//	/*
-//	public void printToDesktop() throws IOException {
-//		String userHomeFolder = System.getProperty("user.home");
-//		File textFile = new File(userHomeFolder, "Plan.txt");
-//		BufferedWriter out = new BufferedWriter(new FileWriter(textFile));
-//		try {
-//			
-//		} finally {
-//			out.close();
-//		}*/
 
 	public ArrayList<Member> getSelectedMembers() {
 
@@ -229,13 +220,13 @@ public class PlannerBean implements Serializable {
 
 		GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
 
-		Employee trainer = Helper.getTrainerLogged();
+		Employee trainer = (Employee) Helper.getUserLogged();
 		// members that have 1-to-1 Session Booked for the logged Trainer
 		for (GymClass classes : gymClasses.getGymClass()) {
 			if (classes.getEnrolled() == null) {
 				classes.setEnrolled(new ArrayList<Member>());
 			}
-			for (Member memberEnroll : classes.getEnrolled()) {//One-to-One AND Trainer Logged
+			for (Member memberEnroll : classes.getEnrolled()) {// One-to-One AND Trainer Logged
 				if (classes.getInstructor().equals(trainer) && classes.getName().equals(ClassesTypes.ONE_ONE_SESSION)) {
 					selectedMembers.add(memberEnroll);
 					System.out.println("adding member");
@@ -249,11 +240,11 @@ public class PlannerBean implements Serializable {
 	public void setSelectedMembers(ArrayList<Member> selectedMembers) {
 		this.selectedMembers = selectedMembers;
 	}
-	
-	public String savePlan() {	
-		
+
+	public String savePlan() {
+
 		return "planoutput";
-		
+
 	}
 
 	public Member getMember() {
@@ -263,7 +254,5 @@ public class PlannerBean implements Serializable {
 	public void setMember(Member member) {
 		this.member = member;
 	}
-
-
 
 }
