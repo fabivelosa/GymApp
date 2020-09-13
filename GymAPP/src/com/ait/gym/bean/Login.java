@@ -70,9 +70,9 @@ public class Login implements Serializable {
 				page = "trainershomepage";
 			}
 		} else {
-			FacesMessage message = new FacesMessage("Invalid User or Password!");
-			page = "login.xhtml?faces-redirect=true";
-			FacesContext.getCurrentInstance().addMessage(null, message);
+			Helper.setInfoMessage("INFO!","Invalid User or Password!");
+			page = "login.xhtml?faces-redirect=true";			
+			
 		}
 		return page;
 	}

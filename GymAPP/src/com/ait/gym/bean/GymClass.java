@@ -62,7 +62,6 @@ public class GymClass implements Serializable {
 
 	@Override
 	public boolean equals(Object o) {
-
 		// self check
 		if (this == o)
 			return true;
@@ -72,10 +71,8 @@ public class GymClass implements Serializable {
 		// type check and cast
 		if (getClass() != o.getClass())
 			return false;
-
 		GymClass gymClass = (GymClass) o;
 		return gymClass.getId() == this.getId();
-
 	}
 
 	public ClassesTypes getName() {

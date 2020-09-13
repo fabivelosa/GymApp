@@ -1,10 +1,11 @@
 package com.ait.gym.utils;
 
 import javax.faces.application.Application;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import com.ait.gym.bean.Member;
 import com.ait.gym.bean.Person;
 
 public class Helper {
@@ -21,7 +22,7 @@ public class Helper {
 		return application.evaluateExpressionGet(context, "#{" + beanName + "}", type);
 	}
 
-	public static void expungeSession() { 
+	public static void expungeSession() {
 
 		// Get the FacesContext object.
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -31,23 +32,22 @@ public class Helper {
 
 		// Invalidate (i.e. expunge) session state.
 		if (session != null) {
-			session.invalidate(); 
+			session.invalidate();
 		}
 	}
-	
+
 	public static void setSessionAttribute(String name, Object obj) {
 
 		// Get the FacesContext object.
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
-		
-	    session.setAttribute(name, obj);	
-	
-		
+
+		session.setAttribute(name, obj);
+
 	}
-	
-	public static Person getUserLogged() { 
-		
+
+	public static Person getUserLogged() {
+
 		Person person = new Person();
 
 		FacesContext context2 = FacesContext.getCurrentInstance();
@@ -60,6 +60,18 @@ public class Helper {
 
 		}
 		return person;
+	}
+
+	public static void setInfoMessage(String summary,String message) {
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, summary, message));
+	}
+
+	public static void setInfoMessage(UIComponent component, String summary,String message) {
+
+		FacesContext context = FacesContext.getCurrentInstance();
+
+		context.addMessage(component.getClientId(context), new FacesMessage(summary, message));
+
 	}
 
 }

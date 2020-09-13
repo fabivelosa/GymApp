@@ -1,6 +1,7 @@
 package com.ait.gym.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Date;
 
@@ -25,19 +26,12 @@ class MemberTest {
 	@Test
 	void testMemberDefaultContructor() { 
 		 member = new Member();
-		assertEquals("M1002", member.getId());
+		assertTrue(member.getId().contains("M"), member.getId());
 	}
-	
-	@Test
-	void testMemberIDContructor() {
-		 member = new Member("M1002");
-		assertEquals("M1002", member.getId());
-	}
-
 
 	@Test
 	void testMemberContructor() {
-		assertEquals("M1005", member.getId());
+		assertTrue(member.getId().contains("M"), member.getId());
 		assertEquals("Fabiane", member.getFirstName(), "First Name");
 		assertEquals("Velosa", member.getLastName(), "Last Name");
 		assertEquals("083-123456", member.getMobileNumber(), "Mobile");
@@ -104,4 +98,14 @@ class MemberTest {
 		member.setGoal("Hiit");
 		assertEquals("Hiit", member.getGoal());
 	}
+	
+	@Test
+	void testOneToOneCreditMembership() {
+		member.setOneToOneCredit(CreditTypes.TREE_MONTHS.getCreditQtd());
+		member.setMembershipType(CreditTypes.TREE_MONTHS);
+		assertEquals(CreditTypes.TREE_MONTHS.getCreditQtd(), member.getOneToOneCredit());
+		assertEquals(CreditTypes.TREE_MONTHS, member.getMembershipType());
+	}
+	
+	
 }

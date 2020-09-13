@@ -202,17 +202,4 @@ public class PlannerBean implements Serializable {
 	public void setMemberName(String memberName) {
 		MemberName = memberName;
 	}
-//	/*
-//	public void printToDesktop() throws IOException {
-//		String userHomeFolder = System.getProperty("user.home");
-//		File textFile = new File(userHomeFolder, "Plan.txt");
-//		BufferedWriter out = new BufferedWriter(new FileWriter(textFile));
-//		try {
-//			
-//		} finally {
-//			out.close();
-//		}*/
-
-//	}
-
 }
