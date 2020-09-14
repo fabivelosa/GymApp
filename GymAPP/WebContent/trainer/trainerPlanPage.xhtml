@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -24,7 +25,7 @@
 		<h:form>
 			<div class="inner">
 				<div class="logo-container">
-					<img src="resources/images/watersidegym2.svg" />
+					<img src="../resources/images/watersidegym2.svg" />
 				</div>
 				<div class="account-options">
 					<a href="trainershomepage.xhtml" id="signin">Trainers Homepage</a>
@@ -45,13 +46,11 @@
 					<div>
 						<h2>Choose Your Mon-Fri Plan</h2>
 						<div>
-							<span>Name your plan: </span>
-							<h:selectOneMenu value="#{plannerBean.member}">
-								<f:selectItem itemLabel="Select One Member..." itemValue="" />
-								<f:selectItems value="#{plannerBean.selectedMembers}"
-									var="member" itemLabel="#{member.firstName}"
-									itemValue="#{member}" />
-							</h:selectOneMenu>
+							<span>Weekly plan for : </span>
+						<h:selectOneMenu value="#{plannerBean.member}" converter="#{userConverter}">
+    						<f:selectItems   itemLabel="#{member.firstName}"  var="member"  itemValue="#{member}" value="#{plannerBean.selectedMembers}" />
+    						
+						</h:selectOneMenu>				
 						</div>
 					</div>
 					<table>
@@ -86,7 +85,8 @@
 						</tr>
 					</table>
 					<div>
-						<h:commandButton value="Create Plan" action="planoutput"></h:commandButton>
+						<h:commandButton value="Create Plan"    action="#{plannerBean.savePlan}"></h:commandButton>
+					
 					</div>
 				</h:form>
 			</div>
@@ -108,11 +108,9 @@
 					<p>info@watersidegym.ie</p>
 				</div>
 				<div>
-					<img src="resources/images/worldpay.png"
-						class="img-fluid pull-xs-left" alt="..." /> <img
-						src="resources/images/paypal.png" class="img-fluid pull-xs-left"
-						alt="..." />
-				</div>
+						<img src="../resources/images/paypal.png"
+							class="img-fluid pull-xs-left" alt="..." />
+					</div>
 			</div>
 		</div>
 		<!-- /FOOTER -->

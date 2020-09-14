@@ -18,20 +18,20 @@ public class MembersList implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Member> members =new ArrayList<Member>();  
-
+ 
 	public MembersList() {   
 		
 	}
 	
 
 	@PostConstruct
-	public void init() {
-		
+	public void init() { 
+		 
 		Member member1 = new Member("Ann","ann@email.com","123");
 		Member member2 = new Member("Tom","tom@email.com","123"); 
 		
-		getMembers().add(member1);
-		getMembers().add(member2); 
+		getMembers().add( member1);
+		getMembers().add( member2); 
 		
 	}
 	
@@ -62,11 +62,25 @@ public class MembersList implements Serializable {
 		System.out.println("member count -->"+this.getMembersCount());
 		
 		for(Member member:this.getMembers() ) {
-			if(member != null && member.getUserName().equals(userName)) {
+			if(member != null && member.getUserName()!= null &&  member.getUserName().equals(userName)) {
 				memberFound = member;
 				System.out.println("member found -->"+member.getFirstName());
 			}
 		}
-		return memberFound;		
+		return memberFound;		 
+	}
+	
+	public Member getMemberById(String id) {
+		
+		Member memberFound = null; 
+		System.out.println("member count -->"+this.getMembersCount());
+		
+		for(Member member:this.getMembers() ) {
+			if(member != null && member.getId().equals(id)) {
+				memberFound = member;
+				System.out.println("member found -->"+member.getFirstName());
+			}
+		}
+		return memberFound;		 
 	}
 }

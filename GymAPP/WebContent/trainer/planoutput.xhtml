@@ -21,7 +21,7 @@
 		<div class="nav">
 			<div class="inner">
 				<div class="logo-container">
-					<img src="resources/images/watersidegym2.svg" />
+					<img src="../resources/images/watersidegym2.svg" />
 				</div>
 				<div class="account-options">
 					<h:commandButton value="Log Out" action="#{login.logout}" />
@@ -36,7 +36,7 @@
 			<div class="output">
 				<div class="planpage">
 					<h1>Personalised Training Planner Page </h1>
-					<h4>Plan details for: #{plannerBean.memberName}</h4>
+					<h4>Plan details for: #{plannerBean.member.firstName}</h4>
 					<table>
 						<tr>
 							<th>Monday</th>
@@ -79,7 +79,7 @@
 						<p>info@watersidegym.ie</p>
 					</div>
 					<div>
-						<img src="resources/images/paypal.png"
+						<img src="../resources/images/paypal.png"
 							class="img-fluid pull-xs-left" alt="..." />
 					</div>
 				</div>

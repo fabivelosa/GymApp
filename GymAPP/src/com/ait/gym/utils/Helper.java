@@ -25,7 +25,7 @@ public class Helper {
 	public static void expungeSession() {
 
 		// Get the FacesContext object.
-		FacesContext context = FacesContext.getCurrentInstance();
+		FacesContext context = FacesContext.getCurrentInstance(); 
 
 		// Get the HttpSession object for the current context.
 		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
@@ -37,7 +37,7 @@ public class Helper {
 	}
 
 	public static void setSessionAttribute(String name, Object obj) {
-
+ 
 		// Get the FacesContext object.
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
@@ -48,7 +48,7 @@ public class Helper {
 
 	public static Person getUserLogged() {
 
-		Person person = new Person();
+		Person person = null;
 
 		FacesContext context2 = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
@@ -59,7 +59,7 @@ public class Helper {
 			person = (Person) session.getAttribute("loggedUser");
 
 		}
-		return person;
+		return person; 
 	}
 
 	public static void setInfoMessage(String summary,String message) {

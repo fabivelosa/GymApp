@@ -26,6 +26,7 @@ public class GymClass implements Serializable {
 	private int spaces;
 	private Employee instructor;
 	List<Member> enrolled;
+	PlannerBean plan;
 
 	public GymClass() {
 		super();
@@ -73,6 +74,14 @@ public class GymClass implements Serializable {
 			return false;
 		GymClass gymClass = (GymClass) o;
 		return gymClass.getId() == this.getId();
+	}
+
+	public PlannerBean getPlan() {
+		return plan;
+	}
+
+	public void setPlan(PlannerBean plan) {
+		this.plan = plan;
 	}
 
 	public ClassesTypes getName() {

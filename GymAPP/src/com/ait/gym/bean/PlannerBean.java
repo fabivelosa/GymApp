@@ -18,15 +18,14 @@ import com.ait.gym.utils.Helper;
 public class PlannerBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private String memberName;
 	private String[] mondaySession;
-	private String[] tuesdaySession;
+	private String[] tuesdaySession; 
 	private String[] wednesdaySession;
 	private String[] thursdaySession;
 	private String[] fridaySession;
 	private Member member;
 	private ArrayList<Member> selectedMembers;
-	
+
 	public Member getMember() {
 		return member;
 	}
@@ -210,31 +209,20 @@ public class PlannerBean implements Serializable {
 		return fridaySessionValue;
 	}
 
-	public String getMemberName() {
-		return memberName;
-	}
-
-	public void setMemberName(String memberName) {
-		this.memberName = memberName;
-	}
-
 	public ArrayList<Member> getSelectedMembers() {
 
 		System.out.println("getSelectedMembers");
-		selectedMembers = new ArrayList<Member>();
+		selectedMembers = new ArrayList<Member>(); 
 
 		GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
-
 		Employee trainer = (Employee) Helper.getUserLogged();
-		// members that have 1-to-1 Session Booked for the logged Trainer
+
 		for (GymClass classes : gymClasses.getGymClass()) {
-			if (classes.getEnrolled() == null) {
-				classes.setEnrolled(new ArrayList<Member>());
-			}
-			for (Member memberEnroll : classes.getEnrolled()) {// One-to-One AND Trainer Logged
-				if (classes.getInstructor().equals(trainer) && classes.getName().equals(ClassesTypes.ONE_ONE_SESSION)) {
-					selectedMembers.add(memberEnroll);
-					System.out.println("adding member");
+			// 1-to-1 Session Booked for the logged Trainer
+			if (classes.getName().equals(ClassesTypes.ONE_ONE_SESSION) && classes.getInstructor().equals(trainer)) {
+				if (classes.getEnrolled() != null && classes.getEnrolled().size() > 0) {
+					selectedMembers.add(classes.getEnrolled().get(0));
+					System.out.println("selected member");
 				}
 			}
 		}
@@ -247,11 +235,11 @@ public class PlannerBean implements Serializable {
 	}
 
 	public String savePlan() {
-
-		return "planoutput";
+		String outcome = null;
+		outcome = "planoutput?faces-redirect=true";
+		System.out.println("savePlan for:" + this.getMember().getFirstName());
+		return outcome;
 
 	}
-
-	
 
 }

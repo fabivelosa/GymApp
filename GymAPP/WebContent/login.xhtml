@@ -14,37 +14,45 @@
 	</h:head>
 	
 	<h:body>
-		<!-- NAV -->
-	    <div class="nav">
-	      <div class="inner">
-	        <div class="logo-container">
-	          <img src="../resources/images/watersidegym2.svg" />
-	        </div>
-	      </div>
-	    </div>
-	    <!-- /NAV -->
+		  <!-- NAV -->
+    <div class="nav">
+      <div class="inner">
+        <div class="logo-container">
+          <img src="resources/images/watersidegym2.svg" />
+        </div>
+        </div>
+    </div>
+    <!-- /NAV -->
 	   <div class="main"> 
 			<div class="login">
 				<h1>Welcome Back</h1>
-				<h:form>
-					 <h:messages globalOnly="true"   style = "color:red;margin:8px;" /> 
-
-					<table id="login">
-						<tr>
-							<th><h:outputText value="Username" /></th>
-							<td><h:inputText id="username" value="#{login.userName}" /><h:message for="username"></h:message></td>
-						</tr>
-						<tr>
-							<th><h:outputText value="Password" /></th>
-							<td><h:inputSecret value="#{login.password}" /></td>
-						</tr>
-						<tr>
-							
-						</tr>
-						<tr>
-							<td colspan="2"><h:commandButton styleClass="submit" value="Log In" action="#{login.loginYesNo}" /></td>
-						</tr>
-					</table>
+				<h:form id="loginForm">
+				 				   
+						
+	
+						<table id="login">
+							<tr>
+								<th><h:outputText  value="username" /></th>
+								<td><h:inputText label="User Name" id="username" value="#{login.userName}"  required="true"/>
+								    </td>
+							</tr>
+							<tr>
+								<th><h:outputText value="Password" /></th>
+								<td><h:inputSecret label="Password"  id="password" value="#{login.password}" required="true" />
+								   </td>
+							</tr>
+							<tr>
+							  <h:messages styleClass="errorMessage" />
+								
+							</tr>
+							<tr>
+								<td colspan="2"><h:commandButton styleClass="submit"  value="Log In" action="#{login.loginYesNo}" /></td>
+							</tr>
+						</table>
+				
+					
+					
+					 
 				</h:form>
 			</div>
 		

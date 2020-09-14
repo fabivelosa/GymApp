@@ -28,11 +28,11 @@
 		<h:form>
 			<div class="inner">
 				<div class="logo-container">
-					<img src="resources/images/watersidegym2.svg" />
+					<img src="../resources/images/watersidegym2.svg" />
 				</div>
 				<div class="account-options">
 				   		     
-				   <a href="member.xhtml" id="signin">Members HomePage</a> 
+				   <a href="member/member.xhtml" id="signin">Members HomePage</a> 
 					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
 				</div>
 			</div>
@@ -76,28 +76,27 @@
 	
 	<!-- FOOTER -->
 	<div class="footer">
-		<span id="arc"></span>
-		<div id="jointoday" class="inner">
-			<div class="legal">
-				<ul>
-					<li>Legal</li>
-					<li>Membership Agreement</li>
-					<li>Accessibility</li>
-					<li>Privacy</li>
-				</ul>
-			</div>
-			<div class="contact">
-				<h3>Contact Us</h3>
-				<p>info@watersidegym.ie</p>
-			</div>
-			<div>
-				<img src="resources/images/worldpay.png"
-					class="img-fluid pull-xs-left" alt="..." /> <img
-					src="resources/images/paypal.png" class="img-fluid pull-xs-left"
-					alt="..." />
+			<span id="arc"></span>
+			<div id="jointoday" class="inner">
+				<div class="legal">
+					<ul>
+						<li>Legal</li>
+						<li>Membership Agreement</li>
+						<li>Accessibility</li>
+						<li>Privacy</li>
+					</ul>
+				</div>
+				<div class="contact">
+					<h3>Contact Us</h3>
+					<p>info@watersidegym.ie</p>
+				</div>
+				<div>
+					<img src="../resources/images/paypal.png"
+						class="img-fluid pull-xs-left" alt="..." />
+				</div>
 			</div>
 		</div>
-	</div>
+	
 	<!-- /FOOTER -->
 	
 </h:body>

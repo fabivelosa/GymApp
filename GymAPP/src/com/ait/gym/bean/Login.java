@@ -1,4 +1,4 @@
-package com.ait.gym.bean.login;
+package com.ait.gym.bean;
 
 import java.io.Serializable;
 
@@ -9,9 +9,6 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import com.ait.gym.bean.Employee;
-import com.ait.gym.bean.Member;
-import com.ait.gym.bean.Person;
 import com.ait.gym.bean.lists.EmployeeList;
 import com.ait.gym.bean.lists.MembersList;
 import com.ait.gym.utils.Helper;
@@ -29,7 +26,7 @@ public class Login implements Serializable {
 
 	public Login(String password, String userName) {
 		super();
-		this.password = password;
+		this.password = password;  
 		this.userName = userName;
 	}
 
@@ -63,21 +60,29 @@ public class Login implements Serializable {
 	public String loginYesNo() {
 		String page = null;
 
-		Person user = getUserByUserName(userName);
-
-		if (user != null && loginUser(user)) {
-
-			if (user.getId().contains("M")) {
-				page = "member";
-			} else if (user.getId().contains("P")) {
-				page = "trainershomepage";
-			}
-		} else {
-			FacesMessage message = new FacesMessage("Invalid User or Password!");
-			page = "login.xhtml?faces-redirect=true";
-			FacesContext.getCurrentInstance().addMessage(null, message);
-			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
-			FacesContext.getCurrentInstance().addMessage(null, message);
+		Person user = getUserByUserName(userName); 
+		try {
+			
+	
+				if (user != null && loginUser(user)) {
+		 
+					if (user.getId().contains("M")) {
+						page = "/member/member?faces-redirect=true";
+					} else if (user.getId().contains("P")) {
+						page = "/trainer/trainershomepage?faces-redirect=true";
+					}
+				} else {
+					FacesMessage message = new FacesMessage();
+					page = "login.xhtml";
+					message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Invalid User or Password!", "Invalid credentials");
+					FacesContext.getCurrentInstance().addMessage("loginForm", message);
+				}
+		
+		} catch (Exception e) {
+			FacesMessage message = new FacesMessage();
+			page = "login.xhtml";
+			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Invalid User or Password!", "Invalid credentials");
+			FacesContext.getCurrentInstance().addMessage("loginForm", message);
 		}
 		return page;
 	}
@@ -93,7 +98,7 @@ public class Login implements Serializable {
 				if (user instanceof Member) {
 					session.setAttribute("userType", "M");
 				} else if (user instanceof Employee) {
-					session.setAttribute("userType", "P");
+					session.setAttribute("userType", "P"); 
 				}
 				return true;
 			}
@@ -103,7 +108,7 @@ public class Login implements Serializable {
 
 	private Person getUserByUserName(String userName) {
 
-		Person user = new Person();
+		Person user = null;
 		user = getMemberbyUserName(userName);
 
 		if (user == null) {
