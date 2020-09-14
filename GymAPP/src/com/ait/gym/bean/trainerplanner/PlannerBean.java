@@ -25,7 +25,7 @@ public class PlannerBean implements Serializable {
 	private String[] mondaySession;
 	private String[] tuesdaySession;
 	private String[] wednesdaySession;
-	private String[] thursdaySession;
+	private String[] thursdaySession; 
 	private String[] fridaySession;
 	private Member member;
 	private ArrayList<Member> selectedMembers;
@@ -94,6 +94,15 @@ public class PlannerBean implements Serializable {
 	public String getFridaySessionInString() {
 		return Arrays.toString(fridaySession) + "Cooldown";
 	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "";
+	}
+
+ 
 
 	private static Map<String, Object> mondaySessionValue;
 	{

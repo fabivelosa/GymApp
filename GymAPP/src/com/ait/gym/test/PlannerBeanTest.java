@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.ait.gym.bean.Member;
 import com.ait.gym.bean.trainerplanner.PlannerBean;
 
 class PlannerBeanTest {
@@ -28,7 +29,7 @@ class PlannerBeanTest {
 		String[] expectedOutput = {"stretching","cycling","muscle training"};
 		String[] mondaySession = {"stretching","cycling","muscle training"};
 		assertArrayEquals(expectedOutput, mondaySession);
-	}
+	} 
 	
 	@Test
 	public void testMondaySessionFail() {
@@ -36,15 +37,7 @@ class PlannerBeanTest {
 		String[] tuesdaySession = {"rest"};
 		assertArrayEquals(expectedOutput, tuesdaySession);
 	}
-	
-//	@Test
-//	public void testMonday(String[] mondaySession) { 
-//		plannerbean.setMondaySession(mondaySession);
-//		
-//		assertArrayEquals(mondaySession, plannerbean.getMondaySession());
-//	}
-//	
-	
+
 
 	@Test
 	public void toStringTest() {
@@ -52,6 +45,27 @@ class PlannerBeanTest {
 		assertEquals(expected, plannerbean.toString());
 		
 	}
+	
+	@Test
+	public void savePlanTest() {
+		assertEquals("planoutput",plannerbean.savePlan());
+	}
+	
+	@Test
+	public void testMember() {		
+		assertEquals(null,plannerbean.getMember());
+		
+	}
+	
+	@Test
+	public void testMemberset() {	
+		Member member = null;
+		plannerbean.setMember(member);
+		assertEquals(null,plannerbean.getMember());
+		
+	} 
+	
+	
 }
 
 
