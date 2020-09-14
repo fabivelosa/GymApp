@@ -156,7 +156,7 @@ public class BookClassView implements Serializable {
 
 		oneToOneSessionsAvaliable = new ArrayList<GymClass>();
 		GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
-		Member member = getUserLogged();
+		//Member member = getUserLogged();
 
 		// classes that have instructor assigned/available spaces/not already enrolled
 		for (GymClass classes : gymClasses.getGymClass()) {
@@ -166,7 +166,7 @@ public class BookClassView implements Serializable {
 			}
 
 		}
-
+ 
 		return oneToOneSessionsAvaliable;
 	}
 

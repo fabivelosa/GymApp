@@ -2,11 +2,11 @@ package com.ait.gym.bean.login;
 
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+
 import javax.servlet.http.HttpSession;
 
 import com.ait.gym.bean.Employee;
@@ -17,88 +17,72 @@ import com.ait.gym.bean.lists.MembersList;
 import com.ait.gym.utils.Helper;
 
 @ManagedBean
-@RequestScoped
-public class Login implements Serializable {
+@SessionScoped
+public class Login extends LoginSetup implements Serializable {
 
 	/**
-	 * 
+	 *  
 	 */
 	private static final long serialVersionUID = 1L;
-	private String password;
-	private String userName;
-
-	public Login(String password, String userName) {
-		super();
-		this.password = password;
-		this.userName = userName;
-	}
-
-	public Login() {
-	}
-
-	@PostConstruct
-	public void init() {
-
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		System.out.println("Password = " + password);
-		this.password = password;
-	}
-
-	public String getUserName() {
-
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		System.out.println("User = " + userName);
-		this.userName = userName;
-	}
 
 	public String loginYesNo() {
-		String page = null;
 
-		Person user = getUserByUserName(userName);
+		String message = "index.xhtml?faces-redirect=true";
 
-		if (user != null && loginUser(user)) {
+		Person user = getUserByUserName(getUserName());
+		String returnedUser = isMemberHere(getUserName(), user);
+		String returnedUser2 = isEmployeeHere(getUserName(), user);
+		if (returnedUser.equals("member")) {
 
-			if (user.getId().contains("M")) {
-				page = "member";
-			} else if (user.getId().contains("P")) {
-				page = "trainershomepage";
-			}
-		} else {
-			FacesMessage message = new FacesMessage("Invalid User or Password!");
-			page = "login.xhtml?faces-redirect=true";
-			FacesContext.getCurrentInstance().addMessage(null, message);
-			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Invalid credentials");
-			FacesContext.getCurrentInstance().addMessage(null, message);
+			message = "member";
 		}
-		return page;
+		if (returnedUser2.equals("trainershomepage")) {
+
+			message = "trainershomepage";
+
+		}
+
+		return message;
 	}
 
-	private boolean loginUser(Person user) {
+	public String isMemberHere(String username, Person user) {
+
 		FacesContext context2 = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
 
+		user = getMemberbyUserName(username);
+
+		String here = "";
+
 		if (user != null) {
-			if (user.getPassword().equals(this.password) && user.getUserName().equals(this.userName)) {
+			if (user.getUserName().equalsIgnoreCase(username) && user.getPassword().equals(this.getPassword())) {
+
 				session.setAttribute("loggedUser", user);
 				session.setAttribute("isUserLogged", "true");
-				if (user instanceof Member) {
-					session.setAttribute("userType", "M");
-				} else if (user instanceof Employee) {
-					session.setAttribute("userType", "P");
-				}
-				return true;
+				session.setAttribute("userType", "E");
+				here = "member";
 			}
 		}
-		return false;
+		return here;
+	}
+
+	public String isEmployeeHere(String username, Person user) {
+
+		FacesContext context2 = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
+		user = getEmployeebyUsername(username);
+		String here = "";
+
+		if (user != null) {
+			if (user.getUserName().equalsIgnoreCase(username) && user.getPassword().equals(this.getPassword())) {
+
+				session.setAttribute("loggedUser", user);
+				session.setAttribute("isUserLogged", "true");
+				session.setAttribute("userType", "M");
+				here = "trainershomepage";
+			}
+		}
+		return here;
 	}
 
 	private Person getUserByUserName(String userName) {
@@ -107,31 +91,22 @@ public class Login implements Serializable {
 		user = getMemberbyUserName(userName);
 
 		if (user == null) {
-			user = getEmployeebyUser(userName);
+			user = getEmployeebyUsername(userName);
 		}
 		return user;
 	}
 
 	private Member getMemberbyUserName(String username) {
 		MembersList memberList = Helper.getBean("membersList", MembersList.class);
-		if (memberList != null) {
-			return memberList.getMemberByUserName(userName);
-		} else {
-			return null;
-		}
+		return memberList.getMemberByUserName(getUserName());
 	}
 
-	private Employee getEmployeebyUser(String username) {
+	private Employee getEmployeebyUsername(String username) {
 		EmployeeList employeeList = Helper.getBean("employeeList", EmployeeList.class);
-		if (employeeList != null) {
-			return employeeList.getEmployeeByUserName(username);
-		} else {
-			return null;
-		}
+		return employeeList.getEmployeeByUserName(username);
 	}
 
 	public String logout() {
-
 		FacesContext context2 = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
 
@@ -141,4 +116,5 @@ public class Login implements Serializable {
 		System.out.println("logging out");
 		return "index?faces-redirect=true";
 	}
+
 }

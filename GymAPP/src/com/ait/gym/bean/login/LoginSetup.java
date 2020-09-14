@@ -7,8 +7,7 @@ import javax.servlet.http.HttpSession;
 public class LoginSetup {
 	private String password;
 	private String userName;
-	private String type;
-
+	
 	public LoginSetup(String password, String userName) {
 		super();
 		this.password = password;
@@ -18,20 +17,20 @@ public class LoginSetup {
 	public LoginSetup() {
 	}
 	
-	@PostConstruct
-	public void init() {
-		
-		FacesContext context2 = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
-
-		System.out.println("Logout" + session.getAttribute(getUserName()));
-		session.removeAttribute("loggedUser");
-		session.setAttribute("isUserLogged", "false");
-		session.removeAttribute("userType");
-		System.out.println("logging out");
-		
-		
-	} 
+//	@PostConstruct
+//	public void init() {
+//		
+//		FacesContext context2 = FacesContext.getCurrentInstance();
+//		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
+//
+//		System.out.println("Logout" + session.getAttribute(getUserName()));
+//		session.removeAttribute("loggedUser");
+//		session.setAttribute("isUserLogged", "false");
+//		session.removeAttribute("userType");
+//		System.out.println("logging out");
+//		
+//		
+//	} 
 
 	public String getPassword() {
 		return password;
@@ -52,11 +51,4 @@ public class LoginSetup {
 		this.userName = userName;
 	}
 	
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
 }

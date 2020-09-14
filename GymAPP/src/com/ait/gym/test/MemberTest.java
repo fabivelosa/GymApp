@@ -40,7 +40,7 @@ class MemberTest {
 		assertEquals("fabi@gmail", member.getEmailAddress(), "Email address");
 		assertEquals("Female", member.getGender(), "Gender");
 		assertEquals("Improve metabolism", member.getGoal(), "Goal");
-	}
+	} 
 
 	@Test
 	void testSetFullName() {
