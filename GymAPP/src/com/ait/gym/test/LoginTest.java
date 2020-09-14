@@ -1,13 +1,11 @@
 package com.ait.gym.test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.ait.gym.bean.Person;
 import com.ait.gym.bean.Login;
-import com.ait.gym.bean.login.LoginSetup;
 
 class LoginTest {
 

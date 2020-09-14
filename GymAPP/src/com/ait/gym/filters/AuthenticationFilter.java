@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 @WebFilter(filterName="authenticationFilter",urlPatterns="*") 
 public class AuthenticationFilter implements Filter {
  
-	List<String> allowedUrl;
+	List<String> allowedUrl; 
 	 
 	@Override
 	public void destroy() {
@@ -40,8 +40,8 @@ public class AuthenticationFilter implements Filter {
         boolean loggedIn = (session != null) && (session.getAttribute("loggedUser") != null);
         boolean loginRequest = req.getRequestURI().equals(loginURL);
     
-        boolean resourceRequest = req.getRequestURI().startsWith(req.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER + "/");
-        String page = req.getRequestURI().replace(req.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER + "/", "");
+        boolean resourceRequest = req.getRequestURI().contains("resource");
+        String page = req.getRequestURI(); 
         
         boolean pageAllowed = allowedUrl.contains(page);
         

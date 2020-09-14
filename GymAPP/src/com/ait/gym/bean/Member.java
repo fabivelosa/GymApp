@@ -49,7 +49,7 @@ public class Member extends Person implements Serializable, UserActions {
 		Random random = new Random();
 		this.setId("M" + random.nextInt(range));
 		this.oneToOneCredit = 1;
-		this.membershipType = CreditTypes.TREE_MONTHS; 
+		this.membershipType = CreditTypes.TREE_MONTHS;  
 
 	}
 

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.ait.gym.bean.Member;
-import com.ait.gym.bean.trainerplanner.PlannerBean;
+import com.ait.gym.bean.PlannerBean;
 
 class PlannerBeanTest {
 
@@ -15,14 +15,10 @@ class PlannerBeanTest {
 	void setUp() { 
 		
 		System.out.println("Test running");
-		plannerbean = new PlannerBean();
+		plannerbean = new PlannerBean(); 
 	}
 
-	@Test
-	public void testMemberName() {
-		plannerbean.setMemberName("Shane");
-		assertEquals("Shane",plannerbean.getMemberName());
-	}
+	
 
 	@Test
 	public void testMondaySessionPass() {

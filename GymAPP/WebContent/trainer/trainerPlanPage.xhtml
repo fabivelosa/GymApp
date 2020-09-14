@@ -48,6 +48,7 @@
 						<div>
 							<span>Weekly plan for : </span>
 						<h:selectOneMenu value="#{plannerBean.member}" converter="#{userConverter}">
+						    <f:selectItem itemLabel="Select one Member..." itemValue=""/>
     						<f:selectItems   itemLabel="#{member.firstName}"  var="member"  itemValue="#{member}" value="#{plannerBean.selectedMembers}" />
     						
 						</h:selectOneMenu>				

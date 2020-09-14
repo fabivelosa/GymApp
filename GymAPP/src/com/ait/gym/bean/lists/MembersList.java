@@ -28,10 +28,10 @@ public class MembersList implements Serializable {
 	public void init() { 
 		 
 		Member member1 = new Member("Ann","ann@email.com","123");
-		Member member2 = new Member("Tom","tom@email.com","123"); 
+		Member member2 = new Member("Tom","tom@email.com","123");  
 		
 		getMembers().add( member1);
-		getMembers().add( member2); 
+		getMembers().add( member2);  
 		
 	}
 	

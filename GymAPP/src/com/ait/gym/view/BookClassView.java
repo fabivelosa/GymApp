@@ -103,7 +103,7 @@ public class BookClassView implements Serializable {
 		GymClass gymClass = GymClassList.getGymClassbyId(Integer.parseInt(classesId));
 		member.getBookedClasses().remove(gymClass);
 		gymClass.setSpaces(gymClass.getSpaces() + 1);
-		gymClass.getEnrolled().remove(member);
+		gymClass.getEnrolled().remove(member); 
 
 	}
 

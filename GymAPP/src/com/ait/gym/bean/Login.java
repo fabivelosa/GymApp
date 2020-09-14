@@ -1,11 +1,13 @@
 package com.ait.gym.bean;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -139,11 +141,17 @@ public class Login implements Serializable {
 
 		FacesContext context2 = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
-
+		
 		session.removeAttribute("loggedUser");
 		session.removeAttribute("isUserLogged");
 		session.removeAttribute("userType");
-		System.out.println("logging out");
-		return "index?faces-redirect=true";
+		String page = "index.xhtml";
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect(page);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

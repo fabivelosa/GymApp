@@ -70,7 +70,7 @@ public class PlannerBean implements Serializable {
 	}
 
 	public String getWednesdaySessionInString() {
-		return Arrays.toString(wednesdaySession) + "Cooldown";
+		return Arrays.toString(wednesdaySession) + "Cooldown"; 
 	}
 
 	// Thursday
