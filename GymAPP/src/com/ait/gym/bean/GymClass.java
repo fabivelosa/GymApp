@@ -57,8 +57,7 @@ public class GymClass implements Serializable {
 		this.time = time;
 		this.duration = duration;
 		this.spaces = spaces;
-		this.instructor = instructor;
-
+		this.instructor = instructor;	
 	}
 
 	@Override

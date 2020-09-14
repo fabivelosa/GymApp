@@ -29,20 +29,31 @@
 	<br> </br>
 	<div class="main">
 		<h:form>
+			<h:panelGrid id="panel0" columns="2">
+				<h:panelGrid cellpadding="10" cellspacing="10">
+					<h:outputLabel
+						style="display: block; width:100%; text-align:left;  font-size:50px "
+						value="Welcome #{sessionScope.loggedUser.firstName}! " />
+					<h:outputLabel
+						style="display: block; width:100%; text-align:left;  font-size:30px "
+						value="Plan: #{sessionScope.loggedUser.membershipType.value} " />
+					<h:outputLabel
+						style="display: block; width:100%; text-align:left;  font-size:30px "
+						value="Credits Available: #{sessionScope.loggedUser.oneToOneCredit} " />
+					<h:outputLabel
+						style="display: block; width:100%; text-align:left;  font-size:30px "
+						value="Booked Classes: #{sessionScope.loggedUser.totalBookedClasses} " />	
+				</h:panelGrid>
+			</h:panelGrid>
+
 			<h:panelGrid id="panel1" columns="2">
 				<h:graphicImage style="height:300px; width:620px;"
 					name="images/PersonalTraining.jpg" />
 
 				<h:panelGrid cellpadding="10" cellspacing="10">
-					<h:outputText
-						value="&#128516; Welcome #{sessionScope.loggedUser.firstName}! " />
-					<h:outputText
-						value="Type : #{sessionScope.loggedUser.membershipType.value} " />
-					<h:outputText
-						value=" You have #{sessionScope.loggedUser.oneToOneCredit} One-to-One Sessions Available!" />
 					<h:outputLabel
 						style="display: block; width:100%; text-align:center;  font-size:50px "
-						value="Personal Training" />
+						value="One-to-One Personal Training Session" />
 					<p>Access a one-on-one session or organised personal training
 						for you. This is an awesome way for beginners to learn the
 						requirements of training, or for experienced gym-goers to take

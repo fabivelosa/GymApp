@@ -31,11 +31,12 @@ public class Member extends Person implements Serializable, UserActions {
 	private CreditTypes membershipType;
 	private List<GymClass> bookedClasses;
 	private List<GymClass> oneToOneClasses;
+	private int totalBookedClasses;
 
 	static int range = 1000;
 
 	@PostConstruct
-	public void init() { 
+	public void init() {
 		oneToOneClasses = new ArrayList<GymClass>();
 		bookedClasses = new ArrayList<GymClass>();
 
@@ -49,7 +50,7 @@ public class Member extends Person implements Serializable, UserActions {
 		Random random = new Random();
 		this.setId("M" + random.nextInt(range));
 		this.oneToOneCredit = 1;
-		this.membershipType = CreditTypes.TREE_MONTHS;  
+		this.membershipType = CreditTypes.TREE_MONTHS;
 
 	}
 
@@ -160,6 +161,18 @@ public class Member extends Person implements Serializable, UserActions {
 
 	public void setMembershipType(CreditTypes membershipType) {
 		this.membershipType = membershipType;
+	}
+
+	public void setTotalBookedClasses(int totalBookedClasses) {
+		this.totalBookedClasses = totalBookedClasses;
+	}
+
+	public int getTotalBookedClasses() {
+
+		int a = (bookedClasses == null ? 0 : bookedClasses.size());
+		int b = (oneToOneClasses == null ? 0 : oneToOneClasses.size());
+
+		return a + b;
 	}
 
 }

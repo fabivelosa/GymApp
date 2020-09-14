@@ -21,11 +21,10 @@ import com.ait.gym.utils.Helper;
 @RequestScoped
 public class Employee extends Person implements UserActions {
 
-	// Member Variables
+	// Employee Variables
 	private String aboutYourself;
 	private boolean employeeType;
 	private List<GymClass> bookedClasses;
-
 	static int range = 1000;
 
 	public Employee() {
@@ -33,11 +32,6 @@ public class Employee extends Person implements UserActions {
 		this.setId("P" + random.nextInt(range));
 	}
 
-	@PostConstruct
-	public void init() {
-		bookedClasses = new ArrayList<GymClass>();
-
-	}
 
 	public Employee(String name) {
 		Random random = new Random();
@@ -75,6 +69,10 @@ public class Employee extends Person implements UserActions {
 		return employeeType;
 	}
 
+	public String getContractType() {
+		return isEmployeeType() ? "Permanent" : "Temporary";
+	}
+
 	public void setEmployeeType(boolean employeeType) {
 		this.employeeType = employeeType;
 	}
@@ -109,7 +107,7 @@ public class Employee extends Person implements UserActions {
 			throw new ValidatorException(message);
 		}
 	}
-	
+
 	// Validate Email
 	public void validateEmail(FacesContext context, UIComponent toValidate, Object value) throws ValidatorException {
 		String emailStr = (String) value;
@@ -117,6 +115,12 @@ public class Employee extends Person implements UserActions {
 			FacesMessage message = new FacesMessage("Email Address is Valid");
 			throw new ValidatorException(message);
 		}
+	}
+
+	public int getTotalBookedClasses() {
+
+		return (bookedClasses == null ? 0 : bookedClasses.size());
+
 	}
 
 }

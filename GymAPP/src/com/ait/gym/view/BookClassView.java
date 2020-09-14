@@ -92,7 +92,7 @@ public class BookClassView implements Serializable {
 			gymClass.getEnrolled().add(member);
 			member.setOneToOneCredit(member.getOneToOneCredit() - 1);
 		} else {
-			FacesMessage message = new FacesMessage("Sorry !! You don't have enough credits!");
+			FacesMessage message = new FacesMessage("Sorry! You don't have enough credits!");
 			FacesContext.getCurrentInstance().addMessage(null, message);
 		}
 
@@ -136,7 +136,7 @@ public class BookClassView implements Serializable {
 				if (classes.getEnrolled() != null) {
 					Boolean exits = false;
 					for (Member memberItem : classes.getEnrolled()) {
-						if (memberItem.getId().equals(member.getId())) {
+						if (memberItem.getId()!=null && memberItem.getId().equals(member.getId())) {
 							exits = true;
 						}
 					}
