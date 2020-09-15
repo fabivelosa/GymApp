@@ -40,7 +40,6 @@ public class GymClassList implements Serializable {
 		gymClasses = new ArrayList<GymClass>();
 		List<GymClass> empClasses = new ArrayList<GymClass>();
 		List<GymClass> emp2Classes = new ArrayList<GymClass>();
-		
 
 		GymClass pilates = new GymClass(getRandomId(), ClassesTypes.PILATES, DayOfWeek.MONDAY, "09:00", 60, 20, emp2);
 		gymClasses.add(pilates);
@@ -93,9 +92,22 @@ public class GymClassList implements Serializable {
 				1, emp);
 		gymClasses.add(personal2);
 		empClasses.add(personal2);
-		
+
 		emp.setBookedClasses(empClasses);
 		emp2.setBookedClasses(emp2Classes);
+
+		// 1-to-1 session NoTrainer
+		GymClass personal3 = new GymClass(getRandomId(), ClassesTypes.ONE_ONE_SESSION, DayOfWeek.THURSDAY, "15:00", 50,
+				1);
+		gymClasses.add(personal3);
+
+		GymClass personal4 = new GymClass(getRandomId(), ClassesTypes.ONE_ONE_SESSION, DayOfWeek.FRIDAY, "19:00", 50,
+				1);
+		gymClasses.add(personal4);
+
+		GymClass personal5 = new GymClass(getRandomId(), ClassesTypes.ONE_ONE_SESSION, DayOfWeek.SATURDAY, "14:00", 50,
+				1);
+		gymClasses.add(personal5);
 	}
 
 	public ArrayList<GymClass> getGymClass() {
