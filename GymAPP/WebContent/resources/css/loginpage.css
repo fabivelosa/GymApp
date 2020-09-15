@@ -12,7 +12,13 @@ body {
 
 #login {
 	text-align: center;
-	width: 280px;
+	width: 100%;
+	padding: 20px 0 40px 0;
+	margin-bottom: 20px;
+}
+
+#loginForm {
+	position: relative;
 }
 
 #main {
@@ -29,25 +35,18 @@ body {
 div.login {
 	height: 100vh;
 	width: 100vw;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
+	position: relative;
 	background: linear-gradient(0deg, rgba(16,68,170,1) 0%, rgba(57,124,255,1) 100%);
 }
 
-div.login > h1 {
-	color: white;
-	padding-bottom: 20px;
+div.login h1 {
+	font-size: 3em;
+	font-weight: 700;
+	padding-bottom: 10px;
 }
 
-div.login > form {
-	height: auto;
-	width: auto;
-	background-color: white;
-	padding: 40px 50px;
-	border-radius: 12px;
-	box-shadow: 0px 8px 0px #00000022;
+div.login h1 span {
+	color: #397cff;
 }
 
 table table {
@@ -58,13 +57,17 @@ table table {
 table td input {
 	width: calc(100% - 8px);
 	background-color: #eee;
-	padding: 8px;
+	padding: 12px 0 12px 12px;
 	border-radius: 6px;
 	border: none;
+	font-size: 18px;
 }
 
 table tr:nth-of-type(1) td, table tr:nth-of-type(2) td {
-	padding-bottom: 10px;
+	padding-bottom: 15px;
+	text-align: left;
+	font-size: 22px;
+	font-weight: 300;
 }
 
 table th {
@@ -75,7 +78,7 @@ table th {
 
 form input.submit {
 	width: auto;
-	padding: 0 30px;
+	padding: 0 40px;
 	height: 45px;
 	border-radius: 6px;
 	transition: 0.15s ease;
@@ -85,10 +88,107 @@ form input.submit {
 	background-color: #397CFF;
 	color: white;
 	border: none;
-	box-shadow: 0 5px 0 #1b58cf;
 	margin-top: 15px;
+	float: left;
+	transition: 0.15s ease;
+}
+
+form input.submit:hover {
+	background-color: #1b58cf;
+	cursor: pointer;
 }
 
 form input[type='radio'] {
 	background: red;
+}
+
+div.notamember {
+	padding-top: 50px;
+	border-top: 1px solid #eee;
+}
+
+div.notamember > h3 {
+	font-size: 26px;
+	padding-bottom: 10px;
+}
+
+a.return {
+	color: #397cff;
+	margin-top: 15px;
+	text-decoration: none;
+}
+
+a.return:hover {
+	color: #3a31f7;
+}
+
+div.account-options a.gohome{
+	background-color: white;
+  	color: #111;
+  	box-shadow: 0px 4px 0px #ddd;
+}
+
+div.account-options a.gohome:hover {
+	color: #397CFF !important;
+}
+
+div.login > div:first-of-type {
+	width: 45%;
+	background-color: white;
+	height: 100%;
+	float: left;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	position: relative;
+}
+
+div.login > div:first-of-type > div{
+	width: 60%;
+	text-align: left;
+	margin: 0;
+	padding-right: 75px;
+}
+
+div.login > div:last-of-type {
+	width: 55%;
+	background-color: #397CFF;
+	height: 100%;
+	float: left;
+	overflow-x: hidden;
+}
+
+div.login > div:last-of-type img {
+	height: 100%;
+	opacity: 0.8;
+	filter: grayscale(1);
+	mix-blend-mode: soft-light;
+}
+
+#arc {
+	display: none;
+}
+
+.nav {
+	background-color: #00000000 !important;
+	position: absolute !important;
+}
+
+#waves {
+	height: 100%;
+	position: absolute;
+	left: calc(45% - 10px);
+	z-index: 10;
+}
+
+ul.errorMessage {
+	list-style-type: none;
+}
+
+ul.errorMessage li {
+	background-color: crimson;
+	padding: 10px;
+	color: white;
+	border-radius: 7px;
+	margin-bottom: 10px;
 }

@@ -20,67 +20,47 @@
         <div class="logo-container">
           <img src="resources/images/watersidegym2.svg" />
         </div>
+        <div class="account-options">
+          <a href="/GymAPP" class="gohome">Return Home</a>
         </div>
+      </div>
     </div>
     <!-- /NAV -->
-	   <div class="main"> 
-			<div class="login">
-				<h1>Welcome Back</h1>
-				<h:form id="loginForm">
-				 				   
-						
-	
+	 <div class="main"> 
+		<div class="login">
+			<div>
+				<div> 
+					<h1><span>Welcome</span> Back</h1>
+					<h:form id="loginForm">
 						<table id="login">
 							<tr>
-								<th><h:outputText  value="username" /></th>
-								<td><h:inputText label="User Name" id="username" value="#{login.userName}"  required="true"/>
-								    </td>
+								<td><h:outputText  value="Username" /></td>
+								<td><h:inputText label="User Name" id="username" value="#{login.userName}"  required="true"/></td>
 							</tr>
 							<tr>
-								<th><h:outputText value="Password" /></th>
-								<td><h:inputSecret label="Password"  id="password" value="#{login.password}" required="true" />
-								   </td>
+								<td><h:outputText value="Password" /></td>
+								<td><h:inputSecret label="Password"  id="password" value="#{login.password}" required="true" /></td>
 							</tr>
 							<tr>
 							  <h:messages styleClass="errorMessage" />
-								
 							</tr>
 							<tr>
 								<td colspan="2"><h:commandButton styleClass="submit"  value="Log In" action="#{login.loginYesNo}" /></td>
 							</tr>
 						</table>
-				
-					
-					
-					 
-				</h:form>
+					</h:form>
+					<div class="notamember">
+						<h3>Not a member?</h3>
+						<a class="return" href="mbregistration.xhtml">Join Today!</a>
+					</div>
+				</div>
 			</div>
-		
-		<!-- FOOTER -->
-	     <div class="footer">
-	       <span id="arc"></span>
-	       <div id="jointoday" class="inner">
-	         <div class="legal">
-	           <ul>
-	             <li>Legal</li>
-	             <li>Membership Agreement</li>
-	             <li>Accessibility</li>
-	             <li>Privacy</li>
-	           </ul>
-	         </div>
-	         <div class="contact">
-	           <h3>Contact Us</h3>
-	           <p>
-	             info@watersidegym.ie
-	           </p>
-	         </div>
-	         <div>
-			<img src="resources/images/paypal.png" class="img-fluid pull-xs-left" alt="..." />
-		  </div>
-	       </div>
-	     </div>
-	     <!-- /FOOTER -->
-	    </div>
+			<img src="resources/images/waves.svg" id="waves"/>
+			<div>
+				<img src="resources/images/splash.jpg" />
+			</div>
+		</div>
+	   </div>
 	</h:body>
 </html>
 
