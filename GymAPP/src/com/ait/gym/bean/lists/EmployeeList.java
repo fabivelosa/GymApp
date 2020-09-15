@@ -15,29 +15,28 @@ public class EmployeeList implements Serializable {
 
 	/**
 	 * 
-	 */
+	 */ 
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Employee> employees = new ArrayList<Employee>();
 
 	public EmployeeList() {
 
 	}
-	
+
 	@PostConstruct
 	public void init() {
-		
-		Employee emp = new Employee("John");
-		emp.setEmailAddress("john@gmail.com");
-		emp.setPassword("1234"); 
 
-		
+		Employee emp = new Employee("John");
+		emp.setUserName("john@gmail.com");
+		emp.setPassword("1234");
+
 		Employee emp2 = new Employee("Paul");
-		emp2.setEmailAddress("paul@gmail.com"); 
+		emp2.setUserName("paul@gmail.com");
 		emp2.setPassword("1234");
 
 		getEmployees().add(emp);
 		getEmployees().add(emp2);
-		
+
 	}
 
 	public ArrayList<Employee> getEmployees() {
@@ -48,14 +47,14 @@ public class EmployeeList implements Serializable {
 		this.employees = employees;
 	}
 
-	public Employee getEmployeeByUserEmail(String email) {
+	public Employee getEmployeeByUserName(String userName) {
 
 		Employee employeeFound = null;
 
 		for (Employee emp : this.getEmployees()) {
-			if (emp.getEmailAddress().equals(email)) {
+			if (emp != null && emp.getUserName().equals(userName)) {
 				employeeFound = emp;
-				System.out.println("emp found -->" + emp.getEmpName());
+				System.out.println("emp found -->" + emp.getFirstName());
 			}
 		}
 		return employeeFound;

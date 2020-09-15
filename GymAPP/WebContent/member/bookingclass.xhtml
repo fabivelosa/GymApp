@@ -4,14 +4,16 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
+
+
 <h:head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 	<!-- FAVICON -->
-	<link rel="shortcut icon" type="image/svg" href="" />
-
+	<link rel="icon" type="image/x-icon"
+		href="resources/images/favicon.ico" />
 	<title>Waterside Gym</title>
 
 	<!-- CSS -->
@@ -25,10 +27,10 @@
 		<h:form>
 			<div class="inner">
 				<div class="logo-container">
-					<img src="resources/images/watersidegym2.svg" />
+					<img src="../resources/images/watersidegym2.svg" />
 				</div>
 				<div class="account-options">
-					<a href="trainershomepage.xhtml" id="signin">Trainers HomePage</a>
+					<a href="member.xhtml" id="signin">Members HomePage</a>
 					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
 				</div>
 			</div>
@@ -41,110 +43,88 @@
 
 			<p:growl id="msgs" showDetail="true" />
 
-			<p:outputPanel id="containerforBook">
-				<p:dataTable id="availableclasstable"
-					value="#{timelineView.classesUnassigned}" var="classlist"
-					styleClass="table">
-					<f:facet name="header"> Classes Available </f:facet>
-					<p:column>
-						<f:facet name="header">Name</f:facet>
 
-						<h:outputText value="#{classlist.name.value}" />
-					</p:column>
+			<p:dataTable value="#{bookClassView.gymClassesAvailable}"
+				var="classlist">
+				<f:facet name="header"> Classes for Booking  </f:facet>
 
-					<p:column>
-						<f:facet name="header">Day of Week</f:facet>
+				<p:column sortBy="#{classlist.name.value}" sortable="true">
+					<f:facet name="header">
+						<h:outputText value="Name" />
+					</f:facet>
+					<h:outputText value="#{classlist.name.value}" />
+				</p:column>
+				<p:column sortable="true" sortBy="#{classlist.dayOfWeek}">
+					<f:facet name="header">Day of Week</f:facet>
+					<h:outputText value="#{classlist.dayOfWeek}" />
+				</p:column>
+				<p:column sortBy="#{classlist.time}">
+					<f:facet name="header">Time</f:facet>
+					<h:outputText value="#{classlist.time}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Duration</f:facet>
+					<h:outputText value="#{classlist.duration}" />
+				</p:column>
+				<p:column sortable="true" sortBy="#{classlist.instructor.firstName}">
+					<f:facet name="header">Trainer</f:facet>
+					<h:outputText value="#{classlist.instructor.firstName}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Spaces</f:facet>
+					<h:outputText value="#{classlist.spaces}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Action</f:facet>
+					<p:commandButton value="Book" ajax="false"
+						action="#{bookClassView.enrollClasses(classlist.id)}" />
+				</p:column>
+			</p:dataTable>
 
-						<h:outputText value="#{classlist.dayOfWeek}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">Time</f:facet>
-
-						<h:outputText value="#{classlist.time}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">Duration</f:facet>
-
-						<h:outputText value="#{classlist.duration}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">Trainer</f:facet>
-
-						<h:outputText value="#{classlist.instructor.empName}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">Spaces</f:facet>
-
-						<h:outputText value="#{classlist.spaces}" />
-					</p:column>
-
-					<p:column>
-						<f:facet name="header">Action</f:facet>
-						<p:commandButton value="Assign to me" ajax="false"
-							action="#{timelineView.assignClass(classlist.id)}" />
-
-					</p:column>
-
-				</p:dataTable>
-			</p:outputPanel>
 			<br />
 		</h:form>
-		<h:form id="formCancel">
 
+		<h:form id="formCancel">
 			<p:outputPanel id="containerCancel">
 				<p:dataTable id="cancelclasstable"
-					value="#{timelineView.trainerClass}" var="classbook"
-					styleClass="table">
-					<f:facet name="header"> My Classes   </f:facet>
-					<p:column  styleClass="text-center" >
-						<f:facet name="header">Name</f:facet>
-						<h:outputText  value="#{classbook.name.value}" />
-					</p:column>
+					value="#{bookClassView.gymClassesBooked}" var="classbook">
 
-					<p:column>
+					<f:facet name="header"> My booked Classes   </f:facet>
+
+					<p:column sortBy="#{classbook.name.value}">
+						<f:facet name="header">Name</f:facet>
+						<h:outputText value="#{classbook.name.value}" />
+					</p:column>
+					<p:column sortBy="#{classbook.dayOfWeek}">
 						<f:facet name="header">Day of Week</f:facet>
 						<h:outputText value="#{classbook.dayOfWeek}" />
 					</p:column>
-
-					<p:column>
+					<p:column sortBy="#{classbook.time}">
 						<f:facet name="header">Time</f:facet>
-
 						<h:outputText value="#{classbook.time}" />
 					</p:column>
-
 					<p:column>
 						<f:facet name="header">Duration</f:facet>
-
 						<h:outputText value="#{classbook.duration}" />
 					</p:column>
-
-					<p:column>
+					<p:column sortBy="#{classbook.instructor.firstName}">
 						<f:facet name="header">Trainer</f:facet>
-
-						<h:outputText value="#{classbook.instructor.empName}" />
+						<h:outputText value="#{classbook.instructor.firstName}" />
 					</p:column>
-
 					<p:column>
 						<f:facet name="header">Spaces</f:facet>
-
 						<h:outputText value="#{classbook.spaces}" />
 					</p:column>
-
 					<p:column>
 						<f:facet name="header">Action</f:facet>
-						<p:commandButton value="UnAssigned" ajax="false"
-							action="#{timelineView.cancelAssignClass(classbook.id)}" /> 
-
+						<p:commandButton value="Unbook" ajax="false"
+							action="#{bookClassView.cancelEnroll(classbook.id)}" />
 					</p:column>
 				</p:dataTable>
 			</p:outputPanel>
 			<br />
-
 		</h:form>
+
 	</div>
 	<!-- FOOTER -->
 	<div class="footer">
@@ -163,10 +143,8 @@
 				<p>info@watersidegym.ie</p>
 			</div>
 			<div>
-				<img src="resources/images/worldpay.png"
-					class="img-fluid pull-xs-left" alt="..." /> <img
-					src="resources/images/paypal.png" class="img-fluid pull-xs-left"
-					alt="..." />
+				<img src="../resources/images/paypal.png"
+					class="img-fluid pull-xs-left" alt="..." />
 			</div>
 		</div>
 	</div>

@@ -15,160 +15,76 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
 import com.ait.gym.bean.lists.MembersList;
+import com.ait.gym.interfaces.UserActions;
 import com.ait.gym.utils.CreditTypes;
 import com.ait.gym.utils.Helper;
 
 @ManagedBean
 @RequestScoped
-public class Member implements Serializable {
+public class Member extends Person implements Serializable, UserActions {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String memberID;
-	private String firstName;
-	private String lastName;
-	private String gender;
-	private Date dob;
-	private String mobileNumber;
-	private String emailAddress;
-	private String address;
-	private String eircode;
-	private String city;
 	private String goal;
-	private String userName;
-	private String password;
 	private int oneToOneCredit;
 	private CreditTypes membershipType;
 	private List<GymClass> bookedClasses;
 	private List<GymClass> oneToOneClasses;
-	
-	
-	static int range = 1000; 
-	
+	private int totalBookedClasses;
+
+	static int range = 1000;
+
 	@PostConstruct
 	public void init() {
-		oneToOneClasses= new ArrayList<GymClass>(); 
-		bookedClasses = new ArrayList<GymClass>(); 
-	
+		oneToOneClasses = new ArrayList<GymClass>();
+		bookedClasses = new ArrayList<GymClass>();
+
 	}
 
-	public Member() {
+	public Member(String firstName, String login, String password) {
 		super();
-		Random random = new Random();    
-		this.setMemberID("M" + random.nextInt(range));
-		this.oneToOneCredit = 0;
-		this.membershipType = CreditTypes.TREE_MONTHS;
-	}
-	
-	public Member(String firstName,String login,String password) {
-		super();
-		this.firstName = firstName;
+		this.setFirstName(firstName);
 		this.setUserName(login);
 		this.setPassword(password);
-		Random random = new Random();    
-		this.setMemberID("M" + random.nextInt(range));
-		this.oneToOneCredit = 0;
+		Random random = new Random();
+		this.setId("M" + random.nextInt(range));
+		this.oneToOneCredit = 1;
 		this.membershipType = CreditTypes.TREE_MONTHS;
-		
+
 	}
 
 	public Member(String firstName, String lastName, Date dob, String mobileNumber, String emailAddress, String address,
-			String city, String gender, String goal, String eircode, String login, String password,CreditTypes membershipType) {
+			String city, String gender, String goal, String eircode, String login, String password,
+			CreditTypes membershipType) {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.dob = dob;
-		this.mobileNumber = mobileNumber; 
-		this.emailAddress = emailAddress;
-		this.address = address;
-		this.city = city;
-		this.gender = gender;
+		this.setFirstName(firstName);
+		this.setLastName(lastName);
+		this.setDob(dob);
+		this.setMobileNumber(mobileNumber);
+		this.setEmailAddress(emailAddress);
+		this.setAddress(address);
+		this.setCity(city);
+		this.setGender(gender);
 		this.goal = goal;
-		this.eircode = eircode;
+		this.setEircode(eircode);
 		this.setUserName(login);
-		this.setPassword(password);	
-		Random random = new Random();    
-		this.setMemberID("M" + random.nextInt(range));
+		this.setPassword(password);
+		Random random = new Random();
+		this.setId("M" + random.nextInt(range));
 		this.oneToOneCredit = 0;
-		this.membershipType =membershipType; 
+		this.membershipType = membershipType;
+	}
+
+	public Member() {
+		Random random = new Random();
+		this.setId("M" + random.nextInt(range));
+
 	}
 
 	public Member(String memberID) {
 		super();
-		this.setMemberID(memberID);
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getMobileNumber() {
-		return mobileNumber;
-	}
-
-	public void setMobileNumber(String mobileNumber) {
-		this.mobileNumber = mobileNumber;
-	}
-
-	public Date getDob() {
-		return dob;
-	}
-
-	public void setDob(Date dob) {
-		this.dob = dob;
-	}
-
-	public String getEmailAddress() {
-		return emailAddress;
-	}
-
-	public void setEmailAddress(String email) {
-		this.emailAddress = email;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public String getMemberID() {
-		return memberID;
-	}
-
-	private void setMemberID(String memberID) {
-		this.memberID = memberID;
+		this.setId(memberID);
 	}
 
 	public String getGoal() {
@@ -177,39 +93,6 @@ public class Member implements Serializable {
 
 	public void setGoal(String goal) {
 		this.goal = goal;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getEircode() {
-		return eircode;
-	}
-
-	public void setEircode(String eircode) {
-		this.eircode = eircode;
-	}
-
-	// Validate Email
-	public void validateEmail(FacesContext context, UIComponent toValidate, Object value) throws ValidatorException {
-		String emailStr = (String) value;
-		if (-1 == emailStr.indexOf("@")) {
-			FacesMessage message = new FacesMessage("Email Address is Invalid");
-			throw new ValidatorException(message); 
-		}
 	}
 
 	// Validate User Already Exists
@@ -223,16 +106,23 @@ public class Member implements Serializable {
 		}
 	}
 
-	// Action Methods
-	public String  storeMemberInfo() {
+	@Override
+	public String storeInfo() {
 		addMemberHandler(this);
 		Helper.setSessionAttribute("isUserNew", this);
 		FacesMessage message = new FacesMessage("Account created Successfully.");
 		String outcome = "buyMembership";
-		FacesContext.getCurrentInstance().addMessage(null, message); 
-		
+		FacesContext.getCurrentInstance().addMessage(null, message);
+
 		return outcome;
-		
+	}
+
+	public void validateEmail(FacesContext context, UIComponent toValidate, Object value) throws ValidatorException {
+		String emailStr = (String) value;
+		if (-1 == emailStr.indexOf("@")) {
+			FacesMessage message = new FacesMessage("Email Address is Valid");
+			throw new ValidatorException(message);
+		}
 	}
 
 	public void addMemberHandler(Member member) {
@@ -271,6 +161,18 @@ public class Member implements Serializable {
 
 	public void setMembershipType(CreditTypes membershipType) {
 		this.membershipType = membershipType;
+	}
+
+	public void setTotalBookedClasses(int totalBookedClasses) {
+		this.totalBookedClasses = totalBookedClasses;
+	}
+
+	public int getTotalBookedClasses() {
+
+		int a = (bookedClasses == null ? 0 : bookedClasses.size());
+		int b = (oneToOneClasses == null ? 0 : oneToOneClasses.size());
+
+		return a + b;
 	}
 
 }

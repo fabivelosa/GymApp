@@ -40,7 +40,7 @@
 					skipDetailIfEqualsSummary="true" />
 				<h:panelGrid columns="6" cellpadding="5">
 					<f:facet name="header">
-						<h:outputText value="Member Registration System"
+						<h:outputText value="Member Registration"
 							styleClass="panelGridHeader" />
 					</f:facet>
 					<p:outputLabel for="firstName" value="First Name:" />
@@ -64,7 +64,7 @@
 
 					<p:outputLabel for="dob" value="Date of Birth:" />
 					<p:calendar id="dob" value="#{member.dob}" required="true"
-						style="heigth:50px" />
+						style="heigth:50px" navigator="true" />
 					<p:message for="dob" />
 
 					<p:outputLabel for="address" value="Address:" />
@@ -113,7 +113,8 @@
 					<f:facet name="footer">
 						<h:panelGroup style="display:block; text-align:center">
 							<p:commandButton value="Proceed to Payment" update="msgs"
-								action="#{member.storeMemberInfo}" />
+								action="#{member.storeInfo}" />
+
 							<p:button value="Back to Home" outcome="index" />
 						</h:panelGroup>
 					</f:facet>
@@ -138,10 +139,8 @@
 					<p>info@watersidegym.ie</p>
 				</div>
 				<div>
-					<img src="resources/images/worldpay.png"
-						class="img-fluid pull-xs-left" alt="..." /> <img
-						src="resources/images/paypal.png" class="img-fluid pull-xs-left"
-						alt="..." />
+					<img src="resources/images/paypal.png"
+						class="img-fluid pull-xs-left" alt="..." />
 				</div>
 			</div>
 		</div>

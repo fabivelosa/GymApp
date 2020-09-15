@@ -1,6 +1,6 @@
 package com.ait.gym.test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,32 +8,24 @@ import org.junit.jupiter.api.Test;
 import com.ait.gym.bean.Login;
 
 class LoginTest {
-	
-	private Login login;
+
+private Login login;
 	
 	@BeforeEach
 	public void setUp() {
-		System.out.println("In setup");
-		login = new Login("555","Shane");
+		System.out.println("In login");
+//		login = new Login();
 		
 	}
 	
 	@Test
-	public void testUserPassword() {
-		assertEquals("555",login.getPassword());
-	}
-
-	@Test
-	public void testUserName() {
-		assertEquals("Shane", login.getUserName());
+	public void loginResponseTest() {
+		assertEquals("index.xhtml?faces-redirect=true", login.loginYesNo());
 	}
 	
-	@Test
-	public void testUserPasswordIncorrect() {
-		assertNotEquals("billyBob", login.getPassword());
-	}
-	@Test 
-	public void testUserNameIncorrect() {
-		assertNotEquals("5555", login.getUserName());
-	}
+	
+	
+	
+	
+
 }

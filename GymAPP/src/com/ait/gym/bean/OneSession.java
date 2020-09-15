@@ -23,13 +23,11 @@ public class OneSession implements Serializable {
 	
 	private String uniqueCode;
 	private String enteredCode;
-	static int count = 1000;
 	boolean hasRegistered;
 	boolean codeAccepted;
 
 	public OneSession() {
 		super();
-		count++;
 	}
 	
 	public OneSession(String firstName, String lastName, int age, String emailAddress, 

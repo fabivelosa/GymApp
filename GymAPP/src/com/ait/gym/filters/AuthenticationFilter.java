@@ -16,17 +16,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter("/*")
-public class AuthenticationFilter implements Filter { 
-
-	List<String> allowedUrl;
+@WebFilter(filterName="authenticationFilter",urlPatterns="*") 
+public class AuthenticationFilter implements Filter {
+ 
+	List<String> allowedUrl; 
 	 
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
 		
 	}
-
+ 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
@@ -40,8 +40,8 @@ public class AuthenticationFilter implements Filter {
         boolean loggedIn = (session != null) && (session.getAttribute("loggedUser") != null);
         boolean loginRequest = req.getRequestURI().equals(loginURL);
     
-        boolean resourceRequest = req.getRequestURI().startsWith(req.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER + "/");
-        String page = req.getRequestURI().replace(req.getContextPath() + ResourceHandler.RESOURCE_IDENTIFIER + "/", "");
+        boolean resourceRequest = req.getRequestURI().contains("resource");
+        String page = req.getRequestURI(); 
         
         boolean pageAllowed = allowedUrl.contains(page);
         
@@ -50,11 +50,9 @@ public class AuthenticationFilter implements Filter {
         }else {
             resp.sendRedirect(loginURL);
         }
-	        
-		
+
 	}
 	
-
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {		
@@ -67,16 +65,11 @@ public class AuthenticationFilter implements Filter {
 	    allowedUrl.add("/GymAPP/payPalSuccess.xhtml");
 	    allowedUrl.add("/GymAPP/sessionsuccess.xhtml");
 	    allowedUrl.add("/GymAPP/buyMembership.xhtml");
+	    allowedUrl.add("/GymAPP/AccessDenied.xhtml");
 	    allowedUrl.add("/GymAPP/");	 
 	    allowedUrl.add("/GymAPP/welcome");	 
-	    allowedUrl.add("GymAPP/PaypalSuccess");	 
-	    
-	    
-	    
-	  	    	
-	    	
-	    
-		System.out.println("request filtering init");		
+	    allowedUrl.add("/GymAPP/PaypalSuccess");	 
+	
 	}
 
 }

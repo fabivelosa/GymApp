@@ -1,11 +1,13 @@
 package com.ait.gym.bean;
 
+import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -23,30 +25,19 @@ public class Login implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String password;
 	private String userName;
-	private String type;
 
 	public Login(String password, String userName) {
 		super();
-		this.password = password;
-		this.userName = userName; 
+		this.password = password;  
+		this.userName = userName;
 	}
 
 	public Login() {
 	}
-	
+
 	@PostConstruct
 	public void init() {
-		
-		FacesContext context2 = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
 
-//		System.out.println("Logout" + session.getAttribute(getUserName()));
-//		session.removeAttribute("loggedUser");
-//		session.setAttribute("isUserLogged", "false");
-//		session.removeAttribute("userType");
-//		System.out.println("logging out");
-		
-		
 	}
 
 	public String getPassword() {
@@ -69,104 +60,98 @@ public class Login implements Serializable {
 	}
 
 	public String loginYesNo() {
-		String message = "index.xhtml?faces-redirect=true";
+		String page = null;
 
-
-		if (this.getType().equalsIgnoreCase("M")) {
-			if (loginMember(userName)) {
-				message = "member";
-			}
-
-		} else {
-			if (loginEmployee(userName)) {
-				message = "trainershomepage";
-			}
+		Person user = getUserByUserName(userName); 
+		try {
+			
+	
+				if (user != null && loginUser(user)) {
+		 
+					if (user.getId().contains("M")) {
+						page = "/member/member?faces-redirect=true";
+					} else if (user.getId().contains("P")) {
+						page = "/trainer/trainershomepage?faces-redirect=true";
+					}
+				} else {
+					FacesMessage message = new FacesMessage();
+					page = "login.xhtml";
+					message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Invalid User or Password!", "Invalid credentials");
+					FacesContext.getCurrentInstance().addMessage("loginForm", message);
+				}
+		
+		} catch (Exception e) {
+			FacesMessage message = new FacesMessage();
+			page = "login.xhtml";
+			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Invalid User or Password!", "Invalid credentials");
+			FacesContext.getCurrentInstance().addMessage("loginForm", message);
 		}
-
-		return message;
+		return page;
 	}
 
-	public boolean isMemberHere(String username, ArrayList<Member> member) {
-
-		for (int i = 0; i < member.size(); i++) {
-			System.out.println();
-			Member existingMember = member.get(i);
-			if (existingMember.getUserName().equalsIgnoreCase(username)) {
-				return true;
-			}
-
-		}
-
-		return false;
-
-	}
-
-	private boolean loginMember(String username) {
-		Member member = getMemberbyUserName(username);
+	private boolean loginUser(Person user) {
 		FacesContext context2 = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
 
-		if (member != null) {
-			if (member.getPassword().equals(this.password) && member.getUserName().equals(username)) {
-				session.setAttribute("loggedUser", member);
+		if (user != null) {
+			if (user.getPassword().equals(this.password) && user.getUserName().equals(this.userName)) {
+				session.setAttribute("loggedUser", user);
 				session.setAttribute("isUserLogged", "true");
-				session.setAttribute("userType", "M");
+				if (user instanceof Member) {
+					session.setAttribute("userType", "M");
+				} else if (user instanceof Employee) {
+					session.setAttribute("userType", "P"); 
+				}
 				return true;
 			}
 		}
 		return false;
 	}
 
-	private boolean loginEmployee(String userName) {
-		Employee emp = getEmployeebyEmail(userName);
-		FacesContext context2 = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
+	private Person getUserByUserName(String userName) {
 
-		if (emp != null) {
-			if (emp.getPassword().equals(this.password) && emp.getEmailAddress().equals(this.userName)) {
-				session.setAttribute("loggedUser", emp);
-				session.setAttribute("isUserLogged", "true");
-				session.setAttribute("userType", "E");
-				return true;
-			}
+		Person user = null;
+		user = getMemberbyUserName(userName);
+
+		if (user == null) {
+			user = getEmployeebyUser(userName);
 		}
-		return false;
+		return user;
 	}
 
 	private Member getMemberbyUserName(String username) {
 		MembersList memberList = Helper.getBean("membersList", MembersList.class);
-		return memberList.getMemberByUserName(userName);
+		if (memberList != null) {
+			return memberList.getMemberByUserName(userName);
+		} else {
+			return null;
+		}
 	}
 
-	private Employee getEmployeebyEmail(String email) {
+	private Employee getEmployeebyUser(String username) {
 		EmployeeList employeeList = Helper.getBean("employeeList", EmployeeList.class);
-		return employeeList.getEmployeeByUserEmail(email);
+		if (employeeList != null) {
+			return employeeList.getEmployeeByUserName(username);
+		} else {
+			return null;
+		}
 	}
 
 	public String logout() {
-		// Helper.expungeSession();
-		// ((HttpSession)
-		// FacesContext.getCurrentInstance().getExternalContext().getSession(true)).invalidate();
+
 		FacesContext context2 = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) context2.getExternalContext().getSession(true);
 		
 		session.removeAttribute("loggedUser");
 		session.removeAttribute("isUserLogged");
 		session.removeAttribute("userType");
-		System.out.println("logging out");
-		return "index?faces-redirect=true";
+		String page = "index.xhtml";
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect(page);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
-	
-	public String memberPage() {
-		return "member?faces-redirect=true";
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
 }

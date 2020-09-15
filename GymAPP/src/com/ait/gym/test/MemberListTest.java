@@ -1,9 +1,6 @@
 package com.ait.gym.test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 class MemberListTest {
 
@@ -11,9 +8,6 @@ class MemberListTest {
 	void setUp() throws Exception {
 	}
 
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
+	
 
 }

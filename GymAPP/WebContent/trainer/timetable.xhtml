@@ -4,16 +4,14 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-
-
 <h:head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 	<!-- FAVICON -->
-	<link rel="icon" type="image/x-icon"
-		href="resources/images/favicon.ico" />
+	<link rel="shortcut icon" type="image/svg" href="" />
+
 	<title>Waterside Gym</title>
 
 	<!-- CSS -->
@@ -27,10 +25,10 @@
 		<h:form>
 			<div class="inner">
 				<div class="logo-container">
-					<img src="resources/images/watersidegym2.svg" />
+					<img src="../resources/images/watersidegym2.svg" />
 				</div>
 				<div class="account-options">
-					<a href="member.xhtml" id="signin">Members HomePage</a>
+					<a href="trainershomepage.xhtml" id="signin">Trainers HomePage</a>
 					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
 				</div>
 			</div>
@@ -42,55 +40,39 @@
 		<h:form id="formBook">
 
 			<p:growl id="msgs" showDetail="true" />
-
 			<p:outputPanel id="containerforBook">
-				<p:dataTable id="bookclasstable"
-					value="#{bookClassView.oneToOneClassesAvailable}" var="classlist"
-					styleClass="table">
-
-					<p:column>
+				<p:dataTable id="availableclasstable"
+					value="#{timelineView.classesUnassigned}" var="classlist">
+					<f:facet name="header"> Classes Available </f:facet>
+					<p:column sortBy="#{classlist.name.value}">
 						<f:facet name="header">Name</f:facet>
-
 						<h:outputText value="#{classlist.name.value}" />
 					</p:column>
-
-					<p:column>
+					<p:column sortBy="#{classlist.dayOfWeek}">
 						<f:facet name="header">Day of Week</f:facet>
-
 						<h:outputText value="#{classlist.dayOfWeek}" />
 					</p:column>
-
-					<p:column>
+					<p:column value="#{classlist.time}">
 						<f:facet name="header">Time</f:facet>
-
 						<h:outputText value="#{classlist.time}" />
 					</p:column>
-
 					<p:column>
 						<f:facet name="header">Duration</f:facet>
-
 						<h:outputText value="#{classlist.duration}" />
 					</p:column>
-
 					<p:column>
 						<f:facet name="header">Trainer</f:facet>
-
-						<h:outputText value="#{classlist.instructor.empName}" />
+						<h:outputText value="#{classlist.instructor.firstName}" />
 					</p:column>
-
-					<p:column>
+					<p:column sortBy="#{classlist.spaces}">
 						<f:facet name="header">Spaces</f:facet>
-
 						<h:outputText value="#{classlist.spaces}" />
 					</p:column>
-
 					<p:column>
-						<f:facet name="header">Book</f:facet>
-						<p:commandButton value="Book Class" ajax="false"
-							action="#{bookClassView.enrollOneToOneSession(classlist.id)}" />
-
+						<f:facet name="header">Action</f:facet>
+						<p:commandButton value="Assign to me" ajax="false"
+							action="#{timelineView.assignClass(classlist.id)}" />
 					</p:column>
-
 				</p:dataTable>
 			</p:outputPanel>
 			<br />
@@ -99,48 +81,36 @@
 
 			<p:outputPanel id="containerCancel">
 				<p:dataTable id="cancelclasstable"
-					value="#{bookClassView.gymClassesOneToOneBooked}" var="classbook"
-					styleClass="table">
-
-					<p:column>
+					value="#{timelineView.trainerClass}" var="classbook">
+					<f:facet name="header"> My Classes   </f:facet>
+					<p:column sortBy="#{classbook.name.value}">
 						<f:facet name="header">Name</f:facet>
 						<h:outputText value="#{classbook.name.value}" />
 					</p:column>
-
-					<p:column>
+					<p:column sortBy="#{classbook.dayOfWeek}">
 						<f:facet name="header">Day of Week</f:facet>
 						<h:outputText value="#{classbook.dayOfWeek}" />
 					</p:column>
-
-					<p:column>
+					<p:column sortBy="#{classbook.time}">
 						<f:facet name="header">Time</f:facet>
-
 						<h:outputText value="#{classbook.time}" />
 					</p:column>
-
 					<p:column>
 						<f:facet name="header">Duration</f:facet>
-
 						<h:outputText value="#{classbook.duration}" />
 					</p:column>
-
 					<p:column>
 						<f:facet name="header">Trainer</f:facet>
-
-						<h:outputText value="#{classbook.instructor.empName}" />
+						<h:outputText value="#{classbook.instructor.firstName}" />
 					</p:column>
-
-					<p:column>
+					<p:column sortBy="#{classbook.spaces}">
 						<f:facet name="header">Spaces</f:facet>
-
 						<h:outputText value="#{classbook.spaces}" />
 					</p:column>
-
 					<p:column>
-						<f:facet name="header">Unbook</f:facet>
-						<p:commandButton value="Unbook Class" ajax="false"
-							action="#{bookClassView.cancelOneToOneEnroll(classbook.id)}" />
-
+						<f:facet name="header">Action</f:facet>
+						<p:commandButton value="UnAssign" ajax="false"
+							action="#{timelineView.cancelAssignClass(classbook.id)}" />
 					</p:column>
 				</p:dataTable>
 			</p:outputPanel>
@@ -165,10 +135,8 @@
 				<p>info@watersidegym.ie</p>
 			</div>
 			<div>
-				<img src="resources/images/worldpay.png"
-					class="img-fluid pull-xs-left" alt="..." /> <img
-					src="resources/images/paypal.png" class="img-fluid pull-xs-left"
-					alt="..." />
+				<img src="../resources/images/paypal.png"
+					class="img-fluid pull-xs-left" alt="..." />
 			</div>
 		</div>
 	</div>

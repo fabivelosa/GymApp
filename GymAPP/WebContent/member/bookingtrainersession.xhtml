@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<!-- FAVICON -->
+	<link rel="icon" type="image/x-icon"
+		href="resources/images/favicon.ico" />
+	<title>Waterside Gym</title>
+
+	<!-- CSS -->
+	<h:outputStylesheet name="timetable.css" library="css" />
+	<h:outputStylesheet name="global.css" library="css" />
+	<!-- External Fonts -->
+</h:head>
+<h:body>
+	<!-- NAV -->
+	<div class="nav">
+		<h:form>
+			<div class="inner">
+				<div class="logo-container">
+					<img src="../resources/images/watersidegym2.svg" />
+				</div>
+				<div class="account-options">
+					<a href="member.xhtml" id="signin">Members HomePage</a>
+					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
+				</div>
+			</div>
+		</h:form>
+	</div>
+	<!-- /NAV -->
+	<!-- MAIN -->
+	<div class="form">
+		<h:form id="formBook">
+
+			<p:growl id="msgs" showDetail="true" />
+
+			<p:outputPanel id="containerforBook">
+				<p:dataTable id="bookclasstable"
+					value="#{bookClassView.oneToOneClassesAvailable}" var="classlist"
+					styleClass="table">
+					<f:facet name="header"> Personal Trainer Sessions Available  </f:facet>
+					<p:column >
+						<f:facet name="header">Name</f:facet>
+						<h:outputText value="#{classlist.name.value}" />
+					</p:column>
+					<p:column sortBy="#{classlist.dayOfWeek}">
+						<f:facet name="header">Day of Week</f:facet>
+						<h:outputText value="#{classlist.dayOfWeek}" />
+					</p:column>
+					<p:column  sortBy="#{classlist.time}">
+						<f:facet name="header">Time</f:facet>
+						<h:outputText value="#{classlist.time}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Duration</f:facet>
+						<h:outputText value="#{classlist.duration}" />
+					</p:column>
+					<p:column sortBy="#{classlist.instructor.firstName}">
+						<f:facet name="header">Trainer</f:facet>
+						<h:outputText value="#{classlist.instructor.firstName}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Spaces</f:facet>
+						<h:outputText value="#{classlist.spaces}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Book</f:facet>
+						<p:commandButton value="Book Class" ajax="false"
+							action="#{bookClassView.enrollOneToOneSession(classlist.id)}" />
+					</p:column>
+				</p:dataTable>
+			</p:outputPanel>
+			<br />
+		</h:form>
+		<h:form id="formCancel">
+
+			<p:outputPanel id="containerCancel">
+				<p:dataTable id="cancelclasstable"
+					value="#{bookClassView.gymClassesOneToOneBooked}" var="classbook"
+					styleClass="table">
+					<f:facet name="header"> My booked Sessions   </f:facet>
+					<p:column>
+						<f:facet name="header">Name</f:facet>
+						<h:outputText value="#{classbook.name.value}" />
+					</p:column>
+					<p:column sortBy="#{classbook.dayOfWeek}">
+						<f:facet name="header">Day of Week</f:facet>
+						<h:outputText value="#{classbook.dayOfWeek}" />
+					</p:column>
+					<p:column sortBy="#{classbook.time}">
+						<f:facet name="header">Time</f:facet>
+						<h:outputText value="#{classbook.time}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Duration</f:facet>
+						<h:outputText value="#{classbook.duration}" />
+					</p:column>
+					<p:column sortBy="#{classbook.instructor.firstName}">
+						<f:facet name="header">Trainer</f:facet>
+						<h:outputText value="#{classbook.instructor.firstName}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Spaces</f:facet>
+						<h:outputText value="#{classbook.spaces}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">Unbook</f:facet>
+						<p:commandButton value="Unbook Class" ajax="false"
+							action="#{bookClassView.cancelOneToOneEnroll(classbook.id)}" />
+					</p:column>
+				</p:dataTable>
+			</p:outputPanel>
+			<br />
+		</h:form>
+	</div>
+	<!-- FOOTER -->
+	<div class="footer">
+		<span id="arc"></span>
+		<div id="jointoday" class="inner">
+			<div class="legal">
+				<ul>
+					<li>Legal</li>
+					<li>Membership Agreement</li>
+					<li>Accessibility</li>
+					<li>Privacy</li>
+				</ul>
+			</div>
+			<div class="contact">
+				<h3>Contact Us</h3>
+				<p>info@watersidegym.ie</p>
+			</div>
+			<div>
+					<img src="../resources/images/paypal.png"
+						class="img-fluid pull-xs-left" alt="..." />
+				</div>
+		</div>
+	</div>
+	<!-- /FOOTER -->
+</h:body>
+</html>

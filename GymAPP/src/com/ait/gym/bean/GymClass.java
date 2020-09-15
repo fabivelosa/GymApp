@@ -20,67 +20,70 @@ public class GymClass implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private ClassesTypes name;
-	private DayOfWeek dayOfWeek; 
+	private DayOfWeek dayOfWeek;
 	private String time;
 	private int duration;
-	private int spaces; 
-	private Employee instructor;  
-	List<Member> enrolled ;
- 
+	private int spaces;
+	private Employee instructor;
+	List<Member> enrolled;
+	PlannerBean plan;
+
 	public GymClass() {
-		super(); 
-	} 
-	
-	@PostConstruct
-	public void init() {
-		instructor= new Employee ("");		
-		enrolled = new ArrayList<Member>(); 
-	}
-	
-	
-	public GymClass(int id,ClassesTypes name, DayOfWeek dayOfWeek, String time, int duration, int spaces) {
 		super();
-		this.id= id;
-		this.name = name;
-		this.dayOfWeek = dayOfWeek;
-		this.time = time;
-		this.duration = duration;
-		this.spaces = spaces;	
 	}
 
-	public GymClass(int id,ClassesTypes name, DayOfWeek dayOfWeek, String time, int duration, int spaces, Employee instructor) {
+	@PostConstruct
+	public void init() {
+		instructor = new Employee("");
+		enrolled = new ArrayList<Member>();
+	}
+
+	public GymClass(int id, ClassesTypes name, DayOfWeek dayOfWeek, String time, int duration, int spaces) {
 		super();
-		this.id= id;
+		this.id = id;
 		this.name = name;
 		this.dayOfWeek = dayOfWeek;
 		this.time = time;
 		this.duration = duration;
 		this.spaces = spaces;
-		this.instructor = instructor;
-	
 	}
-	
+
+	public GymClass(int id, ClassesTypes name, DayOfWeek dayOfWeek, String time, int duration, int spaces,
+			Employee instructor) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.dayOfWeek = dayOfWeek;
+		this.time = time;
+		this.duration = duration;
+		this.spaces = spaces;
+		this.instructor = instructor;	
+	}
+
 	@Override
 	public boolean equals(Object o) {
-		
-		 // self check
-	    if (this == o)
-	        return true;
-	    // null check
-	    if (o == null)
-	        return false;
-	    // type check and cast
-	    if (getClass() != o.getClass())
-	        return false;
-	    
-	    GymClass gymClass = (GymClass) o;	    
-	    return gymClass.getId() == this.getId();
-		
+		// self check
+		if (this == o)
+			return true;
+		// null check
+		if (o == null)
+			return false;
+		// type check and cast
+		if (getClass() != o.getClass())
+			return false;
+		GymClass gymClass = (GymClass) o;
+		return gymClass.getId() == this.getId();
 	}
-	
-	
 
-	public ClassesTypes getName() { 
+	public PlannerBean getPlan() {
+		return plan;
+	}
+
+	public void setPlan(PlannerBean plan) {
+		this.plan = plan;
+	}
+
+	public ClassesTypes getName() {
 		return name;
 	}
 
@@ -135,13 +138,13 @@ public class GymClass implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	public List<Member> getEnrolled() { 
+
+	public List<Member> getEnrolled() {
 		return enrolled;
 	}
 
 	public void setEnrolled(List<Member> enrolled) {
 		this.enrolled = enrolled;
 	}
-	
+
 }

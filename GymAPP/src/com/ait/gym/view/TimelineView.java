@@ -15,13 +15,13 @@ import com.ait.gym.utils.Helper;
 
 @ManagedBean
 @ViewScoped
-public class TimelineView {
+public class TimelineView { 
 
 	ArrayList<GymClass> trainerClass;
 	ArrayList<GymClass> classesUnassigned;
 
 	public void setClassesUnassigned(ArrayList<GymClass> classesUnassigned) {
-		this.classesUnassigned = classesUnassigned;
+		this.classesUnassigned = classesUnassigned; 
 	}
 
 	public ClassesTypes[] getClassTypes() {
@@ -38,42 +38,46 @@ public class TimelineView {
 	}
 
 	public ArrayList<GymClass> getTrainerClass() {
-		trainerClass = new ArrayList<GymClass>();
-		GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
-
-		Employee emp = Helper.getTrainerLogged();
-
-		for (GymClass classes : gymClasses.getGymClass()) {
-			if (classes.getInstructor() != null) {
-				if (classes.getInstructor().getEmpName() != null
-						&& classes.getInstructor().getEmpName().equals(emp.getEmpName())) {
-					trainerClass.add(classes);
+		
+		if(trainerClass == null || trainerClass.size() ==0) {
+				trainerClass = new ArrayList<GymClass>();
+				GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
+		
+				Employee emp =getUserLogged();
+		
+				for (GymClass classes : gymClasses.getGymClass()) {
+					if (classes.getInstructor() != null) {
+						if (classes.getInstructor().getFirstName() != null
+								&& classes.getInstructor().getFirstName().equals(emp.getFirstName())) {
+							trainerClass.add(classes);
+						}
+					}
 				}
-			}
 		}
-		return trainerClass;
+		return trainerClass; 
 	}
 
 	public ArrayList<GymClass> getclassesUnassigned() {
-		classesUnassigned = new ArrayList<GymClass>();
-		GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
-
-		for (GymClass classes : gymClasses.getGymClass()) {
-			if (classes != null && classes.getInstructor() == null) {
-				classesUnassigned.add(classes);
-			}
+		
+		
+		if(classesUnassigned == null || classesUnassigned.size() == 0) {
+						classesUnassigned = new ArrayList<GymClass>();
+				GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
+		
+				for (GymClass classes : gymClasses.getGymClass()) {
+					if (classes != null && classes.getInstructor() == null) {
+						classesUnassigned.add(classes);
+					}
+				}
 		}
 
 		return classesUnassigned;
 	}
 
-	public Employee getTrainerLogged() {
-		return (Employee) Helper.getTrainerLogged();
-	}
-
+	
 	public void assignClass(String classesId) {
 
-		Employee emp = getTrainerLogged();
+		Employee emp = getUserLogged();
 		GymClass gymClass = GymClassList.getGymClassbyId(Integer.parseInt(classesId));
 
 		if (emp.getBookedClasses() == null) {
@@ -84,9 +88,13 @@ public class TimelineView {
 		gymClass.setInstructor(emp);
 
 	}
+	
+	public Employee getUserLogged() {
+		return (Employee) Helper.getUserLogged();
+	}
 
 	public void cancelAssignClass(String classesId) {
-		Employee emp = getTrainerLogged();
+		Employee emp = getUserLogged();
 		GymClass gymClass = GymClassList.getGymClassbyId(Integer.parseInt(classesId));
 		if(emp.getBookedClasses() != null) {
 			emp.getBookedClasses().remove(gymClass);

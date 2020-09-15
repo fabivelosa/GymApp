@@ -16,7 +16,7 @@
 		<h:form>
 			<div class="inner">
 				<div class="logo-container">
-					<img src="resources/images/watersidegym2.svg" />
+					<img src="../resources/images/watersidegym2.svg" />
 				</div>
 				<div class="account-options">
 					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
@@ -29,25 +29,31 @@
 	<br> </br>
 	<div class="main">
 		<h:form>
+			<h:panelGrid id="panel0" columns="2">
+				<h:panelGrid cellpadding="10" cellspacing="10">
+					<h:outputLabel
+						style="display: block; width:100%; text-align:left;  font-size:50px "
+						value="Welcome #{sessionScope.loggedUser.firstName}! " />
+					<h:outputLabel
+						style="display: block; width:100%; text-align:left;  font-size:30px "
+						value="Plan: #{sessionScope.loggedUser.membershipType.value} " />
+					<h:outputLabel
+						style="display: block; width:100%; text-align:left;  font-size:30px "
+						value="Credits Available: #{sessionScope.loggedUser.oneToOneCredit} " />
+					<h:outputLabel
+						style="display: block; width:100%; text-align:left;  font-size:30px "
+						value="Booked Classes: #{sessionScope.loggedUser.totalBookedClasses} " />	
+				</h:panelGrid>
+			</h:panelGrid>
+
 			<h:panelGrid id="panel1" columns="2">
 				<h:graphicImage style="height:300px; width:620px;"
 					name="images/PersonalTraining.jpg" />
 
 				<h:panelGrid cellpadding="10" cellspacing="10">
-					<h:outputText
-						value="&#128516; Welcome #{sessionScope.loggedUser.firstName}! " />
-
-					<h:outputText
-						value="Type : #{sessionScope.loggedUser.membershipType.value} " />
-					<h:outputText
-						value=" You have #{sessionScope.loggedUser.oneToOneCredit} One-to-One Sessions Available!" />
-
-
 					<h:outputLabel
 						style="display: block; width:100%; text-align:center;  font-size:50px "
-						value="Personal Training" />
-
-
+						value="One-to-One Personal Training Session" />
 					<p>Access a one-on-one session or organised personal training
 						for you. This is an awesome way for beginners to learn the
 						requirements of training, or for experienced gym-goers to take
@@ -58,10 +64,7 @@
 			</h:panelGrid>
 
 			<h:panelGrid id="panel2" columns="2">
-
-
 				<h:panelGrid cellpadding="20" cellspacing="20">
-
 					<h:outputLabel
 						style="display: block; width:100%; text-align:center;  font-size:50px"
 						value="View Class Schedule" />
@@ -79,7 +82,6 @@
 			<h:panelGrid id="panel3" columns="2">
 				<h:graphicImage style="height:300px;width:620px"
 					name="images/member1.jpg" />
-
 				<h:panelGrid cellpadding="20" cellspacing="20">
 					<h:outputLabel
 						style="display: block; width:100%; text-align:center; font-size:50px"
@@ -87,23 +89,17 @@
 					<p>Don’t use the lack of time as an excuse to skip your
 						workout! If you don’t like membership commitment book a once off
 						enrolment. Choose from variety of classes including Circuits,
-						Pilates, Yoga, Thai Chi Mindfulness. Get in, sweat and get out in
+						Pilates, Yoga, Thai Chi, Mindfulness. Get in, sweat and get out in
 						just 45 minutes.</p>
 					<h:commandButton styleClass="centreElement" value="Purchase"
 						action="buyOnceOffEnrollment" />
 				</h:panelGrid>
-
 			</h:panelGrid>
-
 			<h:panelGrid id="panel4" columns="2">
-
-
 				<h:panelGrid cellpadding="20" cellspacing="20">
-
 					<h:outputLabel
 						style="display: block; width:100%; text-align:center; font-size:50px"
 						value="Meet our team" />
-
 					<p>We pride ourselves on not only providing world class fitness
 						training, but also in creating a supportive and motivating
 						environment. A family. The moment you arrive at your first class
@@ -120,16 +116,12 @@
 			</h:panelGrid>
 
 			<h:panelGrid id="panel5" columns="2">
-
 				<h:graphicImage style="height:300px;width:620px"
 					name="images/member3.jpg" />
-
 				<h:panelGrid cellpadding="20" cellspacing="20">
-
 					<h:outputLabel
 						style="display: block; width:100%; text-align:center; font-size:50px"
 						value="Watch Videos" />
-
 					<p>Considering a home gym? When you have a clear understanding
 						of the fundamentals of our workouts, you will be able to minimise
 						the risk of injury and see better results, faster. Watch our fun
@@ -139,13 +131,7 @@
 						action=" watch_videos" />
 				</h:panelGrid>
 			</h:panelGrid>
-
-
-
-
-
 		</h:form>
-
 		<!-- FOOTER -->
 		<div class="footer">
 			<span id="arc"></span>
@@ -163,7 +149,7 @@
 					<p>info@watersidegym.ie</p>
 				</div>
 				<div>
-					<img src="resources/images/paypal.png"
+					<img src="../resources/images/paypal.png"
 						class="img-fluid pull-xs-left" alt="..." />
 				</div>
 			</div>

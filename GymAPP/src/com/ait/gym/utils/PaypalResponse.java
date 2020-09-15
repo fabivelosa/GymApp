@@ -19,7 +19,7 @@ public class PaypalResponse extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		Member member = null;
+		Member member = null; 
 		String destination = null;
 		HttpSession session = (HttpSession) request.getSession();
 		String loggedUser = (String) session.getAttribute("isUserLogged");
@@ -28,7 +28,7 @@ public class PaypalResponse extends HttpServlet {
 
 		if (loggedUser != null && loggedUser.equals("true") && userType != null && userType.equals("M")) {
 			member = (Member) session.getAttribute("loggedUser"); 
-			destination = "payPalSuccess.xhtml";
+			destination = "member/payPalSuccess.xhtml";
 
 		}else if (userNew != null ) {
 			member = userNew;
