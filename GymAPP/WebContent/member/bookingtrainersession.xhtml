@@ -50,47 +50,33 @@
 					<f:facet name="header"> Personal Trainer Sessions Available  </f:facet>
 					<p:column>
 						<f:facet name="header">Name</f:facet>
-
 						<h:outputText value="#{classlist.name.value}" />
 					</p:column>
-
-					<p:column>
+					<p:column sortBy="#{classlist.dayOfWeek}">
 						<f:facet name="header">Day of Week</f:facet>
-
 						<h:outputText value="#{classlist.dayOfWeek}" />
 					</p:column>
-
-					<p:column>
+					<p:column  sortBy="#{classlist.time}">
 						<f:facet name="header">Time</f:facet>
-
 						<h:outputText value="#{classlist.time}" />
 					</p:column>
-
 					<p:column>
 						<f:facet name="header">Duration</f:facet>
-
 						<h:outputText value="#{classlist.duration}" />
 					</p:column>
-
-					<p:column>
+					<p:column sortBy="#{classlist.instructor.firstName}">
 						<f:facet name="header">Trainer</f:facet>
-
 						<h:outputText value="#{classlist.instructor.firstName}" />
 					</p:column>
-
 					<p:column>
 						<f:facet name="header">Spaces</f:facet>
-
 						<h:outputText value="#{classlist.spaces}" />
 					</p:column>
-
 					<p:column>
 						<f:facet name="header">Book</f:facet>
 						<p:commandButton value="Book Class" ajax="false"
 							action="#{bookClassView.enrollOneToOneSession(classlist.id)}" />
-
 					</p:column>
-
 				</p:dataTable>
 			</p:outputPanel>
 			<br />
@@ -106,46 +92,34 @@
 						<f:facet name="header">Name</f:facet>
 						<h:outputText value="#{classbook.name.value}" />
 					</p:column>
-
-					<p:column>
+					<p:column sortBy="#{classbook.dayOfWeek}">
 						<f:facet name="header">Day of Week</f:facet>
 						<h:outputText value="#{classbook.dayOfWeek}" />
 					</p:column>
-
-					<p:column>
+					<p:column sortBy="#{classbook.time}">
 						<f:facet name="header">Time</f:facet>
-
 						<h:outputText value="#{classbook.time}" />
 					</p:column>
-
 					<p:column>
 						<f:facet name="header">Duration</f:facet>
-
 						<h:outputText value="#{classbook.duration}" />
 					</p:column>
-
-					<p:column>
+					<p:column sortBy="#{classbook.instructor.firstName}">
 						<f:facet name="header">Trainer</f:facet>
-
 						<h:outputText value="#{classbook.instructor.firstName}" />
 					</p:column>
-
 					<p:column>
 						<f:facet name="header">Spaces</f:facet>
-
 						<h:outputText value="#{classbook.spaces}" />
 					</p:column>
-
 					<p:column>
 						<f:facet name="header">Unbook</f:facet>
 						<p:commandButton value="Unbook Class" ajax="false"
 							action="#{bookClassView.cancelOneToOneEnroll(classbook.id)}" />
-
 					</p:column>
 				</p:dataTable>
 			</p:outputPanel>
 			<br />
-
 		</h:form>
 	</div>
 	<!-- FOOTER -->
