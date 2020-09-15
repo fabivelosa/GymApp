@@ -122,12 +122,20 @@ public class BookClassView implements Serializable {
 	}
 
 	public List<GymClass> getGymClassesAvailable() {
-
+			if(gymClassesAvailable==null|| gymClassesAvailable.size() ==0){
+				gymClassesAvailable = searchClassAvaliable();
+			}
+			
+			return gymClassesAvailable;
+	
+	}
+	
+	private List<GymClass> searchClassAvaliable(){
 		System.out.println("getAllClassesAvailable");
-		gymClassesAvailable = new ArrayList<GymClass>();
 		GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
+		List<GymClass> classesAvailable = new ArrayList<GymClass>();
 		Member member = getUserLogged();
-		getGymClassesBooked();
+		//getGymClassesBooked();
 
 		// classes that have instructor assigned/available spaces/not already enrolled
 		for (GymClass classes : gymClasses.getGymClass()) {
@@ -149,22 +157,26 @@ public class BookClassView implements Serializable {
 
 			}
 		}
+		
 		return gymClassesAvailable;
+		
 	}
 
 	public List<GymClass> getOneToOneClassesAvailable() {
-
-		oneToOneSessionsAvaliable = new ArrayList<GymClass>();
-		GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
-		//Member member = getUserLogged();
-
-		// classes that have instructor assigned/available spaces/not already enrolled
-		for (GymClass classes : gymClasses.getGymClass()) {
-			if (classes.getInstructor() != null && classes.getSpaces() > 0
-					&& classes.getName().equals(ClassesTypes.ONE_ONE_SESSION)) {
-				oneToOneSessionsAvaliable.add(classes);
-			}
-
+		
+		if(oneToOneSessionsAvaliable == null || oneToOneSessionsAvaliable.size()==0) {
+				oneToOneSessionsAvaliable = new ArrayList<GymClass>();
+				GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
+				//Member member = getUserLogged();
+		
+				// classes that have instructor assigned/available spaces/not already enrolled
+				for (GymClass classes : gymClasses.getGymClass()) {
+					if (classes.getInstructor() != null && classes.getSpaces() > 0
+							&& classes.getName().equals(ClassesTypes.ONE_ONE_SESSION)) {
+						oneToOneSessionsAvaliable.add(classes);
+					}
+		
+				}
 		}
  
 		return oneToOneSessionsAvaliable;
@@ -184,10 +196,7 @@ public class BookClassView implements Serializable {
 
 	}
 
-	public void setGymClassesAvailable(ArrayList<GymClass> gymClassesAvailable) {
-		this.gymClassesAvailable = gymClassesAvailable;
-	}
-
+	
 	public void setGymClassesBooked(ArrayList<GymClass> gymClassesBooked) {
 		this.gymClassesBooked = gymClassesBooked;
 	}

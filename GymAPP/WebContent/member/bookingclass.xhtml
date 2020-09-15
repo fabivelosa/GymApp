@@ -43,48 +43,54 @@
 
 			<p:growl id="msgs" showDetail="true" />
 
-			<p:outputPanel id="containerforBook">
-				<p:dataTable id="bookclasstable"
-					value="#{bookClassView.gymClassesAvailable}" var="classlist">
-					<f:facet name="header"> Classes for Booking  </f:facet>
-					<p:column id="name" sortBy="#{classlist.name.value}">
-						<f:facet name="header">Name</f:facet>
-						<h:outputText value="#{classlist.name.value}" />
-					</p:column>
-					<p:column id="dow" sortBy="#{classlist.dayOfWeek}">
-						<f:facet name="header">Day of Week</f:facet>
-						<h:outputText value="#{classlist.dayOfWeek}" />
-					</p:column>
-					<p:column id="time" sortBy="#{classlist.time}">
-						<f:facet name="header">Time</f:facet>
-						<h:outputText value="#{classlist.time}" />
-					</p:column>
-					<p:column>
-						<f:facet name="header">Duration</f:facet>
-						<h:outputText value="#{classlist.duration}" />
-					</p:column>
-					<p:column id="trainer" sortBy="#{classlist.instructor.firstName}">
-						<f:facet name="header">Trainer</f:facet>
-						<h:outputText value="#{classlist.instructor.firstName}" />
-					</p:column>
-					<p:column>
-						<f:facet name="header">Spaces</f:facet>
-						<h:outputText value="#{classlist.spaces}" />
-					</p:column>
-					<p:column>
-						<f:facet name="header">Action</f:facet>
-						<p:commandButton value="Book" ajax="false"
-							action="#{bookClassView.enrollClasses(classlist.id)}" />
-					</p:column>
-				</p:dataTable>
-			</p:outputPanel>
+
+			<p:dataTable value="#{bookClassView.gymClassesAvailable}"
+				var="classlist">
+				<f:facet name="header"> Classes for Booking  </f:facet>
+
+				<p:column sortBy="#{classlist.name.value}" sortable="true">
+					<f:facet name="header">
+						<h:outputText value="Name" />
+					</f:facet>
+					<h:outputText value="#{classlist.name.value}" />
+				</p:column>
+				<p:column sortable="true" sortBy="#{classlist.dayOfWeek}">
+					<f:facet name="header">Day of Week</f:facet>
+					<h:outputText value="#{classlist.dayOfWeek}" />
+				</p:column>
+				<p:column sortBy="#{classlist.time}">
+					<f:facet name="header">Time</f:facet>
+					<h:outputText value="#{classlist.time}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Duration</f:facet>
+					<h:outputText value="#{classlist.duration}" />
+				</p:column>
+				<p:column sortable="true" sortBy="#{classlist.instructor.firstName}">
+					<f:facet name="header">Trainer</f:facet>
+					<h:outputText value="#{classlist.instructor.firstName}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Spaces</f:facet>
+					<h:outputText value="#{classlist.spaces}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">Action</f:facet>
+					<p:commandButton value="Book" ajax="false"
+						action="#{bookClassView.enrollClasses(classlist.id)}" />
+				</p:column>
+			</p:dataTable>
+
 			<br />
 		</h:form>
+
 		<h:form id="formCancel">
 			<p:outputPanel id="containerCancel">
 				<p:dataTable id="cancelclasstable"
 					value="#{bookClassView.gymClassesBooked}" var="classbook">
+
 					<f:facet name="header"> My booked Classes   </f:facet>
+
 					<p:column sortBy="#{classbook.name.value}">
 						<f:facet name="header">Name</f:facet>
 						<h:outputText value="#{classbook.name.value}" />
@@ -118,6 +124,7 @@
 			</p:outputPanel>
 			<br />
 		</h:form>
+
 	</div>
 	<!-- FOOTER -->
 	<div class="footer">
