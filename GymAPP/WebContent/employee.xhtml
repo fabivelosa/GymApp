@@ -4,134 +4,136 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-	<h:head>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport"
-			content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-		<!-- FAVICON -->
-		<link rel="icon" type="image/x-icon"
-			href="resources/images/favicon.ico" />
-		<title>Waterside Gym</title>
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<!-- FAVICON -->
+	<link rel="icon" type="image/x-icon"
+		href="resources/images/favicon.ico" />
+	<title>Waterside Gym</title>
 
-		<!-- CSS -->
-		<h:outputStylesheet library="css" name="global.css" />
-		<h:outputStylesheet library="css" name="registration.css" />
-	</h:head>
+	<!-- CSS -->
+	<h:outputStylesheet library="css" name="global.css" />
+	<h:outputStylesheet library="css" name="registration.css" />
+</h:head>
 
-	<h:body>
-		<!-- NAV -->
-		<div class="nav">
-			<div class="inner">
-				<div class="logo-container">
-					<img src="resources/images/watersidegym2.svg" />
+<h:body>
+	<!-- NAV -->
+	<div class="nav">
+		<div class="inner">
+			<div class="logo-container">
+				<img src="resources/images/watersidegym2.svg" />
+			</div>
+		</div>
+	</div>
+
+	<div class="main">
+		<h:form>
+			<div class="regym-image">
+				<img src="resources/images/personal-trainer-reg.jpg" />
+			</div>
+			<div class="regym-text">
+				<p:growl id="msgs" showDetail="true"
+					skipDetailIfEqualsSummary="true" />
+				<h:panelGrid columns="6" cellpadding="5">
+
+					<f:facet name="header">
+						<h:outputText value="Personal Trainer Registration "
+							styleClass="panelGridHeader" />
+					</f:facet>
+
+					<p:outputLabel for="ename" value="Employee Name:" />
+					<p:inputText label="Employee Name" id="ename"
+						value="#{employee.firstName}" required="true" />
+					<p:message for="ename" />
+
+
+					<p:outputLabel for="gender" value="Gender:" />
+					<p:selectOneMenu id="gender">
+						<f:selectItem itemLabel="Select One"
+							itemValue="#{employee.gender}" noSelectionOption="true" />
+						<f:selectItem itemLabel="Male" itemValue="male" />
+						<f:selectItem itemLabel="Female" itemValue="female" />
+					</p:selectOneMenu>
+					<p:message for="gender" />
+
+					<p:outputLabel for="dob" value="Date of Birth:" />
+					<p:calendar id="dob" value="#{employee.dob}" required="true"
+						style="heigth:50px" navigator="true" />
+					<p:message for="dob" />
+
+					<p:outputLabel for="address" value="Address:" />
+					<p:inputTextarea id="address" value="#{employee.address}"
+						required="true" />
+					<p:message for="address" />
+
+					<p:outputLabel for="email " value="Email:" />
+					<p:inputText id="email" value="#{employee.emailAddress}"
+						required="true" validator="#{member.validateEmail}" />
+					<p:message for="email" />
+
+					<p:outputLabel for="mobileno " value="Mobile Number:" />
+					<p:inputText id="mobileno" value="#{employee.mobileNumber}"
+						required="true" />
+					<p:message for="mobileno" />
+
+					<p:outputLabel for="login " value="Username:" />
+					<p:inputText id="login" value="#{employee.userName}"
+						required="true" validator="#{employee.validateUserName}" />
+					<p:message for="login" />
+
+
+					<p:outputLabel for="password " value="Password:" />
+					<p:password id="password" value="#{employee.password}"
+						required="true" feedback="true" inline="true" />
+					<p:message for="password" />
+
+					<p:outputLabel for="Aboutyourself" value="About Yourself:" />
+					<p:inputTextarea id="Aboutyourself"
+						value="#{employee.aboutYourself}" required="true" />
+					<p:message for="Aboutyourself" />
+
+
+					<p:outputLabel for="permanent" value="Permanent ?" />
+					<p:selectBooleanCheckbox id="permanent"
+						value="#{employee.employeeType}">
+					</p:selectBooleanCheckbox>
+
+
+					<f:facet name="footer">
+						<h:panelGroup style="display:block; text-align:center">
+							<p:commandButton value="Submit" update="msgs"
+								action="#{employee.storeInfo}" />
+							<p:button value="Back" outcome="index" />
+						</h:panelGroup>
+					</f:facet>
+
+				</h:panelGrid>
+			</div>
+		</h:form>
+		<!-- FOOTER -->
+		<div class="footer">
+			<span id="arc"></span>
+			<div id="jointoday" class="inner">
+				<div class="legal">
+					<ul>
+						<li>Legal</li>
+						<li>Membership Agreement</li>
+						<li>Accessibility</li>
+						<li>Privacy</li>
+					</ul>
+				</div>
+				<div class="contact">
+					<h3>Contact Us</h3>
+					<p>info@watersidegym.ie</p>
+				</div>
+				<div>
+					<img src="resources/images/paypal.png"
+						class="img-fluid pull-xs-left" alt="..." />
 				</div>
 			</div>
 		</div>
-
-		<div class="main">
-			<h:form>
-				<div class="regym-image">
-					<img src="resources/images/personal-trainer-reg.jpg" />
-				</div>
-				<div class="regym-text">
-					<p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
-					<h:panelGrid columns="6" cellpadding="5">
-
-						<f:facet name="header">
-							<h:outputText value="Personal Trainer Registration "
-								styleClass="panelGridHeader" />
-						</f:facet>
-
-						<p:outputLabel for="ename" value="Employee Name:" />
-						<p:inputText label="Employee Name" id="ename"
-							value="#{employee.firstName}" required="true" />
-						<p:message for="ename" />
-
-
-						<p:outputLabel for="gender" value="Gender:" />
-						<p:selectOneMenu id="gender">
-							<f:selectItem itemLabel="Select One" itemValue="#{employee.gender}"
-								noSelectionOption="true" />
-							<f:selectItem itemLabel="Male" itemValue="male" />
-							<f:selectItem itemLabel="Female" itemValue="female" />
-						</p:selectOneMenu>
-						<p:message for="gender" />
-
-						<p:outputLabel for="dob" value="Date of Birth:" />
-						<p:calendar id="dob" value="#{employee.dob}" required="true"
-							style="heigth:50px" />
-						<p:message for="dob" />
-
-						<p:outputLabel for="address" value="Address:" />
-						<p:inputTextarea id="address" value="#{employee.address}"
-							required="true" />
-						<p:message for="address" />
-
-						 <p:outputLabel for="email " value="Email:" />
-						<p:inputText id="email" value="#{employee.emailAddress}"
-							required="true" validator="#{member.validateEmail}" />
-						<p:message for="email" />
-
-						<p:outputLabel for="mobileno " value="Mobile Number:" />
-						<p:inputText id="mobileno" value="#{employee.mobileNumber}"
-							required="true" />
-						<p:message for="mobileno" />
-						
-						<p:outputLabel for="login " value="Username:" />
-						<p:inputText id="login" value="#{employee.userName}" required="true"
-						validator="#{employee.validateUserName}" />
-						<p:message for="login" />
-						
-
-						<p:outputLabel for="password " value="Password:" />
-						<p:password id="password" value="#{employee.password}" required="true"
-							feedback="true" inline="true" />
-						<p:message for="password" />
-
-						<p:outputLabel for="Aboutyourself" value="About Yourself:" />
-						<p:inputTextarea id="Aboutyourself" value="#{employee.aboutYourself}"
-							required="true" />
-						<p:message for="Aboutyourself" />
-
-
-						<p:outputLabel for="permanent" value="Permanent ?" />
-						<p:selectBooleanCheckbox id="permanent" value="#{employee.employeeType}" > </p:selectBooleanCheckbox>
-
-
-						<f:facet name="footer">
-							<h:panelGroup style="display:block; text-align:center">
-								<p:commandButton value="Submit" update="msgs"
-									action="#{employee.storeInfo}" />
-								<p:button value="Back"
-									outcome="index"  />
-							</h:panelGroup>
-						</f:facet>
-
-					</h:panelGrid>
-				</div>
-			</h:form>
-				<!-- FOOTER -->
-			<div class="footer">
-				<span id="arc"></span>
-				<div id="jointoday" class="inner">
-					<div class="legal">
-						<ul>
-							<li>Legal</li>
-							<li>Membership Agreement</li>
-							<li>Accessibility</li>
-							<li>Privacy</li>
-						</ul>
-					</div>
-					<div class="contact">
-						<h3>Contact Us</h3>
-						<p>info@watersidegym.ie</p>
-					</div>
-					<div>
-						<img src="resources/images/paypal.png"
-							class="img-fluid pull-xs-left" alt="..." />
-					</div>
-				</div>
-			</div>
-		</div>
-	</h:body>
+	</div>
+</h:body>
 </html>

@@ -19,7 +19,7 @@ public class PlannerBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private String[] mondaySession;
-	private String[] tuesdaySession; 
+	private String[] tuesdaySession;
 	private String[] wednesdaySession;
 	private String[] thursdaySession;
 	private String[] fridaySession;
@@ -70,7 +70,7 @@ public class PlannerBean implements Serializable {
 	}
 
 	public String getWednesdaySessionInString() {
-		return Arrays.toString(wednesdaySession) + "Cooldown"; 
+		return Arrays.toString(wednesdaySession) + "Cooldown";
 	}
 
 	// Thursday
@@ -212,14 +212,15 @@ public class PlannerBean implements Serializable {
 	public ArrayList<Member> getSelectedMembers() {
 
 		System.out.println("getSelectedMembers");
-		selectedMembers = new ArrayList<Member>(); 
+		selectedMembers = new ArrayList<Member>();
 
 		GymClassList gymClasses = Helper.getBean("gymClassList", GymClassList.class);
 		Employee trainer = (Employee) Helper.getUserLogged();
 
 		for (GymClass classes : gymClasses.getGymClass()) {
 			// 1-to-1 Session Booked for the logged Trainer
-			if (classes.getName().equals(ClassesTypes.ONE_ONE_SESSION) && classes.getInstructor().equals(trainer)) {
+			if (classes.getName().equals(ClassesTypes.ONE_ONE_SESSION) && classes.getInstructor() != null
+					&& classes.getInstructor().equals(trainer)) {
 				if (classes.getEnrolled() != null && classes.getEnrolled().size() > 0) {
 					selectedMembers.add(classes.getEnrolled().get(0));
 					System.out.println("selected member");
