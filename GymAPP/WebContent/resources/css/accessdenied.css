@@ -1,0 +1,18 @@
+
+html {
+	margin-top: 0;
+	padding: 0;
+	font-family: sans-serif;
+	font-size: 100%;
+	background-image:
+		url(#{request.contextPath}/resources/images/bg_img.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+h1 {
+  text-align: center;
+  padding-bottom: 30px;
+  font-size: 3em;
+  color: #397CFF;
+}

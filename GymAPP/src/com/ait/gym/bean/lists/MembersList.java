@@ -9,7 +9,7 @@ import javax.faces.bean.SessionScoped;
 
 import com.ait.gym.bean.Member;
 
-@ManagedBean(name="membersList",eager=true)
+@ManagedBean(name="membersList", eager = true)
 @SessionScoped
 public class MembersList implements Serializable {
 
@@ -27,11 +27,8 @@ public class MembersList implements Serializable {
 	@PostConstruct
 	public void init() { 
 		 
-		Member member1 = new Member("Ann","ann@email.com","123");
-		Member member2 = new Member("Tom","tom@email.com","123");  
-		
-		getMembers().add( member1);
-		getMembers().add( member2);  
+		Member member1 = new Member("Ann","ann@email.com","123");				
+		getMembers().add( member1);		
 		
 	}
 	
@@ -58,7 +55,7 @@ public class MembersList implements Serializable {
 	
 	public Member getMemberByUserName(String userName) {
 		
-		Member memberFound = null; 
+		Member memberFound = null;  
 		System.out.println("member count -->"+this.getMembersCount());
 		
 		for(Member member:this.getMembers() ) {
