@@ -2,6 +2,7 @@ div.videoRow {
 	width: 70%;
 	display: flex;
 	justify-content: center;
+	margin-bottom: 40px;
 }
 
 div.videoRow > div {
@@ -12,13 +13,17 @@ div.videoRow > div {
 	flex-direction: column;
 }
 
-div.videoRow:nth-of-type(2) {
+div.videoRow:last-of-type {
 	padding-bottom: 100px;
 }
 
 div.videoRow > div video{
 	border-radius: 20px;
 	height: 300px;
+}
+
+div.videoRow:last-of-type{
+	flex-direction: row;
 }
 
 div.uploadsection {
@@ -68,7 +73,7 @@ div.uploadsection div textarea {
 	font-size: 20px;
 }
 
-div.uploadsection > div > div input[type="submit"]{
+input.upload{
 	background: #151515;
 	padding: 12px 30px;
 	font-size: 20px;
@@ -81,12 +86,12 @@ div.uploadsection > div > div input[type="submit"]{
 	margin-top: 20px;
 }
 
-div.uploadsection > div > div input[type="submit"]:hover{
+input.upload:hover{
 	background: #252525;
 	cursor: pointer;
 }
 
-div.uploadsection > div > div input[type="file"]{
+input.file{
 	background: #2168f3;
 	padding: 12px 30px;
 	font-size: 20px;
@@ -98,4 +103,8 @@ div.uploadsection > div > div input[type="file"]{
 	color: white;
 	margin-top: 20px;
 	width: 55%;
+}
+
+table {
+	padding: 0;
 }

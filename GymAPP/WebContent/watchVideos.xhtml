@@ -31,12 +31,13 @@
 	<!-- /NAV -->
 	<br> </br>
 	<div class="main">
+		<h:panelGroup rendered="#{sessionScope.userType == 'P'}">
 			<div class="uploadsection">
 				<div>
 					<h:form prependid="false" enctype="multipart/form-data" rendered="#{sessionScope.userType == 'P'}">
 						<h1>Upload A Video</h1>
 						<div>	
-							<h:inputFile value="#{fileUploadMBean.file1}"></h:inputFile>
+							<h:inputFile styleClass="file" value="#{fileUploadMBean.file1}"></h:inputFile>
 						</div>
 						<div>
 							<h:inputTextarea id="inputtitle" value="#{fileUploadMBean.title}" maxlength="100" cols="30" rows="1"/>
@@ -47,11 +48,12 @@
 							<p:watermark for="inputdesc" value="Description of video" />
 						</div>
 						<div>
-							<h:commandButton action="#{fileUploadMBean.uploadFile()}" value="Upload"></h:commandButton>
+							<h:commandButton action="#{fileUploadMBean.uploadFile()}" styleClass="upload" value="Upload"></h:commandButton>
 						</div>
 					</h:form>
 				</div>
 			</div>
+		</h:panelGroup>
 		<h:form>
 			<h1>List of Videos</h1>
 			<div class="videoRow">
@@ -111,21 +113,16 @@
 				<div>
 					<h:form id="form">
 						<p:repeat value="#{repeatBean.videos}" var="video">
-							<h:panelGrid columns="2" style="width:100%"
-								columnClasses="logo,detail">
-		
-								<video id="myVideo" width="90%" controls="controls"> <source
-									src="#{video.path}" type="video/mp4" /> </video>
-								<p:outputPanel>
-									<h:panelGrid cellpadding="20" cellspacing="20">
-										<h:outputLabel
-											style="display:block; width:100%; text-align:center; font-size:50px"
-											value="#{video.title}" />
-										<p>#{video.description}</p>
-									</h:panelGrid>
-								</p:outputPanel>
-							</h:panelGrid>
-							<hr />
+							<video id="myVideo" width="90%" controls="controls"> <source
+								src="#{video.path}" type="video/mp4" /> </video>
+							<p:outputPanel>
+								<h:panelGrid cellpadding="20" cellspacing="20">
+									<h:outputLabel
+										style="display:block; width:100%; text-align:center; font-size:50px"
+										value="#{video.title}" />
+									<p>#{video.description}</p>
+								</h:panelGrid>
+							</p:outputPanel>
 						</p:repeat>
 					</h:form>
 				</div>
