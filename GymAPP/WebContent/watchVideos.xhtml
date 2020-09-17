@@ -31,11 +31,10 @@
 	<!-- /NAV -->
 	<br> </br>
 	<div class="main">
-		<h:form rendered="#{sessionScope.userType == 'P'}">
 			<div class="uploadsection">
 				<div>
-					<h1>Upload A Video</h1>
 					<h:form prependid="false" enctype="multipart/form-data" rendered="#{sessionScope.userType == 'P'}">
+						<h1>Upload A Video</h1>
 						<div>	
 							<h:inputFile value="#{fileUploadMBean.file1}"></h:inputFile>
 						</div>
@@ -53,7 +52,6 @@
 					</h:form>
 				</div>
 			</div>
-		</h:form>
 		<h:form>
 			<h1>List of Videos</h1>
 			<div class="videoRow">
