@@ -40,7 +40,6 @@ public class FileUploadMBean implements Serializable {
 		this.message = message;
 	}
 	
-	
 	public String getName() {
 		return name;
 	}
