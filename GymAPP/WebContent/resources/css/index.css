@@ -175,7 +175,7 @@ div.splash-member > div {
 }
 
 div.splash-member > div > div {
-  width: calc((100%/3) - 50px);
+  width: calc((100%/2) - 50px);
   border-radius: 20px;
   padding: 30px 10px;
   transition: 0.15s ease;
@@ -225,7 +225,7 @@ div.splash-member h3 {
   color: white;
   font-weight: 300;
   text-align: center;
-  font-size: 26px;
+  font-size: 22px;
 }
 
 /* ------------- */

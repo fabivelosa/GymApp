@@ -24,7 +24,7 @@
 	<div class="nav">
 		<div class="inner">
 			<div class="logo-container">
-				<img src="resources/images/watersidegym2.svg" />
+				<a href="/GymAPP" ><img src="resources/images/watersidegym2.svg" /></a>
 			</div>
 		</div>
 	</div>
@@ -32,6 +32,10 @@
 
 	<div class="main">
 		<h:form>
+			<div class="waves">
+				<img src="resources/images/waves3.svg" />
+				<img src="resources/images/waves2.svg" />
+			</div>
 			<div class="regym-image">
 				<img src="resources/images/regym.jpeg" />
 			</div>
@@ -64,7 +68,7 @@
 
 					<p:outputLabel for="dob" value="Date of Birth:" />
 					<p:calendar id="dob" value="#{member.dob}" required="true"
-						 navigator="true" />
+						style="heigth:50px" navigator="true" />
 					<p:message for="dob" />
 
 					<p:outputLabel for="address" value="Address:" />
@@ -114,37 +118,12 @@
 						<h:panelGroup style="display:block; text-align:center">
 							<p:commandButton value="Proceed to Payment" update="msgs"
 								action="#{member.storeInfo}" />
-
-							<p:button value="Back to Home" outcome="index" />
+							<p:button value="Return" outcome="index" />
 						</h:panelGroup>
 					</f:facet>
 				</h:panelGrid>
 			</div>
 		</h:form>
-
-		<!-- FOOTER -->
-		<div class="footer">
-			<span id="arc"></span>
-			<div id="jointoday" class="inner">
-				<div class="legal">
-					<ul>
-						<li>Legal</li>
-						<li>Membership Agreement</li>
-						<li>Accessibility</li>
-						<li>Privacy</li>
-					</ul>
-				</div>
-				<div class="contact">
-					<h3>Contact Us</h3>
-					<p>info@watersidegym.ie</p>
-				</div>
-				<div>
-					<img src="resources/images/paypal.png"
-						class="img-fluid pull-xs-left" alt="..." />
-				</div>
-			</div>
-		</div>
-		<!-- /FOOTER -->
 	</div>
 </h:body>
 </html>

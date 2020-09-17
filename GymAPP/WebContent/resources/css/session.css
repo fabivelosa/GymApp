@@ -7,17 +7,22 @@ div.session.inner {
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
-	background-color: #1e53ba;
-	overflow-x: hidden;
+	width: 100%;
+	overflow: hidden;
 	position: relative;
 }
 
+div.session.inner > img {
+	width: 100%;
+	opacity: 0.8;
+	filter: grayscale(1);
+	mix-blend-mode: soft-light;
+}
+
 div.session > div {
-	width: 500px;
-	border-radius: 20px;
+	width: 600px;
 	position: absolute;
 	z-index: 10;
-	margin-top: -25px;
 }
 
 div.session > div > div {
@@ -29,18 +34,21 @@ div.session > div > form {
 	border-radius: 44px;
 	background-color: white;
 	height: 580px;
-	box-shadow:  22px 22px 44px #194499, 
-             -22px -22px 44px #2362db;
+	display: flex;
+    flex-direction: column;
+}
+
+div.session > div > form a {
+	text-decoration: none;
 }
 
 h1 {
 	border-radius: 40px 40px 0 0;
 	text-align: center;
-	color: white;
+	color: #397CFF;
 	padding: 20px;
 	font-weight: 700;
 	font-size: 2em;
-	background: #397CFF;
 }
 
 img.session_img {
@@ -60,11 +68,37 @@ table.onesession {
 
 table td {
 	padding-bottom: 15px;
+	font-size: 20px;
 }
 
 table.onesession > tbody > tr:last-of-type td {
+	padding-top: 40px;
 	text-align: center;
 }
+
+table.onesession > tbody > tr td:first-of-type {
+	font-weight: 700;
+}
+
+table.onesession.successful > tbody > tr td:last-of-type {
+	text-align: right;
+}
+
+
+table.onesession > tbody > tr:last-of-type td a{
+	background-color: #397cff;
+	color: white;
+	text-decoration: none;
+	font-size: 18px;
+	padding: 12px 30px;
+	border-radius: 6px;
+	box-shadow: 0 4px 0 #1856cf;
+}
+
+table.onesession > tbody > tr:last-of-type td a:hover {
+  background-color:#2765df;
+}
+
 
 input, select {
 	border: 0;
@@ -73,6 +107,10 @@ input, select {
 	border-radius: 5px;
 	padding: 10px 15px;
 	font-size: 16px;
+}
+
+table.onesession > tbody > tr:last-of-type td {
+	text-align: center;
 }
 
 table.onesession > tbody > tr:last-of-type input {
@@ -96,9 +134,13 @@ div.footer #arc {
 	top: -75px;
 }
 
-div.logo-container {
-	text-align: center;
-	float: initial;
+div.nav {
+	background-color: #00000000 !important;
+}
+
+.logo-container {
+    width: 100% !important;
+    display: flex;
 }
 
 /* videofeed-code-modal */
@@ -114,7 +156,6 @@ div.logo-container {
 	align-items: center;
 }
 
-
 .videofeed.inner {
 	height: 100vh;
 }
@@ -124,3 +165,39 @@ div.logo-container {
 	height:600px;
 	background-color: black;
 }
+
+div.waves {
+	position: absolute;
+	top: 0;
+	left: 18%;
+	width: 64% !important;
+	height: 100vh;
+	background-color: white;
+}
+
+div.waves img:first-of-type {
+	position: absolute;
+	left: -50px;
+	height: 100%;
+}
+
+div.waves img:last-of-type {
+	position: absolute;
+	right: -50px;
+	height: 100%;
+}
+
+.uniquecode {
+	font-size: 24px;
+	padding: 15px 30px;
+	background-color: #eee;
+	border-radius: 8px;
+	text-align: center !important;
+}
+
+th {
+	font-size: 22px;
+	padding: 25px 0 15px 0;
+	font-weight: 300;
+}
+

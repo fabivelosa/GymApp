@@ -5,17 +5,12 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport"
-		content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 	<title>Buy Membership Confirmation</title>
-
 	<!-- Ttitle icon image  -->
-	<link rel="icon" type="image/x-icon"
-		href="resources/images/favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="resources/images/favicon.ico" />
 
 	<!-- CSS -->
 	<h:outputStylesheet name="global.css" library="css" />
@@ -28,11 +23,10 @@
 		<h:form>
 			<div class="inner">
 				<div class="logo-container">
-					<img src="resources/images/watersidegym2.svg" />
+					<a href="/GymAPP" ><img src="../resources/images/watersidegym2.svg" /></a>
 				</div>
-				<div class="account-options">
-				   		     
-				   <a href="member/member.xhtml" id="signin">Members HomePage</a> 
+				<div class="account-options">		   	   
+				   	<a href="member/member.xhtml" id="signin">Members HomePage</a> 
 					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
 				</div>
 			</div>

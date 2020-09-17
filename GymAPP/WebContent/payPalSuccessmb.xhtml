@@ -4,98 +4,76 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-
-	<meta charset="utf-8" content=""/>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport"
-		content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
-	<title>Buy Membership Confirmation</title>
-
-	<!-- Ttitle icon image  -->
-	<link rel="icon" type="image/x-icon"
-		href="resources/images/favicon.ico" />
-
-	<!-- CSS -->
-	<h:outputStylesheet name="global.css" library="css" />
-	<h:outputStylesheet name="buyMembership.css" library="css" />
-</h:head>
-
-<h:body>
-<!-- NAV -->
-		<div class="nav">
-		<h:form>
-			<div class="inner">
-				<div class="logo-container">
-					<img src="resources/images/watersidegym2.svg" />
-				</div>
-				<div class="account-options">
-					<a href="index.xhtml" id="signin">Back To Main </a> 
-					<a href="login.xhtml" class="register">Login</a>
-				</div>
-			</div>
-		</h:form>
-	</div>
-	<!-- /NAV -->
-<!-- MAIN -->
-<div class="content">
+	<h:head>
 	
-	#{paypalRespMb.success()}
+		<meta charset="utf-8" content=""/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 	
-     <p:panel id="basic" header="Membership Payment Confirmation" style="margin-bottom:20px;margin-left:10px;">
-        <h:panelGrid columns="2" cellpadding="10" cellspacing="10" style="margin: 0;" >
-            <h:outputLabel value="Transaction Id: "></h:outputLabel>
-            <h:outputText
-                value="#{paypalRespMb.txId}" />
-        </h:panelGrid>
-        <h:panelGrid columns="2" cellpadding="10" cellspacing="10"  style="margin: 0;">
-            <h:outputLabel value="Transaction Status: "></h:outputLabel>
-            <h:outputText
-                value="#{paypalRespMb.txStatus}" />
-        </h:panelGrid>
-        <h:panelGrid columns="2" cellpadding="10" cellspacing="10" style="margin: 0;">
-            <h:outputLabel value="Amount: "></h:outputLabel>
-            <h:outputText
-                value="#{paypalRespMb.amount}" />
-        </h:panelGrid>
-        <h:panelGrid columns="2" cellpadding="10" cellspacing="10" style="margin: 0;">
-            <h:outputLabel value="Currency: "></h:outputLabel>
-            <h:outputText
-                value="#{paypalRespMb.currency}" />
-        </h:panelGrid>
-        <h:panelGrid columns="2" cellpadding="10" cellspacing="10" style="margin: 0;">
-            <h:outputLabel value="Package: "></h:outputLabel>
-            <h:outputText
-                value="#{paypalRespMb.memPackage}" />
-        </h:panelGrid>
-    </p:panel>
+		<title>Buy Membership Confirmation</title>
 	
-	</div>
+		<!-- Ttitle icon image  -->
+		<link rel="icon" type="image/x-icon"
+			href="resources/images/favicon.ico" />
 	
-	<!-- FOOTER -->
-	<div class="footer">
-		<span id="arc"></span>
-		<div id="jointoday" class="inner">
-			<div class="legal">
-				<ul>
-					<li>Legal</li>
-					<li>Membership Agreement</li>
-					<li>Accessibility</li>
-					<li>Privacy</li>
-				</ul>
-			</div>
-			<div class="contact">
-				<h3>Contact Us</h3>
-				<p>info@watersidegym.ie</p>
-			</div>
-			<div>
-						<img src="resources/images/paypal.png"
-							class="img-fluid pull-xs-left" alt="..." />
+		<!-- CSS -->
+		<h:outputStylesheet name="global.css" library="css" />
+		<h:outputStylesheet name="buyMembership.css" library="css" />
+	</h:head>
+
+	<h:body>
+	<!-- NAV -->
+			<div class="nav">
+			<h:form>
+				<div class="inner">
+					<div class="logo-container">
+						<a href="/GymAPP" ><img src="resources/images/watersidegym2.svg" /></a>
 					</div>
+					<div class="account-options">
+						<a href="index.xhtml" id="signin">Back To Main </a> 
+						<a href="login.xhtml" class="register">Login</a>
+					</div>
+				</div>
+			</h:form>
 		</div>
-	</div>
-	<!-- /FOOTER -->
-	
-</h:body>
+		<!-- /NAV -->
+		<!-- MAIN -->
+		<div class="main">
+			<div class="content">	
+				<div>
+					#{paypalRespMb.success()}	
+				     <p:panel id="basic" header="Membership Payment Confirmation">
+				        <h:panelGrid columns="2" cellpadding="10" cellspacing="10" style="margin: 0;">
+				            <h:outputLabel value="Transaction Id: "></h:outputLabel>
+				            <h:outputText
+				                value="#{paypalRespMb.txId}" />
+				        </h:panelGrid>
+				        <h:panelGrid columns="2" cellpadding="10" cellspacing="10"  style="margin: 0;">
+				            <h:outputLabel value="Transaction Status: "></h:outputLabel>
+				            <h:outputText
+				                value="#{paypalRespMb.txStatus}" />
+				        </h:panelGrid>
+				        <h:panelGrid columns="2" cellpadding="10" cellspacing="10" style="margin: 0;">
+				            <h:outputLabel value="Amount: "></h:outputLabel>
+				            <h:outputText
+				                value="#{paypalRespMb.amount}" />
+				        </h:panelGrid>
+				        <h:panelGrid columns="2" cellpadding="10" cellspacing="10" style="margin: 0;">
+				            <h:outputLabel value="Currency: "></h:outputLabel>
+				            <h:outputText
+				                value="#{paypalRespMb.currency}" />
+				        </h:panelGrid>
+				        <h:panelGrid columns="2" cellpadding="10" cellspacing="10" style="margin: 0;">
+				            <h:outputLabel value="Package: "></h:outputLabel>
+				            <h:outputText
+				                value="#{paypalRespMb.memPackage}" />
+				        </h:panelGrid>
+			    	</p:panel>
+				</div>
+				<p><span>Thank you!</span><br/>You may now return to the homepage and sign in.</p>
+				<a href="/GymAPP" class="return">Return to Homepage</a>
+			</div>
+		</div>
+	</h:body>
 </html>

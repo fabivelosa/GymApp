@@ -16,7 +16,7 @@
 		<h:form>
 			<div class="inner">
 				<div class="logo-container">
-					<img src="../resources/images/watersidegym2.svg" />
+					<a href="/GymAPP" ><img src="../resources/images/watersidegym2.svg" /></a>
 				</div>
 				<div class="account-options">
 					<a href="member.xhtml" id="signin">Members HomePage</a>
@@ -29,47 +29,44 @@
 	<!-- /NAV -->
 	<br> </br>
 	<div class="main">
-			<h:panelGrid id="panel3" columns="2">
-				<h:graphicImage style="height:300px;width:620px"
-					name="images/onceOffPayment.jpg" />
-
-				<h:panelGrid cellpadding="20" cellspacing="20">
-					<h:outputLabel
-						style="display: block; width:100%; text-align:center; font-size:50px"
-						value="Purchase a Once off Enrolment" />
-
-
-
-
-					<form action="https://www.sandbox.paypal.com/cgi-bin/websc"
-						method="post">
-						<div class="table">
-							<input type="hidden" name="business"
-								value="sb-vqtyx2944632@business.example.com" />
-
-							<!-- Specify a Buy Now button. -->
-							<input type="hidden" name="cmd" value="_xclick" /> <input
-								type="hidden" name="token" value="${initParam['authtoken']}" />
-							<input type="hidden" name="return"
-								value="http://localhost:8080/GymAPP/welcome" /> <input
-								type="hidden" name="rm" value="2" /> <input type="hidden"
-								name="item_name" value="amount" /> <input type="hidden"
-								name="currency_code" value="EUR" /> <input type="hidden"
-								id="onceOff" name="amount" value="19" /> 
-							<br />
-
-							<!-- Display the payment button. -->
-							
-							<input type="image" name="submit" border="0"
-								style="margin-left: 25%"
-								src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
-								alt="Buy Now" /> <img alt="" border="0" width="1" height="1"
-								src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" />
-						</div>
-					</form>
-				</h:panelGrid>
-			</h:panelGrid>
-
+		<div class="onceoff">
+			<div class="banner">
+				<h:graphicImage name="images/onceOffPayment.jpg" />
+			</div>
+			<div class="banner-text">
+				<span>Purchase A Once-Off Enrollment</span>
+			</div>
+			<div class="onceoff-body">
+				<p>Upon a successful transaction your account will be given an<br/>extra Credit to be used for enrollments.<br/><br/>Click below to continue.</p>
+				<div>
+					<h:panelGrid id="panel3" columns="2">
+						<h:panelGrid cellpadding="20" cellspacing="20">
+							<form action="https://www.sandbox.paypal.com/cgi-bin/websc"
+								method="post">
+								<div class="table">
+									<input type="hidden" name="business"
+										value="sb-vqtyx2944632@business.example.com" />
+									<!-- Specify a Buy Now button. -->
+									<input type="hidden" name="cmd" value="_xclick" /> <input
+										type="hidden" name="token" value="${initParam['authtoken']}" />
+									<input type="hidden" name="return"
+										value="http://localhost:8080/GymAPP/welcome" /> <input
+										type="hidden" name="rm" value="2" /> <input type="hidden"
+										name="item_name" value="amount" /> <input type="hidden"
+										name="currency_code" value="EUR" /> <input type="hidden"
+										id="onceOff" name="amount" value="19" /> 
+									<!-- Display the payment button. -->
+									<input type="image" name="submit"
+										src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+										alt="Buy Now" /> <img alt="" border="0" width="1" height="1"
+										src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" />
+								</div>
+							</form>
+						</h:panelGrid>
+					</h:panelGrid>
+				</div>
+			</div>
+		</div>
 		<!-- FOOTER -->
 			<div class="footer">
 			<span id="arc"></span>
@@ -87,8 +84,7 @@
 					<p>info@watersidegym.ie</p>
 				</div>
 				<div>
-					<img src="../resources/images/paypal.png"
-						class="img-fluid pull-xs-left" alt="..." />
+					<img src="../resources/images/paypal.png" class="img-fluid pull-xs-left" alt="..." />
 				</div>
 			</div>
 		</div>

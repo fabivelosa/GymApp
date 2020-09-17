@@ -16,7 +16,7 @@
 		<h:form>
 			<div class="inner">
 				<div class="logo-container">
-					<img src="../resources/images/watersidegym2.svg" />
+					<a href="/GymAPP" ><img src="../resources/images/watersidegym2.svg" /></a>
 				</div>
 				<div class="account-options">
 					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
@@ -29,23 +29,16 @@
 	<br> </br>
 	<div class="main">
 		<h:form>
-			<h:panelGrid id="panel0" columns="2">
-				<h:panelGrid cellpadding="10" cellspacing="10">
-					<h:outputLabel
-						style="display: block; width:100%; text-align:left;  font-size:50px "
-						value="Welcome #{sessionScope.loggedUser.firstName}! " />
-					<h:outputLabel
-						style="display: block; width:100%; text-align:left;  font-size:30px "
-						value="Plan: #{sessionScope.loggedUser.membershipType.value} " />
-					<h:outputLabel
-						style="display: block; width:100%; text-align:left;  font-size:30px "
-						value="Credits Available: #{sessionScope.loggedUser.oneToOneCredit} " />
-					<h:outputLabel
-						style="display: block; width:100%; text-align:left;  font-size:30px "
-						value="Booked Classes: #{sessionScope.loggedUser.totalBookedClasses} " />	
-				</h:panelGrid>
-			</h:panelGrid>
-
+			<div class="welcomeback">
+				<div>
+					<h1><span>Welcome back, </span><h:outputLabel value="#{sessionScope.loggedUser.firstName}!"/></h1>
+					<h3><h:outputLabel value="#{sessionScope.loggedUser.membershipType.value}"/></h3>
+				</div>
+				<div>
+					<h3><span>Credits Available: </span><h:outputLabel value="#{sessionScope.loggedUser.oneToOneCredit}"/></h3>
+					<h3><span>Booked Classes: </span><h:outputLabel value="#{sessionScope.loggedUser.totalBookedClasses}"/></h3>
+				</div>
+			</div>
 			<h:panelGrid id="panel1" columns="2">
 				<h:graphicImage style="height:300px; width:620px;"
 					name="images/PersonalTraining.jpg" />
@@ -77,7 +70,6 @@
 				<h:graphicImage style="height:300px;width:620px"
 					name="images/BookaDayPass.jpg" />
 			</h:panelGrid>
-
 			<h:panelGrid id="panel3" columns="2">
 				<h:graphicImage style="height:300px;width:620px"
 					name="images/member1.jpg" />
@@ -113,7 +105,6 @@
 				<h:graphicImage style="height:300px;width:620px"
 					name="images/meetTeam.jpg" />
 			</h:panelGrid>
-
 			<h:panelGrid id="panel5" columns="2">
 				<h:graphicImage style="height:300px;width:620px"
 					name="images/member2.jpg" />
@@ -148,8 +139,7 @@
 					<p>info@watersidegym.ie</p>
 				</div>
 				<div>
-					<img src="../resources/images/paypal.png"
-						class="img-fluid pull-xs-left" alt="..." />
+					<img src="../resources/images/paypal.png" class="img-fluid pull-xs-left" alt="..." />
 				</div>
 			</div>
 		</div>

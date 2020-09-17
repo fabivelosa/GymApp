@@ -161,6 +161,7 @@ div.footer > div > div:nth-child(even) {
 
 div.footer > div > div:nth-child(even) h3 {
   color: #397CFF;
+  font-size: 20px;
 }
 
 div.footer ul li {

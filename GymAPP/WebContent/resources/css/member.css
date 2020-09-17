@@ -3,7 +3,7 @@ html, body {
   font-style: normal;
   min-height: 100%;
   margin: 0;
-  background-color: #f7f7f7 !important;
+  background-color: white !important;
   font-size: 15px;
 }
 
@@ -80,6 +80,10 @@ h3 {
 
 table {
   padding: 50px 15%;
+}
+
+div.main > form > table:nth-of-type(odd) {
+  background-color: white;
 }
 
 table:nth-of-type(even) {
@@ -176,3 +180,103 @@ div.welcome-back span:last-of-type {
   float: right;
   font-weight: normal;
 }
+
+div.onceoff {
+	height: 100vh;
+	width: 100vw;
+}
+
+div.onceoff .banner {
+	height: 450px;
+	width: 100vw;
+	background: #397cff;
+	overflow-y: hidden;
+	clip-path: polygon(0 0, 100% 0, 100% 400px, calc(50% + 40px) 400px, 50% 450px, calc(50% - 40px) 400px, 0 400px)
+}
+
+div.onceoff .banner img{
+	width: 100%;
+	opacity: 0.8;
+	filter: grayscale(1);
+	mix-blend-mode: soft-light;
+}
+
+div.onceoff .banner-text {
+	height: 400px;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0; left: 0;
+}
+
+div.onceoff .banner-text span {
+	font-size: 4em;
+	color: white;
+	font-weight: 700;
+}
+
+div.onceoff .onceoff-body {
+	height: auto;
+	padding: 60px 0;
+	width: 100vw;
+	display: flex;
+	position: absolute;
+	flex-direction: column;
+}
+
+div.onceoff .onceoff-body p {
+	font-size: 24px;
+	font-weight: 300;
+	text-align: center;
+}
+
+div.welcomeback {
+	width: 100%;
+	padding: 40px 0;
+	background-color: white;
+	height: 150px;
+	display: flex;
+	align-items: flex-end;
+}
+
+div.welcomeback > div:first-of-type {
+	float: left;
+	margin-left: 15%;
+}
+
+div.welcomeback > div:last-of-type {
+	float: right;
+	margin-right: 15%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+div.welcomeback h1{
+	font-size: 3.5em;
+	padding-bottom: 10px;
+}
+
+div.welcomeback h1 span{
+	color: #397cff;
+}
+
+div.welcomeback h3{
+	font-size: 1.5em;
+	font-weight: 300;
+}
+
+div.welcomeback > div:last-of-type h3{
+	padding-top: 5px;
+	font-size: 2em;
+	font-weight: 900;
+	margin: 0;
+	text-align: right;
+}
+
+div.welcomeback > div:last-of-type h3 span{
+	font-weight: 300;
+}
+

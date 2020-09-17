@@ -19,13 +19,12 @@ table  {
     padding: 30px 70px;
     background-color: white;
     border-radius: 15px;
-    box-shadow:  0px 8px 0px #397cff66;
   }
 
 div.regym-image {
   width: 100%;
   height: 100%;
-  background-color: #278cdf;
+  background-color: #397cff;
   overflow: hidden;
 }
 
@@ -36,11 +35,33 @@ div.regym-image > img {
   mix-blend-mode: soft-light;
 }
 
+div.waves {
+	position: absolute;
+	top: 0;
+	left: 18%;
+	width: 64%;
+	height: 100vh;
+	background-color: white;
+}
+
+div.waves img:first-of-type {
+	position: absolute;
+	left: -50px;
+	height: 100%;
+}
+
+div.waves img:last-of-type {
+	position: absolute;
+	right: -50px;
+	height: 100%;
+}
+
 form {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 div.regym-text {
@@ -59,7 +80,7 @@ div.regym-text {
    font-size: 2em;
    color: #397CFF;
    align-items: center;
-   padding: 15px 0;
+   padding: 30px 0;
    display: block;
 }
 
@@ -96,6 +117,8 @@ div.regym-text table tr td:nth-of-type(4) {
   color: #111111 !important;
   box-shadow: none;
   margin-top: 10px;
+  position: absolute;
+  bottom: 50px;
 }
 
 .ui-button span {
@@ -151,4 +174,13 @@ tfoot > tr > td > span {
 
 td {
   padding-bottom: 10px;
+}
+
+div.nav {
+	background-color: #00000000 !important;
+}
+
+.logo-container {
+    width: 100% !important;
+    display: flex;
 }

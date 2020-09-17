@@ -41,12 +41,13 @@ div.login {
 
 div.login h1 {
 	font-size: 3em;
-	font-weight: 700;
+	font-weight: 600;
 	padding-bottom: 10px;
 }
 
 div.login h1 span {
 	color: #397cff;
+	font-weight: 900;
 }
 
 table table {

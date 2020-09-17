@@ -12,13 +12,18 @@
     <title>Waterside Gym</title>
 
     <h:outputStylesheet library="css" name="accessdenied.css"/>
+    <h:outputStylesheet library="css" name="global.css"/>
 
     <!-- External Fonts -->
 
   </h:head>
   <body>
-        <h1> Access Denied! </h1>
-        <a href="index.xhtml" id="Back">Back</a>
+        <div class="noaccess">
+        	<div>
+        		<img src="resources/images/watersidegym2.svg" />
+        		<h1>Access Denied!</h1>
+        		<a href="/GymAPP" id="back">Return</a>
+        	</div>
+        </div>
   </body>    
-
 </html>
