@@ -21,9 +21,9 @@
 				</div>
 				<div class="account-options">
 					<h:commandLink rendered="#{sessionScope.userType == 'P'}"
-						action="trainershomepage.xhtml" class="return">Return to Trainer Page</h:commandLink>
+						action="trainer/trainershomepage.xhtml" class="return">Return to Trainer Page</h:commandLink>
 					<h:commandLink rendered="#{sessionScope.userType == 'M'}"
-						action="member.xhtml" class="return">Return to Member Page</h:commandLink>
+						action="member/member.xhtml" class="return">Return to Member Page</h:commandLink>
 					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
 				</div>
 			</div>

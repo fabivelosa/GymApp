@@ -1,5 +1,6 @@
 package com.ait.gym.bean;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,6 +14,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
+import javax.servlet.http.HttpSession;
 
 import com.ait.gym.bean.lists.MembersList;
 import com.ait.gym.interfaces.UserActions;
@@ -174,5 +176,15 @@ public class Member extends Person implements Serializable, UserActions {
 
 		return a + b;
 	}
-
+	
+	public String watchVideo() {
+		String page = "../watchVideos.xhtml";
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect(page);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
