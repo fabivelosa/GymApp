@@ -57,6 +57,10 @@
 		<servlet-name>servletPost</servlet-name>
 		<url-pattern>/welcome</url-pattern>
 	</servlet-mapping>
+	
+	<listener>
+		<listener-class>com.ait.gym.bean.Config</listener-class>
+	</listener>
 
 	<filter-mapping>
 		<filter-name>authenticationFilter</filter-name>
