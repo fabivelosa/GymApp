@@ -1,0 +1,101 @@
+div.videoRow {
+	width: 70%;
+	display: flex;
+	justify-content: center;
+}
+
+div.videoRow > div {
+	float: left;
+	width: 50%;
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+}
+
+div.videoRow:nth-of-type(2) {
+	padding-bottom: 100px;
+}
+
+div.videoRow > div video{
+	border-radius: 20px;
+	height: 300px;
+}
+
+div.uploadsection {
+	padding: 100px 0 30px 0;
+	height: 450px;
+	background-color: #397cff;
+	margin-bottom: 60px;
+}
+
+div.uploadsection h1{
+	color: white;
+	font-size: 4em;
+}
+
+div.main > form > h1{
+	color: #151515;
+	font-size: 4em;
+	padding-top: 100px;
+	margin-bottom: 20px;
+}
+
+div.uploadsection > div{
+	padding: 0;
+	width: 800px;
+}
+
+div.uploadsection > div textarea.desc{
+	height:100px;
+	border: none;
+	outline: none;
+}
+
+div.uploadsection div div {
+	width: 100%;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px;
+}
+
+div.uploadsection div textarea {
+	width: 60%;
+	border: none !important;
+	float: left;
+	padding: 12px;
+	border-radius: 8px;
+	font-size: 20px;
+}
+
+div.uploadsection > div > div input[type="submit"]{
+	background: #151515;
+	padding: 12px 30px;
+	font-size: 20px;
+	border-radius: 8px;
+	box-shadow: none;
+	text-shadow: none;
+	border: none;
+	outline: none;
+	color: white;
+	margin-top: 20px;
+}
+
+div.uploadsection > div > div input[type="submit"]:hover{
+	background: #252525;
+	cursor: pointer;
+}
+
+div.uploadsection > div > div input[type="file"]{
+	background: #2168f3;
+	padding: 12px 30px;
+	font-size: 20px;
+	border-radius: 8px;
+	box-shadow: none;
+	text-shadow: none;
+	border: none;
+	outline: none;
+	color: white;
+	margin-top: 20px;
+	width: 55%;
+}

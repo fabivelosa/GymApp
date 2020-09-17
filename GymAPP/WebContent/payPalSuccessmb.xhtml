@@ -32,7 +32,6 @@
 					</div>
 					<div class="account-options">
 						<a href="index.xhtml" id="signin">Back To Main </a> 
-						<a href="login.xhtml" class="register">Login</a>
 					</div>
 				</div>
 			</h:form>
@@ -41,6 +40,7 @@
 		<!-- MAIN -->
 		<div class="main">
 			<div class="content">	
+				<p><span>Thank you!</span><br/>You may now sign in and access your homepage.</p>
 				<div>
 					#{paypalRespMb.success()}	
 				     <p:panel id="basic" header="Membership Payment Confirmation">
@@ -71,8 +71,7 @@
 				        </h:panelGrid>
 			    	</p:panel>
 				</div>
-				<p><span>Thank you!</span><br/>You may now return to the homepage and sign in.</p>
-				<a href="/GymAPP" class="return">Return to Homepage</a>
+				<a href="/GymAPP/login.xhtml" class="return">Log In</a>
 			</div>
 		</div>
 	</h:body>
