@@ -1,6 +1,7 @@
 package com.ait.gym.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Date;
@@ -36,6 +37,7 @@ class EmployeeTest {
 		assertEquals("fabi@gmail", employee.getEmailAddress(), "Email address");
 		assertEquals("Female", employee.getGender(), "Gender");
 		assertTrue(employee.isEmployeeType(), "Permanent?");
+		assertEquals("Permanent", employee.getContractType(), "Permanent?");
 	}
 
 	@Test
@@ -90,8 +92,10 @@ class EmployeeTest {
 
 	@Test
 	void testSetPermanent() {
-		employee.setEmployeeType(true);
-		assertTrue(employee.isEmployeeType());
+		employee.setEmployeeType(false);
+		assertFalse(employee.isEmployeeType());
+		assertEquals("Temporary", employee.getContractType());
+
 	}
 
 	@Test

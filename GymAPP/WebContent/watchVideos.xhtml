@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Waterside Gym</title>
+	<h:outputStylesheet name="member.css" library="css" />
+	<h:outputStylesheet name="watchvideos.css" library="css" />
+	<h:outputStylesheet library="css" name="global.css" />
+</h:head>
+<h:body>
+	<!-- NAV -->
+	<div class="nav">
+		<h:form>
+			<div class="inner">
+				<div class="logo-container">
+					<img src="resources/images/watersidegym2.svg" />
+				</div>
+				<div class="account-options">
+					<h:form rendered="#{sessionScope.userType == 'P'}"><a href="/GymAPP/trainer/trainershomepage.xhtml" id="signin">Your Homepage</a></h:form>
+					<h:form rendered="#{sessionScope.userType == 'M'}"><a href="/GymAPP/member/member.xhtml" id="signin">Members Homepage</a></h:form>
+					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
+				</div>
+			</div>
+		</h:form>
+	</div>
+	<!-- /NAV -->
+	<br> </br>
+	<div class="main">
+		<h:panelGroup rendered="#{sessionScope.userType == 'P'}">
+			<div class="uploadsection">
+				<div>
+					<h:form prependid="false" enctype="multipart/form-data" rendered="#{sessionScope.userType == 'P'}">
+						<h1>Upload A Video</h1>
+						<div>	
+							<h:inputFile styleClass="file" value="#{fileUploadMBean.file1}"></h:inputFile>
+						</div>
+						<div>
+							<h:inputTextarea id="inputtitle" value="#{fileUploadMBean.title}" maxlength="100" cols="30" rows="1"/>
+							<p:watermark for="inputtitle" value="Title for video" />
+						</div>
+						<div>
+							<h:inputTextarea id="inputdesc" styleClass="desc" value="#{fileUploadMBean.name}" maxlength="200" cols="30" rows="10" placeholder="Title of Video" />
+							<p:watermark for="inputdesc" value="Description of video" />
+						</div>
+						<div>
+							<h:commandButton action="#{fileUploadMBean.uploadFile()}" styleClass="upload" value="Upload"></h:commandButton>
+						</div>
+					</h:form>
+				</div>
+			</div>
+		</h:panelGroup>
+		<h:form>
+			<h1>List of Videos</h1>
+			<div class="videoRow">
+				<div>
+					<video id="myVideo" width="90%" controls="controls"> <source
+						src="#{resource['videos/VideoTraining1.mp4']}" type="video/mp4" />
+					</video>
+					<h:panelGrid cellpadding="10" cellspacing="10">
+						<h:outputLabel
+							style="display: block; width:100%; text-align:center;  font-size:50px "
+							value="2 Min HIIT Workout " />
+						<p>Beginners HIIT workout for fat loss. Full body exercises
+							that will get your heart rate up, build your strength and burn a
+							serious amount of calories for weight loss.</p>
+					</h:panelGrid>
+				</div>
+				<div>
+					<video id="myVideo" width="90%" controls="controls"> <source
+						src="#{resource['videos/VideoTraining2.mp4']}" type="video/mp4" />
+					</video>
+					<h:panelGrid cellpadding="20" cellspacing="20">
+						<h:outputLabel
+							style="display: block; width:100%; text-align:center;  font-size:50px"
+							value="2 Min Ab Workout" />
+						<p>Want flat and beautiful abs? Crunch it out with this
+							effective quick ab workout.</p>
+					</h:panelGrid>
+				</div>
+			</div>
+			<div class="videoRow">
+				<div>
+					<video id="myVideo" width="90%" controls="controls"> <source
+						src="#{resource['videos/VideoTraining3.mp4']}" type="video/mp4" />
+					</video>
+					<h:panelGrid cellpadding="20" cellspacing="20">
+						<h:outputLabel
+							style="display: block; width:100%; text-align:center; font-size:50px"
+							value="2 Min Drill" />
+						<p>This versatile workout plan will get your heart pumping,
+							muscles firing, and energy soaring.</p>
+					</h:panelGrid>
+				</div>
+				<div>
+					<video id="myVideo" width="90%" controls="controls"> <source
+						src="#{resource['videos/VideoTraining4.mp4']}" type="video/mp4" />
+					</video>
+					<h:panelGrid cellpadding="20" cellspacing="20">
+						<h:outputLabel
+							style="display:block; width:100%; text-align:center; font-size:50px"
+							value="2 Min Flat Belly Workout" />
+						<p>2 minutes to a flat belly with these Pilates-inspired moves
+							from Emilly Furtado.</p>
+					</h:panelGrid>
+				</div>
+			</div>
+			<div class="videoRow">
+				<div>
+					<h:form id="form">
+						<p:repeat value="#{repeatBean.videos}" var="video">
+							<video id="myVideo" width="90%" controls="controls"> <source
+								src="#{video.path}" type="video/mp4" /> </video>
+							<p:outputPanel>
+								<h:panelGrid cellpadding="20" cellspacing="20">
+									<h:outputLabel
+										style="display:block; width:100%; text-align:center; font-size:50px"
+										value="#{video.title}" />
+									<p>#{video.description}</p>
+								</h:panelGrid>
+							</p:outputPanel>
+						</p:repeat>
+					</h:form>
+				</div>
+			</div>
+			<h:outputText value="#{fileUploadMBean.message}"
+				rendered="#{!empty fileUploadMBean.message}"></h:outputText>
+		</h:form>
+		<!-- FOOTER -->
+		<div class="footer">
+			<span id="arc"></span>
+			<div id="jointoday" class="inner">
+				<div class="legal">
+					<ul>
+						<li>Legal</li>
+						<li>Membership Agreement</li>
+						<li>Accessibility</li>
+						<li>Privacy</li>
+					</ul>
+				</div>
+				<div class="contact">
+					<h3>Contact Us</h3>
+					<p>info@watersidegym.ie</p>
+				</div>
+				<div>
+					<img src="resources/images/paypal.png"
+						class="img-fluid pull-xs-left" alt="..." />
+				</div>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>

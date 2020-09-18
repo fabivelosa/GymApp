@@ -1,5 +1,6 @@
 package com.ait.gym.test;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -41,5 +42,12 @@ class EmployeeListTest {
 		assertEquals(emp, employeeList.getEmployeeByUserName("john@gmail.com"));
 		assertEquals(emp2, employeeList.getEmployeeByUserName("paul@gmail.com"));
 	}
+	
 
+	@Test
+	void testEmptyList() {
+		employeeList = new EmployeeList();
+		assertNull(employeeList);
+	}
+	
 }

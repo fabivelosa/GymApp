@@ -22,7 +22,7 @@
 		<div class="nav">
 			<div class="inner">
 				<div class="logo-container">
-					<img src="../resources/images/watersidegym2.svg" />
+					<a href="/GymAPP" ><img src="../resources/images/watersidegym2.svg" /></a>
 				</div>
 				<div class="account-options">
 					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
@@ -31,24 +31,19 @@
 		</div>
 	</h:form>
 	<div class="main">
-		<br /> <br />
+		<div class="welcomeback">
+			<div>
+				<h1><span>Welcome back, </span><h:outputLabel value="#{sessionScope.loggedUser.firstName}!"/></h1>
+				<h3><h:outputLabel value="Contract Type - #{sessionScope.loggedUser.contractType}"/></h3>
+			</div>
+			<div>
+				<h3><span>Assigned Classes: </span><h:outputLabel value="#{sessionScope.loggedUser.totalBookedClasses}"/></h3>
+			</div>
+		</div>
 		<h:form>
-			<h:panelGrid id="panel0" columns="2">
-				<h:panelGrid cellpadding="10" cellspacing="10">
-					<h:outputLabel
-						style="display: block; width:100%; text-align:left;  font-size:50px "
-						value="Welcome #{sessionScope.loggedUser.firstName}! " />
-					<h:outputLabel
-						style="display: block; width:100%; text-align:left;  font-size:30px "
-						value="Contract type : #{sessionScope.loggedUser.contractType} " />
-					<h:outputLabel
-						style="display: block; width:100%; text-align:left;  font-size:30px "
-						value="Assigned Classes: #{sessionScope.loggedUser.totalBookedClasses} " />
-				</h:panelGrid>
-			</h:panelGrid>
 			<h:panelGrid id="panel1" columns="2">
 				<h:graphicImage style="height:300px; width:620px;"
-					name="images/PersonalTraining.jpg" />
+					name="images/trainer2.jpg" />
 				<h:panelGrid cellpadding="10" cellspacing="10">
 					<h:outputLabel
 						style="display: block; width:100%; text-align:center;  font-size:50px "
@@ -74,11 +69,11 @@
 						action="trainerPlanPage"></h:commandButton>
 				</h:panelGrid>
 				<h:graphicImage style="height:300px;width:620px"
-					name="images/meetTeam.jpg" />
+					name="images/trainer1.jpg" />
 			</h:panelGrid>
 			<h:panelGrid id="panel3" columns="2">
 				<h:graphicImage style="height:300px;width:620px"
-					name="images/member3.jpg" />
+					name="images/trainer3.jpg" />
 				<h:panelGrid cellpadding="20" cellspacing="20">
 					<h:outputLabel
 						style="display: block; width:100%; text-align:center; font-size:50px"
@@ -90,7 +85,7 @@
 						own personalized work-out videos. Our members will always have the
 						chance to be able to work-out by watching the videos you upload!</p>
 					<h:commandButton styleClass="centreElement" value="Upload"
-						action="upload" />
+						action="#{employee.watchVideo}" />
 				</h:panelGrid>
 			</h:panelGrid>
 		</h:form>

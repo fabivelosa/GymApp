@@ -1,11 +1,10 @@
 package com.ait.gym.bean;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -31,7 +30,6 @@ public class Employee extends Person implements UserActions {
 		Random random = new Random();
 		this.setId("P" + random.nextInt(range));
 	}
-
 
 	public Employee(String name) {
 		Random random = new Random();
@@ -80,13 +78,13 @@ public class Employee extends Person implements UserActions {
 	@Override
 	public String storeInfo() {
 
-		String outcome = null;
 		EmployeeList employees = Helper.getBean("employeeList", EmployeeList.class);
 		employees.getEmployees().add(this);
-		FacesMessage message = new FacesMessage("Employee Information is stored Successfully.");
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Trainer created Successfully!", null);
 		FacesContext.getCurrentInstance().addMessage(null, message);
-		outcome = "login?faces-redirect=true";
-		return outcome;
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(Boolean.TRUE);
+		String page = "login?faces-redirect=true";
+		return page;
 	}
 
 	public List<GymClass> getBookedClasses() {
@@ -121,6 +119,17 @@ public class Employee extends Person implements UserActions {
 
 		return (bookedClasses == null ? 0 : bookedClasses.size());
 
+	}
+
+	public String watchVideo() {
+		String page = "../watchVideos.xhtml";
+		try {
+			FacesContext.getCurrentInstance().getExternalContext().redirect(page);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

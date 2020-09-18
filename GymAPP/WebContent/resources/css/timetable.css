@@ -5,29 +5,19 @@
 	padding: 15px;
 	font-family: sans-serif;
 	font-size: 100%;
-	/* 	background-image:
-		url(#{request.contextPath}/resources/images/timetable.jpeg);
- */
-	background-repeat: no-repeat;
-	background-size: cover;
 }
 
 .ui-row-editor .ui-row-editor-pencil {
 	margin-left: 8px;
 }
 
-.table {
-	margin-bottom: 30px;
-	background: #397CFF;
-}
-
 div.form {
 	width: 100vw;
-	background: linear-gradient(0deg, rgba(16,68,170,1) 0%, rgba(57,124,255,1) 100%);
-	height: 100vh;
+	background: white;
+	height: auto;
 	position: relative;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	flex-direction: column;
 }
@@ -50,22 +40,33 @@ div.form > h1 {
 	text-align: center;
 }
 
-
-
 .ui-datatable thead th {
-	background: #eee !important;
+	background: #222 !important;
 	text-shadow: none;
-	padding: 8px 0 !important;
+	padding: 12px 0 !important;
 	border: none;
+	font-size: 22px;
+	box-shadow: none;
 }
 
-.ui-datatable thead th:nth-of-type(even) {
-	background:  #e7e7e7 !important;
+.ui-datatable thead th span {
+	color: white;
 }
 
-form > div {
-	box-shadow: 0px 5px 0px #00000022;
-	border-radius: 8px;
+.ui-datatable thead th:first-of-type {
+	border-radius: 8px 0 0 8px;
+}
+
+.ui-datatable thead th:last-of-type {
+	border-radius: 0 8px 8px 0;
+}
+
+.ui-datatable-empty-message td {
+	font-size: 3.5em;
+	padding: 50px 30px !important;
+	color: #00000033;
+	font-weight: 900;
+	text-align: center;
 }
 
 .ui-widget-content {
@@ -74,28 +75,11 @@ form > div {
 }
 
 .ui-widget-content tr td:nth-of-type(even) {
-	background-color: #e7e7e7;
-}
-
-.ui-widget-content tr td:first-of-type {
-	border-radius: 0 0 0 8px;
-}
-
-.ui-widget-content tr td:last-of-type {
-	border-radius: 0 0 8px 0;
-}
-
-.ui-widget {
-	box-shadow: 0px 8px 0px #383c4466;
-	border-radius: 0 0 8px 8px;
+	background-color: #e1e1e1;
 }
 
 *  {
 	border: none !important;
-}
-
-.ui-datatable thead th span.ui-column-title{
-	color: #111;
 }
 
 a.return {
@@ -116,3 +100,82 @@ a.return:hover {
 	color: white;
 	padding: 30px 0 !important;
 }
+
+.footer, #arc {
+	background: #eee !important;
+}
+
+div.form {
+	padding: 75px 0 75px 0
+}
+
+div.form form {
+	border-radius: 20px;
+	background-color: #eee;
+	padding: 40px;
+}
+
+div.form > div.bookClass, div.form > div.myBookedClasses {
+	width: 74%;
+	padding: 40px; 
+	margin-bottom: 40px;
+}
+
+div.form > div.myBookedClasses {
+	margin-top: 40px;
+}
+
+div.form > div.bookClass {
+	margin-bottom: 80px;
+}
+
+div.form > div > div.header {
+	width: 100%;
+	padding-bottom: 40px;
+	height: 50px;
+}
+
+div.form > div > div.header h1 {
+	font-size: 3em;
+	color: #111;
+	float: left;
+	line-height: 50px;
+}
+
+div.form > div > div.header h2 {
+	font-size: 2em;
+	color: #00000033;
+	float: right;
+	font-weight: 300;
+	line-height: 50px;
+}
+
+div.form > div > div.header h1 span {
+	color: #397cff;
+	font-weight: 900;
+}
+
+.ui-datatable tbody td, .ui-datatable tfoot td{
+	padding: 10px 15px !important;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	background: #397cff !important;
+	text-shadow: none;
+	padding: 8px 16px;
+	width: 100%;
+}
+
+.ui-datatable tbody .ui-datatable-empty-message td {
+	font-size: 1.75em;
+	padding: 25px 0px !important;
+	color: #00000033;
+	font-weight: 900;
+	text-align: center;
+}
+
+.ui-button-text-only .ui-button-text {
+	color: white !important;
+	font-size: 20px;
+}
+

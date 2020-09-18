@@ -20,12 +20,21 @@ class MemberTest {
 		Date date = new Date();
 
 		member = new Member("Fabiane", "Velosa", date, "083-123456", "fabi@gmail", "17, address", "Athlone", "Female",
-				"Improve metabolism", "N37896", "fabi", "123",CreditTypes.TREE_MONTHS); 
+				"Improve metabolism", "N37896", "fabi", "123", CreditTypes.TREE_MONTHS);
 	}
-	
+
 	@Test
-	void testMemberDefaultContructor() { 
-		 member = new Member();
+	void testMemberDefaultContructor() {
+		member = new Member("Fabiane", "fabi@gmail", "123");
+		assertTrue(member.getId().contains("M"), member.getId());
+		assertEquals("Fabiane", member.getFirstName());
+		assertEquals("fabi@gmail", member.getUserName());
+		assertEquals("123", member.getPassword());
+	}
+
+	@Test
+	void testMemberLoginContructor() {
+		member = new Member();
 		assertTrue(member.getId().contains("M"), member.getId());
 	}
 
@@ -40,7 +49,7 @@ class MemberTest {
 		assertEquals("fabi@gmail", member.getEmailAddress(), "Email address");
 		assertEquals("Female", member.getGender(), "Gender");
 		assertEquals("Improve metabolism", member.getGoal(), "Goal");
-	} 
+	}
 
 	@Test
 	void testSetFullName() {
@@ -98,7 +107,7 @@ class MemberTest {
 		member.setGoal("Hiit");
 		assertEquals("Hiit", member.getGoal());
 	}
-	
+
 	@Test
 	void testOneToOneCreditMembership() {
 		member.setOneToOneCredit(CreditTypes.TREE_MONTHS.getCreditQtd());
@@ -106,6 +115,5 @@ class MemberTest {
 		assertEquals(CreditTypes.TREE_MONTHS.getCreditQtd(), member.getOneToOneCredit());
 		assertEquals(CreditTypes.TREE_MONTHS, member.getMembershipType());
 	}
-	
-	
+
 }

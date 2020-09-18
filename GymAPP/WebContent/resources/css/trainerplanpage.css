@@ -1,5 +1,5 @@
 .main {
-	background: linear-gradient(0deg, rgba(16,68,170,1) 0%, rgba(57,124,255,1) 100%);
+	background-color: white;
 }
 
 .heading {
@@ -9,13 +9,60 @@
 	font-size: 100%;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-start;
+	flex-direction: column;
 	position: relative;
+}
+
+h2 {
+	text-align: center;
+	font-weight: 700;
+	padding: 20px 0;
+	font-size: 2em;
+	background-color: #111;
+	width: 100%;
+	color: white;
+	border-radius: 12px 12px 0 0;
+	margin-bottom: 15px;
+}
+
+div.header {
+	width: 70%;
+	padding-bottom: 40px;
+	height: 50px;
+}
+
+div.header h1 {
+	font-size: 3em;
+	color: #111;
+	float: left;
+	line-height: 50px;
+}
+
+div.header h2 {
+	font-size: 2em;
+	color: #00000033;
+	float: right;
+	font-weight: 300;
+	line-height: 50px;
+	padding: 0;
+	background-color: #00000000;
+	width: auto;
+	border-radius: 0;
+	margin-bottom: 0;
+}
+
+div.header h1 span {
+	color: #397cff;
+	font-weight: 900;
+}
+
+.planpage {
+	width: 70%;
 }
 
 .output {
 	width: 100vw;
-	height: 100vh;
 	font-family: "Times New Roman", Times, serif;
 	font-style: normal;
 	font-size: 20px;
@@ -30,12 +77,13 @@
 .output .planpage {
 	background-color: white;
 	border-radius: 12px;
-	box-shadow: 0px 8px 0px #383c4466;
 	padding: 0 0 20px 0;
 }
 
 .output .planpage table{
 	list-style: none;
+	background: #eee;
+	border-radius: 20px;
 }
 
 .output .planpage table th{
@@ -56,8 +104,7 @@
 }
 
 .output .planpage h4  {
-	margin-top: 30px;
-	text-align: center;
+	padding: 20px 0;
 	color: #397cff;
 }
 
@@ -84,7 +131,6 @@
 	border-radius: 12px;
 	padding-bottom: 30px;
 	margin-top: 25px;
-	box-shadow: 0px 8px 0px #383c4466;
 }
 
 .planpage form > div {
@@ -113,7 +159,7 @@
 	border: none;
 	background-color: #397cff;
 	padding: 10px 24px;
-	font-size: 16px;
+	font-size: 22px;
 	border-radius: 6px;
 	color: white;
 }
@@ -130,19 +176,21 @@
 
 table {
 	padding: 20px 50px;
+	width: 100%;
 }
 
 table th {
-	font-size: 18px;
+	font-size: 22px;
 	padding: 8px 0;
 }
 
 table td {
 	padding: 5px;
+	width: 20%;
 }
 
 select {
-	padding: 15px;
+	padding: 10px 0;
 	border-radius: 12px;
 	border: none;
 	background-color: #eee;
@@ -150,24 +198,12 @@ select {
 
 select option {
 	font-size: 16px;
-	padding: 5px;
+	padding: 5px 0px 5px 10px;
 	border-radius: 6px;
 }
 
-h2 {
-	text-align: center;
-	font-weight: 700;
-	padding: 20px 0;
-	font-size: 2em;
-	background-color: #111;
-	width: 100%;
-	color: white;
-	border-radius: 12px 12px 0 0;
-	margin-bottom: 15px;
-}
-
 a.return {
-	color: white;
+	color: #397cff;
 	margin-top: 15px;
 	padding: 15px 30px;
 	text-decoration: none;
@@ -175,4 +211,10 @@ a.return {
 
 a.return:hover {
 	color: #e7e7e7;
+}
+
+form#j_idt15 > div:first-of-type select {
+	width: 200px;
+	border-radius: 8px;
+	padding: 10px;
 }

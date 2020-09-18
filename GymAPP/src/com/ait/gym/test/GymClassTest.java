@@ -38,7 +38,6 @@ class GymClassTest {
 	}
 
 	@Test
-
 	public void testGymClassContructorEmployee() {
 		assertEquals(2, gymClasspersonal.getId());
 		assertEquals(ClassesTypes.ONE_ONE_SESSION, gymClasspersonal.getName());
@@ -46,5 +45,50 @@ class GymClassTest {
 		assertEquals("13:00", gymClasspersonal.getTime());
 		assertEquals(50, gymClasspersonal.getDuration());
 		assertEquals(1, gymClasspersonal.getSpaces());
+	}
+
+	@Test
+	public void testGymPersonal() {
+		Employee personal = new Employee("Fabi", "Female", new Date(), "17, address - Athlone", "fabi@gmail", "083-123456",
+				"fabi", "123", "Java is my favorite class.", true);
+		gymClasspersonal.setInstructor(personal);
+		assertEquals(personal, gymClasspersonal.getInstructor());
+
+	}
+	
+	@Test
+	public void testSetDayOfWeek() {
+		gymClass.setDayOfWeek(DayOfWeek.WEDNESDAY);
+		assertEquals(DayOfWeek.WEDNESDAY, gymClass.getDayOfWeek());
+	}
+	
+	@Test
+	public void testSetName() {
+		gymClass.setName(ClassesTypes.PILATES);
+		assertEquals(ClassesTypes.PILATES, gymClass.getName());
+	}
+
+	@Test
+	public void testSetTime() {
+		gymClass.setTime("13:00");
+		assertEquals("13:00", gymClass.getTime());
+	}
+
+	@Test
+	public void testSetDuration() {
+		gymClass.setDuration(50);
+		assertEquals(50, gymClass.getDuration());
+	}
+
+	@Test
+	public void testSetSpaces() {
+		gymClass.setSpaces(20);
+		assertEquals(20, gymClass.getSpaces());
+	}
+	
+	@Test
+	public void testSetClassId() {
+		gymClass.setId(10);
+		assertEquals(10, gymClass.getId());
 	}
 }
