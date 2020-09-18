@@ -14,7 +14,6 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
-import javax.servlet.http.HttpSession;
 
 import com.ait.gym.bean.lists.MembersList;
 import com.ait.gym.interfaces.UserActions;

@@ -11,7 +11,6 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
-import javax.servlet.http.HttpSession;
 
 import com.ait.gym.bean.lists.EmployeeList;
 import com.ait.gym.interfaces.UserActions;
@@ -88,7 +87,7 @@ public class Employee extends Person implements UserActions {
 		return page;
 	}
 
-	public List<GymClass> getBookedClasses() { 
+	public List<GymClass> getBookedClasses() {
 		return bookedClasses;
 	}
 
@@ -132,6 +131,5 @@ public class Employee extends Person implements UserActions {
 		}
 		return null;
 	}
-
 
 }

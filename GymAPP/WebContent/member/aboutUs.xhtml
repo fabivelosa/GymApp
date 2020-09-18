@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<!-- FAVICON -->
+	<link rel="icon" type="image/x-icon"
+		href="resources/images/favicon.ico" />
+	<title>About Us</title>
+	<!-- CSS -->
+	<h:outputStylesheet library="css" name="global.css" />
+	<h:outputStylesheet name="member.css" library="css" />
+</h:head>
+<h:body>
+	<!-- NAV -->
+<h:form>
+			<div class="inner">
+				<div class="logo-container">
+					<a href="/GymAPP" ><img src="../resources/images/watersidegym2.svg" /></a>
+				</div>
+				<div class="account-options">
+					<a href="member.xhtml" id="signin">Members HomePage</a>
+					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
+				</div>
+			</div>
+		</h:form>
+	<div class="main">
+		<br /> <br />
+		<h:form>
+			<h:panelGrid id="panel1" columns="2">
+				<h:graphicImage style="height:300px; width:620px;"
+					name="images/meet1.jpeg" />
+				<h:panelGrid cellpadding="10" cellspacing="10">
+					<h:outputLabel
+						style="display: block; width:100%; text-align:center;  font-size:50px "
+						value="Meet Paul" />
+					<p>Paul has been a trainer here for over 5 years and throughout this time
+					 he has helped hundreds of people meet their fitness goals. Be it working to
+					lose weight or working to put on muscle Paul is the trainer for you.</p>
+				</h:panelGrid>
+			</h:panelGrid>
+			<h:panelGrid id="panel2" columns="2">
+				<h:panelGrid cellpadding="20" cellspacing="20">
+					<h:outputLabel
+						style="display: block; width:100%; text-align:center; font-size:50px"
+						value="Meet Sophie" />
+					<p>Sophie has been working here for over 6 years and she she strives to be the best at what she does.
+					She is our top trainer in wellness classes and Yoga and has trained with the best all around the world.</p>
+				</h:panelGrid>
+				<h:graphicImage style="height:300px;width:620px"
+					name="images/meet2.jpeg" />
+			</h:panelGrid>
+			<h:panelGrid id="panel3" columns="2">
+					<h:graphicImage style="height:300px;width:620px"
+						name="images/meet3.jpeg" />
+					<h:panelGrid cellpadding="20" cellspacing="20">
+						<h:outputLabel
+							style="display: block; width:100%; text-align:center; font-size:50px"
+							value="Meet Jonathan" />
+						<p>Jonathan has been working at our job for 7 years and has helped many top athletes 
+						to achieve their best results ever. He is a specialist in running while also being an expert in Pilates and Tai Chi!
+						If you want to become the best at any of these disciplines Jonathan is the trainer for you</p>
+				</h:panelGrid>
+				</h:panelGrid>
+		</h:form>
+		<!-- FOOTER -->
+		<div class="footer">
+			<div id="jointoday" class="inner">
+				<div class="legal">
+					<ul>
+						<li>Legal</li>
+						<li>Membership Agreement</li>
+						<li>Accessibility</li>
+						<li>Privacy</li>
+					</ul>
+				</div>
+				<div class="contact">
+					<h3>Contact Us</h3>
+					<p>info@watersidegym.ie</p>
+				</div>
+				<div>
+					<img src="../resources/images/paypal.png" class="img-fluid pull-xs-left" alt="..." />
+				</div>
+			</div>
+		</div>
+		<!-- /FOOTER -->
+	</div>
+</h:body>
+</html>

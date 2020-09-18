@@ -9,23 +9,20 @@ import com.ait.gym.bean.Login;
 
 class LoginTest {
 
-private Login login;
-	
+	private Login login;
+
 	@BeforeEach
 	public void setUp() {
 		System.out.println("In login");
-//		login = new Login();
-		
+		login = new Login();
 	}
-	
+
 	@Test
-	public void loginResponseTest() {
-		assertEquals("index.xhtml?faces-redirect=true", login.loginYesNo());
+	public void loginCredentialTest() {
+		login.setUserName("Shane");
+		login.setPassword("1234");
+		assertEquals("Shane",login.getUserName());
+		assertEquals("1234",login.getPassword());
 	}
-	
-	
-	
-	
-	
 
 }

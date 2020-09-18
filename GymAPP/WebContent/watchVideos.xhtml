@@ -22,7 +22,7 @@
 				</div>
 				<div class="account-options">
 					<h:form rendered="#{sessionScope.userType == 'P'}"><a href="/GymAPP/trainer/trainershomepage.xhtml" id="signin">Your Homepage</a></h:form>
-					<h:form rendered="#{sessionScope.userType == 'M'}"><a href="/GymAPP/member/member.xhtml" id="signin">Your Homepage</a></h:form>
+					<h:form rendered="#{sessionScope.userType == 'M'}"><a href="/GymAPP/member/member.xhtml" id="signin">Members Homepage</a></h:form>
 					<h:commandLink action="#{login.logout}" class="register">Logout</h:commandLink>
 				</div>
 			</div>
